@@ -1,4 +1,4 @@
-## Copyright (C) 2013 Alexander Barth
+## Copyright (C) 2013-2022 Alexander Barth
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -71,7 +71,7 @@
 ##   @item @var{Shuffle}: is true if the shuffle filter is activated to improve 
 ##   compression, otherwise false.
 ##   @item @var{CheckSum}: is set to "fletcher32", if check-sums are used, 
-#    otherwise this field is not defined.
+##    otherwise this field is not defined.
 ## @end itemize
 ##
 ## Attributes
