@@ -174,7 +174,7 @@ html_options = --eval 'options = get_html_options ("octave-forge");'
 #html_options = --eval 'options = get_html_options ("octave-forge");' \
 #               --eval 'options.package_doc = "$(package).texi";'
 ifneq (,$(wildcard doc))
-html_options = $(html_options) \
+html_options += \
 	       --eval 'options.package_doc = "octave-$(package).texi";' \
 	       --eval 'options.package_doc_options = [options.package_doc_options " --css-include=octave-$(package).css"];'
 endif

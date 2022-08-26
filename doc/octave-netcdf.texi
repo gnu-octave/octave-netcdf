@@ -133,15 +133,13 @@ The toolkit must be loaded on each @acronym{GNU} Octave session.
 @chapter Basic Usage Overview
 @cindex Basic Usage Overview
 
-@section Overview
-@cindex Overview
 The toolkit provides high and level functionality for reading and
 writing NetCDF format files.
 
-@subsection High level functionality
+@section High level functionality
 @cindex  High level functionality
 
-The toolkit provides the following highlevel functions:
+The toolkit provides the following high level functions:
 @itemize @bullet
 @item
 nccreate     
@@ -161,13 +159,13 @@ ncwrite
 ncwriteschema
 @end itemize
 
-@subsection Low level functionality
+@section Low level functionality
 @cindex  Low level functionality
 
 The package aims to implement the netcdf interface of MATLAB in GNU Octave, however @acronym{GNU} Octave
 does not support the import function.
 
-Functions can be used in netcdf_functionname format, or a emulated import can be done using the
+Functions can be used in netcdf_functionname format, or an emulated import can be done using the
 import_netcdf script so that functions can be used in netcdf.functionname format.
 
 
