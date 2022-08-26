@@ -16,6 +16,24 @@ TAR ?= tar
 GREP ?= grep
 CUT ?= cut
 TR ?= tr
+TEXI2PDF  ?= texi2pdf -q
+MAKEINFO  ?= makeinfo
+
+# work out a possible help generator
+ifeq ($(strip $(QHELPGENERATOR)),)
+  ifneq ($(shell qhelpgenerator-qt5 -v 2>/dev/null),)
+    QHELPGENERATOR = qhelpgenerator-qt5
+  else ifneq ($(shell qcollectiongenerator-qt5 -v 2>/dev/null),)
+    QHELPGENERATOR = qcollectiongenerator-qt5
+  else ifneq ($(shell qcollectiongenerator -qt5 -v 2>/dev/null),)
+    QHELPGENERATOR = qcollectiongenerator -qt5
+  #else ifneq ($(shell qhelpgenerator -qt5 -v 2>/dev/null),)
+  #  # qt4 version wont error on-qt5 but also wont work
+  #  QHELPGENERATOR = qhelpgenerator -qt5
+  else
+    QHELPGENERATOR = true
+  endif
+endif
 
 ## Note the use of ':=' (immediate set) and not just '=' (lazy set).
 ## http://stackoverflow.com/a/448939/1609556
@@ -136,6 +154,10 @@ endif
 ifneq (,$(wildcard src/autogen.sh))
 	cd "$@/src" && ./autogen.sh && $(RM) -r "autom4te.cache"
 endif
+ifneq (,$(wildcard doc))
+	$(MAKE) -C "$@" docs
+	cd "$@" && $(RM) -f doc/mkfuncdocs.py doc/mkqhcp.py
+endif
 ## Uncomment this if your src/Makefile.in has these targets for
 ## pre-building something for the release (e.g. documentation).
 #	cd "$@/src" && ./configure && $(MAKE) prebuild && \
@@ -151,6 +173,11 @@ run_in_place = $(OCTAVE) --eval ' pkg ("local_list", "$(package_list)"); ' \
 html_options = --eval 'options = get_html_options ("octave-forge");' 
 #html_options = --eval 'options = get_html_options ("octave-forge");' \
 #               --eval 'options.package_doc = "$(package).texi";'
+ifneq (,$(wildcard doc))
+html_options = $(html_options) \
+	       --eval 'options.package_doc = "octave-$(package).texi";' \
+	       --eval 'options.package_doc_options = [options.package_doc_options " --css-include=octave-$(package).css"];'
+endif
 $(html_dir): $(install_stamp)
 	$(RM) -r "$@";
 	$(run_in_place)                    \
@@ -230,6 +257,34 @@ octave_test_commands = \
 check: $(install_stamp)
 	$(run_in_place) --eval $(octave_test_commands)
 
+## 
+## Docs
+##
+.PHONY: docs
+docs: doc/octave-$(package).pdf doc/octave-$(package).html doc/octave-$(package).qhc
+
+clean-docs:
+	$(RM) -f doc/octave-$(package).info
+	$(RM) -f doc/octave-$(package).pdf
+	$(RM) -f doc/octave-$(package).html
+	$(RM) -f doc/functions.texi
+	$(RM) -f doc/octave-$(package).qhc doc/octave-$(package).qch
+
+doc/octave-$(package).pdf: doc/octave-$(package).texi doc/functions.texi
+	cd doc && SOURCE_DATE_EPOCH=$(GIT_TIMESTAMP) $(TEXI2PDF) octave-$(package).texi
+	# remove temp files
+	cd doc && $(RM) -f octave-$(package).aux  octave-$(package).cp  octave-$(package).cps  octave-$(package).fn  octave-$(package).fns  octave-$(package).log  octave-$(package).toc
+
+doc/octave-$(package).html: doc/octave-$(package).texi doc/functions.texi
+	cd doc && SOURCE_DATE_EPOCH=$(GIT_TIMESTAMP) $(MAKEINFO) --html --css-ref=octave-$(package).css  --no-split --output=octave-${package}.html octave-$(package).texi
+
+doc/functions.texi:
+	cd doc && ./mkfuncdocs.py --src-dir=../inst/ --src-dir=../src/ --allowscan ../INDEX | $(SED) 's/@seealso/@xseealso/g' > functions.texi
+
+doc/octave-$(package).qhc: doc/octave-$(package).html
+	# try also create qch file if can
+	cd doc && ./mkqhcp.py octave-$(package) && $(QHELPGENERATOR) octave-$(package).qhcp -o octave-$(package).qhc
+	cd doc && $(RM) octave-$(package).qhcp octave-$(package).qhp
 
 ##
 ## CLEAN
@@ -237,9 +292,9 @@ check: $(install_stamp)
 
 .PHONY: clean
 
-clean: clean-tarballs clean-unpacked-release clean-install
+clean: clean-tarballs clean-unpacked-release clean-install clean-docs
 	@echo "## Removing target directory (if empty)..."
-	-rmdir $(target_dir)
+	-test -e $(target_dir) && rmdir $(target_dir)
 	@echo
 	@echo "## Cleaning done"
 	@echo
