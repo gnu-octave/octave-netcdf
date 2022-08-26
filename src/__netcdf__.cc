@@ -1200,7 +1200,9 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
         /* necessary for netcdf 4.1.3 */                                                 \
         if (sz > 0) {                                                                    \
   	   check_err(nc_get_vars(ncid, varid, start, count, stride, arr.fortran_vec())); \
-        }                                                                                \
+        } else {                                                                         \
+           warning("variable size 0 or currently too large to process");                 \
+	}                                                                                \
 	data = octave_value(arr);                                                        \
 	break;                                                                           \
       }
