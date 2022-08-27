@@ -267,7 +267,7 @@ Sets the default format of the NetCDF library and returns the previous default f
 DEFUN_DLD(netcdf_setChunkCache, args,,
   "-*- texinfo -*-\n\
 @deftypefn {Loadable Function} {} netcdf_setChunkCache(@var{size}, @var{nelems}, @var{preemption}) \n\
-Sets the default chunk cache settins in the HDF5 library. The settings applies to all files which are subsequently opened or created.\n\
+Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.\n\
 @end deftypefn\n\
 @seealso{netcdf_getChunkCache}\n")
 {
@@ -292,7 +292,7 @@ Sets the default chunk cache settins in the HDF5 library. The settings applies t
 DEFUN_DLD(netcdf_getChunkCache, args,,
   "-*- texinfo -*-\n\
 @deftypefn {Loadable Function} {[@var{size}, @var{nelems}, @var{preemption}] =} netcdf_getChunkCache() \n\
-Gets the default chunk cache settins in the HDF5 library. \n\
+Gets the default chunk cache settings in the HDF5 library. \n\
 @end deftypefn\n\
 @seealso{netcdf_setChunkCache}\n")
 {

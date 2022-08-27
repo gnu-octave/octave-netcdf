@@ -22,7 +22,7 @@
 ## The following properties can be used:
 ## @itemize
 ## @item "Dimensions": a cell array with the dimension names followed by their
-## length or Inf if the dimension is unlimited. If the property is ommited, a 
+## length or Inf if the dimension is unlimited. If the property is omitted, a 
 ## scalar variable is created.
 ## @item "Datatype": a string with the Octave data type name 
 ## (see @code{ncinfo} for the correspondence between Octave and NetCDF data 
@@ -31,7 +31,7 @@
 ## or "netcdf4".
 ## @item "FillValue": the value used for undefined elements of the NetCDF 
 ## variable.
-## @item "ChunkSize": the size of the data chunks. If omited, the variable is 
+## @item "ChunkSize": the size of the data chunks. If omitted, the variable is 
 ## not chunked.
 ## @item "DeflateLevel": The deflate level for compression. It can be the string
 ## "disable" (default) for no compression or an integer between 0 (no 

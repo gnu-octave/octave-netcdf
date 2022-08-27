@@ -19,7 +19,7 @@
 ## Return the attribute @var{attname} of the variable @var{varname} in the file
 ## @var{filename}.
 ##
-## Gobal attributes can be accessed by using "/" or the group name as 
+## Global attributes can be accessed by using "/" or the group name as 
 ## @var{varname}. The type of attribute is mapped to the Octave data types.
 ## (see @code{ncinfo}).
 ##

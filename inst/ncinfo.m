@@ -28,7 +28,7 @@
 ## or "NETCDF4_CLASSIC"
 ## @end itemize
 ##
-## The structure @var{info} has additional fields depending on wether a 
+## The structure @var{info} has additional fields depending on whether a 
 ## group of variable is queried.
 ##
 ## Groups
@@ -107,7 +107,7 @@
 ## meta-data using @code{ncwriteschema}.
 ##
 ## Note: If there are no attributes (or variable or groups), the corresponding 
-## field is an empty matrix and not an empty struct array for compability
+## field is an empty matrix and not an empty struct array for compatibility
 ## with matlab.
 ##
 ## @seealso{ncread,nccreate,ncwriteschema,ncdisp}

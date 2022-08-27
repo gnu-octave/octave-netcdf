@@ -32,7 +32,7 @@
 ## If the variable has the _FillValue attribute, then the values equal to NaN 
 ## are replaced by corresponding fill value NetCDF attributes scale_factor 
 ## (default 1) and add_oddset (default 0) are use the transform the variable 
-## during the writting:
+## during writing:
 ##
 ## x_in_file = (x - add_offset)/scale_factor
 ##
