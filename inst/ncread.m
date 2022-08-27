@@ -1,4 +1,4 @@
-## Copyright (C) 2013 Alexander Barth
+## Copyright (C) 2013-2022 Alexander Barth
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -45,80 +45,81 @@
 ##
 ## @end deftypefn
 
-function x = ncread(filename,varname,start,count,stride)
+function x = ncread (filename, varname, start, count, stride)
 
-ncid = netcdf_open(filename,'NC_NOWRITE');
-[gid,varid] = ncvarid(ncid,varname);
-[varname_,xtype,dimids,natts] = netcdf_inqVar(gid,varid);
+  ncid = netcdf_open(filename,'NC_NOWRITE');
+  [gid,varid] = ncvarid(ncid,varname);
+  [varname_,xtype,dimids,natts] = netcdf_inqVar(gid,varid);
 
-% number of dimenions
-nd = length(dimids);
+  % number of dimenions
+  nd = length(dimids);
 
-sz = zeros(1,nd);
-for i=1:length(dimids)
-  [dimname, sz(i)] = netcdf_inqDim(gid,dimids(i));
-end
+  sz = zeros(1,nd);
+  for i=1:length(dimids)
+   [dimname, sz(i)] = netcdf_inqDim(gid,dimids(i));
+  endfor 
 
-if nargin < 3
-  start = ones(1,nd);
-end
+  if nargin < 3
+    start = ones(1,nd);
+  endif
 
-if nargin < 4
-  count = inf*ones(1,nd);
-end
+  if nargin < 4
+    count = inf*ones(1,nd);
+  endif
 
-if nargin < 5
-  stride = ones(1,nd);
-end
+  if nargin < 5
+    stride = ones(1,nd);
+  endif
 
-% replace inf in count
-i = count == inf;
-count(i) = (sz(i)-start(i))./stride(i) + 1;
+  % replace inf in count
+  i = count == inf;
+  count(i) = (sz(i)-start(i))./stride(i) + 1;
 
-x = netcdf_getVar(gid,varid,start-1,count,stride);
+  x = netcdf_getVar(gid,varid,start-1,count,stride);
 
-% apply attributes
+  % apply attributes
 
-factor = [];
-offset = [];
-fv = [];
+  factor = [];
+  offset = [];
+  fv = [];
 
-for i = 0:natts-1
-  attname = netcdf_inqAttName(gid,varid,i);
+  for i = 0:natts-1
+    attname = netcdf_inqAttName(gid,varid,i);
 
-  if strcmp(attname,'scale_factor')
-    factor = netcdf_getAtt(gid,varid,'scale_factor');
-  elseif strcmp(attname,'add_offset')
-    offset = netcdf_getAtt(gid,varid,'add_offset');
-  elseif strcmp(attname,'_FillValue')
-    fv = netcdf_getAtt(gid,varid,'_FillValue');
-  end    
-end
+    if strcmp(attname,'scale_factor')
+      factor = netcdf_getAtt(gid,varid,'scale_factor');
+    elseif strcmp(attname,'add_offset')
+      offset = netcdf_getAtt(gid,varid,'add_offset');
+    elseif strcmp(attname,'_FillValue')
+      fv = netcdf_getAtt(gid,varid,'_FillValue');
+    endif    
+  endfor
 
-netcdf_close(ncid);
+  netcdf_close(ncid);
 
-# the scaling does not make sense of characters
-if xtype == netcdf_getConstant('char') || ...
-   xtype == netcdf_getConstant('string')
+  # the scaling does not make sense of characters
+  if xtype == netcdf_getConstant('char') || ...
+     xtype == netcdf_getConstant('string')
 
-   return;
-end
+     return;
+  endif
 
-if !isempty(fv) || !isempty(factor) || !isempty(offset)
-  if !isa(x,'double')
-    x = double(x);
-  end
-end
+  if !isempty(fv) || !isempty(factor) || !isempty(offset)
+    if !isa(x,'double')
+      x = double(x);
+   endif
+  endif
 
-if !isempty(fv)
-  x(x == fv) = NaN;
-end
+  if !isempty(fv)
+    x(x == fv) = NaN;
+  endif
 
-if !isempty(factor)
-  x = x * factor;
-end
+  if !isempty(factor)
+    x = x * factor;
+  endif
 
-if !isempty(offset)
-  x = x + offset;
-end
+  if !isempty(offset)
+    x = x + offset;
+  endif
 
+endfuncton

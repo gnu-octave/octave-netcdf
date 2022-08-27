@@ -1,4 +1,4 @@
-## Copyright (C) 2013 Alexander Barth
+## Copyright (C) 2013-2022 Alexander Barth
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -20,136 +20,137 @@
 ## @seealso{ncinfo}
 ## @end deftypefn
 
-function ncdisp(filename)
+function ncdisp (filename)
 
-info = ncinfo(filename);
+  info = ncinfo(filename);
 
-fprintf("Source:\n");
-indent = repmat(" ",[1 11]);
-fprintf("%s%s\n",indent,fullfile(filename));
-fprintf("Format:\n");
-fprintf("%s%s\n",indent,info.Format);
+  fprintf("Source:\n");
+  indent = repmat(" ",[1 11]);
+  fprintf("%s%s\n",indent,fullfile(filename));
+  fprintf("Format:\n");
+  fprintf("%s%s\n",indent,info.Format);
 
-colors.var = "red";
-colors.att = "cyan";
-colors.dim = "blue";
-group_color = "green";
+  colors.var = "red";
+  colors.att = "cyan";
+  colors.dim = "blue";
+  group_color = "green";
 
-printgroup("",info,colors);
+  printgroup("",info,colors);
 
-function s = fmtattr(val)
-if ischar(val)
-  s = sprintf("""%s""",val);
-else
-  s = num2str(val);
-end
+  function s = fmtattr(val)
+  if ischar(val)
+    s = sprintf("""%s""",val);
+  else
+    s = num2str(val);
+  endif
+
+endfunction
 
 function s = fmtsize(sz) 
-s = sprintf("%gx",sz);
-s = s(1:end-1);
-
+  s = sprintf("%gx",sz);
+  s = s(1:end-1);
+endfunction
 
 function printgroup(indent1,info,colors)
 
-indent2 = [indent1 repmat(" ",[1 11])];
-indent3 = [indent2 repmat(" ",[1 11])];
+  indent2 = [indent1 repmat(" ",[1 11])];
+  indent3 = [indent2 repmat(" ",[1 11])];
 
-% attributes
-if ~isempty(info.Attributes)
-  fprintf("%sGlobal Attributes:\n",indent1);
-  printattr(indent2,info.Attributes,colors);
-end
+  % attributes
+  if ~isempty(info.Attributes)
+    fprintf("%sGlobal Attributes:\n",indent1);
+    printattr(indent2,info.Attributes,colors);
+  endif
 
-% dimensions
-if ~isempty(info.Dimensions)
-  % length of the longest attribute name
-  dim = info.Dimensions;
-  maxlen = max(cellfun(@length,{dim.Name}));
-  fprintf("%sDimensions:\n",indent1);
-  for i = 1:length(dim)
-    space = repmat(" ",[maxlen-length(dim(i).Name) 1]);
-    fprintf("%s",indent2);
-    colormsg(sprintf("%s %s= %d",dim(i).Name,space,dim(i).Length),colors.dim);
-    fprintf("\n");
-  end
-end
-
-% variables
-if isfield(info,"Variables")
-  if ~isempty(info.Variables)
+  % dimensions
+  if ~isempty(info.Dimensions)
     % length of the longest attribute name
-    vars = info.Variables;
-    fprintf("%sVariables:\n",indent1);
-    for i = 1:length(vars)
-      %fprintf("%s%s\n",indent2(1:end-7),vars(i).Name);
-      colormsg(sprintf("%s%s\n",indent2(1:end-7),vars(i).Name),colors.var);
-      
-      if ~isempty(vars(i).Size)
-        sz = fmtsize(vars(i).Size);
-        dimname = sprintf("%s,",vars(i).Dimensions.Name);
-        dimname = dimname(1:end-1);
-      else
-        sz = "1x1";
-        dimname = "";
-      end
-      
-      fprintf("%sSize:       %s\n",indent2,sz);    
-      fprintf("%sDimensions: %s\n",indent2,dimname);
-      fprintf("%sDatatype:   %s\n",indent2,vars(i).Datatype);
-      
-      if ~isempty(vars(i).Attributes);
-        fprintf("%sAttributes:\n",indent2);
-        printattr(indent3,vars(i).Attributes,colors);
-      end
-    end
-  end
-end
+    dim = info.Dimensions;
+    maxlen = max(cellfun(@length,{dim.Name}));
+    fprintf("%sDimensions:\n",indent1);
+    for i = 1:length(dim)
+      space = repmat(" ",[maxlen-length(dim(i).Name) 1]);
+      fprintf("%s",indent2);
+      colormsg(sprintf("%s %s= %d",dim(i).Name,space,dim(i).Length),colors.dim);
+      fprintf("\n");
+    endfor
+  endif
 
-% groups
-if ~isempty(info.Groups)
-  % length of the longest attribute name
-  grps = info.Groups;
-  fprintf("%sGroups:\n",indent1);
-  for i = 1:length(grps)
-    fprintf("%s%s\n",indent2(1:end-7),grps(i).Name);
-    printgroup(indent2,grps(i),colors);
-  end
-end
+  % variables
+  if isfield(info,"Variables")
+    if ~isempty(info.Variables)
+      % length of the longest attribute name
+      vars = info.Variables;
+      fprintf("%sVariables:\n",indent1);
+      for i = 1:length(vars)
+        %fprintf("%s%s\n",indent2(1:end-7),vars(i).Name);
+        colormsg(sprintf("%s%s\n",indent2(1:end-7),vars(i).Name),colors.var);
+      
+        if ~isempty(vars(i).Size)
+          sz = fmtsize(vars(i).Size);
+          dimname = sprintf("%s,",vars(i).Dimensions.Name);
+          dimname = dimname(1:end-1);
+        else
+          sz = "1x1";
+          dimname = "";
+        endif
+      
+        fprintf("%sSize:       %s\n",indent2,sz);    
+        fprintf("%sDimensions: %s\n",indent2,dimname);
+        fprintf("%sDatatype:   %s\n",indent2,vars(i).Datatype);
+      
+        if ~isempty(vars(i).Attributes);
+          fprintf("%sAttributes:\n",indent2);
+          printattr(indent3,vars(i).Attributes,colors);
+        endif
+      endfor
+    endif
+  endif
 
+  % groups
+  if ~isempty(info.Groups)
+    % length of the longest attribute name
+    grps = info.Groups;
+    fprintf("%sGroups:\n",indent1);
+    for i = 1:length(grps)
+      fprintf("%s%s\n",indent2(1:end-7),grps(i).Name);
+      printgroup(indent2,grps(i),colors);
+    endfor
+  endif
 
+endfunction
 
 function printattr(indent,attr,colors)
-% length of the longest attribute name
-maxlen = max(cellfun(@length,{attr.Name}));
-for i = 1:length(attr)
-  space = repmat(" ",[maxlen-length(attr(i).Name) 1]);
-  %fprintf("%s%s %s= %s\n",indent,attr(i).Name,space,fmtattr(attr(i).Value));
-  fprintf("%s",indent);
-  colormsg(sprintf("%s %s= %s\n",attr(i).Name,space,fmtattr(attr(i).Value)),colors.att);
-end
-
-
+  % length of the longest attribute name
+  maxlen = max(cellfun(@length,{attr.Name}));
+  for i = 1:length(attr)
+    space = repmat(" ",[maxlen-length(attr(i).Name) 1]);
+    %fprintf("%s%s %s= %s\n",indent,attr(i).Name,space,fmtattr(attr(i).Value));
+    fprintf("%s",indent);
+    colormsg(sprintf("%s %s= %s\n",attr(i).Name,space,fmtattr(attr(i).Value)),colors.att);
+  endfor
+endfunction
 
 function colormsg (msg,color)
+  if strcmp(getenv("TERM"),"xterm")
+    esc = char(27);          
 
-if strcmp(getenv("TERM"),"xterm")
-  esc = char(27);          
+    % ANSI escape codes
+    colors.black   = [esc, "[30m"];
+    colors.red     = [esc, "[31m"];
+    colors.green   = [esc, "[32m"];
+    colors.yellow  = [esc, "[33m"];
+    colors.blue    = [esc, "[34m"];
+    colors.magenta = [esc, "[35m"];
+    colors.cyan    = [esc, "[36m"];
+    colors.white   = [esc, "[37m"];
 
-  % ANSI escape codes
-  colors.black   = [esc, "[30m"];
-  colors.red     = [esc, "[31m"];
-  colors.green   = [esc, "[32m"];
-  colors.yellow  = [esc, "[33m"];
-  colors.blue    = [esc, "[34m"];
-  colors.magenta = [esc, "[35m"];
-  colors.cyan    = [esc, "[36m"];
-  colors.white   = [esc, "[37m"];
-
-  reset = [esc, "[0m"];
+    reset = [esc, "[0m"];
   
-  c = getfield(colors,color);
+    c = getfield(colors,color);
 
-  fprintf('%s',[c, msg, reset]);
-else
-  fprintf('%s',msg);
-end
+    fprintf('%s',[c, msg, reset]);
+  else
+    fprintf('%s',msg);
+  endif
+endfunction

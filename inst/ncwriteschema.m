@@ -1,4 +1,4 @@
-## Copyright (C) 2013 Alexander Barth
+## Copyright (C) 2013-2022 Alexander Barth
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -41,135 +41,130 @@
 ## @end deftypefn
 
 
-function ncwriteschema(filename,s)
+function ncwriteschema (filename, s)
 
+  mode = format2mode(s.Format);
+  ncid = netcdf_create(filename,mode);
+  write_group(ncid,s)
 
+  netcdf_close(ncid);
 
-mode = format2mode(s.Format);
-ncid = netcdf_create(filename,mode);
-write_group(ncid,s)
-
-netcdf_close(ncid);
-
-end
+endfunction
 
 function write_group(ncid,s)
-% normalize schema
+  % normalize schema
 
-if ~isfield(s,'Dimensions')
-  s.Dimensions = [];
-end
-if isempty(s.Dimensions)
-  s.Dimensions = struct('Name',{},'Length',{},'Unlimited',{});
-end
+  if ~isfield(s,'Dimensions')
+    s.Dimensions = [];
+  endif
+  if isempty(s.Dimensions)
+    s.Dimensions = struct('Name',{},'Length',{},'Unlimited',{});
+  endif
 
-if ~isfield(s,'Attributes')
-  s.Attributes = struct('Name',{},'Value',{});
-end
+  if ~isfield(s,'Attributes')
+    s.Attributes = struct('Name',{},'Value',{});
+  endif
 
-if ~isfield(s,'Variables')
-  s.Variables = struct('Name',{},'Dimensions',{},'Datatype',{});;
-end
+  if ~isfield(s,'Variables')
+    s.Variables = struct('Name',{},'Dimensions',{},'Datatype',{});;
+  endif
 
-% dimension
-for i = 1:length(s.Dimensions)
-  dim = s.Dimensions(i);
+  % dimension
+  for i = 1:length(s.Dimensions)
+    dim = s.Dimensions(i);
 
-  if ~isfield(dim,'Unlimited')
-    dim.Unlimited = false;
-  end
+    if ~isfield(dim,'Unlimited')
+      dim.Unlimited = false;
+    endif
   
-  len = dim.Length;  
-  if dim.Unlimited || isinf(len)
-    len = netcdf_getConstant('NC_UNLIMITED');
-  end
+    len = dim.Length;  
+    if dim.Unlimited || isinf(len)
+      len = netcdf_getConstant('NC_UNLIMITED');
+    endif
   
-  s.Dimensions(i).id = netcdf_defDim(ncid,dim.Name,len);
-end
+    s.Dimensions(i).id = netcdf_defDim(ncid,dim.Name,len);
+  endfor
 
-% global attributes
-gid = netcdf_getConstant('NC_GLOBAL');
-for j = 1:length(s.Attributes)
-  netcdf_putAtt(ncid,gid,s.Attributes(j).Name,s.Attributes(j).Value);
-end
+  % global attributes
+  gid = netcdf_getConstant('NC_GLOBAL');
+  for j = 1:length(s.Attributes)
+    netcdf_putAtt(ncid,gid,s.Attributes(j).Name,s.Attributes(j).Value);
+  endif
 
-% variables
-for i = 1:length(s.Variables)  
-  v = s.Variables(i);
-  %v.Name
-  % get dimension id
-  dimids = zeros(length(v.Dimensions),1);
-  for j = 1:length(v.Dimensions)
-    dimids(j) = netcdf_inqDimID(ncid,v.Dimensions(j).Name);
-  end
+  % variables
+  for i = 1:length(s.Variables)  
+    v = s.Variables(i);
+    %v.Name
+    % get dimension id
+    dimids = zeros(length(v.Dimensions),1);
+    for j = 1:length(v.Dimensions)
+      dimids(j) = netcdf_inqDimID(ncid,v.Dimensions(j).Name);
+    endfor
+  
+    % define variable
+    dtype = oct2nctype(v.Datatype);
+    varid = netcdf_defVar(ncid,v.Name,dtype,dimids);
+  
+    % define attributes
+    for j = 1:length(v.Attributes)
+      netcdf_putAtt(ncid,varid,v.Attributes(j).Name,v.Attributes(j).Value);
+    endfor
+  
+    % define chunk size
+    if isfield(v,'ChunkSize')
+      if ~isempty(v.ChunkSize)
+        netcdf_defVarChunking(ncid,varid,'chunked',v.ChunkSize);
+      endif
+    endif
 
-  
-  % define variable
-  dtype = oct2nctype(v.Datatype);
-  varid = netcdf_defVar(ncid,v.Name,dtype,dimids);
-  
-  % define attributes
-  for j = 1:length(v.Attributes)
-    netcdf_putAtt(ncid,varid,v.Attributes(j).Name,v.Attributes(j).Value);
-  end
-  
-  % define chunk size
-  if isfield(v,'ChunkSize')
-    if ~isempty(v.ChunkSize)
-      netcdf_defVarChunking(ncid,varid,'chunked',v.ChunkSize);
-    end
-  end
+    % define compression
+    shuffle = false;
+    deflatelevel = 0;
 
-  % define compression
-  shuffle = false;
-  deflatelevel = 0;
-
-  if isfield(v,'Shuffle') 
-    if ~isempty(v.Shuffle)    
-      shuffle = v.Shuffle;
-    end
-  end
+    if isfield(v,'Shuffle') 
+      if ~isempty(v.Shuffle)    
+        shuffle = v.Shuffle;
+      endif
+    endif
   
-  if isfield(v,'DeflateLevel')
-    if ~isempty(v.DeflateLevel)
-      deflatelevel = v.DeflateLevel;
-    end
-  end
+    if isfield(v,'DeflateLevel')
+      if ~isempty(v.DeflateLevel)
+        deflatelevel = v.DeflateLevel;
+      endif
+    endif
   
-  if shuffle && defaltelevel != 0
-    deflate = defaltelevel != 0;
-    netcdf_defVarDeflate(ncid,varid,shuffle,deflate,deflatelevel);
-  end
+    if shuffle && defaltelevel != 0
+      deflate = defaltelevel != 0;
+      netcdf_defVarDeflate(ncid,varid,shuffle,deflate,deflatelevel);
+    endif
     
-  % define fill value
-  if isfield(v,'FillValue')
-    if ~isempty(v.FillValue)
-      % leave nofill setting unchanged
-      [nofill,fillval] = netcdf_inqVarFill(ncid,varid);      
-      netcdf_defVarFill(ncid,varid,nofill,v.FillValue);
-    end
-  end
+    % define fill value
+    if isfield(v,'FillValue')
+      if ~isempty(v.FillValue)
+        % leave nofill setting unchanged
+        [nofill,fillval] = netcdf_inqVarFill(ncid,varid);      
+        netcdf_defVarFill(ncid,varid,nofill,v.FillValue);
+      endif
+    endif
 
-  % define checksum
-  if isfield(v,'Checksum')
-    if ~isempty(v.Checksum)
-      netcdf_defVarFletcher32(ncid,varid,v.Checksum);
-    end
-  end
-  
-  
-end
+    % define checksum
+    if isfield(v,'Checksum')
+      if ~isempty(v.Checksum)
+        netcdf_defVarFletcher32(ncid,varid,v.Checksum);
+      endif
+    endif
 
-% groups
-if isfield(s,'Groups')
-  if ~isempty(s.Groups)
-    for i=1:length(s.Groups)
-      g = s.Groups(i);
-      gid = netcdf_defGrp(ncid,g.Name);
-      write_group(gid,g);
-    end
-  end
-end   
-end
+  endfor
 
+  % groups
+  if isfield(s,'Groups')
+    if ~isempty(s.Groups)
+      for i=1:length(s.Groups)
+        g = s.Groups(i);
+        gid = netcdf_defGrp(ncid,g.Name);
+        write_group(gid,g);
+      endfor
+    endif
+  endif
 
+endfunction

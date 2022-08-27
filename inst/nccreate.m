@@ -1,4 +1,4 @@
-## Copyright (C) 2013 Alexander Barth
+## Copyright (C) 2013-2022 Alexander Barth
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -49,87 +49,85 @@
 ## @end deftypefn
 
 
-function nccreate(filename,varname,varargin)
+function nccreate (filename, varname, varargin)
 
-dimensions = {};
-datatype = 'double';
-ncformat = 'netcdf4_classic';
-FillValue = [];
-ChunkSize = [];
-DeflateLevel = 'disable';
-Shuffle = false;
+  dimensions = {};
+  datatype = 'double';
+  ncformat = 'netcdf4_classic';
+  FillValue = [];
+  ChunkSize = [];
+  DeflateLevel = 'disable';
+  Shuffle = false;
 
+  for i = 1:2:length(varargin)
+    if strcmp(varargin{i},'Dimensions')
+      dimensions = varargin{i+1};
+    elseif strcmp(varargin{i},'Datatype')
+      datatype = varargin{i+1};
+    elseif strcmp(varargin{i},'Format')
+      ncformat = varargin{i+1};
+    elseif strcmp(varargin{i},'FillValue')
+      FillValue = varargin{i+1};
+    elseif strcmp(varargin{i},'ChunkSize')
+      ChunkSize = varargin{i+1};
+    elseif strcmp(varargin{i},'DeflateLevel')
+      DeflateLevel = varargin{i+1};
+    elseif strcmp(varargin{i},'Shuffle')
+      Shuffle = varargin{i+1};
+    else
+      error(['unknown keyword ' varargin{i} '.']);
+    endif
+  endfor
 
+  if ~isempty(stat(filename))
+    ncid = netcdf_open(filename,'NC_WRITE');
+    netcdf_reDef(ncid);
+  else    
+    mode = format2mode(ncformat);
+    ncid = netcdf_create(filename,mode);
+  endif
 
+  % create dimensions
 
-for i = 1:2:length(varargin)
-  if strcmp(varargin{i},'Dimensions')
-    dimensions = varargin{i+1};
-  elseif strcmp(varargin{i},'Datatype')
-    datatype = varargin{i+1};
-  elseif strcmp(varargin{i},'Format')
-    ncformat = varargin{i+1};
-  elseif strcmp(varargin{i},'FillValue')
-    FillValue = varargin{i+1};
-  elseif strcmp(varargin{i},'ChunkSize')
-    ChunkSize = varargin{i+1};
-  elseif strcmp(varargin{i},'DeflateLevel')
-    DeflateLevel = varargin{i+1};
-  elseif strcmp(varargin{i},'Shuffle')
-    Shuffle = varargin{i+1};
-  else
-    error(['unknown keyword ' varargin{i} '.']);
-  end
-end
+  dimids = [];
+  i = 1;
 
-if ~isempty(stat(filename))
-  ncid = netcdf_open(filename,'NC_WRITE');
-  netcdf_reDef(ncid);
-else    
-  mode = format2mode(ncformat);
-  ncid = netcdf_create(filename,mode);
-end
-
-% create dimensions
-
-dimids = [];
-i = 1;
-
-while i <= length(dimensions)  
+  while i <= length(dimensions)  
   
-  if i == length(dimensions)
-    dimids(end+1) = netcdf_inqDimID(ncid,dimensions{i});
-    i = i+1;
-  elseif ischar(dimensions{i+1})
-    dimids(end+1) = netcdf_inqDimID(ncid,dimensions{i});
-    i = i+1;
-  else
-    try
-      if isinf(dimensions{i+1})
-        dimensions{i+1} = netcdf_getConstant('NC_UNLIMITED');
-      end      
-      dimids(end+1) = netcdf_defDim(ncid,dimensions{i},dimensions{i+1});
-    catch
+    if i == length(dimensions)
       dimids(end+1) = netcdf_inqDimID(ncid,dimensions{i});
-    end
-    i = i+2;
-  end
-end
+      i = i+1;
+    elseif ischar(dimensions{i+1})
+      dimids(end+1) = netcdf_inqDimID(ncid,dimensions{i});
+      i = i+1;
+    else
+      try
+        if isinf(dimensions{i+1})
+          dimensions{i+1} = netcdf_getConstant('NC_UNLIMITED');
+        endif      
+        dimids(end+1) = netcdf_defDim(ncid,dimensions{i},dimensions{i+1});
+      catch
+        dimids(end+1) = netcdf_inqDimID(ncid,dimensions{i});
+      end_try_catch
+      i = i+2;
+    endif
+  endwhile
 
+  varid = netcdf_defVar(ncid,varname,oct2nctype(datatype),dimids);
 
-varid = netcdf_defVar(ncid,varname,oct2nctype(datatype),dimids);
+  if ~isempty(ChunkSize)
+    netcdf_defVarChunking(ncid,varid,'chunked',ChunkSize);
+  endif
 
-if ~isempty(ChunkSize)
-  netcdf_defVarChunking(ncid,varid,'chunked',ChunkSize);
-end
+  if ~isempty(FillValue)
+    % value of nofill?
+    netcdf_defVarFill(ncid,varid,false,FillValue);
+  endif
 
-if ~isempty(FillValue)
-  % value of nofill?
-  netcdf_defVarFill(ncid,varid,false,FillValue);
-end
+  if isnumeric(DeflateLevel)
+    netcdf_defVarDeflate(ncid,varid,Shuffle,true,DeflateLevel);
+  endif
 
-if isnumeric(DeflateLevel)
-  netcdf_defVarDeflate(ncid,varid,Shuffle,true,DeflateLevel);
-end
+  netcdf_close(ncid);
 
-netcdf_close(ncid);
+endfunction

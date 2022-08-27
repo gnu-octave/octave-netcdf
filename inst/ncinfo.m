@@ -114,71 +114,67 @@
 ##
 ## @end deftypefn
 
-function info = ncinfo(filename,name)
+function info = ncinfo (filename, name)
 
-ncid = netcdf_open(filename,"NC_NOWRITE");
-info.Filename = filename;    
+  ncid = netcdf_open(filename,"NC_NOWRITE");
+  info.Filename = filename;    
 
-if nargin == 1    
-  name = "/";
-endif
+  if nargin == 1    
+    name = "/";
+  endif
 
-[gid,varid] = ncloc(ncid,name);
+  [gid,varid] = ncloc(ncid,name);
 
-if isempty(varid)
-  info = ncinfo_group(info,gid);
-else
-  unlimdimIDs = netcdf_inqUnlimDims(gid);
-  info = ncinfo_var(info,gid,varid,unlimdimIDs);
-endif
+  if isempty(varid)
+    info = ncinfo_group(info,gid);
+  else
+    unlimdimIDs = netcdf_inqUnlimDims(gid);
+    info = ncinfo_var(info,gid,varid,unlimdimIDs);
+  endif
 
-# NetCDF format
-ncformat = netcdf_inqFormat(ncid);
-info.Format = lower(strrep(ncformat,'FORMAT_',''));    
+  # NetCDF format
+  ncformat = netcdf_inqFormat(ncid);
+  info.Format = lower(strrep(ncformat,'FORMAT_',''));    
 
-netcdf_close(ncid);
+  netcdf_close(ncid);
 endfunction
 
 function dims = ncinfo_dim(ncid,dimids,unlimdimIDs)
 
-dims = [];
-for i=1:length(dimids)
-  tmp = struct();
+  dims = [];
+  for i=1:length(dimids)
+    tmp = struct();
 
-  [tmp.Name, tmp.Length] = netcdf_inqDim(ncid,dimids(i));
-  tmp.Unlimited = any(unlimdimIDs == dimids(i));
+    [tmp.Name, tmp.Length] = netcdf_inqDim(ncid,dimids(i));
+    tmp.Unlimited = any(unlimdimIDs == dimids(i));
     
-  if isempty(dims)
-    dims = [tmp];
-  else
-    dims(i) = tmp;
-  endif
-endfor
+    if isempty(dims)
+      dims = [tmp];
+    else
+      dims(i) = tmp;
+    endif
+  endfor
 endfunction
-
 
 function vinfo = ncinfo_var(vinfo,ncid,varid,unlimdimIDs)
 
-[vinfo.Name,xtype,dimids,natts] = netcdf_inqVar(ncid,varid);
+  [vinfo.Name,xtype,dimids,natts] = netcdf_inqVar(ncid,varid);
 
-% Information about dimension
+  % Information about dimension
+  vinfo.Dimensions = ncinfo_dim(ncid,dimids,unlimdimIDs);
+  if isempty(vinfo.Dimensions)
+    vinfo.Size = [];
+  else
+    vinfo.Size = cat(2,vinfo.Dimensions.Length);
+  endif
 
-vinfo.Dimensions = ncinfo_dim(ncid,dimids,unlimdimIDs);
-if isempty(vinfo.Dimensions)
-  vinfo.Size = [];
-else
-  vinfo.Size = cat(2,vinfo.Dimensions.Length);
-end
+  % Data type
+  vinfo.Datatype = nc2octtype(xtype);
 
-% Data type
+  % Attributes
+  vinfo.Attributes = [];
 
-vinfo.Datatype = nc2octtype(xtype);
-
-% Attributes
-
-vinfo.Attributes = [];
-
-for i = 0:natts-1  
+  for i = 0:natts-1  
     tmp = struct();
     tmp.Name = netcdf_inqAttName(ncid,varid,i);
     tmp.Value = netcdf_getAtt(ncid,varid,tmp.Name);
@@ -188,76 +184,75 @@ for i = 0:natts-1
     else
       vinfo.Attributes(i+1) = tmp;
     endif
-endfor
+  endfor
 
-% chunking, fillvalue, compression
+  % chunking, fillvalue, compression
 
-[storage,vinfo.ChunkSize] = netcdf_inqVarChunking(ncid,varid);
+  [storage,vinfo.ChunkSize] = netcdf_inqVarChunking(ncid,varid);
 
-[nofill,vinfo.FillValue] = netcdf_inqVarFill(ncid,varid);
-if nofill
-  vinfo.FillValue = [];
-endif
+  [nofill,vinfo.FillValue] = netcdf_inqVarFill(ncid,varid);
+  if nofill
+    vinfo.FillValue = [];
+  endif
 
-[shuffle,deflate,vinfo.DeflateLevel] = ...
+  [shuffle,deflate,vinfo.DeflateLevel] = ...
     netcdf_inqVarDeflate(ncid,varid);
 
-if ~deflate
-  vinfo.DeflateLevel = [];
-endif
-vinfo.Shuffle = shuffle;
+  if ~deflate
+    vinfo.DeflateLevel = [];
+  endif
+  vinfo.Shuffle = shuffle;
 
-# add checksum information if defined (unlike matlab)
-checksum = netcdf_inqVarFletcher32(ncid,varid);
-if ~strcmp(checksum,'nochecksum');
-  vinfo.Checksum = checksum;
-endif
+  # add checksum information if defined (unlike matlab)
+  checksum = netcdf_inqVarFletcher32(ncid,varid);
+  if ~strcmp(checksum,'nochecksum');
+    vinfo.Checksum = checksum;
+  endif
 
 endfunction
 
+function info = ncinfo_group (info, ncid)
 
-function info = ncinfo_group(info,ncid)
+  info.Name = netcdf_inqGrpName(ncid);
+  unlimdimIDs = netcdf_inqUnlimDims(ncid);
 
-info.Name = netcdf_inqGrpName(ncid);
-unlimdimIDs = netcdf_inqUnlimDims(ncid);
+  [ndims,nvars,ngatts] = netcdf_inq(ncid);
 
-[ndims,nvars,ngatts] = netcdf_inq(ncid);
+  % dimensions
 
-% dimensions
+  dimids = netcdf_inqDimIDs(ncid);
+  info.Dimensions = ncinfo_dim(ncid,dimids,unlimdimIDs);
 
-dimids = netcdf_inqDimIDs(ncid);
-info.Dimensions = ncinfo_dim(ncid,dimids,unlimdimIDs);
+  % variables
+  for i=1:nvars
+    info.Variables(i) = ncinfo_var(struct(),ncid,i-1,unlimdimIDs);
+  endfor
 
-% variables
-for i=1:nvars
-  info.Variables(i) = ncinfo_var(struct(),ncid,i-1,unlimdimIDs);
-endfor
-
-% global attributes
-info.Attributes = [];
-gid = netcdf_getConstant('NC_GLOBAL');
-for i = 0:ngatts-1  
-  tmp = struct();
-  tmp.Name = netcdf_inqAttName(ncid,gid,i);
-  tmp.Value = netcdf_getAtt(ncid,gid,tmp.Name);
+  % global attributes
+  info.Attributes = [];
+  gid = netcdf_getConstant('NC_GLOBAL');
+  for i = 0:ngatts-1  
+    tmp = struct();
+    tmp.Name = netcdf_inqAttName(ncid,gid,i);
+    tmp.Value = netcdf_getAtt(ncid,gid,tmp.Name);
   
-  if isempty(info.Attributes)      
-    info.Attributes = [tmp];
-  else
-    info.Attributes(i+1) = tmp;
-  endif
-endfor
+    if isempty(info.Attributes)      
+      info.Attributes = [tmp];
+    else
+      info.Attributes(i+1) = tmp;
+    endif
+  endfor
 
-info.Groups = [];
-gids = netcdf_inqGrps(ncid);
-for i = 1:length(gids)
-  tmp = ncinfo_group(struct(),gids(i));
+  info.Groups = [];
+  gids = netcdf_inqGrps(ncid);
+  for i = 1:length(gids)
+    tmp = ncinfo_group(struct(),gids(i));
   
-  if isempty(info.Groups)      
-    info.Groups = [tmp];
-  else
-    info.Groups(i) = tmp;
-  endif
-endfor
+    if isempty(info.Groups)      
+      info.Groups = [tmp];
+    else
+      info.Groups(i) = tmp;
+    endif
+  endfor
 
 endfunction

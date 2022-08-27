@@ -1,4 +1,4 @@
-## Copyright (C) 2013 Alexander Barth
+## Copyright (C) 2013-2023 Alexander Barth
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -40,62 +40,63 @@
 ##
 ## @end deftypefn
 
-function ncwrite(filename,varname,x,start,stride)
+function ncwrite (filename, varname, x, start, stride)
 
-ncid = netcdf_open(filename,'NC_WRITE');
-[gid,varid] = ncvarid(ncid,varname);
-[varname_,xtype,dimids,natts] = netcdf_inqVar(gid,varid);
+  ncid = netcdf_open(filename,'NC_WRITE');
+  [gid,varid] = ncvarid(ncid,varname);
+  [varname_,xtype,dimids,natts] = netcdf_inqVar(gid,varid);
 
-% number of dimenions
-nd = length(dimids);
+  % number of dimenions
+  nd = length(dimids);
 
-sz = zeros(1,nd);
-count = zeros(1,nd);
+  sz = zeros(1,nd);
+  count = zeros(1,nd);
 
-for i=1:length(dimids)
-  [dimname, sz(i)] = netcdf_inqDim(gid,dimids(i));
-  count(i) = size(x,i);
-end
+  for i=1:length(dimids)
+    [dimname, sz(i)] = netcdf_inqDim(gid,dimids(i));
+    count(i) = size(x,i);
+  endfor
 
-if nargin < 4
-  start = ones(1,nd);
-end
+  if nargin < 4
+    start = ones(1,nd);
+  endif
 
-if nargin < 5
-  stride = ones(1,nd);
-end
+  if nargin < 5
+    stride = ones(1,nd);
+  endif
 
+  % apply attributes
 
-% apply attributes
+  factor = [];
+  offset = [];
+  fv = [];
 
-factor = [];
-offset = [];
-fv = [];
+  for i = 0:natts-1
+    attname = netcdf_inqAttName(gid,varid,i);
 
-for i = 0:natts-1
-  attname = netcdf_inqAttName(gid,varid,i);
+    if strcmp(attname,'scale_factor')
+      factor = netcdf_getAtt(gid,varid,'scale_factor');
+    elseif strcmp(attname,'add_offset')
+      offset = netcdf_getAtt(gid,varid,'add_offset');
+    elseif strcmp(attname,'_FillValue')
+      fv = netcdf_getAtt(gid,varid,'_FillValue');
+    endif    
+  endfor
 
-  if strcmp(attname,'scale_factor')
-    factor = netcdf_getAtt(gid,varid,'scale_factor');
-  elseif strcmp(attname,'add_offset')
-    offset = netcdf_getAtt(gid,varid,'add_offset');
-  elseif strcmp(attname,'_FillValue')
-    fv = netcdf_getAtt(gid,varid,'_FillValue');
-  end    
-end
+  if ~isempty(offset)
+    x = x - offset;
+  endif
 
-if ~isempty(offset)
-  x = x - offset;
-end
+  if ~isempty(factor)
+    x = x / factor;
+  endif
 
-if ~isempty(factor)
-  x = x / factor;
-end
+  if ~isempty(fv)
+    x(isnan(x)) = fv;
+  endif
 
-if ~isempty(fv)
-  x(isnan(x)) = fv;
-end
+  netcdf_putVar(gid,varid,start-1,count,stride,x);
 
-netcdf_putVar(gid,varid,start-1,count,stride,x);
+  netcdf_close(ncid);
 
-netcdf_close(ncid);
+endfunction

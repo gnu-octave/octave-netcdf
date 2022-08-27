@@ -1,4 +1,4 @@
-## Copyright (C) 2013 Alexander Barth
+## Copyright (C) 2013-2022 Alexander Barth
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -29,14 +29,16 @@
 
 function val = ncreadatt(filename,varname,attname)
 
-ncid = netcdf_open(filename,'NC_NOWRITE');
+  ncid = netcdf_open(filename,'NC_NOWRITE');
 
-[gid,varid] = ncloc(ncid,varname);
+  [gid,varid] = ncloc(ncid,varname);
 
-if isempty(varid)
-  varid = netcdf_getConstant('NC_GLOBAL');
-endif
+  if isempty(varid)
+    varid = netcdf_getConstant('NC_GLOBAL');
+  endif
 
-val = netcdf_getAtt(gid,varid,attname);
+  val = netcdf_getAtt(gid,varid,attname);
 
-netcdf_close(ncid);
+  netcdf_close(ncid);
+
+endfunction

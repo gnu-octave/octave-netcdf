@@ -1,4 +1,4 @@
-## Copyright (C) 2013 Alexander Barth
+## Copyright (C) 2013-2022 Alexander Barth
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -27,17 +27,19 @@
 ##
 ## @end deftypefn
 
-function ncwriteatt(filename,varname,attname,val)
+function ncwriteatt (filename, varname, attname, val)
 
-ncid = netcdf_open(filename,'NC_WRITE');
-netcdf_reDef(ncid);
+  ncid = netcdf_open(filename,'NC_WRITE');
+  netcdf_reDef(ncid);
 
-[gid,varid] = ncloc(ncid,varname);
+  [gid,varid] = ncloc(ncid,varname);
 
-if isempty(varid)
-  varid = netcdf_getConstant('NC_GLOBAL');
-endif
+  if isempty(varid)
+    varid = netcdf_getConstant('NC_GLOBAL');
+  endif
 
-netcdf_putAtt(ncid,varid,attname,val);
+  netcdf_putAtt(ncid,varid,attname,val);
 
-netcdf_close(ncid);
+  netcdf_close(ncid);
+
+endfunction
