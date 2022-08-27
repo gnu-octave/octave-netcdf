@@ -89,7 +89,7 @@ function write_group(ncid,s)
   gid = netcdf_getConstant('NC_GLOBAL');
   for j = 1:length(s.Attributes)
     netcdf_putAtt(ncid,gid,s.Attributes(j).Name,s.Attributes(j).Value);
-  endif
+  endfor
 
   % variables
   for i = 1:length(s.Variables)  
