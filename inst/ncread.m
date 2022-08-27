@@ -122,4 +122,4 @@ function x = ncread (filename, varname, start, count, stride)
     x = x + offset;
   endif
 
-endfuncton
+endfunction
