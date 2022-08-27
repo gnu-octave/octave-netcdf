@@ -36,8 +36,9 @@ function ncdisp (filename)
   group_color = "green";
 
   printgroup("",info,colors);
+endfunction
 
-  function s = fmtattr(val)
+function s = fmtattr(val)
   if ischar(val)
     s = sprintf("""%s""",val);
   else
