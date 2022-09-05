@@ -55,3 +55,6 @@ netcdf.inqGrpNameFull = @netcdf_inqGrpNameFull;
 netcdf.inqGrpParent = @netcdf_inqGrpParent;
 netcdf.inqGrpFullNcid = @netcdf_inqGrpFullNcid;
 netcdf.inqNcid = @netcdf_inqNcid;
+netcdf.defVlen = @netcdf_defVlen;
+netcdf.inqVlen = @netcdf_inqVlen;
+netcdf.inqUserType = @netcdf_inqUserType;

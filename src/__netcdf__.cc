@@ -36,9 +36,10 @@ void init() {
   #include "netcdf_constants.h"
 }
 
-void check_err(int status)
+int check_err(int status)
 {
-  if (status != NC_NOERR) error("%s",nc_strerror(status));
+  if (status != NC_NOERR) error("%s", nc_strerror(status));
+  return status;
 }
 
 // convert name to upper-case and add "NC_" prefix if it is missing
@@ -683,34 +684,80 @@ If @var{no_fill} is false, then the values between no-contiguous writes are fill
   int varid = args(1).scalar_value();
   int no_fill = args(2).scalar_value(); // boolean
   octave_value fill_value = args(3);
-  nc_type xtype;
+  nc_type xtype, basetype;
 
   check_err(nc_inq_vartype (ncid, varid, &xtype));
 
-  switch (xtype)
+  if (xtype < NC_FIRSTUSERTYPEID)
+    basetype = xtype;
+  else
     {
-#define OV_NETCDF_DEF_VAR_FILL(netcdf_type,c_type,method) \
-      case netcdf_type:							\
-	{								\
-        check_err(nc_def_var_fill(ncid, varid, no_fill, fill_value.method().fortran_vec())); \
-	  break;							\
-	}
+      size_t datasz;
+      int classid;
+      size_t nfields;
+      check_err(nc_inq_user_type (ncid, xtype, NULL, &datasz, &basetype, &nfields, &classid));
 
-        OV_NETCDF_DEF_VAR_FILL(NC_BYTE, signed char, int8_array_value)
-	OV_NETCDF_DEF_VAR_FILL(NC_UBYTE, unsigned char, uint8_array_value)
-	OV_NETCDF_DEF_VAR_FILL(NC_SHORT,      short, int16_array_value)
-	OV_NETCDF_DEF_VAR_FILL(NC_USHORT, unsigned short, uint16_array_value)
-	OV_NETCDF_DEF_VAR_FILL(NC_INT,  int,  int32_array_value)
-	OV_NETCDF_DEF_VAR_FILL(NC_UINT, unsigned int, uint32_array_value)
-	OV_NETCDF_DEF_VAR_FILL(NC_INT64,  long long,  int64_array_value)
-	OV_NETCDF_DEF_VAR_FILL(NC_UINT64, unsigned long long, uint64_array_value)
+      if (classid != NC_VLEN)
+        {
+          warning ("Non vlen class user variable '%d' - cant read it", classid);
+        }
+    }
 
-	OV_NETCDF_DEF_VAR_FILL(NC_FLOAT, float, float_array_value)
-	OV_NETCDF_DEF_VAR_FILL(NC_DOUBLE,double,array_value)
+  if (xtype >= NC_FIRSTUSERTYPEID)
+    {
+      switch (basetype)
+        {
+#define OV_NETCDF_DEF_VARV_FILL(netcdf_type,c_type,method)                      \
+          case netcdf_type:							\
+            {                                                                   \
+              c_type val;                                                       \
+	      memcpy(&val, fill_value.method().fortran_vec(), sizeof(val));     \
+              nc_vlen_t vlendata = {1,(void*)&val};                             \
+              check_err(nc_def_var_fill(ncid, varid, no_fill, &vlendata));      \
+              break;							        \
+            }
 
-	OV_NETCDF_DEF_VAR_FILL(NC_CHAR, char, char_array_value)
-          }
+          OV_NETCDF_DEF_VARV_FILL(NC_BYTE, signed char, int8_array_value)
+          OV_NETCDF_DEF_VARV_FILL(NC_UBYTE, unsigned char, uint8_array_value)
+          OV_NETCDF_DEF_VARV_FILL(NC_SHORT,      short, int16_array_value)
+          OV_NETCDF_DEF_VARV_FILL(NC_USHORT, unsigned short, uint16_array_value)
+          OV_NETCDF_DEF_VARV_FILL(NC_INT,  int,  int32_array_value)
+          OV_NETCDF_DEF_VARV_FILL(NC_UINT, unsigned int, uint32_array_value)
+          OV_NETCDF_DEF_VARV_FILL(NC_INT64,  long long,  int64_array_value)
+          OV_NETCDF_DEF_VARV_FILL(NC_UINT64, unsigned long long, uint64_array_value)
 
+          OV_NETCDF_DEF_VARV_FILL(NC_FLOAT, float, float_array_value)
+          OV_NETCDF_DEF_VARV_FILL(NC_DOUBLE,double,array_value)
+
+          OV_NETCDF_DEF_VARV_FILL(NC_CHAR, char, char_array_value)
+        }
+    }
+  else
+    {
+      switch (xtype)
+        {
+#define OV_NETCDF_DEF_VAR_FILL(netcdf_type,c_type,method)                       \
+          case netcdf_type:							\
+            {								        \
+              check_err(nc_def_var_fill(ncid, varid, no_fill, fill_value.method().fortran_vec())); \
+              break;							        \
+            }
+
+         OV_NETCDF_DEF_VAR_FILL(NC_BYTE, signed char, int8_array_value)
+         OV_NETCDF_DEF_VAR_FILL(NC_UBYTE, unsigned char, uint8_array_value)
+         OV_NETCDF_DEF_VAR_FILL(NC_SHORT,      short, int16_array_value)
+         OV_NETCDF_DEF_VAR_FILL(NC_USHORT, unsigned short, uint16_array_value)
+         OV_NETCDF_DEF_VAR_FILL(NC_INT,  int,  int32_array_value)
+         OV_NETCDF_DEF_VAR_FILL(NC_UINT, unsigned int, uint32_array_value)
+         OV_NETCDF_DEF_VAR_FILL(NC_INT64,  long long,  int64_array_value)
+         OV_NETCDF_DEF_VAR_FILL(NC_UINT64, unsigned long long, uint64_array_value)
+
+         OV_NETCDF_DEF_VAR_FILL(NC_FLOAT, float, float_array_value)
+         OV_NETCDF_DEF_VAR_FILL(NC_DOUBLE,double,array_value)
+
+         OV_NETCDF_DEF_VAR_FILL(NC_CHAR, char, char_array_value)
+       }
+    }
   return octave_value();
 }
 
@@ -735,39 +782,87 @@ If @var{no_fill} is false, then the values between no-contiguous writes are fill
   int ncid = args(0).scalar_value();
   int varid = args(1).scalar_value();
   int no_fill;
-  nc_type xtype;
+  nc_type xtype, basetype;
   octave_value_list retval;
   octave_value data;
 
   check_err(nc_inq_vartype (ncid, varid, &xtype));
 
-  switch (xtype)
+  if (xtype < NC_FIRSTUSERTYPEID)
+    basetype = xtype;
+  else
     {
-#define OV_NETCDF_INQ_VAR_FILL(netcdf_type,c_type)	                        \
-      case netcdf_type:							        \
-      {                                                                         \
-        Array< c_type > fill_value = Array< c_type >(dim_vector(1,1));          \
-        check_err(nc_inq_var_fill(ncid, varid, &no_fill,                        \
-                     fill_value.fortran_vec()));                                \
-        data = octave_value(fill_value);                                        \
-        break;                                                                  \
-      }
+      size_t datasz;
+      int classid;
+      size_t nfields;
+      check_err(nc_inq_user_type (ncid, xtype, NULL, &datasz, &basetype, &nfields, &classid));
 
-      OV_NETCDF_INQ_VAR_FILL(NC_BYTE,octave_int8)
-      OV_NETCDF_INQ_VAR_FILL(NC_UBYTE,octave_uint8)
-      OV_NETCDF_INQ_VAR_FILL(NC_SHORT,octave_int16)
-      OV_NETCDF_INQ_VAR_FILL(NC_USHORT,octave_uint16)
-      OV_NETCDF_INQ_VAR_FILL(NC_INT,octave_int32)
-      OV_NETCDF_INQ_VAR_FILL(NC_UINT,octave_uint32)
-      OV_NETCDF_INQ_VAR_FILL(NC_INT64,octave_int64)
-      OV_NETCDF_INQ_VAR_FILL(NC_UINT64,octave_uint64)
+      if (classid != NC_VLEN)
+        {
+          warning ("Non vlen class user variable '%d' - cant read it", classid);
+        }
+    }
 
-      OV_NETCDF_INQ_VAR_FILL(NC_FLOAT,float)
-      OV_NETCDF_INQ_VAR_FILL(NC_DOUBLE,double)
-
-      OV_NETCDF_INQ_VAR_FILL(NC_CHAR,char)
+  if (xtype >= NC_FIRSTUSERTYPEID)
+    {
+      switch (basetype)
+        {
+#define OV_NETCDF_INQ_VARV_FILL(netcdf_type,c_type)	                        \
+          case netcdf_type:						        \
+          {                                                                     \
+            c_type val = 0;                                                     \
+	    nc_vlen_t vlendata = {1,(void*)&val};                               \
+            check_err(nc_inq_var_fill(ncid, varid, &no_fill,&vlendata));        \
+            Array< c_type > fill_value = Array< c_type >(dim_vector(1,1));      \
+            memcpy(fill_value.fortran_vec(), vlendata.p, sizeof(c_type));       \
+            data = octave_value(fill_value);                                    \
+            break;                                                              \
           }
 
+          OV_NETCDF_INQ_VARV_FILL(NC_BYTE,octave_int8)
+          OV_NETCDF_INQ_VARV_FILL(NC_UBYTE,octave_uint8)
+          OV_NETCDF_INQ_VARV_FILL(NC_SHORT,octave_int16)
+          OV_NETCDF_INQ_VARV_FILL(NC_USHORT,octave_uint16)
+          OV_NETCDF_INQ_VARV_FILL(NC_INT,octave_int32)
+          OV_NETCDF_INQ_VARV_FILL(NC_UINT,octave_uint32)
+          OV_NETCDF_INQ_VARV_FILL(NC_INT64,octave_int64)
+          OV_NETCDF_INQ_VARV_FILL(NC_UINT64,octave_uint64)
+
+          OV_NETCDF_INQ_VARV_FILL(NC_FLOAT,float)
+          OV_NETCDF_INQ_VARV_FILL(NC_DOUBLE,double)
+
+          OV_NETCDF_INQ_VARV_FILL(NC_CHAR,char)
+       }
+    }
+  else
+    {
+      switch (xtype)
+        {
+#define OV_NETCDF_INQ_VAR_FILL(netcdf_type,c_type)	                        \
+          case netcdf_type:						        \
+          {                                                                     \
+            Array< c_type > fill_value = Array< c_type >(dim_vector(1,1));      \
+            check_err(nc_inq_var_fill(ncid, varid, &no_fill,                    \
+                         fill_value.fortran_vec()));                            \
+            data = octave_value(fill_value);                                    \
+            break;                                                              \
+          }
+
+          OV_NETCDF_INQ_VAR_FILL(NC_BYTE,octave_int8)
+          OV_NETCDF_INQ_VAR_FILL(NC_UBYTE,octave_uint8)
+          OV_NETCDF_INQ_VAR_FILL(NC_SHORT,octave_int16)
+          OV_NETCDF_INQ_VAR_FILL(NC_USHORT,octave_uint16)
+          OV_NETCDF_INQ_VAR_FILL(NC_INT,octave_int32)
+          OV_NETCDF_INQ_VAR_FILL(NC_UINT,octave_uint32)
+          OV_NETCDF_INQ_VAR_FILL(NC_INT64,octave_int64)
+          OV_NETCDF_INQ_VAR_FILL(NC_UINT64,octave_uint64)
+
+          OV_NETCDF_INQ_VAR_FILL(NC_FLOAT,float)
+          OV_NETCDF_INQ_VAR_FILL(NC_DOUBLE,double)
+
+          OV_NETCDF_INQ_VAR_FILL(NC_CHAR,char)
+       }
+    }
   //cout << "xtype3 " << xtype << " " << NC_DOUBLE << std::endl;
   retval(0) = octave_value(no_fill);
   retval(1) = data;
@@ -1075,47 +1170,71 @@ The data @var{data} is stored in the variable @var{varid} of the NetCDF file @va
   OCTAVE_LOCAL_BUFFER (size_t, count, ndims);
   OCTAVE_LOCAL_BUFFER (ptrdiff_t, stride, ndims);
 
-  nc_type xtype;
-
+  nc_type xtype, basetype;
 
   check_err(nc_inq_vartype (ncid, varid, &xtype));
   //int sliced_numel = tmp.numel();
+ 
+  if (xtype >= NC_FIRSTUSERTYPEID)
+    {
+      size_t datasz=0;
+      int classid;
+      size_t nfields;
+
+      check_err(nc_inq_user_type (ncid, xtype, NULL, &datasz, &basetype, &nfields, &classid));
+
+      if (classid != NC_VLEN)
+        {
+          warning ("Non vlen class user variable '%d' - cant write it", classid);
+	  return octave_value();
+        }
+    }
+  else
+  {
+     basetype = xtype;
+  }
 
   start_count_stride(ncid, varid, args, args.length()-1, ndims, start, count, stride);
 
   // check if count matched size(data)
 
-  switch (xtype)
+  if (xtype >= NC_FIRSTUSERTYPEID)
     {
-#define OV_NETCDF_PUT_VAR(netcdf_type,c_type,method) \
-      case netcdf_type:							\
-	{								\
-	  check_err(nc_put_vars (ncid, varid, start, count, stride, (c_type*)data.method().fortran_vec())); \
-	  break;							\
-	}
-
-      OV_NETCDF_PUT_VAR(NC_BYTE, signed char, int8_array_value)
-	OV_NETCDF_PUT_VAR(NC_UBYTE, unsigned char, uint8_array_value)
-	OV_NETCDF_PUT_VAR(NC_SHORT,      short, int16_array_value)
-	OV_NETCDF_PUT_VAR(NC_USHORT, unsigned short, uint16_array_value)
-	OV_NETCDF_PUT_VAR(NC_INT,  int,  int32_array_value)
-	OV_NETCDF_PUT_VAR(NC_UINT, unsigned int, uint32_array_value)
-	OV_NETCDF_PUT_VAR(NC_INT64,  long long,  int64_array_value)
-	OV_NETCDF_PUT_VAR(NC_UINT64, unsigned long long, uint64_array_value)
-
-	OV_NETCDF_PUT_VAR(NC_FLOAT, float, float_array_value)
-	OV_NETCDF_PUT_VAR(NC_DOUBLE,double,array_value)
-
-	OV_NETCDF_PUT_VAR(NC_CHAR, char, char_array_value)
-      default:
-	{
-	  error("unknown type %d" ,xtype);
-	}
+      error ("Writing vlen data currently not supported");
     }
+  else
+    {
+      switch (xtype)
+        {
+#define OV_NETCDF_PUT_VAR(netcdf_type,c_type,method)                           \
+          case netcdf_type:						       \
+            {								       \
+              check_err(nc_put_vars (ncid, varid, start, count, stride, (c_type*)data.method().fortran_vec())); \
+              break;							       \
+            }
+
+          OV_NETCDF_PUT_VAR(NC_BYTE, signed char, int8_array_value)
+          OV_NETCDF_PUT_VAR(NC_UBYTE, unsigned char, uint8_array_value)
+          OV_NETCDF_PUT_VAR(NC_SHORT,      short, int16_array_value)
+          OV_NETCDF_PUT_VAR(NC_USHORT, unsigned short, uint16_array_value)
+          OV_NETCDF_PUT_VAR(NC_INT,  int,  int32_array_value)
+          OV_NETCDF_PUT_VAR(NC_UINT, unsigned int, uint32_array_value)
+          OV_NETCDF_PUT_VAR(NC_INT64,  long long,  int64_array_value)
+          OV_NETCDF_PUT_VAR(NC_UINT64, unsigned long long, uint64_array_value)
+
+          OV_NETCDF_PUT_VAR(NC_FLOAT, float, float_array_value)
+          OV_NETCDF_PUT_VAR(NC_DOUBLE,double,array_value)
+
+          OV_NETCDF_PUT_VAR(NC_CHAR, char, char_array_value)
+          default:
+            {
+              error("unknown type %d" ,xtype);
+            }
+        }
+    }
+
   return octave_value();
 }
-
-
 
 DEFUN_DLD(netcdf_getVar, args,,
 "-*- texinfo -*-\n\
@@ -1142,11 +1261,27 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
   std::list<Range> ranges;
   int ndims;
   octave_value data;
-  nc_type xtype;
+  nc_type xtype, basetype;
 
   check_err(nc_inq_vartype (ncid, varid, &xtype));
 
   check_err(nc_inq_varndims (ncid, varid, &ndims));
+
+  if (xtype < NC_FIRSTUSERTYPEID)
+    basetype = xtype;
+  else
+    {
+      size_t datasz;
+      int classid;
+      size_t nfields;
+      check_err(nc_inq_user_type (ncid, xtype, NULL, &datasz, &basetype, &nfields, &classid));
+
+      if (classid != NC_VLEN)
+        {
+          warning ("Non vlen class user variable '%d' - cant read it", classid);
+	  return octave_value();
+        }
+    }
 
   //std::cout << "ndims " << ndims << std::endl;
 
@@ -1191,41 +1326,91 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
   // data = octave_value(arr);
   // return data;
 
-  switch (xtype)
+  // user type
+  if (xtype >= NC_FIRSTUSERTYPEID)
     {
+      switch (basetype)
+        {
+#define OV_NETCDF_GET_VARA_CASE(netcdf_type,c_type)	                                \
+          case netcdf_type:							        \
+          {                                                                             \
+            Cell arr = Cell(sliced_dim_vector);                                         \
+            /* necessary for netcdf 4.1.3 */                                            \
+            if (sz > 0) {                                                               \
+              OCTAVE_LOCAL_BUFFER (nc_vlen_t, vlendata, sz);                            \
+              check_err(nc_get_vars(ncid, varid, start, count, stride, vlendata));      \
+              dim_vector dv;                                                            \
+              dv.resize(2);                                                             \
+              for (int vi=0; vi<sz;vi++) {                                              \
+                dv(0) = 1;                                                              \
+                dv(1) = vlendata[vi].len;                                               \
+                Array < c_type > a = Array < c_type >(dv);                              \
+                memcpy(a.fortran_vec(), vlendata[vi].p, vlendata[vi].len*sizeof(c_type)); \
+                arr(vi) = a;                                                            \
+              }                                                                         \
+              nc_free_vlens(sz, vlendata);                                              \
+            } else {                                                                    \
+              warning_with_id("netcdf:variable-size-zero", "variable size 0 or currently too large to process"); \
+            }                                                                           \
+            data = octave_value(arr);                                                   \
+            break;                                                                      \
+          }
+
+          OV_NETCDF_GET_VARA_CASE(NC_BYTE,octave_int8)
+          OV_NETCDF_GET_VARA_CASE(NC_UBYTE,octave_uint8)
+          OV_NETCDF_GET_VARA_CASE(NC_SHORT,octave_int16)
+          OV_NETCDF_GET_VARA_CASE(NC_USHORT,octave_uint16)
+          OV_NETCDF_GET_VARA_CASE(NC_INT,octave_int32)
+          OV_NETCDF_GET_VARA_CASE(NC_UINT,octave_uint32)
+          OV_NETCDF_GET_VARA_CASE(NC_INT64,octave_int64)
+          OV_NETCDF_GET_VARA_CASE(NC_UINT64,octave_uint64)
+          OV_NETCDF_GET_VARA_CASE(NC_FLOAT,float)
+          OV_NETCDF_GET_VARA_CASE(NC_DOUBLE,double)
+          OV_NETCDF_GET_VARA_CASE(NC_CHAR, char)
+
+          default:
+            {
+	      error("unknown type %d" ,xtype);
+            }
+        }
+    }
+  else
+    {
+      switch (xtype)
+        {
 #define OV_NETCDF_GET_VAR_CASE(netcdf_type,c_type)	                                 \
-      case netcdf_type:							                 \
-      {                                                                                  \
-	Array < c_type > arr = Array < c_type >(sliced_dim_vector);                      \
-        /* necessary for netcdf 4.1.3 */                                                 \
-        if (sz > 0) {                                                                    \
-  	   check_err(nc_get_vars(ncid, varid, start, count, stride, arr.fortran_vec())); \
-        } else {                                                                         \
-           warning_with_id("netcdf:variable-size-zero", "variable size 0 or currently too large to process"); \
-	}                                                                                \
-	data = octave_value(arr);                                                        \
-	break;                                                                           \
-      }
+          case netcdf_type:							         \
+          {                                                                              \
+            Array < c_type > arr = Array < c_type >(sliced_dim_vector);                  \
+            /* necessary for netcdf 4.1.3 */                                             \
+            if (sz > 0) {                                                                \
+              check_err(nc_get_vars(ncid, varid, start, count, stride, arr.fortran_vec())); \
+            } else {                                                                     \
+              warning_with_id("netcdf:variable-size-zero", "variable size 0 or currently too large to process"); \
+            }                                                                            \
+            data = octave_value(arr);                                                    \
+            break;                                                                       \
+          }
 
-      OV_NETCDF_GET_VAR_CASE(NC_BYTE,octave_int8)
-      OV_NETCDF_GET_VAR_CASE(NC_UBYTE,octave_uint8)
-      OV_NETCDF_GET_VAR_CASE(NC_SHORT,octave_int16)
-      OV_NETCDF_GET_VAR_CASE(NC_USHORT,octave_uint16)
-      OV_NETCDF_GET_VAR_CASE(NC_INT,octave_int32)
-      OV_NETCDF_GET_VAR_CASE(NC_UINT,octave_uint32)
-      OV_NETCDF_GET_VAR_CASE(NC_INT64,octave_int64)
-      OV_NETCDF_GET_VAR_CASE(NC_UINT64,octave_uint64)
+          OV_NETCDF_GET_VAR_CASE(NC_BYTE,octave_int8)
+          OV_NETCDF_GET_VAR_CASE(NC_UBYTE,octave_uint8)
+          OV_NETCDF_GET_VAR_CASE(NC_SHORT,octave_int16)
+          OV_NETCDF_GET_VAR_CASE(NC_USHORT,octave_uint16)
+          OV_NETCDF_GET_VAR_CASE(NC_INT,octave_int32)
+          OV_NETCDF_GET_VAR_CASE(NC_UINT,octave_uint32)
+          OV_NETCDF_GET_VAR_CASE(NC_INT64,octave_int64)
+          OV_NETCDF_GET_VAR_CASE(NC_UINT64,octave_uint64)
 
-      OV_NETCDF_GET_VAR_CASE(NC_FLOAT,float)
-      OV_NETCDF_GET_VAR_CASE(NC_DOUBLE,double)
+          OV_NETCDF_GET_VAR_CASE(NC_FLOAT,float)
+          OV_NETCDF_GET_VAR_CASE(NC_DOUBLE,double)
 
-      OV_NETCDF_GET_VAR_CASE(NC_CHAR, char)
+          OV_NETCDF_GET_VAR_CASE(NC_CHAR, char)
 
-      default:
-	{
-	  error("unknown type %d" ,xtype);
-	}
-
+          default:
+            {
+              error("unknown type %d" ,xtype);
+            }
+        }
     }
 
   return data;
@@ -1356,19 +1541,66 @@ netcdf_getConstant(\"global\").\n\
   int ncid = args(0).scalar_value();
   int varid = args(1).scalar_value();
   std::string attname = args(2).string_value();
-  nc_type xtype;
+  nc_type xtype, basetype;
   size_t len;
   octave_value data;
 
   check_err(nc_inq_att(ncid, varid, attname.c_str(), &xtype, &len));
 
+  if (xtype < NC_FIRSTUSERTYPEID)
+    basetype = xtype;
+  else
+    {
+      size_t datasz;
+      int classid;
+      size_t nfields;
+      check_err(nc_inq_user_type (ncid, xtype, NULL, &datasz, &basetype, &nfields, &classid));
+
+      if (classid != NC_VLEN)
+        {
+          warning ("Non vlen class user variable '%d' - cant read it", classid);
+        }
+    }
+
 #define OV_NETCDF_GET_ATT_CASE(netcdf_type,c_type)	                        \
-  if (xtype == netcdf_type)						        \
+  if (basetype == netcdf_type)						        \
       {                                                                         \
         Array< c_type > arr = Array< c_type >(dim_vector(1,len));               \
         check_err(nc_get_att(ncid, varid, attname.c_str(), arr.fortran_vec())); \
         data = octave_value(arr);                                               \
       }
+#define OV_NETCDF_GETVLEN_ATT_CASE(netcdf_type,c_type) \
+  if(basetype == netcdf_type)                                                   \
+    {                                                                           \
+      OCTAVE_LOCAL_BUFFER (nc_vlen_t, vlendata, len);                           \
+        Array< c_type > arr = Array< c_type >(dim_vector(1,len));               \
+        check_err(nc_get_att(ncid, varid, attname.c_str(), vlendata));          \
+           for (int vi=0; vi<len;vi++) {                                        \
+         memcpy(arr.fortran_vec(), vlendata[vi].p, vlendata[vi].len*sizeof(c_type)); \
+	}                                                                       \
+        data = octave_value(arr);                                               \
+        nc_free_vlens(len, vlendata);                                           \
+    }
+	
+  if(xtype >= NC_FIRSTUSERTYPEID)
+    {
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_BYTE,octave_int8)
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_UBYTE,octave_uint8)
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_SHORT,octave_int16)
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_USHORT,octave_uint16)
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_INT,octave_int32)
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_UINT,octave_uint32)
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_INT64,octave_int64)
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_UINT64,octave_uint64)
+
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_FLOAT,float)
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_DOUBLE,double)
+
+      OV_NETCDF_GETVLEN_ATT_CASE(NC_CHAR, char)
+ 
+    }
+  else
+    {
       OV_NETCDF_GET_ATT_CASE(NC_BYTE,octave_int8)
       OV_NETCDF_GET_ATT_CASE(NC_UBYTE,octave_uint8)
       OV_NETCDF_GET_ATT_CASE(NC_SHORT,octave_int16)
@@ -1382,7 +1614,7 @@ netcdf_getConstant(\"global\").\n\
       OV_NETCDF_GET_ATT_CASE(NC_DOUBLE,double)
 
       OV_NETCDF_GET_ATT_CASE(NC_CHAR, char)
-
+    }
 
   return data;
 }
@@ -1942,4 +2174,105 @@ Return group id based on its name\n\
 
   check_err(nc_inq_ncid(ncid, name.c_str(), &grp_ncid));
   return octave_value(grp_ncid);
+}
+
+// int nc_def_vlen(int ncid, const char *name, nc_type base_typeid, nc_type *xtypep);
+DEFUN_DLD(netcdf_defVlen, args,,
+"-*- texinfo -*-\n\
+@deftypefn {Loadable Function} {@var{varid} = } netcdf_defVlen(@var{ncid},@var{typename},@var{basetype}) \n\
+Defines a NC_VLEN variable length array type with the type name @var{typename} and a base datatype of @var{basetype} in the dataset @var{ncid}. @var{basetype} can be \"byte\", \"ubyte\", \"short\", \"ushort\", \"int\", \"uint\", \"int64\", \"uint64\", \"float\", \"double\", \"char\" or the corresponding number as returned by netcdf_getConstant. The new data type id is returned. \n\
+@end deftypefn\n\
+@seealso{netcdf_open,netcdf_defVar, newcdf_inqVlen}\n")
+{
+
+  if (args.length() != 3)
+    {
+      print_usage ();
+      return octave_value();
+    }
+
+  int ncid = args(0).scalar_value();
+  std::string name = args(1).string_value ();
+  nc_type basetype = 0;
+
+  if (args(2).is_string())
+    basetype = netcdf_get_constant(args(2)).int_value();
+  else
+    basetype = args(2).int_value();
+
+  nc_type varid;
+
+  check_err(nc_def_vlen (ncid, name.c_str(), basetype, &varid));
+
+  return octave_value(varid);
+}
+
+// int nc_inq_vlen(int ncid, nc_type xtype, char *name, size_t datasz, nc_type *basetypeid);
+DEFUN_DLD(netcdf_inqVlen, args,,
+"-*- texinfo -*-\n\
+@deftypefn {Loadable Function} {[@var{typename}, @var{bytesize}, @var{basetypeid}] = } netcdf_inqVlen(@var{ncid},@var{typeid}) \n\
+Provide information on a NC_VLEN variable length array type @var{typeid} in the dataset @var{ncid}.\n\
+\n \
+The function returns the typename, bytesize, and base type id.\n \
+\n \
+@end deftypefn\n\
+@seealso{netcdf_open, netcdf_defVlen}\n")
+{
+
+  if (args.length() != 2)
+    {
+      print_usage ();
+      return octave_value();
+    }
+
+  int ncid = args(0).scalar_value();
+  nc_type nctypeid = netcdf_get_constant(args(1)).int_value();;
+
+  nc_type basetypeid;
+  char name[NC_MAX_NAME+1];
+  size_t datasz;
+  check_err(nc_inq_vlen (ncid, nctypeid, name, &datasz, &basetypeid));
+
+  octave_value_list retval;
+  retval(0) = octave_value(name);
+  retval(1) = octave_value(datasz);
+  retval(2) = octave_value(basetypeid);
+  return retval;
+}
+
+// int  nc_inq_user_type(int ncid, nc_type xtype, char *name, size_t datasz, nc_type *basetypeid, size_t nfields, int *classp);
+DEFUN_DLD(netcdf_inqUserType, args,,
+"-*- texinfo -*-\n\
+@deftypefn {Loadable Function} {[@var{typename}, @var{bytesize}, @var{basetypeid}, @var{numfields}, @var{classid}] = } netcdf_inqUserType(@var{ncid},@var{typeid}) \n\
+Provide information on a user defined type @var{typeid} in the dataset @var{ncid}.\n\
+\n \
+The function returns the typename, bytesize, base type id, number of fields and class identifier of the type.\n \
+\n \
+@end deftypefn\n\
+@seealso{netcdf_open, netcdf_defVlen, netcdf_inqVlen}\n")
+{
+
+  if (args.length() != 2)
+    {
+      print_usage ();
+      return octave_value();
+    }
+
+  int ncid = args(0).scalar_value();
+  nc_type nctypeid = netcdf_get_constant(args(1)).int_value();;
+
+  nc_type basetypeid;
+  char name[NC_MAX_NAME+1];
+  size_t datasz;
+  int classid;
+  size_t nfields;
+  check_err(nc_inq_user_type (ncid, nctypeid, name, &datasz, &basetypeid, &nfields, &classid));
+
+  octave_value_list retval;
+  retval(0) = octave_value(name);
+  retval(1) = octave_value(datasz);
+  retval(2) = octave_value(basetypeid);
+  retval(3) = octave_value(nfields);
+  retval(4) = octave_value(classid);
+  return retval;
 }

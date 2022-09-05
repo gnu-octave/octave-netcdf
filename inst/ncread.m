@@ -104,22 +104,44 @@ function x = ncread (filename, varname, start, count, stride)
      return;
   endif
 
-  if !isempty(fv) || !isempty(factor) || !isempty(offset)
-    if !isa(x,'double')
-      x = double(x);
-   endif
-  endif
+  # special handling for vlen
+  if iscell(x)
+    if !isempty(fv) || !isempty(factor) || !isempty(offset)
+      for k=1:length(x)
+        v = x{k};
+        if !isa(x{k}, 'double')
+          v = double(v);
+        endif
 
-  if !isempty(fv)
-    x(x == fv) = NaN;
-  endif
+        if !isempty(fv)
+          v(v == fv) = NaN;
+        endif
+        if !isempty(factor)
+          v = v * factor;
+        endif
+        if !isempty(offset)
+          v = v + offset;
+        endif
+        x{k} = v;
+      endfor
+    endif
+  else
+    if !isempty(fv) || !isempty(factor) || !isempty(offset)
+      if !isa(x, 'double')
+        x = double(x);
+      endif
 
-  if !isempty(factor)
-    x = x * factor;
-  endif
+      if !isempty(fv)
+        x(x == fv) = NaN;
+      endif
 
-  if !isempty(offset)
-    x = x + offset;
-  endif
+      if !isempty(factor)
+        x = x * factor;
+      endif
 
+      if !isempty(offset)
+        x = x + offset;
+      endif
+    endif
+  endif
 endfunction

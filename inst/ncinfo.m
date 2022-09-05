@@ -169,7 +169,15 @@ function vinfo = ncinfo_var(vinfo,ncid,varid,unlimdimIDs)
   endif
 
   % Data type
-  vinfo.Datatype = nc2octtype(xtype);
+  if xtype >= netcdf_getConstant("NC_FIRSTUSERTYPEID")
+    [utype_name, utype_bsize, utype_typeid, utype_nfields, utype_classid]  = netcdf_inqUserType(ncid, xtype);
+    vinfo.Datatype = nc2octtype(utype_typeid);
+    if utype_classid == netcdf_getConstant("NC_VLEN")
+      vinfo.Datatype = [vinfo.Datatype '*'];
+    endif
+  else
+    vinfo.Datatype = nc2octtype(xtype);
+  endif
 
   % Attributes
   vinfo.Attributes = [];

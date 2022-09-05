@@ -51,3 +51,6 @@ autoload ("netcdf_inqGrpNameFull", fullfile (fileparts (mfilename ("fullpath")),
 autoload ("netcdf_inqGrpParent", fullfile (fileparts (mfilename ("fullpath")), "__netcdf__.oct"));
 autoload ("netcdf_inqGrpFullNcid", fullfile (fileparts (mfilename ("fullpath")), "__netcdf__.oct"));
 autoload ("netcdf_inqNcid", fullfile (fileparts (mfilename ("fullpath")), "__netcdf__.oct"));
+autoload ("netcdf_defVlen", fullfile (fileparts (mfilename ("fullpath")), "__netcdf__.oct"));
+autoload ("netcdf_inqVlen", fullfile (fileparts (mfilename ("fullpath")), "__netcdf__.oct"));
+autoload ("netcdf_inqUserType", fullfile (fileparts (mfilename ("fullpath")), "__netcdf__.oct"));

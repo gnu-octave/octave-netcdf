@@ -61,6 +61,9 @@ Low-level functions
  netcdf_inqGrpParent
  netcdf_inqGrpFullNcid
  netcdf_inqNcid
+ netcdf_defVlen
+ netcdf_inqUserType
+ netcdf_inqVlen
 Import functions
  import_netcdf
 Test function
