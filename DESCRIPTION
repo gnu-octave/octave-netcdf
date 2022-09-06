@@ -8,5 +8,5 @@ Description: A NetCDF interface for Octave
 Depends: octave (>= 3.8.0)
 BuildRequires: netcdf-devel [Fedora]
  libnetcdf-dev [Debian], netcdf-bin [Debian]
-License: GPLv2+
+License: GPLv3+
 Url: http://octave.sf.net
