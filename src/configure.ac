@@ -106,7 +106,8 @@ LIBS=$save_altsyms_LIBS
 
 dnl **********************************************************
 
-AC_OUTPUT(Makefile)
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
 
 AC_MSG_RESULT([
 octave-forge is configured with
