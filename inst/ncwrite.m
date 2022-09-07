@@ -36,6 +36,14 @@
 ##
 ## x_in_file = (x - add_offset)/scale_factor
 ##
+## @subsubheading Example
+## Create a netcdf file with a variable of 'mydata' and then write 
+## data to that variable.
+## @example
+## nccreate('myfile.nc','mydata');
+## ncwrite('myfile.nc','mydata', 101);
+## @end example
+##
 ## @seealso{ncread,nccreate}
 ##
 ## @end deftypefn

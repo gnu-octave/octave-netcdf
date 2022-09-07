@@ -19,6 +19,7 @@
 ##
 ## Create the variable @var{varname} in the file @var{filename}.
 ##
+## @subsubheading Properties
 ## The following properties can be used:
 ## @itemize
 ## @item "Dimensions": a cell array with the dimension names followed by their
@@ -40,14 +41,13 @@
 ## disabling it.
 ## @end itemize
 ##
-## Example:
+## @subsubheading Example
 ## @example
 ## nccreate("test.nc","temp","Dimensions",@{"lon",10,"lat",20@},"Format","classic");
 ## ncdisp("test.nc");
 ## @end example
 ## @seealso{ncwrite}
 ## @end deftypefn
-
 
 function nccreate (filename, varname, varargin)
 

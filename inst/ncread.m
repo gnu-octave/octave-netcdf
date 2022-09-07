@@ -41,6 +41,12 @@
 ## Note that values equal to the attribute missing_value are not replaced by 
 ## NaN (for compatibility).
 ##
+## @subsubheading Example
+## Read the data from variable 'mydata' in the file test.nc.
+## @example
+## data  = ncread('test.nc','mydata');
+## @end example
+##
 ## @seealso{ncwrite,ncinfo,ncdisp}
 ##
 ## @end deftypefn

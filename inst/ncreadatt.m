@@ -23,8 +23,16 @@
 ## @var{varname}. The type of attribute is mapped to the Octave data types.
 ## (see @code{ncinfo}).
 ##
+## @subsubheading Example
+## Read global attribute 'creation_date'
+## @example
+## d = ncreadatt('test.nc','/','creation_date')
+## @end example
+## Read atribute 'myattr' assigned to variable mydata.
+## @example
+## d = ncreadattr('test.nc', 'mydata', 'myattr');
+## @end example
 ## @seealso{ncinfo,ncwriteatt}
-##
 ## @end deftypefn
 
 function val = ncreadatt(filename,varname,attname)

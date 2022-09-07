@@ -23,6 +23,7 @@
 ## @code{ncinfo}. @code{ncinfo} and @code{ncwriteschema} can be used together to
 ## create a NetCDF using another file as a template:
 ##
+## @subsubheading Example
 ## @example
 ## schema = ncinfo("template.nc");
 ## # the new file should be named "new_file.nc"

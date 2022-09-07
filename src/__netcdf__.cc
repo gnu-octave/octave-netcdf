@@ -330,7 +330,7 @@ following values: \n\
 \"share\" (concurrent reading of the dataset). \n\
 @var{mode} can also be the numeric value return by netcdf_getConstant. In the later-case it can be combined with a bitwise-or. \n\
 @end deftypefn\n\
-Example: \n\
+@subsubheading Example\n\
 @example \n\
 mode =  bitor(netcdf.getConstant(\"classic_model\"), ...\n\
                netcdf.getConstant(\"netcdf4\")); \n\

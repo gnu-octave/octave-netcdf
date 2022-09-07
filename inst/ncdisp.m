@@ -15,8 +15,12 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {Function File} {} ncdisp (@var{filename})
-## display meta-data of the NetCDF file @var{filename}
+## Display meta-data of the NetCDF file @var{filename}
 ##
+## @subsubheading Example
+## @example
+## ncdisp("test.nc");
+## @end example
 ## @seealso{ncinfo}
 ## @end deftypefn
 

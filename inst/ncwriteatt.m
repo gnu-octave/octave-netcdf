@@ -23,8 +23,14 @@
 ## @var{varname}. The type of value is mapped to the NetCDF data types.
 ## (see @code{ncinfo}).
 ##
-## @seealso{ncinfo}
+## @subsubheading Example
+## Create a netcdf4 format file with a variable mydata and assign an attibute "units" to it.
+## @example
+## nccreate("myfile.nc", "mydata", "Format", "netcdf4");
+## ncwriteatt("myfile.nc", "mydata", "Units", "K");
+## @end example
 ##
+## @seealso{ncinfo}
 ## @end deftypefn
 
 function ncwriteatt (filename, varname, attname, val)

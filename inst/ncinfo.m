@@ -17,7 +17,7 @@
 ## @deftypefn  {Function File} {@var{info} =} ncinfo (@var{filename})
 ## @deftypefnx  {Function File} {@var{info} =} ncinfo (@var{filename}, @var{varname})
 ## @deftypefnx  {Function File} {@var{info} =} ncinfo (@var{filename}, @var{groupname})
-## return information about an entire NetCDF file @var{filename} (i.e. the root 
+## Return information about an entire NetCDF file @var{filename} (i.e. the root 
 ## group "/"), about the variable called @var{varname} or the group called 
 ## @var{groupname}.
 ##
@@ -31,7 +31,7 @@
 ## The structure @var{info} has additional fields depending on whether a 
 ## group of variable is queried.
 ##
-## Groups
+## @subsubheading Groups
 ##
 ## Groups are returned as an array structure with the following fields:
 ##
@@ -44,7 +44,7 @@
 ## same fields as this structure.
 ## @end itemize
 ##
-## Dimensions
+## @subsubheading Dimensions
 ##
 ## Dimensions are returned as an array structure with the following fields:
 ## @itemize
@@ -53,7 +53,7 @@
 ##   @item @var{Unlimited}: true of the dimension has no fixed limited, false 
 ## @end itemize
 ##
-## Variables
+## @subsubheading Variables
 ##
 ## Variables are returned as an array structure with the following fields:
 ## @itemize
@@ -74,7 +74,7 @@
 ##    otherwise this field is not defined.
 ## @end itemize
 ##
-## Attributes
+## @subsubheading Attributes
 ##
 ## Attributes are returned as an array structure with the following fields: 
 ## @itemize
@@ -83,7 +83,7 @@
 ##   @item @var{Unlimited}: true of the dimension has no fixed limited, false 
 ## @end itemize
 ##
-## Data-types
+## @subsubheading Data-types
 ##
 ## The following the the correspondence between the Octave and NetCDF 
 ## data-types:
