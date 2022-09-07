@@ -53,10 +53,14 @@ function test_netcdf_user_types()
   assert(vardimid, dimid);
   assert(vartype, my_dtype_id);
 
-  #netcdf.putVar(ncid, varid, single([1 2 3 4 5]));
+  netcdf.putVar(ncid, varid, {0, [0.1,0.2],[3,0,4.0,5.0,6.0]});
   data = netcdf.getVar(ncid,varid);
   assert(iscell(data));
   assert(length(data), 5);
+  assert(data{1}, [0]);
+  assert(data{2}, [0.1,0.2]);
+  assert(data{3}, [3,0,4.0,5.0,6.0]);
+  assert(data{4}, -999);
 
   netcdf.close(ncid);
 

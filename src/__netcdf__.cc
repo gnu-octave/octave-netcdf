@@ -16,6 +16,8 @@
 
 #include <octave/oct.h>
 #include <octave/ov-cell.h>
+#include <octave/Array.cc>
+//#include <octave/Cell.h>
 
 #include <netcdf.h>
 
@@ -25,6 +27,7 @@
 #include <algorithm>
 #include <vector>
 #include <inttypes.h>
+
 
 #include "config.h"
 
@@ -1188,6 +1191,12 @@ The data @var{data} is stored in the variable @var{varid} of the NetCDF file @va
           warning ("Non vlen class user variable '%d' - cant write it", classid);
 	  return octave_value();
         }
+
+      if (!data.OV_ISCELL())
+        {
+          error ("Expected data to be cell array");
+	  return octave_value();
+        }
     }
   else
   {
@@ -1200,7 +1209,40 @@ The data @var{data} is stored in the variable @var{varid} of the NetCDF file @va
 
   if (xtype >= NC_FIRSTUSERTYPEID)
     {
-      error ("Writing vlen data currently not supported");
+      Cell ar = data.cell_value();
+      switch (basetype)
+        {
+#define OV_NETCDF_PUT_VARA(netcdf_type,c_type,method)                          \
+          case netcdf_type:						       \
+            {								       \
+              for(octave_idx_type i=0;i<ar.numel();i++) {                      \
+                Array<c_type> v = ar(i).method();                              \
+                nc_vlen_t ncl;                                                 \
+                ncl.len = v.numel();                                           \
+                ncl.p = (c_type*)v.fortran_vec();                              \
+                count[0] = 1;                                                  \
+                check_err(nc_put_vars (ncid, varid, start, count, stride, &ncl)); \
+                start[0] = ++(start[0]);                                       \
+              }                                                                \
+              break;							       \
+            }
+
+          OV_NETCDF_PUT_VARA(NC_BYTE, signed char, int8_array_value)
+          OV_NETCDF_PUT_VARA(NC_UBYTE, unsigned char, uint8_array_value)
+          OV_NETCDF_PUT_VARA(NC_SHORT,      short, int16_array_value)
+          OV_NETCDF_PUT_VARA(NC_USHORT, unsigned short, uint16_array_value)
+          OV_NETCDF_PUT_VARA(NC_INT,  int,  int32_array_value)
+          OV_NETCDF_PUT_VARA(NC_UINT, unsigned int, uint32_array_value)
+          OV_NETCDF_PUT_VARA(NC_INT64,  long long,  int64_array_value)
+          OV_NETCDF_PUT_VARA(NC_UINT64, unsigned long long, uint64_array_value)
+          OV_NETCDF_PUT_VARA(NC_FLOAT, float, float_array_value)
+          OV_NETCDF_PUT_VARA(NC_DOUBLE,double,array_value)
+          OV_NETCDF_PUT_VARA(NC_CHAR, char, char_array_value)
+          default:
+            {
+              error("unknown type %d" ,basetype);
+            }
+        }
     }
   else
     {
