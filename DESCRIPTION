@@ -1,11 +1,11 @@
 Name: netcdf
-Version: 1.0.14
-Date: 2020-10-14
+Version: 1.0.15
+Date: 2022-09-12
 Author: Alexander Barth <barth.alexander@gmail.com>
-Maintainer: Alexander Barth <barth.alexander@gmail.com>, John Donoghue <john.donoghue@ieee.org>
+Maintainer: John Donoghue <john.donoghue@ieee.org>
 Title: netcdf
 Description: A NetCDF interface for Octave
-Depends: octave (>= 3.8.0)
+Depends: octave (>= 4.0.0)
 BuildRequires: netcdf-devel [Fedora]
  libnetcdf-dev [Debian], netcdf-bin [Debian]
 License: GPLv3+

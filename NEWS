@@ -1,3 +1,18 @@
+Summary of important user-visible changes for netcdf 1.0.15:
+-------------------------------------------------------------------
+
+ ** Update license to use GPLv3+ 
+
+ ** Add NC_VLEN processing as a user type
+
+ ** Add user manual
+
+ ** add warning in getVar if try to read negative
+
+ ** minor doc updates
+
+ ** Update requirement of octave version to 4.0+
+
 Summary of important user-visible changes for netcdf 1.0.14:
 -------------------------------------------------------------------
 

@@ -21,7 +21,7 @@ dnl configure.base and reprocess rather than modifying ./configure.
 dnl autoconf 2.13 certainly doesn't work! What is the minimum requirement?
 AC_PREREQ(2.2)
 
-AC_INIT([octave netcdf package],[1.0.14])
+AC_INIT([octave netcdf package],[1.0.15])
 AC_CONFIG_HEADERS([config.h])
 
 # Avoid warnings for redefining AH-generated preprocessor symbols of
