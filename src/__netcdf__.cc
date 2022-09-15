@@ -15,9 +15,7 @@
 
 
 #include <octave/oct.h>
-#include <octave/ov-cell.h>
-#include <octave/Array.cc>
-//#include <octave/Cell.h>
+#include <octave/Array.h>
 
 #include <netcdf.h>
 
@@ -1227,14 +1225,14 @@ The data @var{data} is stored in the variable @var{varid} of the NetCDF file @va
               break;							       \
             }
 
-          OV_NETCDF_PUT_VARA(NC_BYTE, signed char, int8_array_value)
-          OV_NETCDF_PUT_VARA(NC_UBYTE, unsigned char, uint8_array_value)
-          OV_NETCDF_PUT_VARA(NC_SHORT,      short, int16_array_value)
-          OV_NETCDF_PUT_VARA(NC_USHORT, unsigned short, uint16_array_value)
-          OV_NETCDF_PUT_VARA(NC_INT,  int,  int32_array_value)
-          OV_NETCDF_PUT_VARA(NC_UINT, unsigned int, uint32_array_value)
-          OV_NETCDF_PUT_VARA(NC_INT64,  long long,  int64_array_value)
-          OV_NETCDF_PUT_VARA(NC_UINT64, unsigned long long, uint64_array_value)
+          OV_NETCDF_PUT_VARA(NC_BYTE, octave_int8, int8_array_value)
+          OV_NETCDF_PUT_VARA(NC_UBYTE, octave_uint8, uint8_array_value)
+          OV_NETCDF_PUT_VARA(NC_SHORT, octave_int16, int16_array_value)
+          OV_NETCDF_PUT_VARA(NC_USHORT, octave_uint16, uint16_array_value)
+          OV_NETCDF_PUT_VARA(NC_INT,  octave_int32,  int32_array_value)
+          OV_NETCDF_PUT_VARA(NC_UINT, octave_uint32, uint32_array_value)
+          OV_NETCDF_PUT_VARA(NC_INT64, octave_int64,  int64_array_value)
+          OV_NETCDF_PUT_VARA(NC_UINT64, octave_uint64, uint64_array_value)
           OV_NETCDF_PUT_VARA(NC_FLOAT, float, float_array_value)
           OV_NETCDF_PUT_VARA(NC_DOUBLE,double,array_value)
           OV_NETCDF_PUT_VARA(NC_CHAR, char, char_array_value)
