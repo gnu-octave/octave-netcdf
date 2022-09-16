@@ -24,7 +24,7 @@
 ## (see @code{ncinfo}).
 ##
 ## @subsubheading Example
-## Create a netcdf4 format file with a variable mydata and assign an attibute "units" to it.
+## Create a netcdf4 format file with a variable mydata and assign an attribute "units" to it.
 ## @example
 ## nccreate("myfile.nc", "mydata", "Format", "netcdf4");
 ## ncwriteatt("myfile.nc", "mydata", "Units", "K");
