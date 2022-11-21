@@ -1298,7 +1298,6 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
 
   int ncid = args(0).scalar_value();
   int varid = args(1).scalar_value ();
-  std::list<Range> ranges;
   int ndims;
   octave_value data;
   nc_type xtype, basetype;
