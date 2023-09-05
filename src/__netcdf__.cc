@@ -1879,7 +1879,7 @@ This functions returns all variable ids in a NetCDF file or NetCDF group.\n\
 
 DEFUN_DLD(netcdf_inqVar, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{name},@var{nctype},@var{dimids},@var{nattr}] = } netcdf_inqVarID (@var{ncid},@var{varid}) \n\
+@deftypefn {Loadable Function} {[@var{name},@var{nctype},@var{dimids},@var{nattr}] = } netcdf_inqVar (@var{ncid},@var{varid}) \n\
 Inquires information about a NetCDF variable.\n\
 This functions returns the @var{name}, the NetCDF type @var{nctype}, an array of dimension ids \n\
 @var{dimids} and the number of attributes @var{nattr} of the NetCDF variable. @var{nctype} in an \n\
