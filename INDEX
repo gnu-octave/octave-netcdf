@@ -8,7 +8,7 @@ High-level functions
  ncwriteatt   
  ncwrite      
  ncwriteschema
-Low-level functions
+Low-level functions (Deprecated)
  netcdf_getConstant
  netcdf_getConstantNames
  netcdf_inqLibVers
@@ -64,7 +64,63 @@ Low-level functions
  netcdf_defVlen
  netcdf_inqUserType
  netcdf_inqVlen
-Import functions
+Low-level functions
+ netcdf.getConstant
+ netcdf.getConstantNames
+ netcdf.inqLibVers
+ netcdf.setDefaultFormat
+ netcdf.setChunkCache
+ netcdf.getChunkCache
+ netcdf.create
+ netcdf.open
+ netcdf.abort
+ netcdf.sync
+ netcdf.setFill
+ netcdf.inq
+ netcdf.inqUnlimDims
+ netcdf.inqFormat
+ netcdf.defDim
+ netcdf.renameDim
+ netcdf.defVar
+ netcdf.renameVar
+ netcdf.defVarFill
+ netcdf.inqVarFill
+ netcdf.defVarDeflate
+ netcdf.inqVarDeflate
+ netcdf.defVarChunking
+ netcdf.inqVarChunking
+ netcdf.defVarFletcher32
+ netcdf.inqVarFletcher32
+ netcdf.endDef
+ netcdf.reDef
+ netcdf.putVar
+ netcdf.getVar
+ netcdf.close
+ netcdf.inqAttName
+ netcdf.inqAttID
+ netcdf.inqAtt
+ netcdf.getAtt
+ netcdf.putAtt
+ netcdf.copyAtt
+ netcdf.renameAtt
+ netcdf.delAtt
+ netcdf.inqVarID
+ netcdf.inqVarIDs
+ netcdf.inqVar
+ netcdf.inqDim
+ netcdf.inqDimID
+ netcdf.inqDimIDs
+ netcdf.defGrp
+ netcdf.inqGrps
+ netcdf.inqGrpName
+ netcdf.inqGrpNameFull
+ netcdf.inqGrpParent
+ netcdf.inqGrpFullNcid
+ netcdf.inqNcid
+ netcdf.defVlen
+ netcdf.inqUserType
+ netcdf.inqVlen
+Import functions (Deprecated)
  import_netcdf
 Test function
  test_netcdf
