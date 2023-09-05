@@ -15,7 +15,7 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {} import_fits
-## Dummy function provided to provide compatability with older versions of octaves netcdf
+## Dummy function provided to provide compatibility with older versions of GNU Octave netcdf
 ## 
 ## Function is deprecated.
 ## @end deftypefn
