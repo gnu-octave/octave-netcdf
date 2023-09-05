@@ -1,0 +1,25 @@
+## Copyright (C) 2023 John Donoghue
+##
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 3 of the License, or
+## (at your option) any later version.
+##
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+##
+## You should have received a copy of the GNU General Public License
+## along with this program; If not, see <http://www.gnu.org/licenses/>.
+
+## "-*- texinfo -*-
+## @deftypefn {} {[@var{no_fill},@var{fillvalue}] = } netcdf.inqVarFill(@var{ncid},@var{varid}) 
+## Determines the fill-value settings of the NetCDF variable @var{varid}.
+## If @var{no_fill} is false, then the values between no-contiguous writes are filled with the value @var{fill_value}. This is disabled by setting @var{no_fill} to true.
+## @end deftypefn
+
+
+function nargout = inqVarFill(varargin)
+  nargout = netcdf_inqVarFill (varargin{:});
+endfunction
