@@ -159,6 +159,7 @@ ifneq (,$(wildcard doc))
 	$(MAKE) -C "$@" docs
 	cd "$@" && $(RM) -f doc/mkfuncdocs.py doc/mkqhcp.py
 endif
+	cd "$@" && $(RM) -rf devel
 ## Uncomment this if your src/Makefile.in has these targets for
 ## pre-building something for the release (e.g. documentation).
 #	cd "$@/src" && ./configure && $(MAKE) prebuild && \
