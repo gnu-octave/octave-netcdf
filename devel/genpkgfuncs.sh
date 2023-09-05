@@ -12,7 +12,7 @@ for i in $PACKAGE_FILES; do
   HELP=`awk "/DEFUN_DLD\($i,/{flag=1;next}"'/"\)/{flag=0;}flag{print "## " $$0}' src/__netcdf__.cc`
   # fix content
   # removed \n by printing using them
-  HELP=`echo -en $HELP | sed -e 's,netcdf_,netcdf\.,g' -e 's,^\\\\[ ]*,,g' -e 's/{Loadable Function}/{}/g'`
+  HELP=`echo -en $HELP | sed -e 's,netcdf_,netcdf\.,g' -e 's,^\\\\[ ]*,,g' -e 's/{Loadable Function}/{}/g' -e 's,^ [ ]*\\\\ ##,##,g' -e 's/^## "-/## -/g'`
 
   if [[ $HELP == *"@end deftypefn"* ]]; then
     HELPL=""
@@ -39,8 +39,12 @@ for i in $PACKAGE_FILES; do
 $HELP
 $HELPL
 
-function nargout = $F(varargin)
-  nargout = $i (varargin{:});
+function varargout = $F(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = $i (varargin{:});
+  else
+    $i (varargin{:});
+  endif
 endfunction
 EOF
 

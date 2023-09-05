@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {[@var{name},@var{length}] =} netcdf.inqDim(@var{ncid},@var{dimid}) 
 ## Returns the name and length of a NetCDF dimension.
 ## @seealso{netcdf.inqDimID}
 ## @end deftypefn
 
-function nargout = inqDim(varargin)
-  nargout = netcdf_inqDim (varargin{:});
+function varargout = inqDim(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqDim (varargin{:});
+  else
+    netcdf_inqDim (varargin{:});
+  endif
 endfunction

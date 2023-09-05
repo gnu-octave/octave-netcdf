@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{varid} = } netcdf.defVar(@var{ncid},@var{name},@var{xtype},@var{dimids}) 
 ## Defines a variable with the name @var{name} in the dataset @var{ncid}. @var{xtype} can be \"byte\", \"ubyte\", \"short\", \"ushort\", \"int\", \"uint\", \"int64\", \"uint64\", \"float\", \"double\", \"char\" or the corresponding number as returned by netcdf.getConstant. The parameter @var{dimids} define the ids of the dimension. For scalar this parameter is the empty array ([]). The variable id is returned. 
 ## @end deftypefn
 
 
-function nargout = defVar(varargin)
-  nargout = netcdf_defVar (varargin{:});
+function varargout = defVar(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_defVar (varargin{:});
+  else
+    netcdf_defVar (varargin{:});
+  endif
 endfunction

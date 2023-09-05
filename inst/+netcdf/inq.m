@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {[@var{ndims},@var{nvars},@var{ngatts},@var{unlimdimid}] =} netcdf.inq(@var{ncid}) 
 ## Return the number of dimension (@var{ndims}), the number of variables (@var{nvars}), the number of global attributes (@var{ngatts}) and the id of the unlimited dimension (@var{unlimdimid}). 
 ## If no unlimited dimension is declared -1 is returned. For NetCDF4 files, one should use 
@@ -21,6 +21,10 @@
 ## @end deftypefn
 
 
-function nargout = inq(varargin)
-  nargout = netcdf_inq (varargin{:});
+function varargout = inq(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inq (varargin{:});
+  else
+    netcdf_inq (varargin{:});
+  endif
 endfunction

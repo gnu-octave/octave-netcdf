@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{new_ncid} =} netcdf.defGrp(@var{ncid},@var{name}) 
 ## Define a group in a NetCDF file.
 ## @seealso{netcdf.inqGrps}
 ## @end deftypefn
 
-function nargout = defGrp(varargin)
-  nargout = netcdf_defGrp (varargin{:});
+function varargout = defGrp(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_defGrp (varargin{:});
+  else
+    netcdf_defGrp (varargin{:});
+  endif
 endfunction

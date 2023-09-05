@@ -13,11 +13,15 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.delAtt(@var{ncid},@var{varid},@var{name}) 
 ## Deletes the attribute named @var{name} of the variable @var{varid} in the data set @var{ncid}. 
 ## @end deftypefn
 
-function nargout = delAtt(varargin)
-  nargout = netcdf_delAtt (varargin{:});
+function varargout = delAtt(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_delAtt (varargin{:});
+  else
+    netcdf_delAtt (varargin{:});
+  endif
 endfunction

@@ -13,15 +13,19 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {[@var{typename}, @var{bytesize}, @var{basetypeid}, @var{numfields}, @var{classid}] = } netcdf.inqUserType(@var{ncid},@var{typeid}) 
 ## Provide information on a user defined type @var{typeid} in the dataset @var{ncid}.
 ## 
- \ ## The function returns the typename, bytesize, base type id, number of fields and class identifier of the type.
- \ ## 
- \ ## @end deftypefn
+## The function returns the typename, bytesize, base type id, number of fields and class identifier of the type.
+## 
+## @end deftypefn
 
 
-function nargout = inqUserType(varargin)
-  nargout = netcdf_inqUserType (varargin{:});
+function varargout = inqUserType(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqUserType (varargin{:});
+  else
+    netcdf_inqUserType (varargin{:});
+  endif
 endfunction

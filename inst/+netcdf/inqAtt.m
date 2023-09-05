@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {[@var{xtype},@var{len}] = } netcdf.inqAtt(@var{ncid},@var{varid},@var{name}) 
 ## Get attribute type and length.
 ## @seealso{netcdf.inqAttName}
 ## @end deftypefn
 
-function nargout = inqAtt(varargin)
-  nargout = netcdf_inqAtt (varargin{:});
+function varargout = inqAtt(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqAtt (varargin{:});
+  else
+    netcdf_inqAtt (varargin{:});
+  endif
 endfunction

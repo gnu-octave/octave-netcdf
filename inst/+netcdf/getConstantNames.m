@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{value} =} netcdf.getConstantNames() 
 ## Returns a list of all constant names.
 ## @end deftypefn
 
 
-function nargout = getConstantNames(varargin)
-  nargout = netcdf_getConstantNames (varargin{:});
+function varargout = getConstantNames(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_getConstantNames (varargin{:});
+  else
+    netcdf_getConstantNames (varargin{:});
+  endif
 endfunction

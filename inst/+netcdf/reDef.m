@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.reDef (@var{ncid}) 
 ## Enter define-mode of NetCDF file @var{ncid}.
 ## @end deftypefn
 
 
-function nargout = reDef(varargin)
-  nargout = netcdf_reDef (varargin{:});
+function varargout = reDef(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_reDef (varargin{:});
+  else
+    netcdf_reDef (varargin{:});
+  endif
 endfunction

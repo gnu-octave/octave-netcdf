@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{checksum} =} netcdf.inqVarFletcher32(@var{ncid},@var{varid}) 
 ## Determines the checksum settings of the variable with the id @var{varid} in the data set @var{ncid}. If fletcher32 checksums is turned on for this variable, then @var{checksum} is the string \"FLETCHER32\". Otherwise it is the string \"NOCHECKSUM\". 
 ## @end deftypefn
 
 
-function nargout = inqVarFletcher32(varargin)
-  nargout = netcdf_inqVarFletcher32 (varargin{:});
+function varargout = inqVarFletcher32(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqVarFletcher32 (varargin{:});
+  else
+    netcdf_inqVarFletcher32 (varargin{:});
+  endif
 endfunction

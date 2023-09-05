@@ -13,13 +13,17 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.defVarFill(@var{ncid},@var{varid},@var{no_fill},@var{fillvalue}) 
 ## Define the fill-value settings of the NetCDF variable @var{varid}.
 ## If @var{no_fill} is false, then the values between no-contiguous writes are filled with the value @var{fill_value}. This is disabled by setting @var{no_fill} to true.
 ## @end deftypefn
 
 
-function nargout = defVarFill(varargin)
-  nargout = netcdf_defVarFill (varargin{:});
+function varargout = defVarFill(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_defVarFill (varargin{:});
+  else
+    netcdf_defVarFill (varargin{:});
+  endif
 endfunction

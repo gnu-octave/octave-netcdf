@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.renameDim(@var{ncid},@var{dimid},@var{name}) 
 ## Renames the dimension with the id @var{dimid} in the data set @var{ncid}. @var{name} is the new name of the dimension.
 ## @end deftypefn
 
 
-function nargout = renameDim(varargin)
-  nargout = netcdf_renameDim (varargin{:});
+function varargout = renameDim(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_renameDim (varargin{:});
+  else
+    netcdf_renameDim (varargin{:});
+  endif
 endfunction

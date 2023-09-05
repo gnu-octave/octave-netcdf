@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.defVarChunking (@var{ncid},@var{varid},@var{storage},@var{chunkSizes}) 
 ## Define the chunking settings of NetCDF variable @var{varid}.
 ## If @var{storage} is the string \"chunked\", the variable is stored by chunk of the size @var{chunkSizes}.
@@ -21,6 +21,10 @@
 ## @end deftypefn
 
 
-function nargout = defVarChunking(varargin)
-  nargout = netcdf_defVarChunking (varargin{:});
+function varargout = defVarChunking(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_defVarChunking (varargin{:});
+  else
+    netcdf_defVarChunking (varargin{:});
+  endif
 endfunction

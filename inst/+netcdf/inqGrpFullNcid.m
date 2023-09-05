@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{grp_ncid} =} netcdf.inqGrpFullNcid(@var{ncid},@var{name}) 
 ## Return the group id based on the full group name.
 ## @seealso{netcdf.inqGrpName}
 ## @end deftypefn
 
-function nargout = inqGrpFullNcid(varargin)
-  nargout = netcdf_inqGrpFullNcid (varargin{:});
+function varargout = inqGrpFullNcid(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqGrpFullNcid (varargin{:});
+  else
+    netcdf_inqGrpFullNcid (varargin{:});
+  endif
 endfunction

@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{attnum} =} netcdf.inqAttID(@var{ncid},@var{varid},@var{attname}) 
 ## Return the attribute id @var{attnum} of the attribute named @var{attname} of the variable @var{varid} in the dataset @var{ncid}. 
 ## For global attributes @var{varid} can be 
 ## @end deftypefn
 
-function nargout = inqAttID(varargin)
-  nargout = netcdf_inqAttID (varargin{:});
+function varargout = inqAttID(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqAttID (varargin{:});
+  else
+    netcdf_inqAttID (varargin{:});
+  endif
 endfunction

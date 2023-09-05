@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {[@var{typename}, @var{bytesize}, @var{basetypeid}] = } netcdf.inqVlen(@var{ncid},@var{typeid}) 
 ## Provide information on a NC_VLEN variable length array type @var{typeid} in the dataset @var{ncid}.
 ## 
@@ -21,6 +21,11 @@
 ## 
 ## @end deftypefn
 
-function nargout = inqVlen(varargin)
-  nargout = netcdf_inqVlen (varargin{:});
+
+function varargout = inqVlen(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqVlen (varargin{:});
+  else
+    netcdf_inqVlen (varargin{:});
+  endif
 endfunction

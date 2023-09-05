@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.setChunkCache(@var{size}, @var{nelems}, @var{preemption}) 
 ## Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.
 ## @end deftypefn
 
 
-function nargout = setChunkCache(varargin)
-  nargout = netcdf_setChunkCache (varargin{:});
+function varargout = setChunkCache(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_setChunkCache (varargin{:});
+  else
+    netcdf_setChunkCache (varargin{:});
+  endif
 endfunction

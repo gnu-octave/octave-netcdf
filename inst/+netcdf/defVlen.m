@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{varid} = } netcdf.defVlen(@var{ncid},@var{typename},@var{basetype}) 
 ## Defines a NC_VLEN variable length array type with the type name @var{typename} and a base datatype of @var{basetype} in the dataset @var{ncid}. @var{basetype} can be \"byte\", \"ubyte\", \"short\", \"ushort\", \"int\", \"uint\", \"int64\", \"uint64\", \"float\", \"double\", \"char\" or the corresponding number as returned by netcdf.getConstant. The new data type id is returned. 
 ## @end deftypefn
 
 
-function nargout = defVlen(varargin)
-  nargout = netcdf_defVlen (varargin{:});
+function varargout = defVlen(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_defVlen (varargin{:});
+  else
+    netcdf_defVlen (varargin{:});
+  endif
 endfunction

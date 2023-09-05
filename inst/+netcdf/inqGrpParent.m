@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{parent_ncid} =} netcdf.inqGrpParent(@var{ncid}) 
 ## Return id of the parent group
 ## @seealso{netcdf.inqGrpName}
 ## @end deftypefn
 
-function nargout = inqGrpParent(varargin)
-  nargout = netcdf_inqGrpParent (varargin{:});
+function varargout = inqGrpParent(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqGrpParent (varargin{:});
+  else
+    netcdf_inqGrpParent (varargin{:});
+  endif
 endfunction

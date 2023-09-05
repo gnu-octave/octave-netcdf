@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.putAtt (@var{ncid},@var{varid},@var{name},@var{data}) 
 ## Defines a NetCDF attribute.
 ## This function defines the attribute called @var{name} of the variable 
@@ -21,6 +21,10 @@
 ## For global attributes @var{varid} can be 
 ## @end deftypefn
 
-function nargout = putAtt(varargin)
-  nargout = netcdf_putAtt (varargin{:});
+function varargout = putAtt(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_putAtt (varargin{:});
+  else
+    netcdf_putAtt (varargin{:});
+  endif
 endfunction

@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.abort(@var{ncid}) 
 ## Aborts all changes since the last time the dataset entered in define mode.
 ## @end deftypefn
 
 
-function nargout = abort(varargin)
-  nargout = netcdf_abort (varargin{:});
+function varargout = abort(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_abort (varargin{:});
+  else
+    netcdf_abort (varargin{:});
+  endif
 endfunction

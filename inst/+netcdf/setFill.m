@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{old_mode} =} netcdf.setFill(@var{ncid},@var{fillmode}) 
 ## Change the fill mode (@var{fillmode}) of the data set @var{ncid}. The previous value of the fill mode is returned. @var{fillmode} can be either \"fill\" or \"nofill\".
 ## @end deftypefn
 
 
-function nargout = setFill(varargin)
-  nargout = netcdf_setFill (varargin{:});
+function varargout = setFill(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_setFill (varargin{:});
+  else
+    netcdf_setFill (varargin{:});
+  endif
 endfunction

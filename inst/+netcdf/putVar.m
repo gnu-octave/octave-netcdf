@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.putVar (@var{ncid},@var{varid},@var{data}) 
 ## @deftypefnx {} {} netcdf.putVar (@var{ncid},@var{varid},@var{start},@var{data}) 
 ## @deftypefnx {} {} netcdf.putVar (@var{ncid},@var{varid},@var{start},@var{count},@var{data}) 
@@ -26,6 +26,10 @@
 ## @end deftypefn
 
 
-function nargout = putVar(varargin)
-  nargout = netcdf_putVar (varargin{:});
+function varargout = putVar(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_putVar (varargin{:});
+  else
+    netcdf_putVar (varargin{:});
+  endif
 endfunction

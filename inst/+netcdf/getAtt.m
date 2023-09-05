@@ -13,13 +13,17 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{data} =} netcdf.getAtt (@var{ncid},@var{varid},@var{name}) 
 ## Get the value of a NetCDF attribute.
 ## This function returns the value of the attribute called @var{name} of the variable 
 ## @var{varid} in the NetCDF file @var{ncid}. For global attributes @var{varid} can be 
 ## @end deftypefn
 
-function nargout = getAtt(varargin)
-  nargout = netcdf_getAtt (varargin{:});
+function varargout = getAtt(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_getAtt (varargin{:});
+  else
+    netcdf_getAtt (varargin{:});
+  endif
 endfunction

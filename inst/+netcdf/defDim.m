@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{dimid} =} netcdf.defDim(@var{ncid},@var{name},@var{len}) 
 ## Define the dimension with the name @var{name} and the length @var{len} in the dataset @var{ncid}. The id of the dimension is returned.
 ## @end deftypefn
 
 
-function nargout = defDim(varargin)
-  nargout = netcdf_defDim (varargin{:});
+function varargout = defDim(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_defDim (varargin{:});
+  else
+    netcdf_defDim (varargin{:});
+  endif
 endfunction

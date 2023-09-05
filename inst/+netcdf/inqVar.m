@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {[@var{name},@var{nctype},@var{dimids},@var{nattr}] = } netcdf.inqVar (@var{ncid},@var{varid}) 
 ## Inquires information about a NetCDF variable.
 ## This functions returns the @var{name}, the NetCDF type @var{nctype}, an array of dimension ids 
@@ -22,6 +22,10 @@
 ## @seealso{netcdf.inqVarID,netcdf.getConstant}
 ## @end deftypefn
 
-function nargout = inqVar(varargin)
-  nargout = netcdf_inqVar (varargin{:});
+function varargout = inqVar(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqVar (varargin{:});
+  else
+    netcdf_inqVar (varargin{:});
+  endif
 endfunction

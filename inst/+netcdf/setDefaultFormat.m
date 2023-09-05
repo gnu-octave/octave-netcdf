@@ -13,13 +13,17 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{old_format} =} netcdf.setDefaultFormat(@var{format}) 
 ## Sets the default format of the NetCDF library and returns the previous default format (as a numeric value). @var{format} can be 
 ## \"format_classic\", \"format_64bit\", \"format_netcdf4\" or \"format_netcdf4_classic\". 
 ## @end deftypefn
 
 
-function nargout = setDefaultFormat(varargin)
-  nargout = netcdf_setDefaultFormat (varargin{:});
+function varargout = setDefaultFormat(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_setDefaultFormat (varargin{:});
+  else
+    netcdf_setDefaultFormat (varargin{:});
+  endif
 endfunction

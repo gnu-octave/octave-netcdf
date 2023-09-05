@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{ncids} =} netcdf.inqGrps(@var{ncid}) 
 ## Return all groups ids in a NetCDF file.
 ## @seealso{netcdf.inqGrps}
 ## @end deftypefn
 
-function nargout = inqGrps(varargin)
-  nargout = netcdf_inqGrps (varargin{:});
+function varargout = inqGrps(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqGrps (varargin{:});
+  else
+    netcdf_inqGrps (varargin{:});
+  endif
 endfunction

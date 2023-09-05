@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{varid} = } netcdf.inqVarID (@var{ncid},@var{name}) 
 ## Return the id of a variable based on its name.
 ## @seealso{netcdf.defVar,netcdf.inqVarIDs}
 ## @end deftypefn
 
-function nargout = inqVarID(varargin)
-  nargout = netcdf_inqVarID (varargin{:});
+function varargout = inqVarID(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqVarID (varargin{:});
+  else
+    netcdf_inqVarID (varargin{:});
+  endif
 endfunction

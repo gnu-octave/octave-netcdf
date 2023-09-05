@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{format} =} netcdf.inqFormat(@var{ncid}) 
 ## Return the NetCDF format of the dataset @var{ncid}.
 ## Format might be one of the following 
@@ -21,6 +21,10 @@
 ## @end deftypefn
 
 
-function nargout = inqFormat(varargin)
-  nargout = netcdf_inqFormat (varargin{:});
+function varargout = inqFormat(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqFormat (varargin{:});
+  else
+    netcdf_inqFormat (varargin{:});
+  endif
 endfunction

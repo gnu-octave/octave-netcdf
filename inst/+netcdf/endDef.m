@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.endDef (@var{ncid}) 
 ## Leaves define-mode of NetCDF file @var{ncid}.
 ## @end deftypefn
 
 
-function nargout = endDef(varargin)
-  nargout = netcdf_endDef (varargin{:});
+function varargout = endDef(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_endDef (varargin{:});
+  else
+    netcdf_endDef (varargin{:});
+  endif
 endfunction

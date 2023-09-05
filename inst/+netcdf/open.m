@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{ncid} =} netcdf.open(@var{filename},@var{mode}) 
 ## Opens the file named @var{filename} in the mode @var{mode}.
 ## @end deftypefn
 
 
-function nargout = open(varargin)
-  nargout = netcdf_open (varargin{:});
+function varargout = open(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_open (varargin{:});
+  else
+    netcdf_open (varargin{:});
+  endif
 endfunction

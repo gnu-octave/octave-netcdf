@@ -13,7 +13,7 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{ncid} =} netcdf.create(@var{filename},@var{mode}) 
 ## Creates the file named @var{filename} in the mode @var{mode} which can have the 
 ## following values: 
@@ -28,6 +28,10 @@
 ## @example 
 
 
-function nargout = create(varargin)
-  nargout = netcdf_create (varargin{:});
+function varargout = create(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_create (varargin{:});
+  else
+    netcdf_create (varargin{:});
+  endif
 endfunction

@@ -13,13 +13,17 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.defVarDeflate (@var{ncid},@var{varid},@var{shuffle},@var{deflate},@var{deflate_level}) 
 ## Define the compression settings NetCDF variable @var{varid}.
 ## If @var{deflate} is true, then the variable is compressed. The compression level @var{deflate_level} is an integer between 0 (no compression) and 9 (maximum compression).
 ## @end deftypefn
 
 
-function nargout = defVarDeflate(varargin)
-  nargout = netcdf_defVarDeflate (varargin{:});
+function varargout = defVarDeflate(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_defVarDeflate (varargin{:});
+  else
+    netcdf_defVarDeflate (varargin{:});
+  endif
 endfunction

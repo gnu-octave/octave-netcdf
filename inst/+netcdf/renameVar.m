@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.renameVar(@var{ncid},@var{varid},@var{name}) 
 ## Renames the variable with the id @var{varid} in the data set @var{ncid}. @var{name} is the new name of the variable.
 ## @end deftypefn
 
 
-function nargout = renameVar(varargin)
-  nargout = netcdf_renameVar (varargin{:});
+function varargout = renameVar(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_renameVar (varargin{:});
+  else
+    netcdf_renameVar (varargin{:});
+  endif
 endfunction

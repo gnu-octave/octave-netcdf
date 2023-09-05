@@ -13,12 +13,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
-## "-*- texinfo -*-
+## -*- texinfo -*-
 ## @deftypefn {} {@var{unlimdimids} =} netcdf.inqUnlimDims(@var{ncid}) 
 ## Return the id of all unlimited dimensions of the NetCDF file @var{ncid}.
 ## @end deftypefn
 
 
-function nargout = inqUnlimDims(varargin)
-  nargout = netcdf_inqUnlimDims (varargin{:});
+function varargout = inqUnlimDims(varargin)
+  if nargout > 0
+    [varargout{1:nargout}] = netcdf_inqUnlimDims (varargin{:});
+  else
+    netcdf_inqUnlimDims (varargin{:});
+  endif
 endfunction
