@@ -17,10 +17,9 @@
 ## @deftypefn {} {[@var{typename}, @var{bytesize}, @var{basetypeid}] = } netcdf.inqVlen(@var{ncid},@var{typeid}) 
 ## Provide information on a NC_VLEN variable length array type @var{typeid} in the dataset @var{ncid}.
 ## 
- \ ## The function returns the typename, bytesize, and base type id.
- \ ## 
- \ ## @end deftypefn
-
+## The function returns the typename, bytesize, and base type id.
+## 
+## @end deftypefn
 
 function nargout = inqVlen(varargin)
   nargout = netcdf_inqVlen (varargin{:});
