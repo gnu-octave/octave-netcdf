@@ -16,7 +16,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{old_format} =} netcdf.setDefaultFormat(@var{format}) 
 ## Sets the default format of the NetCDF library and returns the previous default format (as a numeric value). @var{format} can be 
-## \"format_classic\", \"format_64bit\", \"format_netcdf4\" or \"format_netcdf4_classic\". 
+## "format_classic", "format_64bit", "format_netcdf4" or "format_netcdf4_classic". 
 ## @end deftypefn
 
 

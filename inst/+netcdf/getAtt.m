@@ -18,6 +18,8 @@
 ## Get the value of a NetCDF attribute.
 ## This function returns the value of the attribute called @var{name} of the variable 
 ## @var{varid} in the NetCDF file @var{ncid}. For global attributes @var{varid} can be 
+## netcdf.getConstant("global").
+## @seealso{netcdf.putAtt}
 ## @end deftypefn
 
 function varargout = getAtt(varargin)

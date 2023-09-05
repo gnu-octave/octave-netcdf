@@ -17,7 +17,7 @@
 ## @deftypefn {} {@var{format} =} netcdf.inqFormat(@var{ncid}) 
 ## Return the NetCDF format of the dataset @var{ncid}.
 ## Format might be one of the following 
-## \"FORMAT_CLASSIC\", \"FORMAT_64BIT\", \"FORMAT_NETCDF4\" or \"FORMAT_NETCDF4_CLASSIC\" 
+## "FORMAT_CLASSIC", "FORMAT_64BIT", "FORMAT_NETCDF4" or "FORMAT_NETCDF4_CLASSIC" 
 ## @end deftypefn
 
 

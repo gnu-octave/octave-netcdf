@@ -9,10 +9,10 @@ for i in $PACKAGE_FILES; do
   F=`echo $i | sed 's,netcdf_,,'` 
   echo "Processing $F"
 
-  HELP=`awk "/DEFUN_DLD\($i,/{flag=1;next}"'/"\)/{flag=0;}flag{print "## " $$0}' src/__netcdf__.cc`
+  HELP=`awk "/DEFUN_DLD\($i,/{flag=1;next}"'/"\)$$/{flag=0;}flag{print "## " $$0}' src/__netcdf__.cc`
   # fix content
   # removed \n by printing using them
-  HELP=`echo -en $HELP | sed -e 's,netcdf_,netcdf\.,g' -e 's,^\\\\[ ]*,,g' -e 's/{Loadable Function}/{}/g' -e 's,^ [ ]*\\\\ ##,##,g' -e 's/^## "-/## -/g'`
+  HELP=`echo -en $HELP | sed -e 's,netcdf_,netcdf\.,g' -e 's,^\\\\[ ]*,,g' -e 's/{Loadable Function}/{}/g' -e 's,^ [ ]*\\\\ ##,##,g' -e 's/^## "-/## -/g' -e 's,\\\",",g'`
 
   if [[ $HELP == *"@end deftypefn"* ]]; then
     HELPL=""

@@ -17,6 +17,8 @@
 ## @deftypefn {} {@var{attnum} =} netcdf.inqAttID(@var{ncid},@var{varid},@var{attname}) 
 ## Return the attribute id @var{attnum} of the attribute named @var{attname} of the variable @var{varid} in the dataset @var{ncid}. 
 ## For global attributes @var{varid} can be 
+## netcdf.getConstant("global").
+## @seealso{netcdf.inqAttName}
 ## @end deftypefn
 
 function varargout = inqAttID(varargin)

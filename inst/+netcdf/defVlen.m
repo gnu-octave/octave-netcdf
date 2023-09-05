@@ -15,7 +15,7 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{varid} = } netcdf.defVlen(@var{ncid},@var{typename},@var{basetype}) 
-## Defines a NC_VLEN variable length array type with the type name @var{typename} and a base datatype of @var{basetype} in the dataset @var{ncid}. @var{basetype} can be \"byte\", \"ubyte\", \"short\", \"ushort\", \"int\", \"uint\", \"int64\", \"uint64\", \"float\", \"double\", \"char\" or the corresponding number as returned by netcdf.getConstant. The new data type id is returned. 
+## Defines a NC_VLEN variable length array type with the type name @var{typename} and a base datatype of @var{basetype} in the dataset @var{ncid}. @var{basetype} can be "byte", "ubyte", "short", "ushort", "int", "uint", "int64", "uint64", "float", "double", "char" or the corresponding number as returned by netcdf.getConstant. The new data type id is returned. 
 ## @end deftypefn
 
 

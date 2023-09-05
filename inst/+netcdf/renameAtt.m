@@ -16,6 +16,8 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.renameAtt(@var{ncid},@var{varid},@var{old_name},@var{new_name}) 
 ## Renames the attribute named @var{old_name} of the variable @var{varid} in the data set @var{ncid}. @var{new_name} is the new name of the attribute.
+## To rename a global attribute use netcdf.getConstant("global") for @var{varid}.
+## @seealso{netcdf.copyAtt,netcdf.getConstant}
 ## @end deftypefn
 
 function varargout = renameAtt(varargin)

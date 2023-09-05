@@ -17,15 +17,19 @@
 ## @deftypefn {} {@var{ncid} =} netcdf.create(@var{filename},@var{mode}) 
 ## Creates the file named @var{filename} in the mode @var{mode} which can have the 
 ## following values: 
-## \"clobber\" (overwrite existing files), 
-## \"noclobber\" (prevent to overwrite existing files) 
-## \"64bit_offset\" (use the 64bit-offset format), 
-## \"netcdf4\" (use the NetCDF4, i.e. HDF5 format) or 
-## \"share\" (concurrent reading of the dataset). 
+## "clobber" (overwrite existing files), 
+## "noclobber" (prevent to overwrite existing files) 
+## "64bit_offset" (use the 64bit-offset format), 
+## "netcdf4" (use the NetCDF4, i.e. HDF5 format) or 
+## "share" (concurrent reading of the dataset). 
 ## @var{mode} can also be the numeric value return by netcdf.getConstant. In the later-case it can be combined with a bitwise-or. 
 ## @end deftypefn
 ## @subsubheading Example
 ## @example 
+## mode = bitor(netcdf.getConstant("classic_model"), ...
+## netcdf.getConstant("netcdf4")); 
+## ncid = netcdf.create("test.nc",mode); 
+## @end example 
 
 
 function varargout = create(varargin)

@@ -16,6 +16,8 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.delAtt(@var{ncid},@var{varid},@var{name}) 
 ## Deletes the attribute named @var{name} of the variable @var{varid} in the data set @var{ncid}. 
+## To delete a global attribute use netcdf.getConstant("global") for @var{varid}.
+## @seealso{netcdf.defAtt,netcdf.getConstant}
 ## @end deftypefn
 
 function varargout = delAtt(varargin)

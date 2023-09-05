@@ -16,8 +16,8 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {[@var{storage},@var{chunkSizes}] = } netcdf.inqVarChunking (@var{ncid},@var{varid}) 
 ## Determines the chunking settings of NetCDF variable @var{varid}.
-## If @var{storage} is the string \"chunked\", the variable is stored by chunk of the size @var{chunkSizes}.
-## If @var{storage} is the string \"contiguous\", the variable is stored in a contiguous way.
+## If @var{storage} is the string "chunked", the variable is stored by chunk of the size @var{chunkSizes}.
+## If @var{storage} is the string "contiguous", the variable is stored in a contiguous way.
 ## @end deftypefn
 
 

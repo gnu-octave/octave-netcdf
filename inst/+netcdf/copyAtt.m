@@ -17,6 +17,8 @@
 ## @deftypefn {} {} netcdf.copyAtt (@var{ncid},@var{varid},@var{name},@var{ncid_out},@var{varid_out}) 
 ## Copies the attribute named @var{old_name} of the variable @var{varid} in the data set @var{ncid} 
 ## to the variable @var{varid_out} in the data set @var{ncid_out}. 
+## To copy a global attribute use netcdf.getConstant("global") for @var{varid} or @var{varid_out}.
+## @seealso{netcdf.getAtt,netcdf.getConstant}
 ## @end deftypefn
 
 function varargout = copyAtt(varargin)
