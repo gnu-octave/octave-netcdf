@@ -37,7 +37,7 @@ distclean: clean
 	-rm -f Makefile
 
 realclean: distclean
-	rm -f ../PKG_ADD ../inst/import_netcdf.m ../PKG_DEL
+	rm -f ../PKG_ADD ../PKG_DEL
 
 __netcdf__.oct: $(SRC) netcdf_constants.h
 	$(MKOCTFILE) $(NETCDF_CPPFLAGS) $(SRC) $(NETCDF_LIBS)
