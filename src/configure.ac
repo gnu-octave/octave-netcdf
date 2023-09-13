@@ -30,6 +30,9 @@ AH_TOP([#include "undef-ah-octave.h"])
 
 AC_CONFIG_MACRO_DIRS([m4])
 
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+
 dnl Kill caching --- this ought to be the default
 define([AC_CACHE_LOAD], )dnl
 define([AC_CACHE_SAVE], )dnl
@@ -39,13 +42,25 @@ dnl AC_CONFIG_AUX_DIR(admin)
 
 dnl if tools we need
 AC_PROG_AWK
+AC_PROG_SED
 AC_PROG_CXX
 AC_LANG(C++)
 
 
 dnl Check for mkoctfile and octave
-AC_CHECK_PROG(MKOCTFILE,mkoctfile,mkoctfile)
+AC_CHECK_PROG([MKOCTFILE],mkoctfile,mkoctfile)
 test -z "$MKOCTFILE" &&	AC_MSG_WARN([no mkoctfile found on path])
+
+if test "X${IGNORE_MINGW_PATH_MODIFICATION}" == "X"; then
+case $host_os in
+  mingw*)
+    # try demangle spaces in escaped input strings  
+    MKOCTFILE=`echo $MKOCTFILE | $SED "s,\\\\\ ,?,g"`
+    ;;
+  *)
+    ;;
+esac
+fi
 
 dnl **********************************************************
 dnl checking for nc-config
@@ -79,10 +94,34 @@ save_altsyms_CXX="$CXX"
 save_altsyms_CXXFLAGS="$CXXFLAGS"
 save_altsyms_LDFLAGS="$LDFLAGS"
 save_altsyms_LIBS="$LIBS"
-OCTINCLUDEDIR=${OCTINCLUDEDIR:-`$MKOCTFILE -p INCFLAGS`}
+OCTINCLUDEDIR="${OCTINCLUDEDIR:-`$MKOCTFILE -p OCTINCLUDEDIR`}/.."
 OCTLIBDIR=${OCTLIBDIR:-`$MKOCTFILE -p OCTLIBDIR`}
+
+if test "X${IGNORE_MINGW_PATH_MODIFICATION}" == "X"; then
+  MSYSTEM="${MSYSTEM}"
+else
+  MSYSTEM="none"
+fi
+
+case X$MSYSTEM in
+  XMINGW64*)
+    OCTAVE_HOME=`${MKOCTFILE} -p OCTAVE_HOME | $SED 's,\\\\,/,g'`
+    # change \ to / and replace octave home part with mingw part
+    OCTINCLUDEDIR=`echo $OCTINCLUDEDIR | $SED -e 's,\\\\,/,g' -e "s,${OCTAVE_HOME},/mingw64,g"`
+    OCTLIBDIR=`echo $OCTLIBDIR | $SED -e 's,\\\\,/,g' -e "s,${OCTAVE_HOME},/mingw64,g"`
+    ;;
+  XMINGW32*)
+    OCTAVE_HOME=`${MKOCTFILE} -p OCTAVE_HOME | $SED 's,\\\\,/,g'`
+    # change \ to / and replace octave home part with mingw part
+    OCTINCLUDEDIR=`echo $OCTINCLUDEDIR | $SED -e 's,\\\\,/,g' -e "s,${OCTAVE_HOME},/mingw32,g"`
+    OCTLIBDIR=`echo $OCTLIBDIR | $SED -e 's,\\\\,/,g -e "s,${OCTAVE_HOME},/mingw32,g"'`
+    ;;
+  *)
+    ;;
+esac
+
 CXX=`${MKOCTFILE} -p CXX`
-CXXFLAGS="$OCTINCLUDEDIR $CXXFLAGS"
+CXXFLAGS="-I$OCTINCLUDEDIR $CXXFLAGS"
 LDFLAGS="-L$OCTLIBDIR $LDFLAGS"
 LIBS="-loctinterp $LIBS"
 
