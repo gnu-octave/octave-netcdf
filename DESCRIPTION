@@ -1,6 +1,6 @@
 Name: netcdf
-Version: 1.0.16
-Date: 2022-09-16
+Version: 1.0.17
+Date: 2023-09-18
 Author: Alexander Barth <barth.alexander@gmail.com>
 Maintainer: John Donoghue <john.donoghue@ieee.org>
 Title: netcdf
@@ -9,4 +9,5 @@ Depends: octave (>= 4.0.0)
 BuildRequires: netcdf-devel [Fedora]
  libnetcdf-dev [Debian], netcdf-bin [Debian]
 License: GPLv3+
-Url: http://octave.sf.net
+Url: https://octave.sf.net/netcdf/index.html
+Repository: https://sourceforge.net/p/octave/netcdf/ci/master/tree/
