@@ -1328,7 +1328,7 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
   OCTAVE_LOCAL_BUFFER (size_t, count, ndims);
   OCTAVE_LOCAL_BUFFER (ptrdiff_t, stride, ndims);
 
-  int sz = 1;
+  size_t sz = 1;
 
   dim_vector sliced_dim_vector;
 
@@ -1380,7 +1380,7 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
               check_err(nc_get_vars(ncid, varid, start, count, stride, vlendata));      \
               dim_vector dv;                                                            \
               dv.resize(2);                                                             \
-              for (int vi=0; vi<sz;vi++) {                                              \
+              for (size_t vi=0; vi<sz;vi++) {                                           \
                 dv(0) = 1;                                                              \
                 dv(1) = vlendata[vi].len;                                               \
                 Array < c_type > a = Array < c_type >(dv);                              \
@@ -1614,7 +1614,7 @@ netcdf_getConstant(\"global\").\n\
       OCTAVE_LOCAL_BUFFER (nc_vlen_t, vlendata, len);                           \
         Array< c_type > arr = Array< c_type >(dim_vector(1,len));               \
         check_err(nc_get_att(ncid, varid, attname.c_str(), vlendata));          \
-           for (int vi=0; vi<len;vi++) {                                        \
+           for (size_t vi=0; vi<len;vi++) {                                        \
          memcpy(arr.fortran_vec(), vlendata[vi].p, vlendata[vi].len*sizeof(c_type)); \
 	}                                                                       \
         data = octave_value(arr);                                               \
