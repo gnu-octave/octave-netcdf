@@ -1220,7 +1220,7 @@ The data @var{data} is stored in the variable @var{varid} of the NetCDF file @va
                 ncl.p = (c_type*)v.fortran_vec();                              \
                 count[0] = 1;                                                  \
                 check_err(nc_put_vars (ncid, varid, start, count, stride, &ncl)); \
-                start[0] = ++(start[0]);                                       \
+                start[0] = start[0]+1;                                       \
               }                                                                \
               break;							       \
             }
