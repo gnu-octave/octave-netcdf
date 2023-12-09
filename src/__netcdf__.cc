@@ -31,7 +31,7 @@
 
 // Octave constructor to hold an array of ints
 #define NETCDF_INT_ARRAY int32NDArray
-std::map<std::string, octave_value> netcdf_constants;
+static std::map<std::string, octave_value> netcdf_constants;
 
 void init() {
   #include "netcdf_constants.h"
