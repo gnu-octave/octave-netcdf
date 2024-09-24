@@ -18,6 +18,7 @@ CUT ?= cut
 TR ?= tr
 TEXI2PDF  ?= texi2pdf -q
 MAKEINFO  ?= makeinfo
+MAKEINFO_HTML_OPTIONS := --no-headers --set-customization-variable 'COPIABLE_LINKS 0' --set-customization-variable 'COPIABLE_ANCHORS 0' --no-split 
 
 # work out a possible help generator
 ifeq ($(strip $(QHELPGENERATOR)),)
@@ -41,6 +42,7 @@ package := $(shell $(GREP) "^Name: " DESCRIPTION | $(CUT) -f2 -d" " | \
 $(TR) '[:upper:]' '[:lower:]')
 version := $(shell $(GREP) "^Version: " DESCRIPTION | $(CUT) -f2 -d" ")
 pkg_date := $(shell $(GREP) "^Date: " DESCRIPTION | $(CUT) -f2 -d" ")
+pkg_year := $(shell $(GREP) "^Date: " DESCRIPTION | $(CUT) -f2 -d" " | $(CUT) -f1 -d"-")
 
 ## These are the paths that will be created for the releases.
 target_dir       := target
@@ -286,15 +288,18 @@ doc/octave-$(package).pdf: doc/octave-$(package).texi doc/functions.texi doc/ver
 	cd doc && $(RM) -f octave-$(package).aux  octave-$(package).cp  octave-$(package).cps  octave-$(package).fn  octave-$(package).fns  octave-$(package).log  octave-$(package).toc
 
 doc/octave-$(package).html: doc/octave-$(package).texi doc/functions.texi doc/version.texi
-	cd doc && SOURCE_DATE_EPOCH=$(GIT_TIMESTAMP) $(MAKEINFO) --html --css-ref=octave-$(package).css  --no-split --output=octave-${package}.html octave-$(package).texi
+	cd doc && SOURCE_DATE_EPOCH=$(GIT_TIMESTAMP) $(MAKEINFO) --html --css-ref=octave-$(package).css  $(MAKEINFO_HTML_OPTIONS)  --output=octave-${package}.html octave-$(package).texi
 
 doc/functions.texi: $(release_dir_dep)
 	cd doc && ./mkfuncdocs.py --src-dir=../inst/ --src-dir=../src/ --allowscan ../INDEX | $(SED) 's/@seealso/@xseealso/g' > functions.texi
 
 doc/octave-$(package).qhc: doc/octave-$(package).html
-	# try also create qch file if can
+ifeq ($(QHELPGENERATOR),true)
+	$(warning No QHELPGENERATOR ... skipping QT doc build)
+else
 	cd doc && ./mkqhcp.py octave-$(package) && $(QHELPGENERATOR) octave-$(package).qhcp -o octave-$(package).qhc
 	cd doc && $(RM) octave-$(package).qhcp octave-$(package).qhp
+endif
 
 ##
 ## CLEAN
