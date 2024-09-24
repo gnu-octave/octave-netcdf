@@ -281,6 +281,7 @@ doc/version.texi: $(release_dir_dep)
 	@echo "@set VERSION $(version)" >> $@
 	@echo "@set PACKAGE $(package)" >> $@
 	@echo "@set DATE $(pkg_date)" >> $@
+	@echo "@set YEAR $(pkg_year)" >> $@
 
 doc/octave-$(package).pdf: doc/octave-$(package).texi doc/functions.texi doc/version.texi
 	cd doc && SOURCE_DATE_EPOCH=$(GIT_TIMESTAMP) $(TEXI2PDF) octave-$(package).texi
