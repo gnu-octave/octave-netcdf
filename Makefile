@@ -159,7 +159,7 @@ ifneq (,$(wildcard src/autogen.sh))
 endif
 ifneq (,$(wildcard doc))
 	$(MAKE) -C "$@" docs
-	cd "$@" && $(RM) -f doc/mkfuncdocs.py doc/mkqhcp.py
+	#cd "$@" && $(RM) -f doc/mkfuncdocs.py doc/mkqhcp.py
 endif
 	cd "$@" && $(RM) -rf devel
 ## Uncomment this if your src/Makefile.in has these targets for
