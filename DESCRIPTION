@@ -9,5 +9,6 @@ Depends: octave (>= 4.0.0)
 BuildRequires: netcdf-devel [Fedora]
  libnetcdf-dev [Debian], netcdf-bin [Debian]
 License: GPLv3+
-Url: https://octave.sf.net/netcdf/index.html
-Repository: https://sourceforge.net/p/octave/netcdf/ci/master/tree/
+Url: https://gnu-octave.github.io/octave-netcdf/
+Repository: https://github.com/gnu-octave/octave-netcdf/
+Tracker: https://github.com/gnu-octave/octave-netcdf/issues
