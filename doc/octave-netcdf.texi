@@ -163,11 +163,7 @@ ncwriteschema
 @cindex  Low level functionality
 
 The package aims to implement the netcdf interface of MATLAB in GNU Octave, however @acronym{GNU} Octave
-does not support the import function.
-
-Functions can be used in netcdf_functionname format, or an emulated import can be done using the
-import_netcdf script so that functions can be used in netcdf.functionname format.
-
+does not support the import function but the functions are available as netcdf.functionname
 
 @c -------------------------------------------------------------------------
 @node Function Reference
