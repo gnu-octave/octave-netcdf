@@ -1,0 +1,26 @@
+title: "Octave NETCDF Toolkit"
+description: >-
+  A NetCDF interface for Octave
+logo: "/assets/octave-netcdf.png"
+pkg: netcdf
+lang: en
+
+author: "John Donoghue <john.donoghue@ieee.org>"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://gnu-octave.github.io/octave-netcdf"
+theme: minima
+
+markdown_ext: "markdown,md,yaml"
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - CONTRIBUTING.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/bundle/
+  - LICENSE
+  - README.md
+  - doc/
+  - assets/ci/

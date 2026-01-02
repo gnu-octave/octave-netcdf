@@ -1,0 +1,142 @@
+---
+layout: "default"
+permalink: "/news/"
+title: "Netcdf Toolkit - News"
+pkg_name: "netcdf"
+version: "1.0.18"
+description: "A NetCDF interface for Octave"
+navigation:
+- id: "overview"
+  name: "Overview"
+  url: "/index"
+- id: "Functions"
+  name: "Function Reference"
+  url: "/functions"
+- id: "news"
+  name: "News"
+- id: "manual"
+  name: "Manual"
+  url: "/manual"
+---
+<pre>
+Summary of important user-visible changes for netcdf 1.0.18:
+-------------------------------------------------------------------
+
+ ** Minor bug fixes
+
+ ** Minor doc updates
+
+Summary of important user-visible changes for netcdf 1.0.17:
+-------------------------------------------------------------------
+
+ ** Fix compiling Octave 9+
+
+ ** Add +netcdf package functions 
+
+ ** minor doc updates
+
+Summary of important user-visible changes for netcdf 1.0.16:
+-------------------------------------------------------------------
+
+ ** Fix compiling Octave 8+
+
+ ** minor doc updates
+
+Summary of important user-visible changes for netcdf 1.0.15:
+-------------------------------------------------------------------
+
+ ** Update license to use GPLv3+ 
+
+ ** Add NC_VLEN processing as a user type
+
+ ** Add user manual
+
+ ** add warning in getVar if try to read negative
+
+ ** minor doc updates
+
+ ** Update requirement of octave version to 4.0+
+
+Summary of important user-visible changes for netcdf 1.0.14:
+-------------------------------------------------------------------
+
+ ** Add NC_STRING type as an octave type
+
+ ** Minor bugfixes
+
+Summary of important user-visible changes for netcdf 1.0.13:
+-------------------------------------------------------------------
+
+ ** Update to depend on Octave 3.8+
+
+ ** Update for Octave 5 and newer
+
+Summary of important user-visible changes for netcdf 1.0.12:
+-------------------------------------------------------------------
+
+ ** Fix bug #51443: configure in dev octave 4.3.0+
+
+Summary of important user-visible changes for netcdf 1.0.11:
+-------------------------------------------------------------------
+
+ ** Fix cleaning of files (thanks to Rafael Laboissiere)
+
+Summary of important user-visible changes for netcdf 1.0.10:
+-------------------------------------------------------------------
+
+ ** Fix bug #46060: building with the --enable-64 option
+
+Summary of important user-visible changes for netcdf 1.0.9:
+-------------------------------------------------------------------
+
+ ** Fix bug #47014: writing NaNs
+
+Summary of important user-visible changes for netcdf 1.0.8:
+-------------------------------------------------------------------
+
+ ** Fix bug #45190, #46747: netcdf(nccreate) to enable DeflateLevel in nccreate
+ ** Fix bug #46798: using the right delete operator
+
+Summary of important user-visible changes for netcdf 1.0.7:
+-------------------------------------------------------------------
+
+ ** Apply patch from John Donoghue to allow cross-compilation (bug #44837)
+
+Summary of important user-visible changes for netcdf 1.0.6:
+-------------------------------------------------------------------
+
+ ** ncread: do not replace _FillValue by NaNs for characters
+ ** ncdisp: fix for attributes value with %-sign 
+
+Summary of important user-visible changes for netcdf 1.0.5:
+-------------------------------------------------------------------
+
+ ** Implement DeflateLevel in nccreate
+
+Summary of important user-visible changes for netcdf 1.0.4:
+-------------------------------------------------------------------
+
+ ** Work-around for problem in netcdf 4.1.3 for reading a unlimited
+    variable of current size 0
+
+Summary of important user-visible changes for netcdf 1.0.3:
+-------------------------------------------------------------------
+
+ ** remove NC_INDEPENDENT and NC_COLLECTIVE which are no longer defined
+    in netcdf 4.3.1
+
+Summary of important user-visible changes for netcdf 1.0.2:
+-------------------------------------------------------------------
+
+ ** Avoid obsolete isequalwithequalnans functions
+
+Summary of important user-visible changes for netcdf 1.0.1:
+-------------------------------------------------------------------
+
+ ** Fix bug preventing compilation on 32-bit platforms.
+
+Summary of important user-visible changes for netcdf 1.0.0:
+-------------------------------------------------------------------
+
+ ** Initial release
+</pre>
