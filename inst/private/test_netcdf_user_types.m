@@ -14,8 +14,6 @@
 %% along with this program; If not, see <http://www.gnu.org/licenses/>.
 
 function test_netcdf_user_types()
-  import_netcdf
-
   fname = [tempname '-octave-netcdf.nc'];
   ncid = netcdf.create(fname,netcdf.getConstant('NETCDF4'));
 

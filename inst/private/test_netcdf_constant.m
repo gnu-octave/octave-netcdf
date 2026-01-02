@@ -15,8 +15,6 @@
 
 % test netcdf constants
 function test_netcdf_constant()
-  import_netcdf
-
   names = netcdf.getConstantNames();
   assert(any(strcmp(names,'NC_WRITE')));
 

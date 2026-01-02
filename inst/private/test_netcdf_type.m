@@ -14,8 +14,6 @@
 %% along with this program; If not, see <http://www.gnu.org/licenses/>.
 
 function test_netcdf_type(nctype,octtype)
-  import_netcdf
-
   m = 5;
   n = 10;
 

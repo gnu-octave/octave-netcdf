@@ -14,8 +14,6 @@
 %% along with this program; If not, see <http://www.gnu.org/licenses/>.
 
 function test_scalar_variable()
-  import_netcdf
-
   fname = [tempname '-octave-netcdf.nc'];
   ncid = netcdf.create(fname,'NC_CLOBBER');
   varidd_scalar = netcdf.defVar(ncid,'double_scalar','double',[]);

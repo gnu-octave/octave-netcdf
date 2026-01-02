@@ -15,8 +15,6 @@
 
 function test_netcdf_low_level_interface
 
-  import_netcdf
-
   % 2 dimensions
 
   fname = [tempname '-octave-netcdf.nc'];
@@ -124,7 +122,6 @@ endfunction
 
 
 function nc_test_ndims(ndims)
-  import_netcdf
 
   fname = [tempname '-octave-netcdf.nc'];
 
