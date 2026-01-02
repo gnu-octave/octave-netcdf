@@ -1,17 +1,18 @@
-# octave-netcdf
+# Octave NetCDF
+
 A NetCDF interface for Octave
 
 ## Introduction
 
-The Octave NetCDF toolkit implments the MATLAB netcdf interface for GNU Octave.
+The Octave NetCDF toolkit implements the MATLAB NetCDF interface for GNU Octave.
 
 ## Requirements
 
 * Octave 4.0+
 
-* [https://www.unidata.ucar.edu/software/netcdf](Netcdf 4.1+)
+* [Netcdf 4.1+](https://www.unidata.ucar.edu/software/netcdf)
 
-Your netcdf library install needs to include nc-config and development headers
+Your NetCDF library install needs to include nc-config and development headers
 
 ## Installing
 
