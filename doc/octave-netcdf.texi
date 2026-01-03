@@ -1,5 +1,5 @@
 \input texinfo @c -*-texinfo-*-
-@c Copyright (c) 2022-2024, John Donoghue <john.donoghue@ieee.org>
+@c Copyright (c) 2022-2025, John Donoghue <john.donoghue@ieee.org>
 @c Octave NetCDF - A NetCDF interface for Octave
 
 @c For manually generating the documentation use
