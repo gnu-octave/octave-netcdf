@@ -56,7 +56,7 @@ Octave that you have.  The precise conditions can be found in the
 Octave NetCDF package and that also appears in @ref{Copying}.
 
 To download a copy of the @acronym{GNU} Octave NetCDF package, please visit
-@url{http://octave.sourceforge.net/netcdf/}.
+@url{https://gnu-octave.github.io/octave-netcdf/}.
 
 @end titlepage
 @c %*** End of TITLEPAGE
