@@ -3,7 +3,7 @@ layout: "default"
 permalink: "/news/"
 title: "Netcdf Toolkit - News"
 pkg_name: "netcdf"
-version: "1.0.18"
+version: "1.0.19"
 description: "A NetCDF interface for Octave"
 navigation:
 - id: "overview"
@@ -19,6 +19,11 @@ navigation:
   url: "/manual"
 ---
 <pre>
+Summary of important user-visible changes for netcdf 1.0.19:
+-------------------------------------------------------------------
+
+ ** Minor doc updates
+
 Summary of important user-visible changes for netcdf 1.0.18:
 -------------------------------------------------------------------
 

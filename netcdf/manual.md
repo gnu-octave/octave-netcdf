@@ -3,7 +3,7 @@ layout: "default"
 permalink: "/manual/"
 title: "Netcdf Toolkit - Manual"
 pkg_name: "netcdf"
-version: "1.0.18"
+version: "1.0.19"
 description: "A NetCDF interface for Octave"
 navigation:
 - id: "overview"
@@ -31,24 +31,24 @@ navigation:
 <h1 class="top" id="Introduction">Introduction</h1>
 <p>The Octave NetCDF toolkit is a set of NetCDF routines for GNU Octave
 </p>
-<div class="element-contents" id="SEC_Contents">
+<div class="region-contents" id="SEC_Contents">
 <h2 class="contents-heading">Table of Contents</h2>
 <div class="contents">
 <ul class="toc-numbered-mark">
-  <li><a id="toc-Installing-and-loading-1" href="#Installing-and-loading">1 Installing and loading</a>
+  <li><a id="toc-Installing-and-loading" href="#Installing-and-loading">1 Installing and loading</a>
   <ul class="toc-numbered-mark">
     <li><a id="toc-Online-Direct-install" href="#Online-Direct-install">1.1 Online Direct install</a></li>
     <li><a id="toc-Off_002dline-install" href="#Off_002dline-install">1.2 Off-line install</a></li>
     <li><a id="toc-Loading" href="#Loading">1.3 Loading</a></li>
   </ul></li>
-  <li><a id="toc-Basic-Usage-Overview-1" href="#Basic-Usage-Overview">2 Basic Usage Overview</a>
+  <li><a id="toc-Basic-Usage-Overview" href="#Basic-Usage-Overview">2 Basic Usage Overview</a>
   <ul class="toc-numbered-mark">
     <li><a id="toc-High-level-functionality" href="#High-level-functionality">2.1 High level functionality</a></li>
     <li><a id="toc-Low-level-functionality" href="#Low-level-functionality">2.2 Low level functionality</a></li>
   </ul></li>
-  <li><a id="toc-Function-Reference-1" href="#Function-Reference">3 Function Reference</a>
+  <li><a id="toc-Function-Reference" href="#Function-Reference">3 Function Reference</a>
   <ul class="toc-numbered-mark">
-    <li><a id="toc-High_002dlevel-functions-1" href="#High_002dlevel-functions">3.1 High-level functions</a>
+    <li><a id="toc-High_002dlevel-functions" href="#High_002dlevel-functions">3.1 High-level functions</a>
     <ul class="toc-numbered-mark">
       <li><a id="toc-nccreate" href="#nccreate">3.1.1 nccreate</a></li>
       <li><a id="toc-ncdisp" href="#ncdisp">3.1.2 ncdisp</a></li>
@@ -59,133 +59,95 @@ navigation:
       <li><a id="toc-ncwriteatt" href="#ncwriteatt">3.1.7 ncwriteatt</a></li>
       <li><a id="toc-ncwriteschema" href="#ncwriteschema">3.1.8 ncwriteschema</a></li>
     </ul></li>
-    <li><a id="toc-Low_002dlevel-functions-_0028Deprecated_0029-1" href="#Low_002dlevel-functions-_0028Deprecated_0029">3.2 Low-level functions (Deprecated)</a>
+    <li><a id="toc-Low_002dlevel-functions" href="#Low_002dlevel-functions">3.2 Low-level functions</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-netcdf_005fabort" href="#netcdf_005fabort">3.2.1 netcdf_abort</a></li>
-      <li><a id="toc-netcdf_005fclose" href="#netcdf_005fclose">3.2.2 netcdf_close</a></li>
-      <li><a id="toc-netcdf_005fcopyAtt" href="#netcdf_005fcopyAtt">3.2.3 netcdf_copyAtt</a></li>
-      <li><a id="toc-netcdf_005fcreate" href="#netcdf_005fcreate">3.2.4 netcdf_create</a></li>
-      <li><a id="toc-netcdf_005fdefDim" href="#netcdf_005fdefDim">3.2.5 netcdf_defDim</a></li>
-      <li><a id="toc-netcdf_005fdefGrp" href="#netcdf_005fdefGrp">3.2.6 netcdf_defGrp</a></li>
-      <li><a id="toc-netcdf_005fdefVar" href="#netcdf_005fdefVar">3.2.7 netcdf_defVar</a></li>
-      <li><a id="toc-netcdf_005fdefVarChunking" href="#netcdf_005fdefVarChunking">3.2.8 netcdf_defVarChunking</a></li>
-      <li><a id="toc-netcdf_005fdefVarDeflate" href="#netcdf_005fdefVarDeflate">3.2.9 netcdf_defVarDeflate</a></li>
-      <li><a id="toc-netcdf_005fdefVarFill" href="#netcdf_005fdefVarFill">3.2.10 netcdf_defVarFill</a></li>
-      <li><a id="toc-netcdf_005fdefVarFletcher32" href="#netcdf_005fdefVarFletcher32">3.2.11 netcdf_defVarFletcher32</a></li>
-      <li><a id="toc-netcdf_005fdefVlen" href="#netcdf_005fdefVlen">3.2.12 netcdf_defVlen</a></li>
-      <li><a id="toc-netcdf_005fdelAtt" href="#netcdf_005fdelAtt">3.2.13 netcdf_delAtt</a></li>
-      <li><a id="toc-netcdf_005fendDef" href="#netcdf_005fendDef">3.2.14 netcdf_endDef</a></li>
-      <li><a id="toc-netcdf_005fgetAtt" href="#netcdf_005fgetAtt">3.2.15 netcdf_getAtt</a></li>
-      <li><a id="toc-netcdf_005fgetChunkCache" href="#netcdf_005fgetChunkCache">3.2.16 netcdf_getChunkCache</a></li>
-      <li><a id="toc-netcdf_005fgetConstant" href="#netcdf_005fgetConstant">3.2.17 netcdf_getConstant</a></li>
-      <li><a id="toc-netcdf_005fgetConstantNames" href="#netcdf_005fgetConstantNames">3.2.18 netcdf_getConstantNames</a></li>
-      <li><a id="toc-netcdf_005fgetVar" href="#netcdf_005fgetVar">3.2.19 netcdf_getVar</a></li>
-      <li><a id="toc-netcdf_005finq" href="#netcdf_005finq">3.2.20 netcdf_inq</a></li>
-      <li><a id="toc-netcdf_005finqAtt" href="#netcdf_005finqAtt">3.2.21 netcdf_inqAtt</a></li>
-      <li><a id="toc-netcdf_005finqAttID" href="#netcdf_005finqAttID">3.2.22 netcdf_inqAttID</a></li>
-      <li><a id="toc-netcdf_005finqAttName" href="#netcdf_005finqAttName">3.2.23 netcdf_inqAttName</a></li>
-      <li><a id="toc-netcdf_005finqDim" href="#netcdf_005finqDim">3.2.24 netcdf_inqDim</a></li>
-      <li><a id="toc-netcdf_005finqDimID" href="#netcdf_005finqDimID">3.2.25 netcdf_inqDimID</a></li>
-      <li><a id="toc-netcdf_005finqDimIDs" href="#netcdf_005finqDimIDs">3.2.26 netcdf_inqDimIDs</a></li>
-      <li><a id="toc-netcdf_005finqFormat" href="#netcdf_005finqFormat">3.2.27 netcdf_inqFormat</a></li>
-      <li><a id="toc-netcdf_005finqGrpFullNcid" href="#netcdf_005finqGrpFullNcid">3.2.28 netcdf_inqGrpFullNcid</a></li>
-      <li><a id="toc-netcdf_005finqGrpName" href="#netcdf_005finqGrpName">3.2.29 netcdf_inqGrpName</a></li>
-      <li><a id="toc-netcdf_005finqGrpNameFull" href="#netcdf_005finqGrpNameFull">3.2.30 netcdf_inqGrpNameFull</a></li>
-      <li><a id="toc-netcdf_005finqGrpParent" href="#netcdf_005finqGrpParent">3.2.31 netcdf_inqGrpParent</a></li>
-      <li><a id="toc-netcdf_005finqGrps" href="#netcdf_005finqGrps">3.2.32 netcdf_inqGrps</a></li>
-      <li><a id="toc-netcdf_005finqLibVers" href="#netcdf_005finqLibVers">3.2.33 netcdf_inqLibVers</a></li>
-      <li><a id="toc-netcdf_005finqNcid" href="#netcdf_005finqNcid">3.2.34 netcdf_inqNcid</a></li>
-      <li><a id="toc-netcdf_005finqUnlimDims" href="#netcdf_005finqUnlimDims">3.2.35 netcdf_inqUnlimDims</a></li>
-      <li><a id="toc-netcdf_005finqUserType" href="#netcdf_005finqUserType">3.2.36 netcdf_inqUserType</a></li>
-      <li><a id="toc-netcdf_005finqVar" href="#netcdf_005finqVar">3.2.37 netcdf_inqVar</a></li>
-      <li><a id="toc-netcdf_005finqVarChunking" href="#netcdf_005finqVarChunking">3.2.38 netcdf_inqVarChunking</a></li>
-      <li><a id="toc-netcdf_005finqVarDeflate" href="#netcdf_005finqVarDeflate">3.2.39 netcdf_inqVarDeflate</a></li>
-      <li><a id="toc-netcdf_005finqVarFill" href="#netcdf_005finqVarFill">3.2.40 netcdf_inqVarFill</a></li>
-      <li><a id="toc-netcdf_005finqVarFletcher32" href="#netcdf_005finqVarFletcher32">3.2.41 netcdf_inqVarFletcher32</a></li>
-      <li><a id="toc-netcdf_005finqVarID" href="#netcdf_005finqVarID">3.2.42 netcdf_inqVarID</a></li>
-      <li><a id="toc-netcdf_005finqVarIDs" href="#netcdf_005finqVarIDs">3.2.43 netcdf_inqVarIDs</a></li>
-      <li><a id="toc-netcdf_005finqVlen" href="#netcdf_005finqVlen">3.2.44 netcdf_inqVlen</a></li>
-      <li><a id="toc-netcdf_005fopen" href="#netcdf_005fopen">3.2.45 netcdf_open</a></li>
-      <li><a id="toc-netcdf_005fputAtt" href="#netcdf_005fputAtt">3.2.46 netcdf_putAtt</a></li>
-      <li><a id="toc-netcdf_005fputVar" href="#netcdf_005fputVar">3.2.47 netcdf_putVar</a></li>
-      <li><a id="toc-netcdf_005freDef" href="#netcdf_005freDef">3.2.48 netcdf_reDef</a></li>
-      <li><a id="toc-netcdf_005frenameAtt" href="#netcdf_005frenameAtt">3.2.49 netcdf_renameAtt</a></li>
-      <li><a id="toc-netcdf_005frenameDim" href="#netcdf_005frenameDim">3.2.50 netcdf_renameDim</a></li>
-      <li><a id="toc-netcdf_005frenameVar" href="#netcdf_005frenameVar">3.2.51 netcdf_renameVar</a></li>
-      <li><a id="toc-netcdf_005fsetChunkCache" href="#netcdf_005fsetChunkCache">3.2.52 netcdf_setChunkCache</a></li>
-      <li><a id="toc-netcdf_005fsetDefaultFormat" href="#netcdf_005fsetDefaultFormat">3.2.53 netcdf_setDefaultFormat</a></li>
-      <li><a id="toc-netcdf_005fsetFill" href="#netcdf_005fsetFill">3.2.54 netcdf_setFill</a></li>
-      <li><a id="toc-netcdf_005fsync" href="#netcdf_005fsync">3.2.55 netcdf_sync</a></li>
+      <li><a id="toc-Library-Functions" href="#Low_002dlevel-functions-_002d-Library-Functions">3.2.1 Library Functions</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-netcdf_002egetChunkCache" href="#netcdf_002egetChunkCache">3.2.1.1 netcdf.getChunkCache</a></li>
+        <li><a id="toc-netcdf_002einqLibVers" href="#netcdf_002einqLibVers">3.2.1.2 netcdf.inqLibVers</a></li>
+        <li><a id="toc-netcdf_002esetChunkCache" href="#netcdf_002esetChunkCache">3.2.1.3 netcdf.setChunkCache</a></li>
+        <li><a id="toc-netcdf_002esetDefaultFormat" href="#netcdf_002esetDefaultFormat">3.2.1.4 netcdf.setDefaultFormat</a></li>
+      </ul></li>
+      <li><a id="toc-File-Operations" href="#Low_002dlevel-functions-_002d-File-Operations">3.2.2 File Operations</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-netcdf_002eabort" href="#netcdf_002eabort">3.2.2.1 netcdf.abort</a></li>
+        <li><a id="toc-netcdf_002eclose" href="#netcdf_002eclose">3.2.2.2 netcdf.close</a></li>
+        <li><a id="toc-netcdf_002ecreate" href="#netcdf_002ecreate">3.2.2.3 netcdf.create</a></li>
+        <li><a id="toc-netcdf_002eendDef" href="#netcdf_002eendDef">3.2.2.4 netcdf.endDef</a></li>
+        <li><a id="toc-netcdf_002einq" href="#netcdf_002einq">3.2.2.5 netcdf.inq</a></li>
+        <li><a id="toc-netcdf_002einqFormat" href="#netcdf_002einqFormat">3.2.2.6 netcdf.inqFormat</a></li>
+        <li><a id="toc-netcdf_002einqGrps" href="#netcdf_002einqGrps">3.2.2.7 netcdf.inqGrps</a></li>
+        <li><a id="toc-netcdf_002einqUnlimDims" href="#netcdf_002einqUnlimDims">3.2.2.8 netcdf.inqUnlimDims</a></li>
+        <li><a id="toc-netcdf_002eopen" href="#netcdf_002eopen">3.2.2.9 netcdf.open</a></li>
+        <li><a id="toc-netcdf_002ereDef" href="#netcdf_002ereDef">3.2.2.10 netcdf.reDef</a></li>
+        <li><a id="toc-netcdf_002esetFill" href="#netcdf_002esetFill">3.2.2.11 netcdf.setFill</a></li>
+        <li><a id="toc-netcdf_002esync" href="#netcdf_002esync">3.2.2.12 netcdf.sync</a></li>
+      </ul></li>
+      <li><a id="toc-Dimensions" href="#Low_002dlevel-functions-_002d-Dimensions">3.2.3 Dimensions</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-netcdf_002edefDim" href="#netcdf_002edefDim">3.2.3.1 netcdf.defDim</a></li>
+        <li><a id="toc-netcdf_002einqDim" href="#netcdf_002einqDim">3.2.3.2 netcdf.inqDim</a></li>
+        <li><a id="toc-netcdf_002einqDimID" href="#netcdf_002einqDimID">3.2.3.3 netcdf.inqDimID</a></li>
+        <li><a id="toc-netcdf_002erenameDim" href="#netcdf_002erenameDim">3.2.3.4 netcdf.renameDim</a></li>
+      </ul></li>
+      <li><a id="toc-Groups" href="#Low_002dlevel-functions-_002d-Groups">3.2.4 Groups</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-netcdf_002edefGrp" href="#netcdf_002edefGrp">3.2.4.1 netcdf.defGrp</a></li>
+        <li><a id="toc-netcdf_002einqDimIDs" href="#netcdf_002einqDimIDs">3.2.4.2 netcdf.inqDimIDs</a></li>
+        <li><a id="toc-netcdf_002einqGrpFullNcid" href="#netcdf_002einqGrpFullNcid">3.2.4.3 netcdf.inqGrpFullNcid</a></li>
+        <li><a id="toc-netcdf_002einqGrpName" href="#netcdf_002einqGrpName">3.2.4.4 netcdf.inqGrpName</a></li>
+        <li><a id="toc-netcdf_002einqGrpNameFull" href="#netcdf_002einqGrpNameFull">3.2.4.5 netcdf.inqGrpNameFull</a></li>
+        <li><a id="toc-netcdf_002einqGrpParent" href="#netcdf_002einqGrpParent">3.2.4.6 netcdf.inqGrpParent</a></li>
+        <li><a id="toc-netcdf_002einqNcid" href="#netcdf_002einqNcid">3.2.4.7 netcdf.inqNcid</a></li>
+        <li><a id="toc-netcdf_002einqVarIDs" href="#netcdf_002einqVarIDs">3.2.4.8 netcdf.inqVarIDs</a></li>
+      </ul></li>
+      <li><a id="toc-Variables" href="#Low_002dlevel-functions-_002d-Variables">3.2.5 Variables</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-netcdf_002edefVar" href="#netcdf_002edefVar">3.2.5.1 netcdf.defVar</a></li>
+        <li><a id="toc-netcdf_002edefVarChunking" href="#netcdf_002edefVarChunking">3.2.5.2 netcdf.defVarChunking</a></li>
+        <li><a id="toc-netcdf_002edefVarDeflate" href="#netcdf_002edefVarDeflate">3.2.5.3 netcdf.defVarDeflate</a></li>
+        <li><a id="toc-netcdf_002edefVarFill" href="#netcdf_002edefVarFill">3.2.5.4 netcdf.defVarFill</a></li>
+        <li><a id="toc-netcdf_002edefVarFletcher32" href="#netcdf_002edefVarFletcher32">3.2.5.5 netcdf.defVarFletcher32</a></li>
+        <li><a id="toc-netcdf_002egetVar" href="#netcdf_002egetVar">3.2.5.6 netcdf.getVar</a></li>
+        <li><a id="toc-netcdf_002einqVar" href="#netcdf_002einqVar">3.2.5.7 netcdf.inqVar</a></li>
+        <li><a id="toc-netcdf_002einqVarChunking" href="#netcdf_002einqVarChunking">3.2.5.8 netcdf.inqVarChunking</a></li>
+        <li><a id="toc-netcdf_002einqVarDeflate" href="#netcdf_002einqVarDeflate">3.2.5.9 netcdf.inqVarDeflate</a></li>
+        <li><a id="toc-netcdf_002einqVarFill" href="#netcdf_002einqVarFill">3.2.5.10 netcdf.inqVarFill</a></li>
+        <li><a id="toc-netcdf_002einqVarFletcher32" href="#netcdf_002einqVarFletcher32">3.2.5.11 netcdf.inqVarFletcher32</a></li>
+        <li><a id="toc-netcdf_002einqVarID" href="#netcdf_002einqVarID">3.2.5.12 netcdf.inqVarID</a></li>
+        <li><a id="toc-netcdf_002eputVar" href="#netcdf_002eputVar">3.2.5.13 netcdf.putVar</a></li>
+        <li><a id="toc-netcdf_002erenameVar" href="#netcdf_002erenameVar">3.2.5.14 netcdf.renameVar</a></li>
+      </ul></li>
+      <li><a id="toc-Attributes" href="#Low_002dlevel-functions-_002d-Attributes">3.2.6 Attributes</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-netcdf_002ecopyAtt" href="#netcdf_002ecopyAtt">3.2.6.1 netcdf.copyAtt</a></li>
+        <li><a id="toc-netcdf_002edelAtt" href="#netcdf_002edelAtt">3.2.6.2 netcdf.delAtt</a></li>
+        <li><a id="toc-netcdf_002egetAtt" href="#netcdf_002egetAtt">3.2.6.3 netcdf.getAtt</a></li>
+        <li><a id="toc-netcdf_002einqAtt" href="#netcdf_002einqAtt">3.2.6.4 netcdf.inqAtt</a></li>
+        <li><a id="toc-netcdf_002einqAttID" href="#netcdf_002einqAttID">3.2.6.5 netcdf.inqAttID</a></li>
+        <li><a id="toc-netcdf_002einqAttName" href="#netcdf_002einqAttName">3.2.6.6 netcdf.inqAttName</a></li>
+        <li><a id="toc-netcdf_002eputAtt" href="#netcdf_002eputAtt">3.2.6.7 netcdf.putAtt</a></li>
+        <li><a id="toc-netcdf_002erenameAtt" href="#netcdf_002erenameAtt">3.2.6.8 netcdf.renameAtt</a></li>
+      </ul></li>
+      <li><a id="toc-User_002dDefined-Types" href="#Low_002dlevel-functions-_002d-User_002dDefined-Types">3.2.7 User-Defined Types</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-netcdf_002edefVlen" href="#netcdf_002edefVlen">3.2.7.1 netcdf.defVlen</a></li>
+        <li><a id="toc-netcdf_002einqUserType" href="#netcdf_002einqUserType">3.2.7.2 netcdf.inqUserType</a></li>
+        <li><a id="toc-netcdf_002einqVlen" href="#netcdf_002einqVlen">3.2.7.3 netcdf.inqVlen</a></li>
+      </ul></li>
+      <li><a id="toc-Utilities" href="#Low_002dlevel-functions-_002d-Utilities">3.2.8 Utilities</a>
+      <ul class="toc-numbered-mark">
+        <li><a id="toc-netcdf_002egetConstant" href="#netcdf_002egetConstant">3.2.8.1 netcdf.getConstant</a></li>
+        <li><a id="toc-netcdf_002egetConstantNames" href="#netcdf_002egetConstantNames">3.2.8.2 netcdf.getConstantNames</a></li>
+      </ul></li>
     </ul></li>
-    <li><a id="toc-Low_002dlevel-functions-1" href="#Low_002dlevel-functions">3.3 Low-level functions</a>
+    <li><a id="toc-Test-function" href="#Test-function">3.3 Test function</a>
     <ul class="toc-numbered-mark">
-      <li><a id="toc-netcdf_002eabort" href="#netcdf_002eabort">3.3.1 netcdf.abort</a></li>
-      <li><a id="toc-netcdf_002eclose" href="#netcdf_002eclose">3.3.2 netcdf.close</a></li>
-      <li><a id="toc-netcdf_002ecopyAtt" href="#netcdf_002ecopyAtt">3.3.3 netcdf.copyAtt</a></li>
-      <li><a id="toc-netcdf_002ecreate" href="#netcdf_002ecreate">3.3.4 netcdf.create</a></li>
-      <li><a id="toc-netcdf_002edefDim" href="#netcdf_002edefDim">3.3.5 netcdf.defDim</a></li>
-      <li><a id="toc-netcdf_002edefGrp" href="#netcdf_002edefGrp">3.3.6 netcdf.defGrp</a></li>
-      <li><a id="toc-netcdf_002edefVar" href="#netcdf_002edefVar">3.3.7 netcdf.defVar</a></li>
-      <li><a id="toc-netcdf_002edefVarChunking" href="#netcdf_002edefVarChunking">3.3.8 netcdf.defVarChunking</a></li>
-      <li><a id="toc-netcdf_002edefVarDeflate" href="#netcdf_002edefVarDeflate">3.3.9 netcdf.defVarDeflate</a></li>
-      <li><a id="toc-netcdf_002edefVarFill" href="#netcdf_002edefVarFill">3.3.10 netcdf.defVarFill</a></li>
-      <li><a id="toc-netcdf_002edefVarFletcher32" href="#netcdf_002edefVarFletcher32">3.3.11 netcdf.defVarFletcher32</a></li>
-      <li><a id="toc-netcdf_002edefVlen" href="#netcdf_002edefVlen">3.3.12 netcdf.defVlen</a></li>
-      <li><a id="toc-netcdf_002edelAtt" href="#netcdf_002edelAtt">3.3.13 netcdf.delAtt</a></li>
-      <li><a id="toc-netcdf_002eendDef" href="#netcdf_002eendDef">3.3.14 netcdf.endDef</a></li>
-      <li><a id="toc-netcdf_002egetAtt" href="#netcdf_002egetAtt">3.3.15 netcdf.getAtt</a></li>
-      <li><a id="toc-netcdf_002egetChunkCache" href="#netcdf_002egetChunkCache">3.3.16 netcdf.getChunkCache</a></li>
-      <li><a id="toc-netcdf_002egetConstant" href="#netcdf_002egetConstant">3.3.17 netcdf.getConstant</a></li>
-      <li><a id="toc-netcdf_002egetConstantNames" href="#netcdf_002egetConstantNames">3.3.18 netcdf.getConstantNames</a></li>
-      <li><a id="toc-netcdf_002egetVar" href="#netcdf_002egetVar">3.3.19 netcdf.getVar</a></li>
-      <li><a id="toc-netcdf_002einq" href="#netcdf_002einq">3.3.20 netcdf.inq</a></li>
-      <li><a id="toc-netcdf_002einqAtt" href="#netcdf_002einqAtt">3.3.21 netcdf.inqAtt</a></li>
-      <li><a id="toc-netcdf_002einqAttID" href="#netcdf_002einqAttID">3.3.22 netcdf.inqAttID</a></li>
-      <li><a id="toc-netcdf_002einqAttName" href="#netcdf_002einqAttName">3.3.23 netcdf.inqAttName</a></li>
-      <li><a id="toc-netcdf_002einqDim" href="#netcdf_002einqDim">3.3.24 netcdf.inqDim</a></li>
-      <li><a id="toc-netcdf_002einqDimID" href="#netcdf_002einqDimID">3.3.25 netcdf.inqDimID</a></li>
-      <li><a id="toc-netcdf_002einqDimIDs" href="#netcdf_002einqDimIDs">3.3.26 netcdf.inqDimIDs</a></li>
-      <li><a id="toc-netcdf_002einqFormat" href="#netcdf_002einqFormat">3.3.27 netcdf.inqFormat</a></li>
-      <li><a id="toc-netcdf_002einqGrpFullNcid" href="#netcdf_002einqGrpFullNcid">3.3.28 netcdf.inqGrpFullNcid</a></li>
-      <li><a id="toc-netcdf_002einqGrpName" href="#netcdf_002einqGrpName">3.3.29 netcdf.inqGrpName</a></li>
-      <li><a id="toc-netcdf_002einqGrpNameFull" href="#netcdf_002einqGrpNameFull">3.3.30 netcdf.inqGrpNameFull</a></li>
-      <li><a id="toc-netcdf_002einqGrpParent" href="#netcdf_002einqGrpParent">3.3.31 netcdf.inqGrpParent</a></li>
-      <li><a id="toc-netcdf_002einqGrps" href="#netcdf_002einqGrps">3.3.32 netcdf.inqGrps</a></li>
-      <li><a id="toc-netcdf_002einqLibVers" href="#netcdf_002einqLibVers">3.3.33 netcdf.inqLibVers</a></li>
-      <li><a id="toc-netcdf_002einqNcid" href="#netcdf_002einqNcid">3.3.34 netcdf.inqNcid</a></li>
-      <li><a id="toc-netcdf_002einqUnlimDims" href="#netcdf_002einqUnlimDims">3.3.35 netcdf.inqUnlimDims</a></li>
-      <li><a id="toc-netcdf_002einqUserType" href="#netcdf_002einqUserType">3.3.36 netcdf.inqUserType</a></li>
-      <li><a id="toc-netcdf_002einqVar" href="#netcdf_002einqVar">3.3.37 netcdf.inqVar</a></li>
-      <li><a id="toc-netcdf_002einqVarChunking" href="#netcdf_002einqVarChunking">3.3.38 netcdf.inqVarChunking</a></li>
-      <li><a id="toc-netcdf_002einqVarDeflate" href="#netcdf_002einqVarDeflate">3.3.39 netcdf.inqVarDeflate</a></li>
-      <li><a id="toc-netcdf_002einqVarFill" href="#netcdf_002einqVarFill">3.3.40 netcdf.inqVarFill</a></li>
-      <li><a id="toc-netcdf_002einqVarFletcher32" href="#netcdf_002einqVarFletcher32">3.3.41 netcdf.inqVarFletcher32</a></li>
-      <li><a id="toc-netcdf_002einqVarID" href="#netcdf_002einqVarID">3.3.42 netcdf.inqVarID</a></li>
-      <li><a id="toc-netcdf_002einqVarIDs" href="#netcdf_002einqVarIDs">3.3.43 netcdf.inqVarIDs</a></li>
-      <li><a id="toc-netcdf_002einqVlen" href="#netcdf_002einqVlen">3.3.44 netcdf.inqVlen</a></li>
-      <li><a id="toc-netcdf_002eopen" href="#netcdf_002eopen">3.3.45 netcdf.open</a></li>
-      <li><a id="toc-netcdf_002eputAtt" href="#netcdf_002eputAtt">3.3.46 netcdf.putAtt</a></li>
-      <li><a id="toc-netcdf_002eputVar" href="#netcdf_002eputVar">3.3.47 netcdf.putVar</a></li>
-      <li><a id="toc-netcdf_002ereDef" href="#netcdf_002ereDef">3.3.48 netcdf.reDef</a></li>
-      <li><a id="toc-netcdf_002erenameAtt" href="#netcdf_002erenameAtt">3.3.49 netcdf.renameAtt</a></li>
-      <li><a id="toc-netcdf_002erenameDim" href="#netcdf_002erenameDim">3.3.50 netcdf.renameDim</a></li>
-      <li><a id="toc-netcdf_002erenameVar" href="#netcdf_002erenameVar">3.3.51 netcdf.renameVar</a></li>
-      <li><a id="toc-netcdf_002esetChunkCache" href="#netcdf_002esetChunkCache">3.3.52 netcdf.setChunkCache</a></li>
-      <li><a id="toc-netcdf_002esetDefaultFormat" href="#netcdf_002esetDefaultFormat">3.3.53 netcdf.setDefaultFormat</a></li>
-      <li><a id="toc-netcdf_002esetFill" href="#netcdf_002esetFill">3.3.54 netcdf.setFill</a></li>
-      <li><a id="toc-netcdf_002esync" href="#netcdf_002esync">3.3.55 netcdf.sync</a></li>
-    </ul></li>
-    <li><a id="toc-Import-functions-_0028Deprecated_0029-1" href="#Import-functions-_0028Deprecated_0029">3.4 Import functions (Deprecated)</a>
-    <ul class="toc-numbered-mark">
-      <li><a id="toc-import_005fnetcdf" href="#import_005fnetcdf">3.4.1 import_netcdf</a></li>
-    </ul></li>
-    <li><a id="toc-Test-function-1" href="#Test-function">3.5 Test function</a>
-    <ul class="toc-numbered-mark">
-      <li><a id="toc-test_005fnetcdf" href="#test_005fnetcdf">3.5.1 test_netcdf</a></li>
+      <li><a id="toc-test_005fnetcdf" href="#test_005fnetcdf">3.3.1 test_netcdf</a></li>
     </ul></li>
   </ul></li>
   <li><a id="toc-GNU-General-Public-License" href="#Copying">Appendix A GNU General Public License</a></li>
-  <li><a id="toc-Index-1" href="#Index" rel="index">Index</a></li>
+  <li><a id="toc-Index" href="#Index" rel="index">Index</a></li>
 </ul>
 </div>
 </div>
@@ -222,7 +184,7 @@ octave-forge using the following command within <abbr class="acronym">GNU</abbr>
 <abbr class="acronym">GNU</abbr> Octave, the package can be installed using the following command within <abbr class="acronym">GNU</abbr> Octave:
 </p>
 <div class="example">
-<pre class="example-preformatted">pkg install netcdf-1.0.18.tar.gz
+<pre class="example-preformatted">pkg install netcdf-1.0.19.tar.gz
 </pre></div>
 </div>
 <div class="section-level-extent" id="Loading">
@@ -264,10 +226,7 @@ writing NetCDF format files.
 <h3 class="section">2.2 Low level functionality</h3>
 <a class="index-entry-id" id="index-Low-level-functionality"></a>
 <p>The package aims to implement the netcdf interface of MATLAB in GNU Octave, however <abbr class="acronym">GNU</abbr> Octave
-does not support the import function.
-</p>
-<p>Functions can be used in netcdf_functionname format, or an emulated import can be done using the
-import_netcdf script so that functions can be used in netcdf.functionname format.
+does not support the import function but the functions are available as netcdf.functionname
 </p>
 <hr>
 </div>
@@ -284,9 +243,9 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <div class="subsection-level-extent" id="nccreate">
 <h4 class="subsection">3.1.1 nccreate</h4>
 <a class="index-entry-id" id="index-nccreate"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-nccreate_0028filename_002cvarname_0029"><span class="category-def">Function File: </span><strong class="def-name">nccreate(<var class="var">filename</var>,<var class="var">varname</var>)</strong></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-nccreate_0028filename_002cvarname_002c_0022property_0022_002cvalue_002c_002e_002e_002e_0029"><span class="category-def">Function File: </span><strong class="def-name">nccreate(<var class="var">filename</var>,<var class="var">varname</var>,&quot;property&quot;,<var class="var">value</var>,...)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-nccreate_0028filename_002cvarname_0029"><span class="category-def">Function File: </span><strong class="def-name">nccreate(<var class="var">filename</var>,<var class="var">varname</var>)</strong></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-nccreate_0028filename_002cvarname_002c_0022property_0022_002cvalue_002c_002e_002e_002e_0029"><span class="category-def">Function File: </span><strong class="def-name">nccreate(<var class="var">filename</var>,<var class="var">varname</var>,&quot;property&quot;,<var class="var">value</var>,...)</strong></dt>
 <dd>
 <p>Create the variable <var class="var">varname</var> in the file <var class="var">filename</var>.
 </p>
@@ -322,8 +281,8 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <div class="subsection-level-extent" id="ncdisp">
 <h4 class="subsection">3.1.2 ncdisp</h4>
 <a class="index-entry-id" id="index-ncdisp"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-ncdisp-1"><span class="category-def">Function File: </span><strong class="def-name">ncdisp</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-ncdisp-1"><span class="category-def">Function File: </span><strong class="def-name">ncdisp</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></dt>
 <dd><p>Display meta-data of the NetCDF file <var class="var">filename</var>
 </p>
 <h4 class="subsubheading" id="Example-1">Example</h4>
@@ -336,10 +295,10 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <div class="subsection-level-extent" id="ncinfo">
 <h4 class="subsection">3.1.3 ncinfo</h4>
 <a class="index-entry-id" id="index-ncinfo"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-ncinfo-1"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-ncinfo-2"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-ncinfo-3"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">groupname</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-ncinfo-1"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-2"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-3"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">groupname</var>)</code></dt>
 <dd><p>Return information about an entire NetCDF file <var class="var">filename</var> (i.e. the root
  group &quot;/&quot;), about the variable called <var class="var">varname</var> or the group called
 <var class="var">groupname</var>.
@@ -353,7 +312,7 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <p>The structure <var class="var">info</var> has additional fields depending on whether a
  group of variable is queried.
 </p>
-<h4 class="subsubheading" id="Groups">Groups</h4>
+<h4 class="subsubheading" id="Groups-1">Groups</h4>
 <p>Groups are returned as an array structure with the following fields:
 </p>
 <ul class="itemize mark-bullet">
@@ -364,14 +323,14 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 </li><li><var class="var">Groups</var>: a array structure (one for each group) with the
  same fields as this structure.
 </li></ul>
-<h4 class="subsubheading" id="Dimensions">Dimensions</h4>
+<h4 class="subsubheading" id="Dimensions-1">Dimensions</h4>
 <p>Dimensions are returned as an array structure with the following fields:
 </p><ul class="itemize mark-bullet">
 <li><var class="var">Name</var>: the name of the dimension
    </li><li><var class="var">Length</var>: the length of the dimension
    </li><li><var class="var">Unlimited</var>: true of the dimension has no fixed limited, false
 </li></ul>
-<h4 class="subsubheading" id="Variables">Variables</h4>
+<h4 class="subsubheading" id="Variables-1">Variables</h4>
 <p>Variables are returned as an array structure with the following fields:
 </p><ul class="itemize mark-bullet">
 <li><var class="var">Name</var>: the name of the dimension
@@ -390,7 +349,7 @@ import_netcdf script so that functions can be used in netcdf.functionname format
    </li><li><var class="var">CheckSum</var>: is set to &quot;fletcher32&quot;, if check-sums are used,
     otherwise this field is not defined.
 </li></ul>
-<h4 class="subsubheading" id="Attributes">Attributes</h4>
+<h4 class="subsubheading" id="Attributes-1">Attributes</h4>
 <p>Attributes are returned as an array structure with the following fields:
 </p><ul class="itemize mark-bullet">
 <li><var class="var">Name</var>: the name of the attribute
@@ -430,9 +389,9 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <div class="subsection-level-extent" id="ncread">
 <h4 class="subsection">3.1.4 ncread</h4>
 <a class="index-entry-id" id="index-ncread"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-ncread-1"><span class="category-def">Function File: </span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-ncread-2"><span class="category-def">Function File: </span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-ncread-1"><span class="category-def">Function File: </span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncread-2"><span class="category-def">Function File: </span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></dt>
 <dd>
 <p>Read the variable <var class="var">varname</var> from the NetCDF file <var class="var">filename</var>.
 </p>
@@ -470,8 +429,8 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <div class="subsection-level-extent" id="ncreadatt">
 <h4 class="subsection">3.1.5 ncreadatt</h4>
 <a class="index-entry-id" id="index-ncreadatt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-ncreadatt_0028filename_002cvarname_002cattname_0029"><span class="category-def">Function File: </span><code class="def-type"><var class="var">val</var> =</code> <strong class="def-name">ncreadatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-ncreadatt_0028filename_002cvarname_002cattname_0029"><span class="category-def">Function File: </span><code class="def-type"><var class="var">val</var> =</code> <strong class="def-name">ncreadatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>)</strong></dt>
 <dd>
 <p>Return the attribute <var class="var">attname</var> of the variable <var class="var">varname</var> in the file
 <var class="var">filename</var>.
@@ -495,9 +454,9 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <div class="subsection-level-extent" id="ncwrite">
 <h4 class="subsection">3.1.6 ncwrite</h4>
 <a class="index-entry-id" id="index-ncwrite"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-ncwrite-1"><span class="category-def">Function File: </span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-ncwrite-2"><span class="category-def">Function File: </span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>, <var class="var">start</var>, <var class="var">stride</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-ncwrite-1"><span class="category-def">Function File: </span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncwrite-2"><span class="category-def">Function File: </span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>, <var class="var">start</var>, <var class="var">stride</var>)</code></dt>
 <dd>
 <p>Write array <var class="var">x</var> to the the variable <var class="var">varname</var> in the NetCDF file
 <var class="var">filename</var>.
@@ -532,8 +491,8 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <div class="subsection-level-extent" id="ncwriteatt">
 <h4 class="subsection">3.1.7 ncwriteatt</h4>
 <a class="index-entry-id" id="index-ncwriteatt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-ncwriteatt_0028filename_002cvarname_002cattname_002cval_0029"><span class="category-def">Function File: </span><strong class="def-name">ncwriteatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>,<var class="var">val</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-ncwriteatt_0028filename_002cvarname_002cattname_002cval_0029"><span class="category-def">Function File: </span><strong class="def-name">ncwriteatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>,<var class="var">val</var>)</strong></dt>
 <dd>
 <p>Defines the attribute <var class="var">attname</var> of the variable <var class="var">varname</var> in the file
 <var class="var">filename</var> with the value <var class="var">val</var>.
@@ -554,8 +513,8 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <div class="subsection-level-extent" id="ncwriteschema">
 <h4 class="subsection">3.1.8 ncwriteschema</h4>
 <a class="index-entry-id" id="index-ncwriteschema"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-ncwriteschema-1"><span class="category-def">Function File: </span><strong class="def-name">ncwriteschema</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">schema</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-ncwriteschema-1"><span class="category-def">Function File: </span><strong class="def-name">ncwriteschema</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">schema</var>)</code></dt>
 <dd>
 <p>Create a NetCDF called <var class="var">filename</var> with the dimensions, attributes,
  variables and groups given by the structure <var class="var">schema</var>.
@@ -583,665 +542,72 @@ import_netcdf script so that functions can be used in netcdf.functionname format
 <hr>
 </div>
 </div>
-<div class="section-level-extent" id="Low_002dlevel-functions-_0028Deprecated_0029">
-<h3 class="section" id="Low_002dlevel-functions-_0028Deprecated_0029-1">3.2 Low-level functions (Deprecated)</h3>
-<a class="index-entry-id" id="index-Low_002dlevel-functions-_0028Deprecated_0029"></a>
-<div class="subsection-level-extent" id="netcdf_005fabort">
-<h4 class="subsection">3.2.1 netcdf_abort</h4>
-<a class="index-entry-id" id="index-netcdf_005fabort"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fabort_0028ncid_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_abort(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Aborts all changes since the last time the dataset entered in define mode.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_reDef.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fclose">
-<h4 class="subsection">3.2.2 netcdf_close</h4>
-<a class="index-entry-id" id="index-netcdf_005fclose"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fclose_0028ncid_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_close(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Close the NetCDF file with the id <var class="var">ncid</var>.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fcopyAtt">
-<h4 class="subsection">3.2.3 netcdf_copyAtt</h4>
-<a class="index-entry-id" id="index-netcdf_005fcopyAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fcopyAtt-1"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_copyAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">ncid_out</var>,<var class="var">varid_out</var>)</code></dt>
-<dd><p>Copies the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var> 
-to the variable <var class="var">varid_out</var> in the data set <var class="var">ncid_out</var>. 
-To copy a global attribute use netcdf_getConstant(&quot;global&quot;) for <var class="var">varid</var> or <var class="var">varid_out</var>.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_getAtt,netcdf_getConstant.
+<div class="section-level-extent" id="Low_002dlevel-functions">
+<h3 class="section" id="Low_002dlevel-functions-1">3.2 Low-level functions</h3>
+<a class="index-entry-id" id="index-Low_002dlevel-functions"></a>
+<hr>
+<div class="subsection-level-extent" id="Low_002dlevel-functions-_002d-Library-Functions">
+<h4 class="subsection" id="Library-Functions">3.2.1 Library Functions</h4>
+<a class="index-entry-id" id="index-Low_002dlevel-functions-_002d-Library-Functions"></a>
+<div class="subsubsection-level-extent" id="netcdf_002egetChunkCache">
+<h4 class="subsubsection">3.2.1.1 netcdf.getChunkCache</h4>
+<a class="index-entry-id" id="index-getChunkCache"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002egetChunkCache_0028_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">size</var>, <var class="var">nelems</var>, <var class="var">preemption</var>] =</code> <strong class="def-name">netcdf.getChunkCache()</strong></dt>
+<dd><p>Gets the default chunk cache settings in the HDF5 library.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_005fcreate">
-<h4 class="subsection">3.2.4 netcdf_create</h4>
-<a class="index-entry-id" id="index-netcdf_005fcreate"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fcreate_0028filename_002cmode_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf_create(<var class="var">filename</var>,<var class="var">mode</var>)</strong></dt>
-<dd><p>Creates the file named <var class="var">filename</var> in the mode <var class="var">mode</var> which can have the 
-following values: 
-&quot;clobber&quot; (overwrite existing files), 
-&quot;noclobber&quot; (prevent to overwrite existing files) 
-&quot;64bit_offset&quot; (use the 64bit-offset format), 
-&quot;netcdf4&quot; (use the NetCDF4, i.e. HDF5 format) or 
-&quot;share&quot; (concurrent reading of the dataset). 
-<var class="var">mode</var> can also be the numeric value return by netcdf_getConstant. In the later-case it can be combined with a bitwise-or. 
-</p></dd></dl>
-<h4 class="subsubheading" id="Example-7">Example</h4>
-<div class="example">
-<pre class="example-preformatted">mode =  bitor(netcdf.getConstant(&quot;classic_model&quot;), ...
-netcdf.getConstant(&quot;netcdf4&quot;)); 
-ncid = netcdf.create(&quot;test.nc&quot;,mode); 
-</pre></div>
-<p><strong class="strong">See also:</strong> netcdf_close.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdefDim">
-<h4 class="subsection">3.2.5 netcdf_defDim</h4>
-<a class="index-entry-id" id="index-netcdf_005fdefDim"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdefDim_0028ncid_002cname_002clen_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf_defDim(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">len</var>)</strong></dt>
-<dd><p>Define the dimension with the name <var class="var">name</var> and the length <var class="var">len</var> in the dataset <var class="var">ncid</var>. The id of the dimension is returned.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defVar.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdefGrp">
-<h4 class="subsection">3.2.6 netcdf_defGrp</h4>
-<a class="index-entry-id" id="index-netcdf_005fdefGrp"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdefGrp_0028ncid_002cname_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">new_ncid</var> =</code> <strong class="def-name">netcdf_defGrp(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Define a group in a NetCDF file.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqGrps.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdefVar">
-<h4 class="subsection">3.2.7 netcdf_defVar</h4>
-<a class="index-entry-id" id="index-netcdf_005fdefVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdefVar_0028ncid_002cname_002cxtype_002cdimids_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf_defVar(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">xtype</var>,<var class="var">dimids</var>)</strong></dt>
-<dd><p>Defines a variable with the name <var class="var">name</var> in the dataset <var class="var">ncid</var>. <var class="var">xtype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf_getConstant. The parameter <var class="var">dimids</var> define the ids of the dimension. For scalar this parameter is the empty array ([]). The variable id is returned. 
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open,netcdf_defDim.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdefVarChunking">
-<h4 class="subsection">3.2.8 netcdf_defVarChunking</h4>
-<a class="index-entry-id" id="index-netcdf_005fdefVarChunking"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdefVarChunking-1"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_defVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">storage</var>,<var class="var">chunkSizes</var>)</code></dt>
-<dd><p>Define the chunking settings of NetCDF variable <var class="var">varid</var>.
-If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.
-If <var class="var">storage</var> is the string &quot;contiguous&quot;, the variable is stored in a contiguous way.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_inqVarChunking.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdefVarDeflate">
-<h4 class="subsection">3.2.9 netcdf_defVarDeflate</h4>
-<a class="index-entry-id" id="index-netcdf_005fdefVarDeflate"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdefVarDeflate-1"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_defVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>)</code></dt>
-<dd><p>Define the compression settings NetCDF variable <var class="var">varid</var>.
-If <var class="var">deflate</var> is true, then the variable is compressed. The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_inqVarDeflate.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdefVarFill">
-<h4 class="subsection">3.2.10 netcdf_defVarFill</h4>
-<a class="index-entry-id" id="index-netcdf_005fdefVarFill"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdefVarFill_0028ncid_002cvarid_002cno_005ffill_002cfillvalue_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_defVarFill(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">no_fill</var>,<var class="var">fillvalue</var>)</strong></dt>
-<dd><p>Define the fill-value settings of the NetCDF variable <var class="var">varid</var>.
-If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_inqVarFill.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdefVarFletcher32">
-<h4 class="subsection">3.2.11 netcdf_defVarFletcher32</h4>
-<a class="index-entry-id" id="index-netcdf_005fdefVarFletcher32"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdefVarFletcher32_0028ncid_002cvarid_002cchecksum_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_defVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">checksum</var>)</strong></dt>
-<dd><p>Defines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;, then fletcher32 checksums will be turned on for this variable. If <var class="var">checksum</var> is &quot;NOCHECKSUM&quot;, then checksums will be disabled. 
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defVar,netcdf_inqVarFletcher32.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdefVlen">
-<h4 class="subsection">3.2.12 netcdf_defVlen</h4>
-<a class="index-entry-id" id="index-netcdf_005fdefVlen"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdefVlen_0028ncid_002ctypename_002cbasetype_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf_defVlen(<var class="var">ncid</var>,<var class="var">typename</var>,<var class="var">basetype</var>)</strong></dt>
-<dd><p>Defines a NC_VLEN variable length array type with the type name <var class="var">typename</var> and a base datatype of <var class="var">basetype</var> in the dataset <var class="var">ncid</var>. <var class="var">basetype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf_getConstant. The new data type id is returned. 
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open,netcdf_defVar, netcdf_inqVlen.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fdelAtt">
-<h4 class="subsection">3.2.13 netcdf_delAtt</h4>
-<a class="index-entry-id" id="index-netcdf_005fdelAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fdelAtt_0028ncid_002cvarid_002cname_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_delAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Deletes the attribute named <var class="var">name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>. 
-To delete a global attribute use netcdf_getConstant(&quot;global&quot;) for <var class="var">varid</var>.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_defAtt,netcdf_getConstant.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fendDef">
-<h4 class="subsection">3.2.14 netcdf_endDef</h4>
-<a class="index-entry-id" id="index-netcdf_005fendDef"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fendDef-1"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_endDef</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
-<dd><p>Leaves define-mode of NetCDF file <var class="var">ncid</var>.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_reDef.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fgetAtt">
-<h4 class="subsection">3.2.15 netcdf_getAtt</h4>
-<a class="index-entry-id" id="index-netcdf_005fgetAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fgetAtt-1"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf_getAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</code></dt>
-<dd><p>Get the value of a NetCDF attribute.
-This function returns the value of the attribute called <var class="var">name</var> of the variable 
-<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be 
-netcdf_getConstant(&quot;global&quot;).
-</p>
-<p><strong class="strong">See also:</strong> netcdf_putAtt.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fgetChunkCache">
-<h4 class="subsection">3.2.16 netcdf_getChunkCache</h4>
-<a class="index-entry-id" id="index-netcdf_005fgetChunkCache"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fgetChunkCache_0028_0029"><span class="category-def">Loadable Function: </span><code class="def-type">[<var class="var">size</var>, <var class="var">nelems</var>, <var class="var">preemption</var>] =</code> <strong class="def-name">netcdf_getChunkCache()</strong></dt>
-<dd><p>Gets the default chunk cache settings in the HDF5 library. 
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_setChunkCache.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fgetConstant">
-<h4 class="subsection">3.2.17 netcdf_getConstant</h4>
-<a class="index-entry-id" id="index-netcdf_005fgetConstant"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fgetConstant_0028name_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf_getConstant(<var class="var">name</var>)</strong></dt>
-<dd><p>Returns the value of a NetCDF constant called <var class="var">name</var>.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_getConstantNames.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fgetConstantNames">
-<h4 class="subsection">3.2.18 netcdf_getConstantNames</h4>
-<a class="index-entry-id" id="index-netcdf_005fgetConstantNames"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fgetConstantNames_0028_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf_getConstantNames()</strong></dt>
-<dd><p>Returns a list of all constant names.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_getConstant.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fgetVar">
-<h4 class="subsection">3.2.19 netcdf_getVar</h4>
-<a class="index-entry-id" id="index-netcdf_005fgetVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fgetVar-1"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf_getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_005fgetVar-2"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf_getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_005fgetVar-3"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf_getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_005fgetVar-4"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf_getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></dt>
-<dd><p>Get the data from a NetCDF variable.
-The data <var class="var">data</var> is loaded from the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>. 
-<var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros), 
-<var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
-and <var class="var">stride</var> is the sampling interval.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_putVar.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finq">
-<h4 class="subsection">3.2.20 netcdf_inq</h4>
-<a class="index-entry-id" id="index-netcdf_005finq"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqLibVers_0028_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">vers</var> =</code> <strong class="def-name">netcdf_inqLibVers()</strong></dt>
+<div class="subsubsection-level-extent" id="netcdf_002einqLibVers">
+<h4 class="subsubsection">3.2.1.2 netcdf.inqLibVers</h4>
+<a class="index-entry-id" id="index-inqLibVers"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqLibVers_0028_0029"><span class="category-def">: </span><code class="def-type"><var class="var">vers</var> =</code> <strong class="def-name">netcdf.inqLibVers()</strong></dt>
 <dd><p>Returns the version of the NetCDF library.
 </p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open.
-</p>
 </div>
-<div class="subsection-level-extent" id="netcdf_005finqAtt">
-<h4 class="subsection">3.2.21 netcdf_inqAtt</h4>
-<a class="index-entry-id" id="index-netcdf_005finqAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqAttName-1"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf_inqAttName</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attnum</var>)</code></dt>
-<dd><p>Get the name of a NetCDF attribute.
-This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable 
-<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be 
-netcdf_getConstant(&quot;global&quot;).
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqAttName.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqAttID">
-<h4 class="subsection">3.2.22 netcdf_inqAttID</h4>
-<a class="index-entry-id" id="index-netcdf_005finqAttID"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqAttID_0028ncid_002cvarid_002cattname_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">attnum</var> =</code> <strong class="def-name">netcdf_inqAttID(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attname</var>)</strong></dt>
-<dd><p>Return the attribute id <var class="var">attnum</var> of the attribute named <var class="var">attname</var> of the variable <var class="var">varid</var> in the dataset <var class="var">ncid</var>. 
-For global attributes <var class="var">varid</var> can be 
-netcdf_getConstant(&quot;global&quot;).
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqAttName.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqAttName">
-<h4 class="subsection">3.2.23 netcdf_inqAttName</h4>
-<a class="index-entry-id" id="index-netcdf_005finqAttName"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqAttName-2"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf_inqAttName</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attnum</var>)</code></dt>
-<dd><p>Get the name of a NetCDF attribute.
-This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable 
-<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be 
-netcdf_getConstant(&quot;global&quot;).
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqAttName.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqDim">
-<h4 class="subsection">3.2.24 netcdf_inqDim</h4>
-<a class="index-entry-id" id="index-netcdf_005finqDim"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqDim_0028ncid_002cdimid_0029"><span class="category-def">Loadable Function: </span><code class="def-type">[<var class="var">name</var>,<var class="var">length</var>] =</code> <strong class="def-name">netcdf_inqDim(<var class="var">ncid</var>,<var class="var">dimid</var>)</strong></dt>
-<dd><p>Returns the name and length of a NetCDF dimension.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqDimID.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqDimID">
-<h4 class="subsection">3.2.25 netcdf_inqDimID</h4>
-<a class="index-entry-id" id="index-netcdf_005finqDimID"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqDimID_0028ncid_002cdimname_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf_inqDimID(<var class="var">ncid</var>,<var class="var">dimname</var>)</strong></dt>
-<dd><p>Return the id of a NetCDF dimension.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqDim.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqDimIDs">
-<h4 class="subsection">3.2.26 netcdf_inqDimIDs</h4>
-<a class="index-entry-id" id="index-netcdf_005finqDimIDs"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqDimID_0028ncid_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf_inqDimID(<var class="var">ncid</var>)</strong></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_005finqDimID_0028ncid_002cinclude_005fparents_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf_inqDimID(<var class="var">ncid</var>,<var class="var">include_parents</var>)</strong></dt>
-<dd><p>Return the dimension ids defined in a NetCDF file.
-If <var class="var">include_parents</var> is 1, the dimension ids of the parent group are also returned.
-Per default this is not the case (<var class="var">include_parents</var> is 0).
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqDim.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqFormat">
-<h4 class="subsection">3.2.27 netcdf_inqFormat</h4>
-<a class="index-entry-id" id="index-netcdf_005finqFormat"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqFormat_0028ncid_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">format</var> =</code> <strong class="def-name">netcdf_inqFormat(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return the NetCDF format of the dataset <var class="var">ncid</var>.
-Format might be one of the following 
-&quot;FORMAT_CLASSIC&quot;, &quot;FORMAT_64BIT&quot;, &quot;FORMAT_NETCDF4&quot; or &quot;FORMAT_NETCDF4_CLASSIC&quot; 
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_inq.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqGrpFullNcid">
-<h4 class="subsection">3.2.28 netcdf_inqGrpFullNcid</h4>
-<a class="index-entry-id" id="index-netcdf_005finqGrpFullNcid"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqGrpFullNcid_0028ncid_002cname_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">grp_ncid</var> =</code> <strong class="def-name">netcdf_inqGrpFullNcid(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Return the group id based on the full group name.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqGrpName.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqGrpName">
-<h4 class="subsection">3.2.29 netcdf_inqGrpName</h4>
-<a class="index-entry-id" id="index-netcdf_005finqGrpName"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqGrpName_0028ncid_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf_inqGrpName(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return group name in a NetCDF file.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqGrps.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqGrpNameFull">
-<h4 class="subsection">3.2.30 netcdf_inqGrpNameFull</h4>
-<a class="index-entry-id" id="index-netcdf_005finqGrpNameFull"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqGrpNameFull_0028ncid_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf_inqGrpNameFull(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return full name of group in NetCDF file.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqGrpName.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqGrpParent">
-<h4 class="subsection">3.2.31 netcdf_inqGrpParent</h4>
-<a class="index-entry-id" id="index-netcdf_005finqGrpParent"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqGrpParent_0028ncid_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">parent_ncid</var> =</code> <strong class="def-name">netcdf_inqGrpParent(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return id of the parent group
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqGrpName.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqGrps">
-<h4 class="subsection">3.2.32 netcdf_inqGrps</h4>
-<a class="index-entry-id" id="index-netcdf_005finqGrps"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqGrps_0028ncid_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">ncids</var> =</code> <strong class="def-name">netcdf_inqGrps(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return all groups ids in a NetCDF file.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqGrps.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqLibVers">
-<h4 class="subsection">3.2.33 netcdf_inqLibVers</h4>
-<a class="index-entry-id" id="index-netcdf_005finqLibVers"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqLibVers_0028_0029-1"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">vers</var> =</code> <strong class="def-name">netcdf_inqLibVers()</strong></dt>
-<dd><p>Returns the version of the NetCDF library.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqNcid">
-<h4 class="subsection">3.2.34 netcdf_inqNcid</h4>
-<a class="index-entry-id" id="index-netcdf_005finqNcid"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqNcid_0028ncid_002cname_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">grp_ncid</var> =</code> <strong class="def-name">netcdf_inqNcid(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Return group id based on its name
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqGrpFullNcid.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqUnlimDims">
-<h4 class="subsection">3.2.35 netcdf_inqUnlimDims</h4>
-<a class="index-entry-id" id="index-netcdf_005finqUnlimDims"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqUnlimDims_0028ncid_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">unlimdimids</var> =</code> <strong class="def-name">netcdf_inqUnlimDims(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return the id of all unlimited dimensions of the NetCDF file <var class="var">ncid</var>.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_inq.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqUserType">
-<h4 class="subsection">3.2.36 netcdf_inqUserType</h4>
-<a class="index-entry-id" id="index-netcdf_005finqUserType"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqUserType_0028ncid_002ctypeid_0029"><span class="category-def">Loadable Function: </span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>, <var class="var">numfields</var>, <var class="var">classid</var>] =</code> <strong class="def-name">netcdf_inqUserType(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong></dt>
-<dd><p>Provide information on a user defined type <var class="var">typeid</var> in the dataset <var class="var">ncid</var>.
-</p>
-<p>The function returns the typename, bytesize, base type id, number of fields and class identifier of the type.
-</p>
-</dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open, netcdf_defVlen, netcdf_inqVlen.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqVar">
-<h4 class="subsection">3.2.37 netcdf_inqVar</h4>
-<a class="index-entry-id" id="index-netcdf_005finqVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqVarFill_0028ncid_002cvarid_0029"><span class="category-def">Loadable Function: </span><code class="def-type">[<var class="var">no_fill</var>,<var class="var">fillvalue</var>] =</code> <strong class="def-name">netcdf_inqVarFill(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
-<dd><p>Determines the fill-value settings of the NetCDF variable <var class="var">varid</var>.
-If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defVarFill.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqVarChunking">
-<h4 class="subsection">3.2.38 netcdf_inqVarChunking</h4>
-<a class="index-entry-id" id="index-netcdf_005finqVarChunking"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqVarChunking-1"><span class="category-def">Loadable Function: </span><code class="def-type">[<var class="var">storage</var>,<var class="var">chunkSizes</var>] =</code> <strong class="def-name">netcdf_inqVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
-<dd><p>Determines the chunking settings of NetCDF variable <var class="var">varid</var>.
-If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.
-If <var class="var">storage</var> is the string &quot;contiguous&quot;, the variable is stored in a contiguous way.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defVarChunking.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqVarDeflate">
-<h4 class="subsection">3.2.39 netcdf_inqVarDeflate</h4>
-<a class="index-entry-id" id="index-netcdf_005finqVarDeflate"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqVarDeflate-1"><span class="category-def">Loadable Function: </span><code class="def-type">[<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>] =</code> <strong class="def-name">netcdf_inqVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
-<dd><p>Determines the compression settings NetCDF variable <var class="var">varid</var>.
-If <var class="var">deflate</var> is true, then the variable is compressed. The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defVarDeflate.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqVarFill">
-<h4 class="subsection">3.2.40 netcdf_inqVarFill</h4>
-<a class="index-entry-id" id="index-netcdf_005finqVarFill"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqVarFill_0028ncid_002cvarid_0029-1"><span class="category-def">Loadable Function: </span><code class="def-type">[<var class="var">no_fill</var>,<var class="var">fillvalue</var>] =</code> <strong class="def-name">netcdf_inqVarFill(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
-<dd><p>Determines the fill-value settings of the NetCDF variable <var class="var">varid</var>.
-If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defVarFill.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqVarFletcher32">
-<h4 class="subsection">3.2.41 netcdf_inqVarFletcher32</h4>
-<a class="index-entry-id" id="index-netcdf_005finqVarFletcher32"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqVarFletcher32_0028ncid_002cvarid_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">checksum</var> =</code> <strong class="def-name">netcdf_inqVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
-<dd><p>Determines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If fletcher32 checksums is turned on for this variable, then <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;. Otherwise it is the string &quot;NOCHECKSUM&quot;. 
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defVar,netcdf_inqVarFletcher32.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqVarID">
-<h4 class="subsection">3.2.42 netcdf_inqVarID</h4>
-<a class="index-entry-id" id="index-netcdf_005finqVarID"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqVarID-1"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf_inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">name</var>)</code></dt>
-<dd><p>Return the id of a variable based on its name.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_defVar,netcdf_inqVarIDs.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqVarIDs">
-<h4 class="subsection">3.2.43 netcdf_inqVarIDs</h4>
-<a class="index-entry-id" id="index-netcdf_005finqVarIDs"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqVarID-2"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">varids</var> =</code> <strong class="def-name">netcdf_inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
-<dd><p>Return all variable ids.
-This functions returns all variable ids in a NetCDF file or NetCDF group.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_inqVarID.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005finqVlen">
-<h4 class="subsection">3.2.44 netcdf_inqVlen</h4>
-<a class="index-entry-id" id="index-netcdf_005finqVlen"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005finqVlen_0028ncid_002ctypeid_0029"><span class="category-def">Loadable Function: </span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>] =</code> <strong class="def-name">netcdf_inqVlen(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong></dt>
-<dd><p>Provide information on a NC_VLEN variable length array type <var class="var">typeid</var> in the dataset <var class="var">ncid</var>.
-</p>
-<p>The function returns the typename, bytesize, and base type id.
-</p>
-</dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open, netcdf_defVlen.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fopen">
-<h4 class="subsection">3.2.45 netcdf_open</h4>
-<a class="index-entry-id" id="index-netcdf_005fopen"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fopen_0028filename_002cmode_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf_open(<var class="var">filename</var>,<var class="var">mode</var>)</strong></dt>
-<dd><p>Opens the file named <var class="var">filename</var> in the mode <var class="var">mode</var>.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_close.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fputAtt">
-<h4 class="subsection">3.2.46 netcdf_putAtt</h4>
-<a class="index-entry-id" id="index-netcdf_005fputAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fputAtt-1"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_putAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">data</var>)</code></dt>
-<dd><p>Defines a NetCDF attribute.
-This function defines the attribute called <var class="var">name</var> of the variable 
-<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. The value of the attribute will be <var class="var">data</var>. 
-For global attributes <var class="var">varid</var> can be 
-netcdf_getConstant(&quot;global&quot;).
-</p>
-<p><strong class="strong">See also:</strong> netcdf_getAtt.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fputVar">
-<h4 class="subsection">3.2.47 netcdf_putVar</h4>
-<a class="index-entry-id" id="index-netcdf_005fputVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fputVar-1"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">data</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_005fputVar-2"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">data</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_005fputVar-3"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">data</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_005fputVar-4"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>,<var class="var">data</var>)</code></dt>
-<dd><p>Put data in a NetCDF variable.
-The data <var class="var">data</var> is stored in the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>. 
-<var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros), 
-<var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
-and <var class="var">stride</var> is the sampling interval.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_endDef.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005freDef">
-<h4 class="subsection">3.2.48 netcdf_reDef</h4>
-<a class="index-entry-id" id="index-netcdf_005freDef"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005freDef-1"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_reDef</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
-<dd><p>Enter define-mode of NetCDF file <var class="var">ncid</var>.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_endDef.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005frenameAtt">
-<h4 class="subsection">3.2.49 netcdf_renameAtt</h4>
-<a class="index-entry-id" id="index-netcdf_005frenameAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005frenameAtt_0028ncid_002cvarid_002cold_005fname_002cnew_005fname_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_renameAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">old_name</var>,<var class="var">new_name</var>)</strong></dt>
-<dd><p>Renames the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>. <var class="var">new_name</var> is the new name of the attribute.
-To rename a global attribute use netcdf_getConstant(&quot;global&quot;) for <var class="var">varid</var>.
-</p>
-<p><strong class="strong">See also:</strong> netcdf_copyAtt,netcdf_getConstant.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_005frenameDim">
-<h4 class="subsection">3.2.50 netcdf_renameDim</h4>
-<a class="index-entry-id" id="index-netcdf_005frenameDim"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005frenameDim_0028ncid_002cdimid_002cname_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_renameDim(<var class="var">ncid</var>,<var class="var">dimid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Renames the dimension with the id <var class="var">dimid</var> in the data set <var class="var">ncid</var>. <var class="var">name</var> is the new name of the dimension.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defDim.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005frenameVar">
-<h4 class="subsection">3.2.51 netcdf_renameVar</h4>
-<a class="index-entry-id" id="index-netcdf_005frenameVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005frenameVar_0028ncid_002cvarid_002cname_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_renameVar(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Renames the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. <var class="var">name</var> is the new name of the variable.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_defVar.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fsetChunkCache">
-<h4 class="subsection">3.2.52 netcdf_setChunkCache</h4>
-<a class="index-entry-id" id="index-netcdf_005fsetChunkCache"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fsetChunkCache_0028size_002c"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_setChunkCache(<var class="var">size</var>,</strong> <code class="def-code-arguments"><var class="var">nelems</var>, <var class="var">preemption</var>)</code></dt>
+<div class="subsubsection-level-extent" id="netcdf_002esetChunkCache">
+<h4 class="subsubsection">3.2.1.3 netcdf.setChunkCache</h4>
+<a class="index-entry-id" id="index-setChunkCache"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002esetChunkCache_0028size_002c"><span class="category-def">: </span><strong class="def-name">netcdf.setChunkCache(<var class="var">size</var>,</strong> <code class="def-code-arguments"><var class="var">nelems</var>, <var class="var">preemption</var>)</code></dt>
 <dd><p>Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.
 </p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_getChunkCache.
-</p>
 </div>
-<div class="subsection-level-extent" id="netcdf_005fsetDefaultFormat">
-<h4 class="subsection">3.2.53 netcdf_setDefaultFormat</h4>
-<a class="index-entry-id" id="index-netcdf_005fsetDefaultFormat"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fsetDefaultFormat_0028format_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">old_format</var> =</code> <strong class="def-name">netcdf_setDefaultFormat(<var class="var">format</var>)</strong></dt>
-<dd><p>Sets the default format of the NetCDF library and returns the previous default format (as a numeric value). <var class="var">format</var> can be 
-&quot;format_classic&quot;, &quot;format_64bit&quot;,  &quot;format_netcdf4&quot; or &quot;format_netcdf4_classic&quot;. 
+<div class="subsubsection-level-extent" id="netcdf_002esetDefaultFormat">
+<h4 class="subsubsection">3.2.1.4 netcdf.setDefaultFormat</h4>
+<a class="index-entry-id" id="index-setDefaultFormat"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002esetDefaultFormat_0028format_0029"><span class="category-def">: </span><code class="def-type"><var class="var">old_format</var> =</code> <strong class="def-name">netcdf.setDefaultFormat(<var class="var">format</var>)</strong></dt>
+<dd><p>Sets the default format of the NetCDF library and returns the previous default format (as a numeric value). <var class="var">format</var> can be
+ &quot;format_classic&quot;, &quot;format_64bit&quot;, &quot;format_netcdf4&quot; or &quot;format_netcdf4_classic&quot;.
 </p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fsetFill">
-<h4 class="subsection">3.2.54 netcdf_setFill</h4>
-<a class="index-entry-id" id="index-netcdf_005fsetFill"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fsetFill_0028ncid_002cfillmode_0029"><span class="category-def">Loadable Function: </span><code class="def-type"><var class="var">old_mode</var> =</code> <strong class="def-name">netcdf_setFill(<var class="var">ncid</var>,<var class="var">fillmode</var>)</strong></dt>
-<dd><p>Change the fill mode (<var class="var">fillmode</var>) of the data set <var class="var">ncid</var>. The previous value of the fill mode is returned. <var class="var">fillmode</var> can be either &quot;fill&quot; or &quot;nofill&quot;.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_open.
-</p>
-</div>
-<div class="subsection-level-extent" id="netcdf_005fsync">
-<h4 class="subsection">3.2.55 netcdf_sync</h4>
-<a class="index-entry-id" id="index-netcdf_005fsync"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_005fsync_0028ncid_0029"><span class="category-def">Loadable Function: </span><strong class="def-name">netcdf_sync(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Writes all changes to the disk and leaves the file open.
-</p></dd></dl>
-<p><strong class="strong">See also:</strong> netcdf_close.
-</p>
 <hr>
 </div>
 </div>
-<div class="section-level-extent" id="Low_002dlevel-functions">
-<h3 class="section" id="Low_002dlevel-functions-1">3.3 Low-level functions</h3>
-<a class="index-entry-id" id="index-Low_002dlevel-functions"></a>
-<div class="subsection-level-extent" id="netcdf_002eabort">
-<h4 class="subsection">3.3.1 netcdf.abort</h4>
+<div class="subsection-level-extent" id="Low_002dlevel-functions-_002d-File-Operations">
+<h4 class="subsection" id="File-Operations">3.2.2 File Operations</h4>
+<a class="index-entry-id" id="index-Low_002dlevel-functions-_002d-File-Operations"></a>
+<div class="subsubsection-level-extent" id="netcdf_002eabort">
+<h4 class="subsubsection">3.2.2.1 netcdf.abort</h4>
 <a class="index-entry-id" id="index-abort"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002eabort_0028ncid_0029"><span class="category-def">: </span><strong class="def-name">netcdf.abort(<var class="var">ncid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002eabort_0028ncid_0029"><span class="category-def">: </span><strong class="def-name">netcdf.abort(<var class="var">ncid</var>)</strong></dt>
 <dd><p>Aborts all changes since the last time the dataset entered in define mode.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002eclose">
-<h4 class="subsection">3.3.2 netcdf.close</h4>
+<div class="subsubsection-level-extent" id="netcdf_002eclose">
+<h4 class="subsubsection">3.2.2.2 netcdf.close</h4>
 <a class="index-entry-id" id="index-close"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002eclose_0028ncid_0029"><span class="category-def">: </span><strong class="def-name">netcdf.close(<var class="var">ncid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002eclose_0028ncid_0029"><span class="category-def">: </span><strong class="def-name">netcdf.close(<var class="var">ncid</var>)</strong></dt>
 <dd><p>Close the NetCDF file with the id <var class="var">ncid</var>.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002ecopyAtt">
-<h4 class="subsection">3.3.3 netcdf.copyAtt</h4>
-<a class="index-entry-id" id="index-copyAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002ecopyAtt"><span class="category-def">: </span><strong class="def-name">netcdf.copyAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">ncid_out</var>,<var class="var">varid_out</var>)</code></dt>
-<dd><p>Copies the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>
- to the variable <var class="var">varid_out</var> in the data set <var class="var">ncid_out</var>.
- To copy a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var> or <var class="var">varid_out</var>.
-</p>
-<p><strong class="strong">See also:</strong> netcdf.getAtt,netcdf.getConstant.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002ecreate">
-<h4 class="subsection">3.3.4 netcdf.create</h4>
+<div class="subsubsection-level-extent" id="netcdf_002ecreate">
+<h4 class="subsubsection">3.2.2.3 netcdf.create</h4>
 <a class="index-entry-id" id="index-create"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002ecreate_0028filename_002cmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.create(<var class="var">filename</var>,<var class="var">mode</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002ecreate_0028filename_002cmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.create(<var class="var">filename</var>,<var class="var">mode</var>)</strong></dt>
 <dd><p>Creates the file named <var class="var">filename</var> in the mode <var class="var">mode</var> which can have the
  following values:
  &quot;clobber&quot; (overwrite existing files),
@@ -1251,227 +617,153 @@ To rename a global attribute use netcdf_getConstant(&quot;global&quot;) for <var
  &quot;share&quot; (concurrent reading of the dataset).
 <var class="var">mode</var> can also be the numeric value return by netcdf.getConstant. In the later-case it can be combined with a bitwise-or.
 </p></dd></dl>
-<h4 class="subsubheading" id="Example-8">Example</h4>
+<h4 class="subsubheading" id="Example-7">Example</h4>
 <div class="example">
 <pre class="example-preformatted"> mode = bitor(netcdf.getConstant(&quot;classic_model&quot;), ...
  netcdf.getConstant(&quot;netcdf4&quot;));
  ncid = netcdf.create(&quot;test.nc&quot;,mode);
 </pre></div>
 </div>
-<div class="subsection-level-extent" id="netcdf_002edefDim">
-<h4 class="subsection">3.3.5 netcdf.defDim</h4>
-<a class="index-entry-id" id="index-defDim"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edefDim_0028ncid_002cname_002clen_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf.defDim(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">len</var>)</strong></dt>
-<dd><p>Define the dimension with the name <var class="var">name</var> and the length <var class="var">len</var> in the dataset <var class="var">ncid</var>. The id of the dimension is returned.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002edefGrp">
-<h4 class="subsection">3.3.6 netcdf.defGrp</h4>
-<a class="index-entry-id" id="index-defGrp"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edefGrp_0028ncid_002cname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">new_ncid</var> =</code> <strong class="def-name">netcdf.defGrp(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Define a group in a NetCDF file.
-</p>
-<p><strong class="strong">See also:</strong> netcdf.inqGrps.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002edefVar">
-<h4 class="subsection">3.3.7 netcdf.defVar</h4>
-<a class="index-entry-id" id="index-defVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edefVar_0028ncid_002cname_002cxtype_002cdimids_0029"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVar(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">xtype</var>,<var class="var">dimids</var>)</strong></dt>
-<dd><p>Defines a variable with the name <var class="var">name</var> in the dataset <var class="var">ncid</var>. <var class="var">xtype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The parameter <var class="var">dimids</var> define the ids of the dimension. For scalar this parameter is the empty array ([]). The variable id is returned.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002edefVarChunking">
-<h4 class="subsection">3.3.8 netcdf.defVarChunking</h4>
-<a class="index-entry-id" id="index-defVarChunking"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edefVarChunking"><span class="category-def">: </span><strong class="def-name">netcdf.defVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">storage</var>,<var class="var">chunkSizes</var>)</code></dt>
-<dd><p>Define the chunking settings of NetCDF variable <var class="var">varid</var>.
- If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.
- If <var class="var">storage</var> is the string &quot;contiguous&quot;, the variable is stored in a contiguous way.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002edefVarDeflate">
-<h4 class="subsection">3.3.9 netcdf.defVarDeflate</h4>
-<a class="index-entry-id" id="index-defVarDeflate"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edefVarDeflate"><span class="category-def">: </span><strong class="def-name">netcdf.defVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>)</code></dt>
-<dd><p>Define the compression settings NetCDF variable <var class="var">varid</var>.
- If <var class="var">deflate</var> is true, then the variable is compressed. The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002edefVarFill">
-<h4 class="subsection">3.3.10 netcdf.defVarFill</h4>
-<a class="index-entry-id" id="index-defVarFill"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edefVarFill_0028ncid_002cvarid_002cno_005ffill_002cfillvalue_0029"><span class="category-def">: </span><strong class="def-name">netcdf.defVarFill(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">no_fill</var>,<var class="var">fillvalue</var>)</strong></dt>
-<dd><p>Define the fill-value settings of the NetCDF variable <var class="var">varid</var>.
- If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002edefVarFletcher32">
-<h4 class="subsection">3.3.11 netcdf.defVarFletcher32</h4>
-<a class="index-entry-id" id="index-defVarFletcher32"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edefVarFletcher32_0028ncid_002cvarid_002cchecksum_0029"><span class="category-def">: </span><strong class="def-name">netcdf.defVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">checksum</var>)</strong></dt>
-<dd><p>Defines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;, then fletcher32 checksums will be turned on for this variable. If <var class="var">checksum</var> is &quot;NOCHECKSUM&quot;, then checksums will be disabled.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002edefVlen">
-<h4 class="subsection">3.3.12 netcdf.defVlen</h4>
-<a class="index-entry-id" id="index-defVlen"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edefVlen_0028ncid_002ctypename_002cbasetype_0029"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVlen(<var class="var">ncid</var>,<var class="var">typename</var>,<var class="var">basetype</var>)</strong></dt>
-<dd><p>Defines a NC_VLEN variable length array type with the type name <var class="var">typename</var> and a base datatype of <var class="var">basetype</var> in the dataset <var class="var">ncid</var>. <var class="var">basetype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The new data type id is returned.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002edelAtt">
-<h4 class="subsection">3.3.13 netcdf.delAtt</h4>
-<a class="index-entry-id" id="index-delAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002edelAtt_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.delAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Deletes the attribute named <var class="var">name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>.
- To delete a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
-</p>
-<p><strong class="strong">See also:</strong> netcdf.defAtt,netcdf.getConstant.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002eendDef">
-<h4 class="subsection">3.3.14 netcdf.endDef</h4>
+<div class="subsubsection-level-extent" id="netcdf_002eendDef">
+<h4 class="subsubsection">3.2.2.4 netcdf.endDef</h4>
 <a class="index-entry-id" id="index-endDef"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002eendDef"><span class="category-def">: </span><strong class="def-name">netcdf.endDef</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002eendDef"><span class="category-def">: </span><strong class="def-name">netcdf.endDef</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
 <dd><p>Leaves define-mode of NetCDF file <var class="var">ncid</var>.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002egetAtt">
-<h4 class="subsection">3.3.15 netcdf.getAtt</h4>
-<a class="index-entry-id" id="index-getAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002egetAtt"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</code></dt>
-<dd><p>Get the value of a NetCDF attribute.
- This function returns the value of the attribute called <var class="var">name</var> of the variable
-<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be
- netcdf.getConstant(&quot;global&quot;).
-</p>
-<p><strong class="strong">See also:</strong> netcdf.putAtt.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002egetChunkCache">
-<h4 class="subsection">3.3.16 netcdf.getChunkCache</h4>
-<a class="index-entry-id" id="index-getChunkCache"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002egetChunkCache_0028_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">size</var>, <var class="var">nelems</var>, <var class="var">preemption</var>] =</code> <strong class="def-name">netcdf.getChunkCache()</strong></dt>
-<dd><p>Gets the default chunk cache settings in the HDF5 library.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002egetConstant">
-<h4 class="subsection">3.3.17 netcdf.getConstant</h4>
-<a class="index-entry-id" id="index-getConstant"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002egetConstant_0028name_0029"><span class="category-def">: </span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf.getConstant(<var class="var">name</var>)</strong></dt>
-<dd><p>Returns the value of a NetCDF constant called <var class="var">name</var>.
-</p>
-<p><strong class="strong">See also:</strong> netcdf.getConstantNames.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002egetConstantNames">
-<h4 class="subsection">3.3.18 netcdf.getConstantNames</h4>
-<a class="index-entry-id" id="index-getConstantNames"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002egetConstantNames_0028_0029"><span class="category-def">: </span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf.getConstantNames()</strong></dt>
-<dd><p>Returns a list of all constant names.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002egetVar">
-<h4 class="subsection">3.3.19 netcdf.getVar</h4>
-<a class="index-entry-id" id="index-getVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002egetVar"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_002egetVar-1"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_002egetVar-2"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_002egetVar-3"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></dt>
-<dd><p>Get the data from a NetCDF variable.
- The data <var class="var">data</var> is loaded from the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>.
-<var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros),
-<var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
- and <var class="var">stride</var> is the sampling interval.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002einq">
-<h4 class="subsection">3.3.20 netcdf.inq</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einq">
+<h4 class="subsubsection">3.2.2.5 netcdf.inq</h4>
 <a class="index-entry-id" id="index-inq"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einq_0028ncid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">ndims</var>,<var class="var">nvars</var>,<var class="var">ngatts</var>,<var class="var">unlimdimid</var>] =</code> <strong class="def-name">netcdf.inq(<var class="var">ncid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einq_0028ncid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">ndims</var>,<var class="var">nvars</var>,<var class="var">ngatts</var>,<var class="var">unlimdimid</var>] =</code> <strong class="def-name">netcdf.inq(<var class="var">ncid</var>)</strong></dt>
 <dd><p>Return the number of dimension (<var class="var">ndims</var>), the number of variables (<var class="var">nvars</var>), the number of global attributes (<var class="var">ngatts</var>) and the id of the unlimited dimension (<var class="var">unlimdimid</var>).
  If no unlimited dimension is declared -1 is returned. For NetCDF4 files, one should use
  the function netcdf.inqUnlimDims as multiple unlimite dimension exists.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqAtt">
-<h4 class="subsection">3.3.21 netcdf.inqAtt</h4>
-<a class="index-entry-id" id="index-inqAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqAtt_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">xtype</var>,<var class="var">len</var>] =</code> <strong class="def-name">netcdf.inqAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Get attribute type and length.
-</p>
-<p><strong class="strong">See also:</strong> netcdf.inqAttName.
+<div class="subsubsection-level-extent" id="netcdf_002einqFormat">
+<h4 class="subsubsection">3.2.2.6 netcdf.inqFormat</h4>
+<a class="index-entry-id" id="index-inqFormat"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqFormat_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">format</var> =</code> <strong class="def-name">netcdf.inqFormat(<var class="var">ncid</var>)</strong></dt>
+<dd><p>Return the NetCDF format of the dataset <var class="var">ncid</var>.
+ Format might be one of the following
+ &quot;FORMAT_CLASSIC&quot;, &quot;FORMAT_64BIT&quot;, &quot;FORMAT_NETCDF4&quot; or &quot;FORMAT_NETCDF4_CLASSIC&quot;
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqAttID">
-<h4 class="subsection">3.3.22 netcdf.inqAttID</h4>
-<a class="index-entry-id" id="index-inqAttID"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqAttID_0028ncid_002cvarid_002cattname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">attnum</var> =</code> <strong class="def-name">netcdf.inqAttID(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attname</var>)</strong></dt>
-<dd><p>Return the attribute id <var class="var">attnum</var> of the attribute named <var class="var">attname</var> of the variable <var class="var">varid</var> in the dataset <var class="var">ncid</var>.
- For global attributes <var class="var">varid</var> can be
- netcdf.getConstant(&quot;global&quot;).
+<div class="subsubsection-level-extent" id="netcdf_002einqGrps">
+<h4 class="subsubsection">3.2.2.7 netcdf.inqGrps</h4>
+<a class="index-entry-id" id="index-inqGrps"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqGrps_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">ncids</var> =</code> <strong class="def-name">netcdf.inqGrps(<var class="var">ncid</var>)</strong></dt>
+<dd><p>Return all groups ids in a NetCDF file.
 </p>
-<p><strong class="strong">See also:</strong> netcdf.inqAttName.
+<p><strong class="strong">See also:</strong> netcdf.inqGrps.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqAttName">
-<h4 class="subsection">3.3.23 netcdf.inqAttName</h4>
-<a class="index-entry-id" id="index-inqAttName"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqAttName"><span class="category-def">: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqAttName</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attnum</var>)</code></dt>
-<dd><p>Get the name of a NetCDF attribute.
- This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable
-<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be
- netcdf.getConstant(&quot;global&quot;).
-</p>
-<p><strong class="strong">See also:</strong> netcdf.inqAttName.
+<div class="subsubsection-level-extent" id="netcdf_002einqUnlimDims">
+<h4 class="subsubsection">3.2.2.8 netcdf.inqUnlimDims</h4>
+<a class="index-entry-id" id="index-inqUnlimDims"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqUnlimDims_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">unlimdimids</var> =</code> <strong class="def-name">netcdf.inqUnlimDims(<var class="var">ncid</var>)</strong></dt>
+<dd><p>Return the id of all unlimited dimensions of the NetCDF file <var class="var">ncid</var>.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqDim">
-<h4 class="subsection">3.3.24 netcdf.inqDim</h4>
+<div class="subsubsection-level-extent" id="netcdf_002eopen">
+<h4 class="subsubsection">3.2.2.9 netcdf.open</h4>
+<a class="index-entry-id" id="index-open"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002eopen_0028filename_002cmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.open(<var class="var">filename</var>,<var class="var">mode</var>)</strong></dt>
+<dd><p>Opens the file named <var class="var">filename</var> in the mode <var class="var">mode</var>.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002ereDef">
+<h4 class="subsubsection">3.2.2.10 netcdf.reDef</h4>
+<a class="index-entry-id" id="index-reDef"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002ereDef"><span class="category-def">: </span><strong class="def-name">netcdf.reDef</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
+<dd><p>Enter define-mode of NetCDF file <var class="var">ncid</var>.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002esetFill">
+<h4 class="subsubsection">3.2.2.11 netcdf.setFill</h4>
+<a class="index-entry-id" id="index-setFill"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002esetFill_0028ncid_002cfillmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">old_mode</var> =</code> <strong class="def-name">netcdf.setFill(<var class="var">ncid</var>,<var class="var">fillmode</var>)</strong></dt>
+<dd><p>Change the fill mode (<var class="var">fillmode</var>) of the data set <var class="var">ncid</var>. The previous value of the fill mode is returned. <var class="var">fillmode</var> can be either &quot;fill&quot; or &quot;nofill&quot;.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002esync">
+<h4 class="subsubsection">3.2.2.12 netcdf.sync</h4>
+<a class="index-entry-id" id="index-sync"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002esync_0028ncid_0029"><span class="category-def">: </span><strong class="def-name">netcdf.sync(<var class="var">ncid</var>)</strong></dt>
+<dd><p>Writes all changes to the disk and leaves the file open.
+</p></dd></dl>
+<hr>
+</div>
+</div>
+<div class="subsection-level-extent" id="Low_002dlevel-functions-_002d-Dimensions">
+<h4 class="subsection" id="Dimensions">3.2.3 Dimensions</h4>
+<a class="index-entry-id" id="index-Low_002dlevel-functions-_002d-Dimensions"></a>
+<div class="subsubsection-level-extent" id="netcdf_002edefDim">
+<h4 class="subsubsection">3.2.3.1 netcdf.defDim</h4>
+<a class="index-entry-id" id="index-defDim"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edefDim_0028ncid_002cname_002clen_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf.defDim(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">len</var>)</strong></dt>
+<dd><p>Define the dimension with the name <var class="var">name</var> and the length <var class="var">len</var> in the dataset <var class="var">ncid</var>. The id of the dimension is returned.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002einqDim">
+<h4 class="subsubsection">3.2.3.2 netcdf.inqDim</h4>
 <a class="index-entry-id" id="index-inqDim"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqDim_0028ncid_002cdimid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">name</var>,<var class="var">length</var>] =</code> <strong class="def-name">netcdf.inqDim(<var class="var">ncid</var>,<var class="var">dimid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqDim_0028ncid_002cdimid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">name</var>,<var class="var">length</var>] =</code> <strong class="def-name">netcdf.inqDim(<var class="var">ncid</var>,<var class="var">dimid</var>)</strong></dt>
 <dd><p>Returns the name and length of a NetCDF dimension.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqDimID.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqDimID">
-<h4 class="subsection">3.3.25 netcdf.inqDimID</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqDimID">
+<h4 class="subsubsection">3.2.3.3 netcdf.inqDimID</h4>
 <a class="index-entry-id" id="index-inqDimID"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqDimID_0028ncid_002cdimname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>,<var class="var">dimname</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqDimID_0028ncid_002cdimname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>,<var class="var">dimname</var>)</strong></dt>
 <dd><p>Return the id of a NetCDF dimension.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqDim.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqDimIDs">
-<h4 class="subsection">3.3.26 netcdf.inqDimIDs</h4>
+<div class="subsubsection-level-extent" id="netcdf_002erenameDim">
+<h4 class="subsubsection">3.2.3.4 netcdf.renameDim</h4>
+<a class="index-entry-id" id="index-renameDim"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002erenameDim_0028ncid_002cdimid_002cname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.renameDim(<var class="var">ncid</var>,<var class="var">dimid</var>,<var class="var">name</var>)</strong></dt>
+<dd><p>Renames the dimension with the id <var class="var">dimid</var> in the data set <var class="var">ncid</var>. <var class="var">name</var> is the new name of the dimension.
+</p></dd></dl>
+<hr>
+</div>
+</div>
+<div class="subsection-level-extent" id="Low_002dlevel-functions-_002d-Groups">
+<h4 class="subsection" id="Groups">3.2.4 Groups</h4>
+<a class="index-entry-id" id="index-Low_002dlevel-functions-_002d-Groups"></a>
+<div class="subsubsection-level-extent" id="netcdf_002edefGrp">
+<h4 class="subsubsection">3.2.4.1 netcdf.defGrp</h4>
+<a class="index-entry-id" id="index-defGrp"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edefGrp_0028ncid_002cname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">new_ncid</var> =</code> <strong class="def-name">netcdf.defGrp(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
+<dd><p>Define a group in a NetCDF file.
+</p>
+<p><strong class="strong">See also:</strong> netcdf.inqGrps.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002einqDimIDs">
+<h4 class="subsubsection">3.2.4.2 netcdf.inqDimIDs</h4>
 <a class="index-entry-id" id="index-inqDimIDs"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqDimID_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>)</strong></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_002einqDimID_0028ncid_002cinclude_005fparents_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>,<var class="var">include_parents</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqDimID_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>)</strong></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002einqDimID_0028ncid_002cinclude_005fparents_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>,<var class="var">include_parents</var>)</strong></dt>
 <dd><p>Return the dimension ids defined in a NetCDF file.
  If <var class="var">include_parents</var> is 1, the dimension ids of the parent group are also returned.
  Per default this is not the case (<var class="var">include_parents</var> is 0).
@@ -1479,108 +771,136 @@ To rename a global attribute use netcdf_getConstant(&quot;global&quot;) for <var
 <p><strong class="strong">See also:</strong> netcdf.inqDim.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqFormat">
-<h4 class="subsection">3.3.27 netcdf.inqFormat</h4>
-<a class="index-entry-id" id="index-inqFormat"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqFormat_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">format</var> =</code> <strong class="def-name">netcdf.inqFormat(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return the NetCDF format of the dataset <var class="var">ncid</var>.
- Format might be one of the following
- &quot;FORMAT_CLASSIC&quot;, &quot;FORMAT_64BIT&quot;, &quot;FORMAT_NETCDF4&quot; or &quot;FORMAT_NETCDF4_CLASSIC&quot;
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002einqGrpFullNcid">
-<h4 class="subsection">3.3.28 netcdf.inqGrpFullNcid</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqGrpFullNcid">
+<h4 class="subsubsection">3.2.4.3 netcdf.inqGrpFullNcid</h4>
 <a class="index-entry-id" id="index-inqGrpFullNcid"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqGrpFullNcid_0028ncid_002cname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">grp_ncid</var> =</code> <strong class="def-name">netcdf.inqGrpFullNcid(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqGrpFullNcid_0028ncid_002cname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">grp_ncid</var> =</code> <strong class="def-name">netcdf.inqGrpFullNcid(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
 <dd><p>Return the group id based on the full group name.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqGrpName.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqGrpName">
-<h4 class="subsection">3.3.29 netcdf.inqGrpName</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqGrpName">
+<h4 class="subsubsection">3.2.4.4 netcdf.inqGrpName</h4>
 <a class="index-entry-id" id="index-inqGrpName"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqGrpName_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqGrpName(<var class="var">ncid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqGrpName_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqGrpName(<var class="var">ncid</var>)</strong></dt>
 <dd><p>Return group name in a NetCDF file.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqGrps.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqGrpNameFull">
-<h4 class="subsection">3.3.30 netcdf.inqGrpNameFull</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqGrpNameFull">
+<h4 class="subsubsection">3.2.4.5 netcdf.inqGrpNameFull</h4>
 <a class="index-entry-id" id="index-inqGrpNameFull"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqGrpNameFull_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqGrpNameFull(<var class="var">ncid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqGrpNameFull_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqGrpNameFull(<var class="var">ncid</var>)</strong></dt>
 <dd><p>Return full name of group in NetCDF file.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqGrpName.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqGrpParent">
-<h4 class="subsection">3.3.31 netcdf.inqGrpParent</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqGrpParent">
+<h4 class="subsubsection">3.2.4.6 netcdf.inqGrpParent</h4>
 <a class="index-entry-id" id="index-inqGrpParent"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqGrpParent_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">parent_ncid</var> =</code> <strong class="def-name">netcdf.inqGrpParent(<var class="var">ncid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqGrpParent_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">parent_ncid</var> =</code> <strong class="def-name">netcdf.inqGrpParent(<var class="var">ncid</var>)</strong></dt>
 <dd><p>Return id of the parent group
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqGrpName.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqGrps">
-<h4 class="subsection">3.3.32 netcdf.inqGrps</h4>
-<a class="index-entry-id" id="index-inqGrps"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqGrps_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">ncids</var> =</code> <strong class="def-name">netcdf.inqGrps(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return all groups ids in a NetCDF file.
-</p>
-<p><strong class="strong">See also:</strong> netcdf.inqGrps.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002einqLibVers">
-<h4 class="subsection">3.3.33 netcdf.inqLibVers</h4>
-<a class="index-entry-id" id="index-inqLibVers"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqLibVers_0028_0029"><span class="category-def">: </span><code class="def-type"><var class="var">vers</var> =</code> <strong class="def-name">netcdf.inqLibVers()</strong></dt>
-<dd><p>Returns the version of the NetCDF library.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002einqNcid">
-<h4 class="subsection">3.3.34 netcdf.inqNcid</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqNcid">
+<h4 class="subsubsection">3.2.4.7 netcdf.inqNcid</h4>
 <a class="index-entry-id" id="index-inqNcid"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqNcid_0028ncid_002cname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">grp_ncid</var> =</code> <strong class="def-name">netcdf.inqNcid(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqNcid_0028ncid_002cname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">grp_ncid</var> =</code> <strong class="def-name">netcdf.inqNcid(<var class="var">ncid</var>,<var class="var">name</var>)</strong></dt>
 <dd><p>Return group id based on its name
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqGrpFullNcid.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqUnlimDims">
-<h4 class="subsection">3.3.35 netcdf.inqUnlimDims</h4>
-<a class="index-entry-id" id="index-inqUnlimDims"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqUnlimDims_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">unlimdimids</var> =</code> <strong class="def-name">netcdf.inqUnlimDims(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return the id of all unlimited dimensions of the NetCDF file <var class="var">ncid</var>.
+<div class="subsubsection-level-extent" id="netcdf_002einqVarIDs">
+<h4 class="subsubsection">3.2.4.8 netcdf.inqVarIDs</h4>
+<a class="index-entry-id" id="index-inqVarIDs"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarID"><span class="category-def">: </span><code class="def-type"><var class="var">varids</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
+<dd><p>Return all variable ids.
+ This functions returns all variable ids in a NetCDF file or NetCDF group.
+</p>
+<p><strong class="strong">See also:</strong> netcdf.inqVarID.
+</p></dd></dl>
+<hr>
+</div>
+</div>
+<div class="subsection-level-extent" id="Low_002dlevel-functions-_002d-Variables">
+<h4 class="subsection" id="Variables">3.2.5 Variables</h4>
+<a class="index-entry-id" id="index-Low_002dlevel-functions-_002d-Variables"></a>
+<div class="subsubsection-level-extent" id="netcdf_002edefVar">
+<h4 class="subsubsection">3.2.5.1 netcdf.defVar</h4>
+<a class="index-entry-id" id="index-defVar"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edefVar_0028ncid_002cname_002cxtype_002cdimids_0029"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVar(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">xtype</var>,<var class="var">dimids</var>)</strong></dt>
+<dd><p>Defines a variable with the name <var class="var">name</var> in the dataset <var class="var">ncid</var>. <var class="var">xtype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The parameter <var class="var">dimids</var> define the ids of the dimension. For scalar this parameter is the empty array ([]). The variable id is returned.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqUserType">
-<h4 class="subsection">3.3.36 netcdf.inqUserType</h4>
-<a class="index-entry-id" id="index-inqUserType"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqUserType_0028ncid_002ctypeid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>, <var class="var">numfields</var>, <var class="var">classid</var>] =</code> <strong class="def-name">netcdf.inqUserType(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong></dt>
-<dd><p>Provide information on a user defined type <var class="var">typeid</var> in the dataset <var class="var">ncid</var>.
-</p>
-<p>The function returns the typename, bytesize, base type id, number of fields and class identifier of the type.
-</p>
-</dd></dl>
+<div class="subsubsection-level-extent" id="netcdf_002edefVarChunking">
+<h4 class="subsubsection">3.2.5.2 netcdf.defVarChunking</h4>
+<a class="index-entry-id" id="index-defVarChunking"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edefVarChunking"><span class="category-def">: </span><strong class="def-name">netcdf.defVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">storage</var>,<var class="var">chunkSizes</var>)</code></dt>
+<dd><p>Define the chunking settings of NetCDF variable <var class="var">varid</var>.
+ If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.
+ If <var class="var">storage</var> is the string &quot;contiguous&quot;, the variable is stored in a contiguous way.
+</p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqVar">
-<h4 class="subsection">3.3.37 netcdf.inqVar</h4>
+<div class="subsubsection-level-extent" id="netcdf_002edefVarDeflate">
+<h4 class="subsubsection">3.2.5.3 netcdf.defVarDeflate</h4>
+<a class="index-entry-id" id="index-defVarDeflate"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edefVarDeflate"><span class="category-def">: </span><strong class="def-name">netcdf.defVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>)</code></dt>
+<dd><p>Define the compression settings NetCDF variable <var class="var">varid</var>.
+ If <var class="var">deflate</var> is true, then the variable is compressed. The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002edefVarFill">
+<h4 class="subsubsection">3.2.5.4 netcdf.defVarFill</h4>
+<a class="index-entry-id" id="index-defVarFill"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edefVarFill_0028ncid_002cvarid_002cno_005ffill_002cfillvalue_0029"><span class="category-def">: </span><strong class="def-name">netcdf.defVarFill(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">no_fill</var>,<var class="var">fillvalue</var>)</strong></dt>
+<dd><p>Define the fill-value settings of the NetCDF variable <var class="var">varid</var>.
+ If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002edefVarFletcher32">
+<h4 class="subsubsection">3.2.5.5 netcdf.defVarFletcher32</h4>
+<a class="index-entry-id" id="index-defVarFletcher32"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edefVarFletcher32_0028ncid_002cvarid_002cchecksum_0029"><span class="category-def">: </span><strong class="def-name">netcdf.defVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">checksum</var>)</strong></dt>
+<dd><p>Defines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;, then fletcher32 checksums will be turned on for this variable. If <var class="var">checksum</var> is &quot;NOCHECKSUM&quot;, then checksums will be disabled.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002egetVar">
+<h4 class="subsubsection">3.2.5.6 netcdf.getVar</h4>
+<a class="index-entry-id" id="index-getVar"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002egetVar"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002egetVar-1"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002egetVar-2"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002egetVar-3"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></dt>
+<dd><p>Get the data from a NetCDF variable.
+ The data <var class="var">data</var> is loaded from the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>.
+<var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros),
+<var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
+ and <var class="var">stride</var> is the sampling interval.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002einqVar">
+<h4 class="subsubsection">3.2.5.7 netcdf.inqVar</h4>
 <a class="index-entry-id" id="index-inqVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqVar"><span class="category-def">: </span><code class="def-type">[<var class="var">name</var>,<var class="var">nctype</var>,<var class="var">dimids</var>,<var class="var">nattr</var>] =</code> <strong class="def-name">netcdf.inqVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqVar"><span class="category-def">: </span><code class="def-type">[<var class="var">name</var>,<var class="var">nctype</var>,<var class="var">dimids</var>,<var class="var">nattr</var>] =</code> <strong class="def-name">netcdf.inqVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
 <dd><p>Inquires information about a NetCDF variable.
  This functions returns the <var class="var">name</var>, the NetCDF type <var class="var">nctype</var>, an array of dimension ids
 <var class="var">dimids</var> and the number of attributes <var class="var">nattr</var> of the NetCDF variable. <var class="var">nctype</var> in an
@@ -1589,87 +909,156 @@ To rename a global attribute use netcdf_getConstant(&quot;global&quot;) for <var
 <p><strong class="strong">See also:</strong> netcdf.inqVarID,netcdf.getConstant.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqVarChunking">
-<h4 class="subsection">3.3.38 netcdf.inqVarChunking</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqVarChunking">
+<h4 class="subsubsection">3.2.5.8 netcdf.inqVarChunking</h4>
 <a class="index-entry-id" id="index-inqVarChunking"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqVarChunking"><span class="category-def">: </span><code class="def-type">[<var class="var">storage</var>,<var class="var">chunkSizes</var>] =</code> <strong class="def-name">netcdf.inqVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarChunking"><span class="category-def">: </span><code class="def-type">[<var class="var">storage</var>,<var class="var">chunkSizes</var>] =</code> <strong class="def-name">netcdf.inqVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
 <dd><p>Determines the chunking settings of NetCDF variable <var class="var">varid</var>.
  If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.
  If <var class="var">storage</var> is the string &quot;contiguous&quot;, the variable is stored in a contiguous way.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqVarDeflate">
-<h4 class="subsection">3.3.39 netcdf.inqVarDeflate</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqVarDeflate">
+<h4 class="subsubsection">3.2.5.9 netcdf.inqVarDeflate</h4>
 <a class="index-entry-id" id="index-inqVarDeflate"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqVarDeflate"><span class="category-def">: </span><code class="def-type">[<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>] =</code> <strong class="def-name">netcdf.inqVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarDeflate"><span class="category-def">: </span><code class="def-type">[<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>] =</code> <strong class="def-name">netcdf.inqVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
 <dd><p>Determines the compression settings NetCDF variable <var class="var">varid</var>.
  If <var class="var">deflate</var> is true, then the variable is compressed. The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqVarFill">
-<h4 class="subsection">3.3.40 netcdf.inqVarFill</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqVarFill">
+<h4 class="subsubsection">3.2.5.10 netcdf.inqVarFill</h4>
 <a class="index-entry-id" id="index-inqVarFill"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqVarFill_0028ncid_002cvarid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">no_fill</var>,<var class="var">fillvalue</var>] =</code> <strong class="def-name">netcdf.inqVarFill(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarFill_0028ncid_002cvarid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">no_fill</var>,<var class="var">fillvalue</var>] =</code> <strong class="def-name">netcdf.inqVarFill(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
 <dd><p>Determines the fill-value settings of the NetCDF variable <var class="var">varid</var>.
  If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqVarFletcher32">
-<h4 class="subsection">3.3.41 netcdf.inqVarFletcher32</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqVarFletcher32">
+<h4 class="subsubsection">3.2.5.11 netcdf.inqVarFletcher32</h4>
 <a class="index-entry-id" id="index-inqVarFletcher32"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqVarFletcher32_0028ncid_002cvarid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">checksum</var> =</code> <strong class="def-name">netcdf.inqVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarFletcher32_0028ncid_002cvarid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">checksum</var> =</code> <strong class="def-name">netcdf.inqVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
 <dd><p>Determines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If fletcher32 checksums is turned on for this variable, then <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;. Otherwise it is the string &quot;NOCHECKSUM&quot;.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqVarID">
-<h4 class="subsection">3.3.42 netcdf.inqVarID</h4>
+<div class="subsubsection-level-extent" id="netcdf_002einqVarID">
+<h4 class="subsubsection">3.2.5.12 netcdf.inqVarID</h4>
 <a class="index-entry-id" id="index-inqVarID"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqVarID"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">name</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarID-1"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">name</var>)</code></dt>
 <dd><p>Return the id of a variable based on its name.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.defVar,netcdf.inqVarIDs.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqVarIDs">
-<h4 class="subsection">3.3.43 netcdf.inqVarIDs</h4>
-<a class="index-entry-id" id="index-inqVarIDs"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqVarID-1"><span class="category-def">: </span><code class="def-type"><var class="var">varids</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
-<dd><p>Return all variable ids.
- This functions returns all variable ids in a NetCDF file or NetCDF group.
-</p>
-<p><strong class="strong">See also:</strong> netcdf.inqVarID.
+<div class="subsubsection-level-extent" id="netcdf_002eputVar">
+<h4 class="subsubsection">3.2.5.13 netcdf.putVar</h4>
+<a class="index-entry-id" id="index-putVar"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002eputVar"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">data</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002eputVar-1"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">data</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002eputVar-2"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">data</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002eputVar-3"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>,<var class="var">data</var>)</code></dt>
+<dd><p>Put data in a NetCDF variable.
+ The data <var class="var">data</var> is stored in the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>.
+<var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros),
+<var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
+ and <var class="var">stride</var> is the sampling interval.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002einqVlen">
-<h4 class="subsection">3.3.44 netcdf.inqVlen</h4>
-<a class="index-entry-id" id="index-inqVlen"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002einqVlen_0028ncid_002ctypeid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>] =</code> <strong class="def-name">netcdf.inqVlen(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong></dt>
-<dd><p>Provide information on a NC_VLEN variable length array type <var class="var">typeid</var> in the dataset <var class="var">ncid</var>.
-</p>
-<p>The function returns the typename, bytesize, and base type id.
-</p>
-</dd></dl>
+<div class="subsubsection-level-extent" id="netcdf_002erenameVar">
+<h4 class="subsubsection">3.2.5.14 netcdf.renameVar</h4>
+<a class="index-entry-id" id="index-renameVar"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002erenameVar_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.renameVar(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
+<dd><p>Renames the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. <var class="var">name</var> is the new name of the variable.
+</p></dd></dl>
+<hr>
 </div>
-<div class="subsection-level-extent" id="netcdf_002eopen">
-<h4 class="subsection">3.3.45 netcdf.open</h4>
-<a class="index-entry-id" id="index-open"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002eopen_0028filename_002cmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.open(<var class="var">filename</var>,<var class="var">mode</var>)</strong></dt>
-<dd><p>Opens the file named <var class="var">filename</var> in the mode <var class="var">mode</var>.
+</div>
+<div class="subsection-level-extent" id="Low_002dlevel-functions-_002d-Attributes">
+<h4 class="subsection" id="Attributes">3.2.6 Attributes</h4>
+<a class="index-entry-id" id="index-Low_002dlevel-functions-_002d-Attributes"></a>
+<div class="subsubsection-level-extent" id="netcdf_002ecopyAtt">
+<h4 class="subsubsection">3.2.6.1 netcdf.copyAtt</h4>
+<a class="index-entry-id" id="index-copyAtt"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002ecopyAtt"><span class="category-def">: </span><strong class="def-name">netcdf.copyAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">ncid_out</var>,<var class="var">varid_out</var>)</code></dt>
+<dd><p>Copies the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>
+ to the variable <var class="var">varid_out</var> in the data set <var class="var">ncid_out</var>.
+ To copy a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var> or <var class="var">varid_out</var>.
+</p>
+<p><strong class="strong">See also:</strong> netcdf.getAtt,netcdf.getConstant.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002eputAtt">
-<h4 class="subsection">3.3.46 netcdf.putAtt</h4>
+<div class="subsubsection-level-extent" id="netcdf_002edelAtt">
+<h4 class="subsubsection">3.2.6.2 netcdf.delAtt</h4>
+<a class="index-entry-id" id="index-delAtt"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edelAtt_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.delAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
+<dd><p>Deletes the attribute named <var class="var">name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>.
+ To delete a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
+</p>
+<p><strong class="strong">See also:</strong> netcdf.defAtt,netcdf.getConstant.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002egetAtt">
+<h4 class="subsubsection">3.2.6.3 netcdf.getAtt</h4>
+<a class="index-entry-id" id="index-getAtt"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002egetAtt"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</code></dt>
+<dd><p>Get the value of a NetCDF attribute.
+ This function returns the value of the attribute called <var class="var">name</var> of the variable
+<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be
+ netcdf.getConstant(&quot;global&quot;).
+</p>
+<p><strong class="strong">See also:</strong> netcdf.putAtt.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002einqAtt">
+<h4 class="subsubsection">3.2.6.4 netcdf.inqAtt</h4>
+<a class="index-entry-id" id="index-inqAtt"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqAtt_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">xtype</var>,<var class="var">len</var>] =</code> <strong class="def-name">netcdf.inqAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
+<dd><p>Get attribute type and length.
+</p>
+<p><strong class="strong">See also:</strong> netcdf.inqAttName.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002einqAttID">
+<h4 class="subsubsection">3.2.6.5 netcdf.inqAttID</h4>
+<a class="index-entry-id" id="index-inqAttID"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqAttID_0028ncid_002cvarid_002cattname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">attnum</var> =</code> <strong class="def-name">netcdf.inqAttID(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attname</var>)</strong></dt>
+<dd><p>Return the attribute id <var class="var">attnum</var> of the attribute named <var class="var">attname</var> of the variable <var class="var">varid</var> in the dataset <var class="var">ncid</var>.
+ For global attributes <var class="var">varid</var> can be
+ netcdf.getConstant(&quot;global&quot;).
+</p>
+<p><strong class="strong">See also:</strong> netcdf.inqAttName.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002einqAttName">
+<h4 class="subsubsection">3.2.6.6 netcdf.inqAttName</h4>
+<a class="index-entry-id" id="index-inqAttName"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqAttName"><span class="category-def">: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqAttName</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attnum</var>)</code></dt>
+<dd><p>Get the name of a NetCDF attribute.
+ This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable
+<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be
+ netcdf.getConstant(&quot;global&quot;).
+</p>
+<p><strong class="strong">See also:</strong> netcdf.inqAttName.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002eputAtt">
+<h4 class="subsubsection">3.2.6.7 netcdf.putAtt</h4>
 <a class="index-entry-id" id="index-putAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002eputAtt"><span class="category-def">: </span><strong class="def-name">netcdf.putAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">data</var>)</code></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002eputAtt"><span class="category-def">: </span><strong class="def-name">netcdf.putAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">data</var>)</code></dt>
 <dd><p>Defines a NetCDF attribute.
  This function defines the attribute called <var class="var">name</var> of the variable
 <var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. The value of the attribute will be <var class="var">data</var>.
@@ -1679,114 +1068,86 @@ To rename a global attribute use netcdf_getConstant(&quot;global&quot;) for <var
 <p><strong class="strong">See also:</strong> netcdf.getAtt.
 </p></dd></dl>
 </div>
-<div class="subsection-level-extent" id="netcdf_002eputVar">
-<h4 class="subsection">3.3.47 netcdf.putVar</h4>
-<a class="index-entry-id" id="index-putVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002eputVar"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">data</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_002eputVar-1"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">data</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_002eputVar-2"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">data</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn" id="index-netcdf_002eputVar-3"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>,<var class="var">data</var>)</code></dt>
-<dd><p>Put data in a NetCDF variable.
- The data <var class="var">data</var> is stored in the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>.
-<var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros),
-<var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
- and <var class="var">stride</var> is the sampling interval.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002ereDef">
-<h4 class="subsection">3.3.48 netcdf.reDef</h4>
-<a class="index-entry-id" id="index-reDef"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002ereDef"><span class="category-def">: </span><strong class="def-name">netcdf.reDef</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
-<dd><p>Enter define-mode of NetCDF file <var class="var">ncid</var>.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002erenameAtt">
-<h4 class="subsection">3.3.49 netcdf.renameAtt</h4>
+<div class="subsubsection-level-extent" id="netcdf_002erenameAtt">
+<h4 class="subsubsection">3.2.6.8 netcdf.renameAtt</h4>
 <a class="index-entry-id" id="index-renameAtt"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002erenameAtt_0028ncid_002cvarid_002cold_005fname_002cnew_005fname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.renameAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">old_name</var>,<var class="var">new_name</var>)</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002erenameAtt_0028ncid_002cvarid_002cold_005fname_002cnew_005fname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.renameAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">old_name</var>,<var class="var">new_name</var>)</strong></dt>
 <dd><p>Renames the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>. <var class="var">new_name</var> is the new name of the attribute.
  To rename a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.copyAtt,netcdf.getConstant.
 </p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002erenameDim">
-<h4 class="subsection">3.3.50 netcdf.renameDim</h4>
-<a class="index-entry-id" id="index-renameDim"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002erenameDim_0028ncid_002cdimid_002cname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.renameDim(<var class="var">ncid</var>,<var class="var">dimid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Renames the dimension with the id <var class="var">dimid</var> in the data set <var class="var">ncid</var>. <var class="var">name</var> is the new name of the dimension.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002erenameVar">
-<h4 class="subsection">3.3.51 netcdf.renameVar</h4>
-<a class="index-entry-id" id="index-renameVar"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002erenameVar_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.renameVar(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
-<dd><p>Renames the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. <var class="var">name</var> is the new name of the variable.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002esetChunkCache">
-<h4 class="subsection">3.3.52 netcdf.setChunkCache</h4>
-<a class="index-entry-id" id="index-setChunkCache"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002esetChunkCache_0028size_002c"><span class="category-def">: </span><strong class="def-name">netcdf.setChunkCache(<var class="var">size</var>,</strong> <code class="def-code-arguments"><var class="var">nelems</var>, <var class="var">preemption</var>)</code></dt>
-<dd><p>Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002esetDefaultFormat">
-<h4 class="subsection">3.3.53 netcdf.setDefaultFormat</h4>
-<a class="index-entry-id" id="index-setDefaultFormat"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002esetDefaultFormat_0028format_0029"><span class="category-def">: </span><code class="def-type"><var class="var">old_format</var> =</code> <strong class="def-name">netcdf.setDefaultFormat(<var class="var">format</var>)</strong></dt>
-<dd><p>Sets the default format of the NetCDF library and returns the previous default format (as a numeric value). <var class="var">format</var> can be
- &quot;format_classic&quot;, &quot;format_64bit&quot;, &quot;format_netcdf4&quot; or &quot;format_netcdf4_classic&quot;.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002esetFill">
-<h4 class="subsection">3.3.54 netcdf.setFill</h4>
-<a class="index-entry-id" id="index-setFill"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002esetFill_0028ncid_002cfillmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">old_mode</var> =</code> <strong class="def-name">netcdf.setFill(<var class="var">ncid</var>,<var class="var">fillmode</var>)</strong></dt>
-<dd><p>Change the fill mode (<var class="var">fillmode</var>) of the data set <var class="var">ncid</var>. The previous value of the fill mode is returned. <var class="var">fillmode</var> can be either &quot;fill&quot; or &quot;nofill&quot;.
-</p></dd></dl>
-</div>
-<div class="subsection-level-extent" id="netcdf_002esync">
-<h4 class="subsection">3.3.55 netcdf.sync</h4>
-<a class="index-entry-id" id="index-sync"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-netcdf_002esync_0028ncid_0029"><span class="category-def">: </span><strong class="def-name">netcdf.sync(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Writes all changes to the disk and leaves the file open.
-</p></dd></dl>
 <hr>
 </div>
 </div>
-<div class="section-level-extent" id="Import-functions-_0028Deprecated_0029">
-<h3 class="section" id="Import-functions-_0028Deprecated_0029-1">3.4 Import functions (Deprecated)</h3>
-<a class="index-entry-id" id="index-Import-functions-_0028Deprecated_0029"></a>
-<div class="subsection-level-extent" id="import_005fnetcdf">
-<h4 class="subsection">3.4.1 import_netcdf</h4>
-<a class="index-entry-id" id="index-import_005fnetcdf"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-import_005ffits"><span class="category-def">: </span><strong class="def-name">import_fits</strong></dt>
-<dd><p>Dummy function provided to provide compatibility with older versions of GNU Octave netcdf
+<div class="subsection-level-extent" id="Low_002dlevel-functions-_002d-User_002dDefined-Types">
+<h4 class="subsection" id="User_002dDefined-Types">3.2.7 User-Defined Types</h4>
+<a class="index-entry-id" id="index-Low_002dlevel-functions-_002d-User_002dDefined-Types"></a>
+<div class="subsubsection-level-extent" id="netcdf_002edefVlen">
+<h4 class="subsubsection">3.2.7.1 netcdf.defVlen</h4>
+<a class="index-entry-id" id="index-defVlen"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002edefVlen_0028ncid_002ctypename_002cbasetype_0029"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVlen(<var class="var">ncid</var>,<var class="var">typename</var>,<var class="var">basetype</var>)</strong></dt>
+<dd><p>Defines a NC_VLEN variable length array type with the type name <var class="var">typename</var> and a base datatype of <var class="var">basetype</var> in the dataset <var class="var">ncid</var>. <var class="var">basetype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The new data type id is returned.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002einqUserType">
+<h4 class="subsubsection">3.2.7.2 netcdf.inqUserType</h4>
+<a class="index-entry-id" id="index-inqUserType"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqUserType_0028ncid_002ctypeid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>, <var class="var">numfields</var>, <var class="var">classid</var>] =</code> <strong class="def-name">netcdf.inqUserType(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong></dt>
+<dd><p>Provide information on a user defined type <var class="var">typeid</var> in the dataset <var class="var">ncid</var>.
 </p>
-<p>Function is deprecated.
+<p>The function returns the typename, bytesize, base type id, number of fields and class identifier of the type.
+</p>
+</dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002einqVlen">
+<h4 class="subsubsection">3.2.7.3 netcdf.inqVlen</h4>
+<a class="index-entry-id" id="index-inqVlen"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002einqVlen_0028ncid_002ctypeid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>] =</code> <strong class="def-name">netcdf.inqVlen(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong></dt>
+<dd><p>Provide information on a NC_VLEN variable length array type <var class="var">typeid</var> in the dataset <var class="var">ncid</var>.
+</p>
+<p>The function returns the typename, bytesize, and base type id.
+</p>
+</dd></dl>
+<hr>
+</div>
+</div>
+<div class="subsection-level-extent" id="Low_002dlevel-functions-_002d-Utilities">
+<h4 class="subsection" id="Utilities">3.2.8 Utilities</h4>
+<a class="index-entry-id" id="index-Low_002dlevel-functions-_002d-Utilities"></a>
+<div class="subsubsection-level-extent" id="netcdf_002egetConstant">
+<h4 class="subsubsection">3.2.8.1 netcdf.getConstant</h4>
+<a class="index-entry-id" id="index-getConstant"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002egetConstant_0028name_0029"><span class="category-def">: </span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf.getConstant(<var class="var">name</var>)</strong></dt>
+<dd><p>Returns the value of a NetCDF constant called <var class="var">name</var>.
+</p>
+<p><strong class="strong">See also:</strong> netcdf.getConstantNames.
+</p></dd></dl>
+</div>
+<div class="subsubsection-level-extent" id="netcdf_002egetConstantNames">
+<h4 class="subsubsection">3.2.8.2 netcdf.getConstantNames</h4>
+<a class="index-entry-id" id="index-getConstantNames"></a>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-netcdf_002egetConstantNames_0028_0029"><span class="category-def">: </span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf.getConstantNames()</strong></dt>
+<dd><p>Returns a list of all constant names.
 </p></dd></dl>
 <hr>
+</div>
 </div>
 </div>
 <div class="section-level-extent" id="Test-function">
-<h3 class="section" id="Test-function-1">3.5 Test function</h3>
+<h3 class="section" id="Test-function-1">3.3 Test function</h3>
 <a class="index-entry-id" id="index-Test-function"></a>
 <div class="subsection-level-extent" id="test_005fnetcdf">
-<h4 class="subsection">3.5.1 test_netcdf</h4>
+<h4 class="subsection">3.3.1 test_netcdf</h4>
 <a class="index-entry-id" id="index-test_005fnetcdf"></a>
-<dl class="first-deftypefn">
-<dt class="deftypefn" id="index-test_005fnetcdf-1"><span class="category-def">: </span><strong class="def-name">test_netcdf</strong></dt>
+<dl class="first-deftypefn def-block">
+<dt class="deftypefn def-line" id="index-test_005fnetcdf-1"><span class="category-def">: </span><strong class="def-name">test_netcdf</strong></dt>
 <dd><p>Function to do a basic test of the netcdf interface
 </p></dd></dl>
 <hr>
@@ -2491,84 +1852,89 @@ first, please read <a class="url" href="http://www.gnu.org/philosophy/why-not-lg
 <a class="summary-letter-printindex" href="#Index_cp_letter-W"><b>W</b></a>
  &nbsp; 
 </td></tr></table>
-<table class="cp-entries-printindex" border="0">
+<table class="cp-entries-printindex">
 <tr><td></td><th class="entries-header-printindex">Index Entry</th><th class="sections-header-printindex">Section</th></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-A">A</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-abort">abort</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-abort">abort</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-B">B</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Basic-Usage-Overview">Basic Usage Overview</a></td><td class="printindex-index-section"><a href="#Basic-Usage-Overview">Basic Usage Overview</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-C">C</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-close">close</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-copyAtt">copyAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-close">close</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-copyAtt">copyAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-copyright">copyright</a></td><td class="printindex-index-section"><a href="#Copying">Copying</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-create">create</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-create">create</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-D">D</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-defDim">defDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-defGrp">defGrp</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-defVar">defVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-defVarChunking">defVarChunking</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-defVarDeflate">defVarDeflate</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-defVarFill">defVarFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-defVarFletcher32">defVarFletcher32</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-defVlen">defVlen</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-delAtt">delAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-defDim">defDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Dimensions">Low-level functions - Dimensions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-defGrp">defGrp</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-defVar">defVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-defVarChunking">defVarChunking</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-defVarDeflate">defVarDeflate</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-defVarFill">defVarFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-defVarFletcher32">defVarFletcher32</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-defVlen">defVlen</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-User_002dDefined-Types">Low-level functions - User-Defined Types</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-delAtt">delAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-E">E</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-endDef">endDef</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-endDef">endDef</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-F">F</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Function-Reference">Function Reference</a></td><td class="printindex-index-section"><a href="#Function-Reference">Function Reference</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-G">G</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-getAtt">getAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-getChunkCache">getChunkCache</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-getConstant">getConstant</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-getConstantNames">getConstantNames</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-getVar">getVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-getAtt">getAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-getChunkCache">getChunkCache</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Library-Functions">Low-level functions - Library Functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-getConstant">getConstant</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Utilities">Low-level functions - Utilities</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-getConstantNames">getConstantNames</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Utilities">Low-level functions - Utilities</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-getVar">getVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-H">H</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-High-level-functionality">High level functionality</a></td><td class="printindex-index-section"><a href="#Basic-Usage-Overview">Basic Usage Overview</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-High_002dlevel-functions">High-level functions</a></td><td class="printindex-index-section"><a href="#High_002dlevel-functions">High-level functions</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-I">I</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-Import-functions-_0028Deprecated_0029">Import functions (Deprecated)</a></td><td class="printindex-index-section"><a href="#Import-functions-_0028Deprecated_0029">Import functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-import_005fnetcdf">import_netcdf</a></td><td class="printindex-index-section"><a href="#Import-functions-_0028Deprecated_0029">Import functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inq">inq</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqAtt">inqAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqAttID">inqAttID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqAttName">inqAttName</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqDim">inqDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqDimID">inqDimID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqDimIDs">inqDimIDs</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqFormat">inqFormat</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrpFullNcid">inqGrpFullNcid</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrpName">inqGrpName</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrpNameFull">inqGrpNameFull</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrpParent">inqGrpParent</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrps">inqGrps</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqLibVers">inqLibVers</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqNcid">inqNcid</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqUnlimDims">inqUnlimDims</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqUserType">inqUserType</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVar">inqVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarChunking">inqVarChunking</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarDeflate">inqVarDeflate</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarFill">inqVarFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarFletcher32">inqVarFletcher32</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarID">inqVarID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarIDs">inqVarIDs</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVlen">inqVlen</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inq">inq</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqAtt">inqAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqAttID">inqAttID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqAttName">inqAttName</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqDim">inqDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Dimensions">Low-level functions - Dimensions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqDimID">inqDimID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Dimensions">Low-level functions - Dimensions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqDimIDs">inqDimIDs</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqFormat">inqFormat</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrpFullNcid">inqGrpFullNcid</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrpName">inqGrpName</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrpNameFull">inqGrpNameFull</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrpParent">inqGrpParent</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqGrps">inqGrps</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqLibVers">inqLibVers</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Library-Functions">Low-level functions - Library Functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqNcid">inqNcid</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqUnlimDims">inqUnlimDims</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqUserType">inqUserType</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-User_002dDefined-Types">Low-level functions - User-Defined Types</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVar">inqVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarChunking">inqVarChunking</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarDeflate">inqVarDeflate</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarFill">inqVarFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarFletcher32">inqVarFletcher32</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarID">inqVarID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVarIDs">inqVarIDs</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-inqVlen">inqVlen</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-User_002dDefined-Types">Low-level functions - User-Defined Types</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Installing-and-loading">Installing and loading</a></td><td class="printindex-index-section"><a href="#Installing-and-loading">Installing and loading</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-L">L</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Loading">Loading</a></td><td class="printindex-index-section"><a href="#Installing-and-loading">Installing and loading</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Low-level-functionality">Low level functionality</a></td><td class="printindex-index-section"><a href="#Basic-Usage-Overview">Basic Usage Overview</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions">Low-level functions</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_002d-Dimensions">Low-level functions - Dimensions</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Dimensions">Low-level functions - Dimensions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Groups">Low-level functions - Groups</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_002d-Library-Functions">Low-level functions - Library Functions</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Library-Functions">Low-level functions - Library Functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_002d-User_002dDefined-Types">Low-level functions - User-Defined Types</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-User_002dDefined-Types">Low-level functions - User-Defined Types</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_002d-Utilities">Low-level functions - Utilities</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Utilities">Low-level functions - Utilities</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-N">N</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-nccreate">nccreate</a></td><td class="printindex-index-section"><a href="#High_002dlevel-functions">High-level functions</a></td></tr>
@@ -2579,82 +1945,27 @@ first, please read <a class="url" href="http://www.gnu.org/philosophy/why-not-lg
 <tr><td></td><td class="printindex-index-entry"><a href="#index-ncwrite">ncwrite</a></td><td class="printindex-index-section"><a href="#High_002dlevel-functions">High-level functions</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-ncwriteatt">ncwriteatt</a></td><td class="printindex-index-section"><a href="#High_002dlevel-functions">High-level functions</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-ncwriteschema">ncwriteschema</a></td><td class="printindex-index-section"><a href="#High_002dlevel-functions">High-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fabort">netcdf_abort</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fclose">netcdf_close</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fcopyAtt">netcdf_copyAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fcreate">netcdf_create</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdefDim">netcdf_defDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdefGrp">netcdf_defGrp</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdefVar">netcdf_defVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdefVarChunking">netcdf_defVarChunking</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdefVarDeflate">netcdf_defVarDeflate</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdefVarFill">netcdf_defVarFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdefVarFletcher32">netcdf_defVarFletcher32</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdefVlen">netcdf_defVlen</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fdelAtt">netcdf_delAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fendDef">netcdf_endDef</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fgetAtt">netcdf_getAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fgetChunkCache">netcdf_getChunkCache</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fgetConstant">netcdf_getConstant</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fgetConstantNames">netcdf_getConstantNames</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fgetVar">netcdf_getVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finq">netcdf_inq</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqAtt">netcdf_inqAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqAttID">netcdf_inqAttID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqAttName">netcdf_inqAttName</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqDim">netcdf_inqDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqDimID">netcdf_inqDimID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqDimIDs">netcdf_inqDimIDs</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqFormat">netcdf_inqFormat</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqGrpFullNcid">netcdf_inqGrpFullNcid</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqGrpName">netcdf_inqGrpName</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqGrpNameFull">netcdf_inqGrpNameFull</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqGrpParent">netcdf_inqGrpParent</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqGrps">netcdf_inqGrps</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqLibVers">netcdf_inqLibVers</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqNcid">netcdf_inqNcid</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqUnlimDims">netcdf_inqUnlimDims</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqUserType">netcdf_inqUserType</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqVar">netcdf_inqVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqVarChunking">netcdf_inqVarChunking</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqVarDeflate">netcdf_inqVarDeflate</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqVarFill">netcdf_inqVarFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqVarFletcher32">netcdf_inqVarFletcher32</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqVarID">netcdf_inqVarID</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqVarIDs">netcdf_inqVarIDs</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005finqVlen">netcdf_inqVlen</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fopen">netcdf_open</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fputAtt">netcdf_putAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fputVar">netcdf_putVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005freDef">netcdf_reDef</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005frenameAtt">netcdf_renameAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005frenameDim">netcdf_renameDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005frenameVar">netcdf_renameVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fsetChunkCache">netcdf_setChunkCache</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fsetDefaultFormat">netcdf_setDefaultFormat</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fsetFill">netcdf_setFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-netcdf_005fsync">netcdf_sync</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_0028Deprecated_0029">Low-level functions (Deprecated)</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-O">O</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Off_002dline-install">Off-line install</a></td><td class="printindex-index-section"><a href="#Installing-and-loading">Installing and loading</a></td></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Online-install">Online install</a></td><td class="printindex-index-section"><a href="#Installing-and-loading">Installing and loading</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-open">open</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-open">open</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-P">P</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-putAtt">putAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-putVar">putVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-putAtt">putAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-putVar">putVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-R">R</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-reDef">reDef</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-renameAtt">renameAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-renameDim">renameDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-renameVar">renameVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-reDef">reDef</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-renameAtt">renameAtt</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Attributes">Low-level functions - Attributes</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-renameDim">renameDim</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Dimensions">Low-level functions - Dimensions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-renameVar">renameVar</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Variables">Low-level functions - Variables</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-S">S</th></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-setChunkCache">setChunkCache</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-setDefaultFormat">setDefaultFormat</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-setFill">setFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
-<tr><td></td><td class="printindex-index-entry"><a href="#index-sync">sync</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions">Low-level functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-setChunkCache">setChunkCache</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Library-Functions">Low-level functions - Library Functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-setDefaultFormat">setDefaultFormat</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-Library-Functions">Low-level functions - Library Functions</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-setFill">setFill</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
+<tr><td></td><td class="printindex-index-entry"><a href="#index-sync">sync</a></td><td class="printindex-index-section"><a href="#Low_002dlevel-functions-_002d-File-Operations">Low-level functions - File Operations</a></td></tr>
 <tr><td colspan="3"><hr></td></tr>
 <tr><th id="Index_cp_letter-T">T</th></tr>
 <tr><td></td><td class="printindex-index-entry"><a href="#index-Test-function">Test function</a></td><td class="printindex-index-section"><a href="#Test-function">Test function</a></td></tr>
