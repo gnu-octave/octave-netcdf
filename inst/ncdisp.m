@@ -14,7 +14,7 @@
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*-
-## @deftypefn {Function File} {} ncdisp (@var{filename})
+## @deftypefn {} {} ncdisp (@var{filename})
 ## Display meta-data of the NetCDF file @var{filename}
 ##
 ## @subsubheading Example

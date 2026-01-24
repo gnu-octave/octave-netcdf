@@ -14,8 +14,8 @@
 ## along with this program; If not, see <http://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*-
-## @deftypefn  {Function File} {@var{x} =} ncread (@var{filename}, @var{varname})
-## @deftypefnx  {Function File} {@var{x} =} ncread (@var{filename}, @var{varname},@var{start},@var{count},@var{stride})
+## @deftypefn  {} {@var{x} =} ncread (@var{filename}, @var{varname})
+## @deftypefnx  {} {@var{x} =} ncread (@var{filename}, @var{varname},@var{start},@var{count},@var{stride})
 ##
 ## Read the variable @var{varname} from the NetCDF file @var{filename}.
 ##

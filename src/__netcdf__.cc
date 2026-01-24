@@ -179,7 +179,7 @@ void start_count_stride(int ncid, int varid, octave_value_list args,int len,
 
 DEFUN_DLD(netcdf_getConstant, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{value} =} netcdf_getConstant(@var{name}) \n\
+@deftypefn {} {@var{value} =} netcdf_getConstant(@var{name}) \n\
 Returns the value of a NetCDF constant called @var{name}.\n\
 @seealso{netcdf_getConstantNames}\n\
 @end deftypefn")
@@ -195,7 +195,7 @@ Returns the value of a NetCDF constant called @var{name}.\n\
 
 DEFUN_DLD(netcdf_getConstantNames, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{value} =} netcdf_getConstantNames() \n\
+@deftypefn {} {@var{value} =} netcdf_getConstantNames() \n\
 Returns a list of all constant names.\n\
 @end deftypefn\n\
 @seealso{netcdf_getConstant}\n")
@@ -227,7 +227,7 @@ Returns a list of all constant names.\n\
 
 DEFUN_DLD(netcdf_inqLibVers, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{vers} =} netcdf_inqLibVers() \n\
+@deftypefn {} {@var{vers} =} netcdf_inqLibVers() \n\
 Returns the version of the NetCDF library.\n\
 @end deftypefn\n\
 @seealso{netcdf_open}\n")
@@ -243,7 +243,7 @@ Returns the version of the NetCDF library.\n\
 
 DEFUN_DLD(netcdf_setDefaultFormat, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{old_format} =} netcdf_setDefaultFormat(@var{format}) \n\
+@deftypefn {} {@var{old_format} =} netcdf_setDefaultFormat(@var{format}) \n\
 Sets the default format of the NetCDF library and returns the previous default format (as a numeric value). @var{format} can be \n\
 \"format_classic\", \"format_64bit\",  \"format_netcdf4\" or \"format_netcdf4_classic\". \n\
 @end deftypefn\n\
@@ -268,7 +268,7 @@ Sets the default format of the NetCDF library and returns the previous default f
 
 DEFUN_DLD(netcdf_setChunkCache, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_setChunkCache(@var{size}, @var{nelems}, @var{preemption}) \n\
+@deftypefn {} {} netcdf_setChunkCache(@var{size}, @var{nelems}, @var{preemption}) \n\
 Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.\n\
 @end deftypefn\n\
 @seealso{netcdf_getChunkCache}\n")
@@ -293,7 +293,7 @@ Sets the default chunk cache settings in the HDF5 library. The settings applies 
 
 DEFUN_DLD(netcdf_getChunkCache, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{size}, @var{nelems}, @var{preemption}] =} netcdf_getChunkCache() \n\
+@deftypefn {} {[@var{size}, @var{nelems}, @var{preemption}] =} netcdf_getChunkCache() \n\
 Gets the default chunk cache settings in the HDF5 library. \n\
 @end deftypefn\n\
 @seealso{netcdf_setChunkCache}\n")
@@ -321,7 +321,7 @@ Gets the default chunk cache settings in the HDF5 library. \n\
 
 DEFUN_DLD(netcdf_create, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{ncid} =} netcdf_create(@var{filename},@var{mode}) \n\
+@deftypefn {} {@var{ncid} =} netcdf_create(@var{filename},@var{mode}) \n\
 Creates the file named @var{filename} in the mode @var{mode} which can have the \n\
 following values: \n\
 \"clobber\" (overwrite existing files), \n\
@@ -357,7 +357,7 @@ ncid = netcdf.create(\"test.nc\",mode); \n\
 
 DEFUN_DLD(netcdf_open, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{ncid} =} netcdf_open(@var{filename},@var{mode}) \n\
+@deftypefn {} {@var{ncid} =} netcdf_open(@var{filename},@var{mode}) \n\
 Opens the file named @var{filename} in the mode @var{mode}.\n\
 @end deftypefn\n\
 @seealso{netcdf_close}\n")
@@ -382,7 +382,7 @@ Opens the file named @var{filename} in the mode @var{mode}.\n\
 
 DEFUN_DLD(netcdf_abort, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_abort(@var{ncid}) \n\
+@deftypefn {} {} netcdf_abort(@var{ncid}) \n\
 Aborts all changes since the last time the dataset entered in define mode.\n\
 @end deftypefn\n\
 @seealso{netcdf_reDef}\n")
@@ -404,7 +404,7 @@ Aborts all changes since the last time the dataset entered in define mode.\n\
 
 DEFUN_DLD(netcdf_sync, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_sync(@var{ncid}) \n\
+@deftypefn {} {} netcdf_sync(@var{ncid}) \n\
 Writes all changes to the disk and leaves the file open.\n\
 @end deftypefn\n\
 @seealso{netcdf_close}\n")
@@ -425,7 +425,7 @@ Writes all changes to the disk and leaves the file open.\n\
 
 DEFUN_DLD(netcdf_setFill, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{old_mode} =} netcdf_setFill(@var{ncid},@var{fillmode}) \n\
+@deftypefn {} {@var{old_mode} =} netcdf_setFill(@var{ncid},@var{fillmode}) \n\
 Change the fill mode (@var{fillmode}) of the data set @var{ncid}. The previous value of the fill mode is returned. @var{fillmode} can be either \"fill\" or \"nofill\".\n\
 @end deftypefn\n\
 @seealso{netcdf_open}\n")
@@ -451,7 +451,7 @@ Change the fill mode (@var{fillmode}) of the data set @var{ncid}. The previous v
 //                          int *unlimdimidp);
 DEFUN_DLD(netcdf_inq, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{ndims},@var{nvars},@var{ngatts},@var{unlimdimid}] =} netcdf_inq(@var{ncid}) \n\
+@deftypefn {} {[@var{ndims},@var{nvars},@var{ngatts},@var{unlimdimid}] =} netcdf_inq(@var{ncid}) \n\
 Return the number of dimension (@var{ndims}), the number of variables (@var{nvars}), the number of global attributes (@var{ngatts}) and the id of the unlimited dimension (@var{unlimdimid}). \n\
 If no unlimited dimension is declared -1 is returned. For NetCDF4 files, one should use \n\
 the function netcdf_inqUnlimDims as multiple unlimite dimension exists. \n\
@@ -480,7 +480,7 @@ the function netcdf_inqUnlimDims as multiple unlimite dimension exists. \n\
 // int nc_inq_unlimdims(int ncid, int *nunlimdimsp, int *unlimdimidsp);
 DEFUN_DLD(netcdf_inqUnlimDims, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{unlimdimids} =} netcdf_inqUnlimDims(@var{ncid}) \n\
+@deftypefn {} {@var{unlimdimids} =} netcdf_inqUnlimDims(@var{ncid}) \n\
 Return the id of all unlimited dimensions of the NetCDF file @var{ncid}.\n\
 @end deftypefn\n\
 @seealso{netcdf_inq}\n")
@@ -511,7 +511,7 @@ Return the id of all unlimited dimensions of the NetCDF file @var{ncid}.\n\
 // int nc_inq_format   (int ncid, int *formatp);
 DEFUN_DLD(netcdf_inqFormat, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{format} =} netcdf_inqFormat(@var{ncid}) \n\
+@deftypefn {} {@var{format} =} netcdf_inqFormat(@var{ncid}) \n\
 Return the NetCDF format of the dataset @var{ncid}.\n\
 Format might be one of the following \n\
 \"FORMAT_CLASSIC\", \"FORMAT_64BIT\", \"FORMAT_NETCDF4\" or \"FORMAT_NETCDF4_CLASSIC\" \n\
@@ -547,7 +547,7 @@ Format might be one of the following \n\
 
 DEFUN_DLD(netcdf_defDim, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{dimid} =} netcdf_defDim(@var{ncid},@var{name},@var{len}) \n\
+@deftypefn {} {@var{dimid} =} netcdf_defDim(@var{ncid},@var{name},@var{len}) \n\
 Define the dimension with the name @var{name} and the length @var{len} in the dataset @var{ncid}. The id of the dimension is returned.\n\
 @end deftypefn\n\
 @seealso{netcdf_defVar}\n")
@@ -575,7 +575,7 @@ Define the dimension with the name @var{name} and the length @var{len} in the da
 
 DEFUN_DLD(netcdf_renameDim, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_renameDim(@var{ncid},@var{dimid},@var{name}) \n\
+@deftypefn {} {} netcdf_renameDim(@var{ncid},@var{dimid},@var{name}) \n\
 Renames the dimension with the id @var{dimid} in the data set @var{ncid}. @var{name} is the new name of the dimension.\n\
 @end deftypefn\n\
 @seealso{netcdf_defDim}\n")
@@ -601,7 +601,7 @@ Renames the dimension with the id @var{dimid} in the data set @var{ncid}. @var{n
 
 DEFUN_DLD(netcdf_defVar, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{varid} = } netcdf_defVar(@var{ncid},@var{name},@var{xtype},@var{dimids}) \n\
+@deftypefn {} {@var{varid} = } netcdf_defVar(@var{ncid},@var{name},@var{xtype},@var{dimids}) \n\
 Defines a variable with the name @var{name} in the dataset @var{ncid}. @var{xtype} can be \"byte\", \"ubyte\", \"short\", \"ushort\", \"int\", \"uint\", \"int64\", \"uint64\", \"float\", \"double\", \"char\" or the corresponding number as returned by netcdf_getConstant. The parameter @var{dimids} define the ids of the dimension. For scalar this parameter is the empty array ([]). The variable id is returned. \n\
 @end deftypefn\n\
 @seealso{netcdf_open,netcdf_defDim}\n")
@@ -643,7 +643,7 @@ Defines a variable with the name @var{name} in the dataset @var{ncid}. @var{xtyp
 
 DEFUN_DLD(netcdf_renameVar, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_renameVar(@var{ncid},@var{varid},@var{name}) \n\
+@deftypefn {} {} netcdf_renameVar(@var{ncid},@var{varid},@var{name}) \n\
 Renames the variable with the id @var{varid} in the data set @var{ncid}. @var{name} is the new name of the variable.\n\
 @end deftypefn\n\
 @seealso{netcdf_defVar}\n")
@@ -668,7 +668,7 @@ Renames the variable with the id @var{varid} in the data set @var{ncid}. @var{na
 // int nc_def_var_fill(int ncid, int varid, int no_fill, void *fill_value);
 DEFUN_DLD(netcdf_defVarFill, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_defVarFill(@var{ncid},@var{varid},@var{no_fill},@var{fillvalue}) \n\
+@deftypefn {} {} netcdf_defVarFill(@var{ncid},@var{varid},@var{no_fill},@var{fillvalue}) \n\
 Define the fill-value settings of the NetCDF variable @var{varid}.\n\
 If @var{no_fill} is false, then the values between no-contiguous writes are filled with the value @var{fill_value}. This is disabled by setting @var{no_fill} to true.\n\
 @end deftypefn\n\
@@ -767,7 +767,7 @@ If @var{no_fill} is false, then the values between no-contiguous writes are fill
 // int nc_def_var_fill(int ncid, int varid, int no_fill, void *fill_value);
 DEFUN_DLD(netcdf_inqVarFill, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{no_fill},@var{fillvalue}] = } netcdf_inqVarFill(@var{ncid},@var{varid}) \n\
+@deftypefn {} {[@var{no_fill},@var{fillvalue}] = } netcdf_inqVarFill(@var{ncid},@var{varid}) \n\
 Determines the fill-value settings of the NetCDF variable @var{varid}.\n\
 If @var{no_fill} is false, then the values between no-contiguous writes are filled with the value @var{fill_value}. This is disabled by setting @var{no_fill} to true.\n\
 @end deftypefn\n\
@@ -877,7 +877,7 @@ If @var{no_fill} is false, then the values between no-contiguous writes are fill
 //                        int deflate_level);
 DEFUN_DLD(netcdf_defVarDeflate, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_defVarDeflate (@var{ncid},@var{varid},@var{shuffle},@var{deflate},@var{deflate_level}) \n\
+@deftypefn {} {} netcdf_defVarDeflate (@var{ncid},@var{varid},@var{shuffle},@var{deflate},@var{deflate_level}) \n\
 Define the compression settings NetCDF variable @var{varid}.\n\
 If @var{deflate} is true, then the variable is compressed. The compression level @var{deflate_level} is an integer between 0 (no compression) and 9 (maximum compression).\n\
 @end deftypefn\n\
@@ -905,7 +905,7 @@ If @var{deflate} is true, then the variable is compressed. The compression level
 //                        int *deflatep, int *deflate_levelp);
 DEFUN_DLD(netcdf_inqVarDeflate, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{shuffle},@var{deflate},@var{deflate_level}] = } netcdf_inqVarDeflate (@var{ncid},@var{varid}) \n\
+@deftypefn {} {[@var{shuffle},@var{deflate},@var{deflate_level}] = } netcdf_inqVarDeflate (@var{ncid},@var{varid}) \n\
 Determines the compression settings NetCDF variable @var{varid}.\n\
 If @var{deflate} is true, then the variable is compressed. The compression level @var{deflate_level} is an integer between 0 (no compression) and 9 (maximum compression).\n\
 @end deftypefn\n\
@@ -948,7 +948,7 @@ If @var{deflate} is true, then the variable is compressed. The compression level
 //chunksizes can be ommited if storage is \"CONTIGUOUS\"
 DEFUN_DLD(netcdf_defVarChunking, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_defVarChunking (@var{ncid},@var{varid},@var{storage},@var{chunkSizes}) \n\
+@deftypefn {} {} netcdf_defVarChunking (@var{ncid},@var{varid},@var{storage},@var{chunkSizes}) \n\
 Define the chunking settings of NetCDF variable @var{varid}.\n\
 If @var{storage} is the string \"chunked\", the variable is stored by chunk of the size @var{chunkSizes}.\n\
 If @var{storage} is the string \"contiguous\", the variable is stored in a contiguous way.\n\
@@ -996,7 +996,7 @@ If @var{storage} is the string \"contiguous\", the variable is stored in a conti
 //int nc_inq_var_chunking(int ncid, int varid, int *storagep, size_t *chunksizesp);
 DEFUN_DLD(netcdf_inqVarChunking, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{storage},@var{chunkSizes}] = } netcdf_inqVarChunking (@var{ncid},@var{varid}) \n\
+@deftypefn {} {[@var{storage},@var{chunkSizes}] = } netcdf_inqVarChunking (@var{ncid},@var{varid}) \n\
 Determines the chunking settings of NetCDF variable @var{varid}.\n\
 If @var{storage} is the string \"chunked\", the variable is stored by chunk of the size @var{chunkSizes}.\n\
 If @var{storage} is the string \"contiguous\", the variable is stored in a contiguous way.\n\
@@ -1043,7 +1043,7 @@ If @var{storage} is the string \"contiguous\", the variable is stored in a conti
 // nc_def_var_fletcher32(int ncid, int varid, int checksum);
 DEFUN_DLD(netcdf_defVarFletcher32, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_defVarFletcher32(@var{ncid},@var{varid},@var{checksum}) \n\
+@deftypefn {} {} netcdf_defVarFletcher32(@var{ncid},@var{varid},@var{checksum}) \n\
 Defines the checksum settings of the variable with the id @var{varid} in the data set @var{ncid}. If @var{checksum} is the string \"FLETCHER32\", then fletcher32 checksums will be turned on for this variable. If @var{checksum} is \"NOCHECKSUM\", then checksums will be disabled. \n\
 @end deftypefn\n\
 @seealso{netcdf_defVar,netcdf_inqVarFletcher32}\n")
@@ -1068,7 +1068,7 @@ Defines the checksum settings of the variable with the id @var{varid} in the dat
 
 DEFUN_DLD(netcdf_inqVarFletcher32, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{checksum} =} netcdf_inqVarFletcher32(@var{ncid},@var{varid}) \n\
+@deftypefn {} {@var{checksum} =} netcdf_inqVarFletcher32(@var{ncid},@var{varid}) \n\
 Determines the checksum settings of the variable with the id @var{varid} in the data set @var{ncid}. If fletcher32 checksums is turned on for this variable, then @var{checksum} is the string \"FLETCHER32\". Otherwise it is the string \"NOCHECKSUM\". \n\
 @end deftypefn\n\
 @seealso{netcdf_defVar,netcdf_inqVarFletcher32}\n")
@@ -1100,7 +1100,7 @@ Determines the checksum settings of the variable with the id @var{varid} in the 
 
 DEFUN_DLD(netcdf_endDef, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_endDef (@var{ncid}) \n\
+@deftypefn {} {} netcdf_endDef (@var{ncid}) \n\
 Leaves define-mode of NetCDF file @var{ncid}.\n\
 @end deftypefn\n\
 @seealso{netcdf_reDef}\n")
@@ -1120,7 +1120,7 @@ Leaves define-mode of NetCDF file @var{ncid}.\n\
 
 DEFUN_DLD(netcdf_reDef, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_reDef (@var{ncid}) \n\
+@deftypefn {} {} netcdf_reDef (@var{ncid}) \n\
 Enter define-mode of NetCDF file @var{ncid}.\n\
 @end deftypefn\n\
 @seealso{netcdf_endDef}\n")
@@ -1142,10 +1142,10 @@ Enter define-mode of NetCDF file @var{ncid}.\n\
 
 DEFUN_DLD(netcdf_putVar, args,,
 "-*- texinfo -*-\n\
-@deftypefn  {Loadable Function} {} netcdf_putVar (@var{ncid},@var{varid},@var{data}) \n\
-@deftypefnx {Loadable Function} {} netcdf_putVar (@var{ncid},@var{varid},@var{start},@var{data}) \n\
-@deftypefnx {Loadable Function} {} netcdf_putVar (@var{ncid},@var{varid},@var{start},@var{count},@var{data}) \n\
-@deftypefnx {Loadable Function} {} netcdf_putVar (@var{ncid},@var{varid},@var{start},@var{count},@var{stride},@var{data}) \n\
+@deftypefn  {} {} netcdf_putVar (@var{ncid},@var{varid},@var{data}) \n\
+@deftypefnx {} {} netcdf_putVar (@var{ncid},@var{varid},@var{start},@var{data}) \n\
+@deftypefnx {} {} netcdf_putVar (@var{ncid},@var{varid},@var{start},@var{count},@var{data}) \n\
+@deftypefnx {} {} netcdf_putVar (@var{ncid},@var{varid},@var{start},@var{count},@var{stride},@var{data}) \n\
 Put data in a NetCDF variable.\n\
 The data @var{data} is stored in the variable @var{varid} of the NetCDF file @var{ncid}. \n\
 @var{start} is the start index of each dimension (0-based and defaults to a vector of zeros), \n\
@@ -1278,10 +1278,10 @@ The data @var{data} is stored in the variable @var{varid} of the NetCDF file @va
 
 DEFUN_DLD(netcdf_getVar, args,,
 "-*- texinfo -*-\n\
-@deftypefn  {Loadable Function} {@var{data} =} netcdf_getVar (@var{ncid},@var{varid}) \n\
-@deftypefnx {Loadable Function} {@var{data} =} netcdf_getVar (@var{ncid},@var{varid},@var{start}) \n\
-@deftypefnx {Loadable Function} {@var{data} =} netcdf_getVar (@var{ncid},@var{varid},@var{start},@var{count}) \n\
-@deftypefnx {Loadable Function} {@var{data} =} netcdf_getVar (@var{ncid},@var{varid},@var{start},@var{count},@var{stride}) \n\
+@deftypefn  {} {@var{data} =} netcdf_getVar (@var{ncid},@var{varid}) \n\
+@deftypefnx {} {@var{data} =} netcdf_getVar (@var{ncid},@var{varid},@var{start}) \n\
+@deftypefnx {} {@var{data} =} netcdf_getVar (@var{ncid},@var{varid},@var{start},@var{count}) \n\
+@deftypefnx {} {@var{data} =} netcdf_getVar (@var{ncid},@var{varid},@var{start},@var{count},@var{stride}) \n\
 Get the data from a NetCDF variable.\n\
 The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @var{ncid}. \n\
 @var{start} is the start index of each dimension (0-based and defaults to a vector of zeros), \n\
@@ -1457,7 +1457,7 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
 
 DEFUN_DLD(netcdf_close, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_close(@var{ncid}) \n\
+@deftypefn {} {} netcdf_close(@var{ncid}) \n\
 Close the NetCDF file with the id @var{ncid}.\n\
 @end deftypefn\n\
 @seealso{netcdf_open}\n")
@@ -1481,7 +1481,7 @@ Close the NetCDF file with the id @var{ncid}.\n\
 
 DEFUN_DLD(netcdf_inqAttName, args,,
 "-*- texinfo -*-\n\
-@deftypefn  {Loadable Function} {@var{name} =} netcdf_inqAttName (@var{ncid},@var{varid},@var{attnum}) \n\
+@deftypefn  {} {@var{name} =} netcdf_inqAttName (@var{ncid},@var{varid},@var{attnum}) \n\
 Get the name of a NetCDF attribute.\n\
 This function returns the name of the attribute with the id @var{attnum} of the variable \n\
 @var{varid} in the NetCDF file @var{ncid}. For global attributes @var{varid} can be \n\
@@ -1507,7 +1507,7 @@ netcdf_getConstant(\"global\").\n\
 
 DEFUN_DLD(netcdf_inqAttID, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{attnum} =} netcdf_inqAttID(@var{ncid},@var{varid},@var{attname}) \n\
+@deftypefn {} {@var{attnum} =} netcdf_inqAttID(@var{ncid},@var{varid},@var{attname}) \n\
 Return the attribute id @var{attnum} of the attribute named @var{attname} of the variable @var{varid} in the dataset @var{ncid}. \n\
 For global attributes @var{varid} can be \n\
 netcdf_getConstant(\"global\").\n\
@@ -1535,7 +1535,7 @@ netcdf_getConstant(\"global\").\n\
 
 DEFUN_DLD(netcdf_inqAtt, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{xtype},@var{len}] = } netcdf_inqAtt(@var{ncid},@var{varid},@var{name}) \n\
+@deftypefn {} {[@var{xtype},@var{len}] = } netcdf_inqAtt(@var{ncid},@var{varid},@var{name}) \n\
 Get attribute type and length.\n\
 @seealso{netcdf_inqAttName}\n\
 @end deftypefn")
@@ -1563,7 +1563,7 @@ Get attribute type and length.\n\
 
 DEFUN_DLD(netcdf_getAtt, args,,
 "-*- texinfo -*-\n\
-@deftypefn  {Loadable Function} {@var{data} =} netcdf_getAtt (@var{ncid},@var{varid},@var{name}) \n\
+@deftypefn  {} {@var{data} =} netcdf_getAtt (@var{ncid},@var{varid},@var{name}) \n\
 Get the value of a NetCDF attribute.\n\
 This function returns the value of the attribute called @var{name} of the variable \n\
 @var{varid} in the NetCDF file @var{ncid}. For global attributes @var{varid} can be \n\
@@ -1661,7 +1661,7 @@ netcdf_getConstant(\"global\").\n\
 
 DEFUN_DLD(netcdf_putAtt, args,,
 "-*- texinfo -*-\n\
-@deftypefn  {Loadable Function} {} netcdf_putAtt (@var{ncid},@var{varid},@var{name},@var{data}) \n\
+@deftypefn  {} {} netcdf_putAtt (@var{ncid},@var{varid},@var{name},@var{data}) \n\
 Defines a NetCDF attribute.\n\
 This function defines the attribute called @var{name} of the variable \n\
 @var{varid} in the NetCDF file @var{ncid}. The value of the attribute will be @var{data}. \n\
@@ -1745,7 +1745,7 @@ netcdf_getConstant(\"global\").\n\
 
 DEFUN_DLD(netcdf_copyAtt, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_copyAtt (@var{ncid},@var{varid},@var{name},@var{ncid_out},@var{varid_out}) \n\
+@deftypefn {} {} netcdf_copyAtt (@var{ncid},@var{varid},@var{name},@var{ncid_out},@var{varid_out}) \n\
 Copies the attribute named @var{old_name} of the variable @var{varid} in the data set @var{ncid} \n\
 to the variable @var{varid_out} in the data set @var{ncid_out}. \n\
 To copy a global attribute use netcdf_getConstant(\"global\") for @var{varid} or @var{varid_out}.\n\
@@ -1774,7 +1774,7 @@ To copy a global attribute use netcdf_getConstant(\"global\") for @var{varid} or
 
 DEFUN_DLD(netcdf_renameAtt, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_renameAtt(@var{ncid},@var{varid},@var{old_name},@var{new_name}) \n\
+@deftypefn {} {} netcdf_renameAtt(@var{ncid},@var{varid},@var{old_name},@var{new_name}) \n\
 Renames the attribute named @var{old_name} of the variable @var{varid} in the data set @var{ncid}. @var{new_name} is the new name of the attribute.\n\
 To rename a global attribute use netcdf_getConstant(\"global\") for @var{varid}.\n\
 @seealso{netcdf_copyAtt,netcdf_getConstant}\n\
@@ -1800,7 +1800,7 @@ To rename a global attribute use netcdf_getConstant(\"global\") for @var{varid}.
 
 DEFUN_DLD(netcdf_delAtt, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {} netcdf_delAtt(@var{ncid},@var{varid},@var{name}) \n\
+@deftypefn {} {} netcdf_delAtt(@var{ncid},@var{varid},@var{name}) \n\
 Deletes the attribute named @var{name} of the variable @var{varid} in the data set @var{ncid}. \n\
 To delete a global attribute use netcdf_getConstant(\"global\") for @var{varid}.\n\
 @seealso{netcdf_defAtt,netcdf_getConstant}\n\
@@ -1825,7 +1825,7 @@ To delete a global attribute use netcdf_getConstant(\"global\") for @var{varid}.
 
 DEFUN_DLD(netcdf_inqVarID, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{varid} = } netcdf_inqVarID (@var{ncid},@var{name}) \n\
+@deftypefn {} {@var{varid} = } netcdf_inqVarID (@var{ncid},@var{name}) \n\
 Return the id of a variable based on its name.\n\
 @seealso{netcdf_defVar,netcdf_inqVarIDs}\n\
 @end deftypefn")
@@ -1848,7 +1848,7 @@ Return the id of a variable based on its name.\n\
 
 DEFUN_DLD(netcdf_inqVarIDs, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{varids} = } netcdf_inqVarID (@var{ncid}) \n\
+@deftypefn {} {@var{varids} = } netcdf_inqVarID (@var{ncid}) \n\
 Return all variable ids.\n\
 This functions returns all variable ids in a NetCDF file or NetCDF group.\n\
 @seealso{netcdf_inqVarID}\n\
@@ -1879,7 +1879,7 @@ This functions returns all variable ids in a NetCDF file or NetCDF group.\n\
 
 DEFUN_DLD(netcdf_inqVar, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{name},@var{nctype},@var{dimids},@var{nattr}] = } netcdf_inqVar (@var{ncid},@var{varid}) \n\
+@deftypefn {} {[@var{name},@var{nctype},@var{dimids},@var{nattr}] = } netcdf_inqVar (@var{ncid},@var{varid}) \n\
 Inquires information about a NetCDF variable.\n\
 This functions returns the @var{name}, the NetCDF type @var{nctype}, an array of dimension ids \n\
 @var{dimids} and the number of attributes @var{nattr} of the NetCDF variable. @var{nctype} in an \n\
@@ -1927,7 +1927,7 @@ integer corresponding NetCDF constants.\n\
 
 DEFUN_DLD(netcdf_inqDim, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{name},@var{length}] =} netcdf_inqDim(@var{ncid},@var{dimid}) \n\
+@deftypefn {} {[@var{name},@var{length}] =} netcdf_inqDim(@var{ncid},@var{dimid}) \n\
 Returns the name and length of a NetCDF dimension.\n\
 @seealso{netcdf_inqDimID}\n\
 @end deftypefn")
@@ -1956,7 +1956,7 @@ Returns the name and length of a NetCDF dimension.\n\
 
 DEFUN_DLD(netcdf_inqDimID, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{dimid} =} netcdf_inqDimID(@var{ncid},@var{dimname}) \n\
+@deftypefn {} {@var{dimid} =} netcdf_inqDimID(@var{ncid},@var{dimname}) \n\
 Return the id of a NetCDF dimension.\n\
 @seealso{netcdf_inqDim}\n\
 @end deftypefn")
@@ -1982,8 +1982,8 @@ Return the id of a NetCDF dimension.\n\
 // int nc_inq_dimids(int ncid, int *ndims, int *dimids, int include_parents);
 DEFUN_DLD(netcdf_inqDimIDs, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{dimids} =} netcdf_inqDimID(@var{ncid}) \n\
-@deftypefnx {Loadable Function} {@var{dimids} =} netcdf_inqDimID(@var{ncid},@var{include_parents}) \n\
+@deftypefn {} {@var{dimids} =} netcdf_inqDimID(@var{ncid}) \n\
+@deftypefnx {} {@var{dimids} =} netcdf_inqDimID(@var{ncid},@var{include_parents}) \n\
 Return the dimension ids defined in a NetCDF file.\n\
 If @var{include_parents} is 1, the dimension ids of the parent group are also returned.\n\
 Per default this is not the case (@var{include_parents} is 0).\n\
@@ -2025,7 +2025,7 @@ Per default this is not the case (@var{include_parents} is 0).\n\
 
 DEFUN_DLD(netcdf_defGrp, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{new_ncid} =} netcdf_defGrp(@var{ncid},@var{name}) \n\
+@deftypefn {} {@var{new_ncid} =} netcdf_defGrp(@var{ncid},@var{name}) \n\
 Define a group in a NetCDF file.\n\
 @seealso{netcdf_inqGrps}\n\
 @end deftypefn")
@@ -2049,7 +2049,7 @@ Define a group in a NetCDF file.\n\
 // int nc_inq_grps(int ncid, int *numgrps, int *ncids);
 DEFUN_DLD(netcdf_inqGrps, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{ncids} =} netcdf_inqGrps(@var{ncid}) \n\
+@deftypefn {} {@var{ncids} =} netcdf_inqGrps(@var{ncid}) \n\
 Return all groups ids in a NetCDF file.\n\
 @seealso{netcdf_inqGrps}\n\
 @end deftypefn")
@@ -2079,7 +2079,7 @@ Return all groups ids in a NetCDF file.\n\
 //int nc_inq_grpname(int ncid, char *name);
 DEFUN_DLD(netcdf_inqGrpName, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{name} =} netcdf_inqGrpName(@var{ncid}) \n\
+@deftypefn {} {@var{name} =} netcdf_inqGrpName(@var{ncid}) \n\
 Return group name in a NetCDF file.\n\
 @seealso{netcdf_inqGrps}\n\
 @end deftypefn")
@@ -2101,7 +2101,7 @@ Return group name in a NetCDF file.\n\
 //int nc_inq_grpname_full(int ncid, size_t *lenp, char *full_name);
 DEFUN_DLD(netcdf_inqGrpNameFull, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{name} =} netcdf_inqGrpNameFull(@var{ncid}) \n\
+@deftypefn {} {@var{name} =} netcdf_inqGrpNameFull(@var{ncid}) \n\
 Return full name of group in NetCDF file.\n\
 @seealso{netcdf_inqGrpName}\n\
 @end deftypefn")
@@ -2133,7 +2133,7 @@ Return full name of group in NetCDF file.\n\
 // int nc_inq_grp_parent(int ncid, int *parent_ncid);
 DEFUN_DLD(netcdf_inqGrpParent, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{parent_ncid} =} netcdf_inqGrpParent(@var{ncid}) \n\
+@deftypefn {} {@var{parent_ncid} =} netcdf_inqGrpParent(@var{ncid}) \n\
 Return id of the parent group\n\
 @seealso{netcdf_inqGrpName}\n\
 @end deftypefn")
@@ -2154,7 +2154,7 @@ Return id of the parent group\n\
 // int nc_inq_grp_full_ncid(int ncid, char *full_name, int *grp_ncid);
 DEFUN_DLD(netcdf_inqGrpFullNcid, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{grp_ncid} =} netcdf_inqGrpFullNcid(@var{ncid},@var{name}) \n\
+@deftypefn {} {@var{grp_ncid} =} netcdf_inqGrpFullNcid(@var{ncid},@var{name}) \n\
 Return the group id based on the full group name.\n\
 @seealso{netcdf_inqGrpName}\n\
 @end deftypefn")
@@ -2196,7 +2196,7 @@ Return the group id based on the full group name.\n\
 // int nc_inq_ncid(int ncid, const char *name, int *grp_ncid);
 DEFUN_DLD(netcdf_inqNcid, args,,
   "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{grp_ncid} =} netcdf_inqNcid(@var{ncid},@var{name}) \n\
+@deftypefn {} {@var{grp_ncid} =} netcdf_inqNcid(@var{ncid},@var{name}) \n\
 Return group id based on its name\n\
 @seealso{netcdf_inqGrpFullNcid}\n\
 @end deftypefn")
@@ -2218,7 +2218,7 @@ Return group id based on its name\n\
 // int nc_def_vlen(int ncid, const char *name, nc_type base_typeid, nc_type *xtypep);
 DEFUN_DLD(netcdf_defVlen, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {@var{varid} = } netcdf_defVlen(@var{ncid},@var{typename},@var{basetype}) \n\
+@deftypefn {} {@var{varid} = } netcdf_defVlen(@var{ncid},@var{typename},@var{basetype}) \n\
 Defines a NC_VLEN variable length array type with the type name @var{typename} and a base datatype of @var{basetype} in the dataset @var{ncid}. @var{basetype} can be \"byte\", \"ubyte\", \"short\", \"ushort\", \"int\", \"uint\", \"int64\", \"uint64\", \"float\", \"double\", \"char\" or the corresponding number as returned by netcdf_getConstant. The new data type id is returned. \n\
 @end deftypefn\n\
 @seealso{netcdf_open,netcdf_defVar, netcdf_inqVlen}\n")
@@ -2249,7 +2249,7 @@ Defines a NC_VLEN variable length array type with the type name @var{typename} a
 // int nc_inq_vlen(int ncid, nc_type xtype, char *name, size_t datasz, nc_type *basetypeid);
 DEFUN_DLD(netcdf_inqVlen, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{typename}, @var{bytesize}, @var{basetypeid}] = } netcdf_inqVlen(@var{ncid},@var{typeid}) \n\
+@deftypefn {} {[@var{typename}, @var{bytesize}, @var{basetypeid}] = } netcdf_inqVlen(@var{ncid},@var{typeid}) \n\
 Provide information on a NC_VLEN variable length array type @var{typeid} in the dataset @var{ncid}.\n\
 \n \
 The function returns the typename, bytesize, and base type id.\n \
@@ -2282,7 +2282,7 @@ The function returns the typename, bytesize, and base type id.\n \
 // int  nc_inq_user_type(int ncid, nc_type xtype, char *name, size_t datasz, nc_type *basetypeid, size_t nfields, int *classp);
 DEFUN_DLD(netcdf_inqUserType, args,,
 "-*- texinfo -*-\n\
-@deftypefn {Loadable Function} {[@var{typename}, @var{bytesize}, @var{basetypeid}, @var{numfields}, @var{classid}] = } netcdf_inqUserType(@var{ncid},@var{typeid}) \n\
+@deftypefn {} {[@var{typename}, @var{bytesize}, @var{basetypeid}, @var{numfields}, @var{classid}] = } netcdf_inqUserType(@var{ncid},@var{typeid}) \n\
 Provide information on a user defined type @var{typeid} in the dataset @var{ncid}.\n\
 \n \
 The function returns the typename, bytesize, base type id, number of fields and class identifier of the type.\n \
