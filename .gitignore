@@ -9,6 +9,12 @@ fntests.log
 # emacs backup files
 *~
 
+# vi backup
+*.swp
+*.swo
+*.swn
+
+
 # autoconf
 src/configure
 src/config.log
@@ -18,3 +24,14 @@ src/autom4te.cache
 # release
 release/
 target/
+
+# Other generated files
+doc/*.qch
+doc/*.qhc
+doc/*.html
+doc/*.pdf
+doc/*.info
+doc/version.texi
+doc/functions.texi
+
+
