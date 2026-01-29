@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqVarFletcher32_0028ncid_002cvarid_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">checksum</var> =</code> <strong class="def-name">netcdf.inqVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqVarFletcher32_0028ncid_002cvarid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarFletcher32_0028ncid_002cvarid_0029"><span><code class="def-type"><var class="var">checksum</var> =</code> <strong class="def-name">netcdf.inqVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></span></dt>
 <dd><p>Determines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If fletcher32 checksums is turned on for this variable, then <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;. Otherwise it is the string &quot;NOCHECKSUM&quot;. 
  </p></dd></dl>

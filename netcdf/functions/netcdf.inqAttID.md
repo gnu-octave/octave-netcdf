@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqAttID_0028ncid_002cvarid_002cattname_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">attnum</var> =</code> <strong class="def-name">netcdf.inqAttID(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attname</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqAttID_0028ncid_002cvarid_002cattname_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqAttID_0028ncid_002cvarid_002cattname_0029"><span><code class="def-type"><var class="var">attnum</var> =</code> <strong class="def-name">netcdf.inqAttID(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attname</var>)</strong></span></dt>
 <dd><p>Return the attribute id <var class="var">attnum</var> of the attribute named <var class="var">attname</var> of the variable <var class="var">varid</var> in the dataset <var class="var">ncid</var>. 
  For global attributes <var class="var">varid</var> can be 
  netcdf.getConstant(&quot;global&quot;).

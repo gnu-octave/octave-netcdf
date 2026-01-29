@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einq_0028ncid_0029"><span class="category-def">: </span><span><code class="def-type">[<var class="var">ndims</var>,<var class="var">nvars</var>,<var class="var">ngatts</var>,<var class="var">unlimdimid</var>] =</code> <strong class="def-name">netcdf.inq(<var class="var">ncid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einq_0028ncid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einq_0028ncid_0029"><span><code class="def-type">[<var class="var">ndims</var>,<var class="var">nvars</var>,<var class="var">ngatts</var>,<var class="var">unlimdimid</var>] =</code> <strong class="def-name">netcdf.inq(<var class="var">ncid</var>)</strong></span></dt>
 <dd><p>Return the number of dimension (<var class="var">ndims</var>), the number of variables (<var class="var">nvars</var>), the number of global attributes (<var class="var">ngatts</var>) and the id of the unlimited dimension (<var class="var">unlimdimid</var>). 
  If no unlimited dimension is declared -1 is returned. For NetCDF4 files, one should use 
  the function netcdf.inqUnlimDims as multiple unlimite dimension exists. 

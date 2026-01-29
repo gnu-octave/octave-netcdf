@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqVarFill_0028ncid_002cvarid_0029"><span class="category-def">: </span><span><code class="def-type">[<var class="var">no_fill</var>,<var class="var">fillvalue</var>] =</code> <strong class="def-name">netcdf.inqVarFill(<var class="var">ncid</var>,<var class="var">varid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqVarFill_0028ncid_002cvarid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarFill_0028ncid_002cvarid_0029"><span><code class="def-type">[<var class="var">no_fill</var>,<var class="var">fillvalue</var>] =</code> <strong class="def-name">netcdf.inqVarFill(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></span></dt>
 <dd><p>Determines the fill-value settings of the NetCDF variable <var class="var">varid</var>.
  If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
  </p></dd></dl>

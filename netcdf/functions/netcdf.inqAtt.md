@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqAtt_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><span><code class="def-type">[<var class="var">xtype</var>,<var class="var">len</var>] =</code> <strong class="def-name">netcdf.inqAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqAtt_0028ncid_002cvarid_002cname_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqAtt_0028ncid_002cvarid_002cname_0029"><span><code class="def-type">[<var class="var">xtype</var>,<var class="var">len</var>] =</code> <strong class="def-name">netcdf.inqAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></span></dt>
 <dd><p>Get attribute type and length.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.inqAttName.

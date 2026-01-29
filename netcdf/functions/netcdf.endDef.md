@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002eendDef"><span class="category-def">: </span><span><strong class="def-name">netcdf.endDef</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code><a class="copiable-link" href="#index-netcdf_002eendDef"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002eendDef"><span><strong class="def-name">netcdf.endDef</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></span></dt>
 <dd><p>Leaves define-mode of NetCDF file <var class="var">ncid</var>.
  </p></dd></dl>

@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqNcid_0028ncid_002cname_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">grp_ncid</var> =</code> <strong class="def-name">netcdf.inqNcid(<var class="var">ncid</var>,<var class="var">name</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqNcid_0028ncid_002cname_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqNcid_0028ncid_002cname_0029"><span><code class="def-type"><var class="var">grp_ncid</var> =</code> <strong class="def-name">netcdf.inqNcid(<var class="var">ncid</var>,<var class="var">name</var>)</strong></span></dt>
 <dd><p>Return group id based on its name
  </p>
 <p><strong class="strong">See also:</strong> netcdf.inqGrpFullNcid.

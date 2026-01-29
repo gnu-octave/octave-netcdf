@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-test_005fnetcdf"><span class="category-def">: </span><span><strong class="def-name">test_netcdf</strong><a class="copiable-link" href="#index-test_005fnetcdf"></a></span></dt>
+<dt class="deftypefn def-line" id="index-test_005fnetcdf"><span><strong class="def-name">test_netcdf</strong></span></dt>
 <dd><p>Function to do a basic test of the netcdf interface
  </p></dd></dl>

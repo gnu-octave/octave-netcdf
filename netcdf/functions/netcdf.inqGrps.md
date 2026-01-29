@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqGrps_0028ncid_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">ncids</var> =</code> <strong class="def-name">netcdf.inqGrps(<var class="var">ncid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqGrps_0028ncid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqGrps_0028ncid_0029"><span><code class="def-type"><var class="var">ncids</var> =</code> <strong class="def-name">netcdf.inqGrps(<var class="var">ncid</var>)</strong></span></dt>
 <dd><p>Return all groups ids in a NetCDF file.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.inqGrps.

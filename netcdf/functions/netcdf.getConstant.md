@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002egetConstant_0028name_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf.getConstant(<var class="var">name</var>)</strong><a class="copiable-link" href="#index-netcdf_002egetConstant_0028name_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002egetConstant_0028name_0029"><span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf.getConstant(<var class="var">name</var>)</strong></span></dt>
 <dd><p>Returns the value of a NetCDF constant called <var class="var">name</var>.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.getConstantNames.

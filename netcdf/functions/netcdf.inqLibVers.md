@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqLibVers_0028_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">vers</var> =</code> <strong class="def-name">netcdf.inqLibVers()</strong><a class="copiable-link" href="#index-netcdf_002einqLibVers_0028_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqLibVers_0028_0029"><span><code class="def-type"><var class="var">vers</var> =</code> <strong class="def-name">netcdf.inqLibVers()</strong></span></dt>
 <dd><p>Returns the version of the NetCDF library.
  </p></dd></dl>

@@ -58,8 +58,8 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncwrite"><span class="category-def">Function File: </span><span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>)</code><a class="copiable-link" href="#index-ncwrite"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncwrite-1"><span class="category-def">Function File: </span><span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>, <var class="var">start</var>, <var class="var">stride</var>)</code><a class="copiable-link" href="#index-ncwrite-1"></a></span></dt>
+<dt class="deftypefn def-line" id="index-ncwrite"><span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>)</code></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncwrite-1"><span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>, <var class="var">start</var>, <var class="var">stride</var>)</code></span></dt>
 <dd>
 <p>Write array <var class="var">x</var> to the the variable <var class="var">varname</var> in the NetCDF file 
  <var class="var">filename</var>.
@@ -80,7 +80,7 @@ navigation:
 </p>
 <p>x_in_file = (x - add_offset)/scale_factor
 </p>
-<h4 class="subsubheading" id="Example"><span>Example<a class="copiable-link" href="#Example"></a></span></h4>
+<h4 class="subsubheading" id="Example"><span>Example</span></h4>
 <p>Create a netcdf file with a variable of &rsquo;mydata&rsquo; and then write 
  data to that variable.
  </p><div class="example">

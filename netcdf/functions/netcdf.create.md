@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002ecreate_0028filename_002cmode_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.create(<var class="var">filename</var>,<var class="var">mode</var>)</strong><a class="copiable-link" href="#index-netcdf_002ecreate_0028filename_002cmode_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002ecreate_0028filename_002cmode_0029"><span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.create(<var class="var">filename</var>,<var class="var">mode</var>)</strong></span></dt>
 <dd><p>Creates the file named <var class="var">filename</var> in the mode <var class="var">mode</var> which can have the 
  following values: 
  &quot;clobber&quot; (overwrite existing files), 
@@ -68,7 +68,7 @@ navigation:
  &quot;share&quot; (concurrent reading of the dataset). 
  <var class="var">mode</var> can also be the numeric value return by netcdf.getConstant. In the later-case it can be combined with a bitwise-or. 
  </p></dd></dl>
-<h4 class="subsubheading" id="Example"><span>Example<a class="copiable-link" href="#Example"></a></span></h4>
+<h4 class="subsubheading" id="Example"><span>Example</span></h4>
 <div class="example">
 <pre class="example-preformatted"> mode = bitor(netcdf.getConstant(&quot;classic_model&quot;), ...
  netcdf.getConstant(&quot;netcdf4&quot;)); 

@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncwriteatt_0028filename_002cvarname_002cattname_002cval_0029"><span class="category-def">Function File: </span><span><strong class="def-name">ncwriteatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>,<var class="var">val</var>)</strong><a class="copiable-link" href="#index-ncwriteatt_0028filename_002cvarname_002cattname_002cval_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-ncwriteatt_0028filename_002cvarname_002cattname_002cval_0029"><span><strong class="def-name">ncwriteatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>,<var class="var">val</var>)</strong></span></dt>
 <dd>
 <p>Defines the attribute <var class="var">attname</var> of the variable <var class="var">varname</var> in the file
  <var class="var">filename</var> with the value <var class="var">val</var>.
@@ -67,7 +67,7 @@ navigation:
  <var class="var">varname</var>. The type of value is mapped to the NetCDF data types.
  (see <code class="code">ncinfo</code>).
 </p>
-<h4 class="subsubheading" id="Example"><span>Example<a class="copiable-link" href="#Example"></a></span></h4>
+<h4 class="subsubheading" id="Example"><span>Example</span></h4>
 <p>Create a netcdf4 format file with a variable mydata and assign an attribute &quot;units&quot; to it.
  </p><div class="example">
 <pre class="example-preformatted"> nccreate(&quot;myfile.nc&quot;, &quot;mydata&quot;, &quot;Format&quot;, &quot;netcdf4&quot;);

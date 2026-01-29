@@ -58,9 +58,9 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncinfo"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code><a class="copiable-link" href="#index-ncinfo"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-1"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code><a class="copiable-link" href="#index-ncinfo-1"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-2"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">groupname</var>)</code><a class="copiable-link" href="#index-ncinfo-2"></a></span></dt>
+<dt class="deftypefn def-line" id="index-ncinfo"><span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-1"><span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-2"><span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">groupname</var>)</code></span></dt>
 <dd><p>Return information about an entire NetCDF file <var class="var">filename</var> (i.e. the root 
  group &quot;/&quot;), about the variable called <var class="var">varname</var> or the group called 
  <var class="var">groupname</var>.
@@ -75,7 +75,7 @@ navigation:
 <p>The structure <var class="var">info</var> has additional fields depending on whether a 
  group of variable is queried.
 </p>
-<h4 class="subsubheading" id="Groups"><span>Groups<a class="copiable-link" href="#Groups"></a></span></h4>
+<h4 class="subsubheading" id="Groups"><span>Groups</span></h4>
 
 <p>Groups are returned as an array structure with the following fields:
 </p>
@@ -88,7 +88,7 @@ navigation:
  same fields as this structure.
  </li></ul>
 
-<h4 class="subsubheading" id="Dimensions"><span>Dimensions<a class="copiable-link" href="#Dimensions"></a></span></h4>
+<h4 class="subsubheading" id="Dimensions"><span>Dimensions</span></h4>
 
 <p>Dimensions are returned as an array structure with the following fields:
  </p><ul class="itemize mark-bullet">
@@ -97,7 +97,7 @@ navigation:
    </li><li><var class="var">Unlimited</var>: true of the dimension has no fixed limited, false 
  </li></ul>
 
-<h4 class="subsubheading" id="Variables"><span>Variables<a class="copiable-link" href="#Variables"></a></span></h4>
+<h4 class="subsubheading" id="Variables"><span>Variables</span></h4>
 
 <p>Variables are returned as an array structure with the following fields:
  </p><ul class="itemize mark-bullet">
@@ -118,7 +118,7 @@ navigation:
     otherwise this field is not defined.
  </li></ul>
 
-<h4 class="subsubheading" id="Attributes"><span>Attributes<a class="copiable-link" href="#Attributes"></a></span></h4>
+<h4 class="subsubheading" id="Attributes"><span>Attributes</span></h4>
 
 <p>Attributes are returned as an array structure with the following fields: 
  </p><ul class="itemize mark-bullet">
@@ -127,7 +127,7 @@ navigation:
    </li><li><var class="var">Unlimited</var>: true of the dimension has no fixed limited, false 
  </li></ul>
 
-<h4 class="subsubheading" id="Data_002dtypes"><span>Data-types<a class="copiable-link" href="#Data_002dtypes"></a></span></h4>
+<h4 class="subsubheading" id="Data_002dtypes"><span>Data-types</span></h4>
 
 <p>The following the the correspondence between the Octave and NetCDF 
  data-types:

@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002eopen_0028filename_002cmode_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.open(<var class="var">filename</var>,<var class="var">mode</var>)</strong><a class="copiable-link" href="#index-netcdf_002eopen_0028filename_002cmode_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002eopen_0028filename_002cmode_0029"><span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.open(<var class="var">filename</var>,<var class="var">mode</var>)</strong></span></dt>
 <dd><p>Opens the file named <var class="var">filename</var> in the mode <var class="var">mode</var>.
  </p></dd></dl>

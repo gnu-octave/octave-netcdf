@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002esetChunkCache_0028size_002c"><span class="category-def">: </span><span><strong class="def-name">netcdf.setChunkCache(<var class="var">size</var>,</strong> <code class="def-code-arguments"><var class="var">nelems</var>, <var class="var">preemption</var>)</code><a class="copiable-link" href="#index-netcdf_002esetChunkCache_0028size_002c"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002esetChunkCache_0028size_002c"><span><strong class="def-name">netcdf.setChunkCache(<var class="var">size</var>,</strong> <code class="def-code-arguments"><var class="var">nelems</var>, <var class="var">preemption</var>)</code></span></dt>
 <dd><p>Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.
  </p></dd></dl>

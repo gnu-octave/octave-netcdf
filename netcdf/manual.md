@@ -244,8 +244,8 @@ does not support the import function but the functions are available as netcdf.f
 <h4 class="subsection">3.1.1 nccreate</h4>
 <a class="index-entry-id" id="index-nccreate"></a>
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-nccreate_0028filename_002cvarname_0029"><span class="category-def">Function File: </span><strong class="def-name">nccreate(<var class="var">filename</var>,<var class="var">varname</var>)</strong></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-nccreate_0028filename_002cvarname_002c_0022property_0022_002cvalue_002c_002e_002e_002e_0029"><span class="category-def">Function File: </span><strong class="def-name">nccreate(<var class="var">filename</var>,<var class="var">varname</var>,&quot;property&quot;,<var class="var">value</var>,...)</strong></dt>
+<dt class="deftypefn def-line" id="index-nccreate_0028filename_002cvarname_0029"><span class="category-def">: </span><strong class="def-name">nccreate(<var class="var">filename</var>,<var class="var">varname</var>)</strong></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-nccreate_0028filename_002cvarname_002c_0022property_0022_002cvalue_002c_002e_002e_002e_0029"><span class="category-def">: </span><strong class="def-name">nccreate(<var class="var">filename</var>,<var class="var">varname</var>,&quot;property&quot;,<var class="var">value</var>,...)</strong></dt>
 <dd>
 <p>Create the variable <var class="var">varname</var> in the file <var class="var">filename</var>.
 </p>
@@ -282,7 +282,7 @@ does not support the import function but the functions are available as netcdf.f
 <h4 class="subsection">3.1.2 ncdisp</h4>
 <a class="index-entry-id" id="index-ncdisp"></a>
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncdisp-1"><span class="category-def">Function File: </span><strong class="def-name">ncdisp</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></dt>
+<dt class="deftypefn def-line" id="index-ncdisp-1"><span class="category-def">: </span><strong class="def-name">ncdisp</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></dt>
 <dd><p>Display meta-data of the NetCDF file <var class="var">filename</var>
 </p>
 <h4 class="subsubheading" id="Example-1">Example</h4>
@@ -296,9 +296,9 @@ does not support the import function but the functions are available as netcdf.f
 <h4 class="subsection">3.1.3 ncinfo</h4>
 <a class="index-entry-id" id="index-ncinfo"></a>
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncinfo-1"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-2"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-3"><span class="category-def">Function File: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">groupname</var>)</code></dt>
+<dt class="deftypefn def-line" id="index-ncinfo-1"><span class="category-def">: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-2"><span class="category-def">: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncinfo-3"><span class="category-def">: </span><code class="def-type"><var class="var">info</var> =</code> <strong class="def-name">ncinfo</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">groupname</var>)</code></dt>
 <dd><p>Return information about an entire NetCDF file <var class="var">filename</var> (i.e. the root
  group &quot;/&quot;), about the variable called <var class="var">varname</var> or the group called
 <var class="var">groupname</var>.
@@ -390,8 +390,8 @@ does not support the import function but the functions are available as netcdf.f
 <h4 class="subsection">3.1.4 ncread</h4>
 <a class="index-entry-id" id="index-ncread"></a>
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncread-1"><span class="category-def">Function File: </span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncread-2"><span class="category-def">Function File: </span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></dt>
+<dt class="deftypefn def-line" id="index-ncread-1"><span class="category-def">: </span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncread-2"><span class="category-def">: </span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></dt>
 <dd>
 <p>Read the variable <var class="var">varname</var> from the NetCDF file <var class="var">filename</var>.
 </p>
@@ -430,7 +430,7 @@ does not support the import function but the functions are available as netcdf.f
 <h4 class="subsection">3.1.5 ncreadatt</h4>
 <a class="index-entry-id" id="index-ncreadatt"></a>
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncreadatt_0028filename_002cvarname_002cattname_0029"><span class="category-def">Function File: </span><code class="def-type"><var class="var">val</var> =</code> <strong class="def-name">ncreadatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>)</strong></dt>
+<dt class="deftypefn def-line" id="index-ncreadatt_0028filename_002cvarname_002cattname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">val</var> =</code> <strong class="def-name">ncreadatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>)</strong></dt>
 <dd>
 <p>Return the attribute <var class="var">attname</var> of the variable <var class="var">varname</var> in the file
 <var class="var">filename</var>.
@@ -455,8 +455,8 @@ does not support the import function but the functions are available as netcdf.f
 <h4 class="subsection">3.1.6 ncwrite</h4>
 <a class="index-entry-id" id="index-ncwrite"></a>
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncwrite-1"><span class="category-def">Function File: </span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>)</code></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncwrite-2"><span class="category-def">Function File: </span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>, <var class="var">start</var>, <var class="var">stride</var>)</code></dt>
+<dt class="deftypefn def-line" id="index-ncwrite-1"><span class="category-def">: </span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>)</code></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncwrite-2"><span class="category-def">: </span><strong class="def-name">ncwrite</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>, <var class="var">x</var>, <var class="var">start</var>, <var class="var">stride</var>)</code></dt>
 <dd>
 <p>Write array <var class="var">x</var> to the the variable <var class="var">varname</var> in the NetCDF file
 <var class="var">filename</var>.
@@ -492,7 +492,7 @@ does not support the import function but the functions are available as netcdf.f
 <h4 class="subsection">3.1.7 ncwriteatt</h4>
 <a class="index-entry-id" id="index-ncwriteatt"></a>
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncwriteatt_0028filename_002cvarname_002cattname_002cval_0029"><span class="category-def">Function File: </span><strong class="def-name">ncwriteatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>,<var class="var">val</var>)</strong></dt>
+<dt class="deftypefn def-line" id="index-ncwriteatt_0028filename_002cvarname_002cattname_002cval_0029"><span class="category-def">: </span><strong class="def-name">ncwriteatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>,<var class="var">val</var>)</strong></dt>
 <dd>
 <p>Defines the attribute <var class="var">attname</var> of the variable <var class="var">varname</var> in the file
 <var class="var">filename</var> with the value <var class="var">val</var>.
@@ -514,7 +514,7 @@ does not support the import function but the functions are available as netcdf.f
 <h4 class="subsection">3.1.8 ncwriteschema</h4>
 <a class="index-entry-id" id="index-ncwriteschema"></a>
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncwriteschema-1"><span class="category-def">Function File: </span><strong class="def-name">ncwriteschema</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">schema</var>)</code></dt>
+<dt class="deftypefn def-line" id="index-ncwriteschema-1"><span class="category-def">: </span><strong class="def-name">ncwriteschema</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">schema</var>)</code></dt>
 <dd>
 <p>Create a NetCDF called <var class="var">filename</var> with the dimensions, attributes,
  variables and groups given by the structure <var class="var">schema</var>.

@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncwriteschema"><span class="category-def">Function File: </span><span><strong class="def-name">ncwriteschema</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">schema</var>)</code><a class="copiable-link" href="#index-ncwriteschema"></a></span></dt>
+<dt class="deftypefn def-line" id="index-ncwriteschema"><span><strong class="def-name">ncwriteschema</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">schema</var>)</code></span></dt>
 <dd>
 <p>Create a NetCDF called <var class="var">filename</var> with the dimensions, attributes, 
  variables and groups given by the structure <var class="var">schema</var>.
@@ -67,7 +67,7 @@ navigation:
  <code class="code">ncinfo</code>. <code class="code">ncinfo</code> and <code class="code">ncwriteschema</code> can be used together to
  create a NetCDF using another file as a template:
 </p>
-<h4 class="subsubheading" id="Example"><span>Example<a class="copiable-link" href="#Example"></a></span></h4>
+<h4 class="subsubheading" id="Example"><span>Example</span></h4>
 <div class="example">
 <pre class="example-preformatted"> schema = ncinfo(&quot;template.nc&quot;);
  # the new file should be named &quot;new_file.nc&quot;

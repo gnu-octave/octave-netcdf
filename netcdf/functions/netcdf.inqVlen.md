@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqVlen_0028ncid_002ctypeid_0029"><span class="category-def">: </span><span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>] =</code> <strong class="def-name">netcdf.inqVlen(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqVlen_0028ncid_002ctypeid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqVlen_0028ncid_002ctypeid_0029"><span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>] =</code> <strong class="def-name">netcdf.inqVlen(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong></span></dt>
 <dd><p>Provide information on a NC_VLEN variable length array type <var class="var">typeid</var> in the dataset <var class="var">ncid</var>.
 </p> 
 <p>The function returns the typename, bytesize, and base type id.

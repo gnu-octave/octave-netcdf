@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002erenameAtt_0028ncid_002cvarid_002cold_005fname_002cnew_005fname_0029"><span class="category-def">: </span><span><strong class="def-name">netcdf.renameAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">old_name</var>,<var class="var">new_name</var>)</strong><a class="copiable-link" href="#index-netcdf_002erenameAtt_0028ncid_002cvarid_002cold_005fname_002cnew_005fname_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002erenameAtt_0028ncid_002cvarid_002cold_005fname_002cnew_005fname_0029"><span><strong class="def-name">netcdf.renameAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">old_name</var>,<var class="var">new_name</var>)</strong></span></dt>
 <dd><p>Renames the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>. <var class="var">new_name</var> is the new name of the attribute.
  To rename a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
  </p>

@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002erenameDim_0028ncid_002cdimid_002cname_0029"><span class="category-def">: </span><span><strong class="def-name">netcdf.renameDim(<var class="var">ncid</var>,<var class="var">dimid</var>,<var class="var">name</var>)</strong><a class="copiable-link" href="#index-netcdf_002erenameDim_0028ncid_002cdimid_002cname_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002erenameDim_0028ncid_002cdimid_002cname_0029"><span><strong class="def-name">netcdf.renameDim(<var class="var">ncid</var>,<var class="var">dimid</var>,<var class="var">name</var>)</strong></span></dt>
 <dd><p>Renames the dimension with the id <var class="var">dimid</var> in the data set <var class="var">ncid</var>. <var class="var">name</var> is the new name of the dimension.
  </p></dd></dl>

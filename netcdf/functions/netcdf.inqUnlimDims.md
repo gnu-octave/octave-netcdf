@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqUnlimDims_0028ncid_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">unlimdimids</var> =</code> <strong class="def-name">netcdf.inqUnlimDims(<var class="var">ncid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqUnlimDims_0028ncid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqUnlimDims_0028ncid_0029"><span><code class="def-type"><var class="var">unlimdimids</var> =</code> <strong class="def-name">netcdf.inqUnlimDims(<var class="var">ncid</var>)</strong></span></dt>
 <dd><p>Return the id of all unlimited dimensions of the NetCDF file <var class="var">ncid</var>.
  </p></dd></dl>

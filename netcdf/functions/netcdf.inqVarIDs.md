@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqVarID"><span class="category-def">: </span><span><code class="def-type"><var class="var">varids</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code><a class="copiable-link" href="#index-netcdf_002einqVarID"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqVarID"><span><code class="def-type"><var class="var">varids</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></span></dt>
 <dd><p>Return all variable ids.
  This functions returns all variable ids in a NetCDF file or NetCDF group.
  </p>

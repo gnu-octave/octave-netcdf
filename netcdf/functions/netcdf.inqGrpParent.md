@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqGrpParent_0028ncid_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">parent_ncid</var> =</code> <strong class="def-name">netcdf.inqGrpParent(<var class="var">ncid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqGrpParent_0028ncid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqGrpParent_0028ncid_0029"><span><code class="def-type"><var class="var">parent_ncid</var> =</code> <strong class="def-name">netcdf.inqGrpParent(<var class="var">ncid</var>)</strong></span></dt>
 <dd><p>Return id of the parent group
  </p>
 <p><strong class="strong">See also:</strong> netcdf.inqGrpName.

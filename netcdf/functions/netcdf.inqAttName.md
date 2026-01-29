@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqAttName"><span class="category-def">: </span><span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqAttName</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attnum</var>)</code><a class="copiable-link" href="#index-netcdf_002einqAttName"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqAttName"><span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqAttName</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attnum</var>)</code></span></dt>
 <dd><p>Get the name of a NetCDF attribute.
  This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable 
  <var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be 

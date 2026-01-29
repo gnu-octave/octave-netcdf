@@ -58,10 +58,10 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncdisp"><span class="category-def">Function File: </span><span><strong class="def-name">ncdisp</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code><a class="copiable-link" href="#index-ncdisp"></a></span></dt>
+<dt class="deftypefn def-line" id="index-ncdisp"><span><strong class="def-name">ncdisp</strong> <code class="def-code-arguments">(<var class="var">filename</var>)</code></span></dt>
 <dd><p>Display meta-data of the NetCDF file <var class="var">filename</var>
 </p>
-<h4 class="subsubheading" id="Example"><span>Example<a class="copiable-link" href="#Example"></a></span></h4>
+<h4 class="subsubheading" id="Example"><span>Example</span></h4>
 <div class="example">
 <pre class="example-preformatted"> ncdisp(&quot;test.nc&quot;);
  </pre></div>

@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqDim_0028ncid_002cdimid_0029"><span class="category-def">: </span><span><code class="def-type">[<var class="var">name</var>,<var class="var">length</var>] =</code> <strong class="def-name">netcdf.inqDim(<var class="var">ncid</var>,<var class="var">dimid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqDim_0028ncid_002cdimid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqDim_0028ncid_002cdimid_0029"><span><code class="def-type">[<var class="var">name</var>,<var class="var">length</var>] =</code> <strong class="def-name">netcdf.inqDim(<var class="var">ncid</var>,<var class="var">dimid</var>)</strong></span></dt>
 <dd><p>Returns the name and length of a NetCDF dimension.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.inqDimID.

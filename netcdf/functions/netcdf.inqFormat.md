@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqFormat_0028ncid_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">format</var> =</code> <strong class="def-name">netcdf.inqFormat(<var class="var">ncid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqFormat_0028ncid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqFormat_0028ncid_0029"><span><code class="def-type"><var class="var">format</var> =</code> <strong class="def-name">netcdf.inqFormat(<var class="var">ncid</var>)</strong></span></dt>
 <dd><p>Return the NetCDF format of the dataset <var class="var">ncid</var>.
  Format might be one of the following 
  &quot;FORMAT_CLASSIC&quot;, &quot;FORMAT_64BIT&quot;, &quot;FORMAT_NETCDF4&quot; or &quot;FORMAT_NETCDF4_CLASSIC&quot; 

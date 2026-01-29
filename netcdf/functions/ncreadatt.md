@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncreadatt_0028filename_002cvarname_002cattname_0029"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">val</var> =</code> <strong class="def-name">ncreadatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>)</strong><a class="copiable-link" href="#index-ncreadatt_0028filename_002cvarname_002cattname_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-ncreadatt_0028filename_002cvarname_002cattname_0029"><span><code class="def-type"><var class="var">val</var> =</code> <strong class="def-name">ncreadatt(<var class="var">filename</var>,<var class="var">varname</var>,<var class="var">attname</var>)</strong></span></dt>
 <dd>
 <p>Return the attribute <var class="var">attname</var> of the variable <var class="var">varname</var> in the file
  <var class="var">filename</var>.
@@ -67,7 +67,7 @@ navigation:
  <var class="var">varname</var>. The type of attribute is mapped to the Octave data types.
  (see <code class="code">ncinfo</code>).
 </p>
-<h4 class="subsubheading" id="Example"><span>Example<a class="copiable-link" href="#Example"></a></span></h4>
+<h4 class="subsubheading" id="Example"><span>Example</span></h4>
 <p>Read global attribute &rsquo;creation_date&rsquo;
  </p><div class="example">
 <pre class="example-preformatted"> d = ncreadatt('test.nc','/','creation_date')

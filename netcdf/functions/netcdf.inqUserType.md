@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqUserType_0028ncid_002ctypeid_0029"><span class="category-def">: </span><span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>, <var class="var">numfields</var>, <var class="var">classid</var>] =</code> <strong class="def-name">netcdf.inqUserType(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqUserType_0028ncid_002ctypeid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqUserType_0028ncid_002ctypeid_0029"><span><code class="def-type">[<var class="var">typename</var>, <var class="var">bytesize</var>, <var class="var">basetypeid</var>, <var class="var">numfields</var>, <var class="var">classid</var>] =</code> <strong class="def-name">netcdf.inqUserType(<var class="var">ncid</var>,<var class="var">typeid</var>)</strong></span></dt>
 <dd><p>Provide information on a user defined type <var class="var">typeid</var> in the dataset <var class="var">ncid</var>.
 </p> 
 <p>The function returns the typename, bytesize, base type id, number of fields and class identifier of the type.

@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002egetConstantNames_0028_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf.getConstantNames()</strong><a class="copiable-link" href="#index-netcdf_002egetConstantNames_0028_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002egetConstantNames_0028_0029"><span><code class="def-type"><var class="var">value</var> =</code> <strong class="def-name">netcdf.getConstantNames()</strong></span></dt>
 <dd><p>Returns a list of all constant names.
  </p></dd></dl>

@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002edefDim_0028ncid_002cname_002clen_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf.defDim(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">len</var>)</strong><a class="copiable-link" href="#index-netcdf_002edefDim_0028ncid_002cname_002clen_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002edefDim_0028ncid_002cname_002clen_0029"><span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf.defDim(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">len</var>)</strong></span></dt>
 <dd><p>Define the dimension with the name <var class="var">name</var> and the length <var class="var">len</var> in the dataset <var class="var">ncid</var>. The id of the dimension is returned.
  </p></dd></dl>

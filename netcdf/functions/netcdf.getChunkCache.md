@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002egetChunkCache_0028_0029"><span class="category-def">: </span><span><code class="def-type">[<var class="var">size</var>, <var class="var">nelems</var>, <var class="var">preemption</var>] =</code> <strong class="def-name">netcdf.getChunkCache()</strong><a class="copiable-link" href="#index-netcdf_002egetChunkCache_0028_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002egetChunkCache_0028_0029"><span><code class="def-type">[<var class="var">size</var>, <var class="var">nelems</var>, <var class="var">preemption</var>] =</code> <strong class="def-name">netcdf.getChunkCache()</strong></span></dt>
 <dd><p>Gets the default chunk cache settings in the HDF5 library. 
  </p></dd></dl>

@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002edefVar_0028ncid_002cname_002cxtype_002cdimids_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVar(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">xtype</var>,<var class="var">dimids</var>)</strong><a class="copiable-link" href="#index-netcdf_002edefVar_0028ncid_002cname_002cxtype_002cdimids_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002edefVar_0028ncid_002cname_002cxtype_002cdimids_0029"><span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVar(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">xtype</var>,<var class="var">dimids</var>)</strong></span></dt>
 <dd><p>Defines a variable with the name <var class="var">name</var> in the dataset <var class="var">ncid</var>. <var class="var">xtype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The parameter <var class="var">dimids</var> define the ids of the dimension. For scalar this parameter is the empty array ([]). The variable id is returned. 
  </p></dd></dl>

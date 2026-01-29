@@ -58,8 +58,8 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-ncread"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code><a class="copiable-link" href="#index-ncread"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncread-1"><span class="category-def">Function File: </span><span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code><a class="copiable-link" href="#index-ncread-1"></a></span></dt>
+<dt class="deftypefn def-line" id="index-ncread"><span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>)</code></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-ncread-1"><span><code class="def-type"><var class="var">x</var> =</code> <strong class="def-name">ncread</strong> <code class="def-code-arguments">(<var class="var">filename</var>, <var class="var">varname</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></span></dt>
 <dd>
 <p>Read the variable <var class="var">varname</var> from the NetCDF file <var class="var">filename</var>.
 </p>
@@ -85,7 +85,7 @@ navigation:
 <p>Note that values equal to the attribute missing_value are not replaced by 
  NaN (for compatibility).
 </p>
-<h4 class="subsubheading" id="Example"><span>Example<a class="copiable-link" href="#Example"></a></span></h4>
+<h4 class="subsubheading" id="Example"><span>Example</span></h4>
 <p>Read the data from variable &rsquo;mydata&rsquo; in the file test.nc.
  </p><div class="example">
 <pre class="example-preformatted"> data  = ncread('test.nc','mydata');

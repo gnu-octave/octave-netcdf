@@ -58,7 +58,7 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002edelAtt_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><span><strong class="def-name">netcdf.delAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong><a class="copiable-link" href="#index-netcdf_002edelAtt_0028ncid_002cvarid_002cname_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002edelAtt_0028ncid_002cvarid_002cname_0029"><span><strong class="def-name">netcdf.delAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></span></dt>
 <dd><p>Deletes the attribute named <var class="var">name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>. 
  To delete a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
  </p>

@@ -58,8 +58,8 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002einqDimID_0028ncid_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqDimID_0028ncid_0029"></a></span></dt>
-<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002einqDimID_0028ncid_002cinclude_005fparents_0029"><span class="category-def">: </span><span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>,<var class="var">include_parents</var>)</strong><a class="copiable-link" href="#index-netcdf_002einqDimID_0028ncid_002cinclude_005fparents_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002einqDimID_0028ncid_0029"><span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>)</strong></span></dt>
+<dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002einqDimID_0028ncid_002cinclude_005fparents_0029"><span><code class="def-type"><var class="var">dimids</var> =</code> <strong class="def-name">netcdf.inqDimID(<var class="var">ncid</var>,<var class="var">include_parents</var>)</strong></span></dt>
 <dd><p>Return the dimension ids defined in a NetCDF file.
  If <var class="var">include_parents</var> is 1, the dimension ids of the parent group are also returned.
  Per default this is not the case (<var class="var">include_parents</var> is 0).

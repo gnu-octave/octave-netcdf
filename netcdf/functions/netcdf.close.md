@@ -58,6 +58,6 @@ navigation:
   url: "/manual"
 ---
 <dl class="first-deftypefn def-block">
-<dt class="deftypefn def-line" id="index-netcdf_002eclose_0028ncid_0029"><span class="category-def">: </span><span><strong class="def-name">netcdf.close(<var class="var">ncid</var>)</strong><a class="copiable-link" href="#index-netcdf_002eclose_0028ncid_0029"></a></span></dt>
+<dt class="deftypefn def-line" id="index-netcdf_002eclose_0028ncid_0029"><span><strong class="def-name">netcdf.close(<var class="var">ncid</var>)</strong></span></dt>
 <dd><p>Close the NetCDF file with the id <var class="var">ncid</var>.
  </p></dd></dl>
