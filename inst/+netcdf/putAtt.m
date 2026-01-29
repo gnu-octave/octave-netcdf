@@ -16,8 +16,10 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.putAtt (@var{ncid},@var{varid},@var{name},@var{data}) 
 ## Defines a NetCDF attribute.
+##
 ## This function defines the attribute called @var{name} of the variable 
 ## @var{varid} in the NetCDF file @var{ncid}. The value of the attribute will be @var{data}. 
+##
 ## For global attributes @var{varid} can be 
 ## netcdf.getConstant("global").
 ## @seealso{netcdf.getAtt}

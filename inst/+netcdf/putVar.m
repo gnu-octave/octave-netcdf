@@ -19,10 +19,14 @@
 ## @deftypefnx {} {} netcdf.putVar (@var{ncid},@var{varid},@var{start},@var{count},@var{data}) 
 ## @deftypefnx {} {} netcdf.putVar (@var{ncid},@var{varid},@var{start},@var{count},@var{stride},@var{data}) 
 ## Put data in a NetCDF variable.
+##
 ## The data @var{data} is stored in the variable @var{varid} of the NetCDF file @var{ncid}. 
+##
 ## @var{start} is the start index of each dimension (0-based and defaults to a vector of zeros), 
+##
 ## @var{count} is the number of elements of to be written along each dimension (default all elements)
-## and @var{stride} is the sampling interval.
+##
+## @var{stride} is the sampling interval.
 ## @end deftypefn
 
 

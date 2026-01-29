@@ -16,6 +16,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{ncid} =} netcdf.open(@var{filename},@var{mode}) 
 ## Opens the file named @var{filename} in the mode @var{mode}.
+## @seealso{netcdf.create, netcdf.close}
 ## @end deftypefn
 
 

@@ -16,7 +16,10 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.defVarDeflate (@var{ncid},@var{varid},@var{shuffle},@var{deflate},@var{deflate_level}) 
 ## Define the compression settings NetCDF variable @var{varid}.
-## If @var{deflate} is true, then the variable is compressed. The compression level @var{deflate_level} is an integer between 0 (no compression) and 9 (maximum compression).
+##
+## If @var{deflate} is true, then the variable is compressed.
+##
+## The compression level @var{deflate_level} is an integer between 0 (no compression) and 9 (maximum compression).
 ## @end deftypefn
 
 

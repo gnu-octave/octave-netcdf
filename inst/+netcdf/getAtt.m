@@ -16,9 +16,11 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{data} =} netcdf.getAtt (@var{ncid},@var{varid},@var{name}) 
 ## Get the value of a NetCDF attribute.
+##
 ## This function returns the value of the attribute called @var{name} of the variable 
-## @var{varid} in the NetCDF file @var{ncid}. For global attributes @var{varid} can be 
-## netcdf.getConstant("global").
+## @var{varid} in the NetCDF file @var{ncid}.
+##
+## For global attributes @var{varid} can be netcdf.getConstant("global").
 ## @seealso{netcdf.putAtt}
 ## @end deftypefn
 

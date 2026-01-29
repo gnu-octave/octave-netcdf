@@ -16,7 +16,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{varid} = } netcdf.inqVarID (@var{ncid},@var{name}) 
 ## Return the id of a variable based on its name.
-## @seealso{netcdf.defVar,netcdf.inqVarIDs}
+## @seealso{netcdf.defVar, netcdf.inqVarIDs}
 ## @end deftypefn
 
 function varargout = inqVarID(varargin)

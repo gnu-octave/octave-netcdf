@@ -16,9 +16,12 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {[@var{name},@var{nctype},@var{dimids},@var{nattr}] = } netcdf.inqVar (@var{ncid},@var{varid}) 
 ## Inquires information about a NetCDF variable.
+##
 ## This functions returns the @var{name}, the NetCDF type @var{nctype}, an array of dimension ids 
-## @var{dimids} and the number of attributes @var{nattr} of the NetCDF variable. @var{nctype} in an 
-## integer corresponding NetCDF constants.
+##
+## @var{dimids} and the number of attributes @var{nattr} of the NetCDF variable.
+##
+## @var{nctype} in an integer corresponding NetCDF constants.
 ## @seealso{netcdf.inqVarID,netcdf.getConstant}
 ## @end deftypefn
 

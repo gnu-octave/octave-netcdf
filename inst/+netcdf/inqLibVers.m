@@ -15,7 +15,7 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{vers} =} netcdf.inqLibVers() 
-## Returns the version of the NetCDF library.
+## Returns the version of the NetCDF library as a string.
 ## @end deftypefn
 
 

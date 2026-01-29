@@ -15,7 +15,9 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{dimid} =} netcdf.defDim(@var{ncid},@var{name},@var{len}) 
-## Define the dimension with the name @var{name} and the length @var{len} in the dataset @var{ncid}. The id of the dimension is returned.
+## Define the dimension with the name @var{name} and the length @var{len} in the dataset @var{ncid}.
+##
+## The id of the dimension is returned.
 ## @end deftypefn
 
 

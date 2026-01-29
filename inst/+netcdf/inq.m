@@ -15,9 +15,14 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {[@var{ndims},@var{nvars},@var{ngatts},@var{unlimdimid}] =} netcdf.inq(@var{ncid}) 
-## Return the number of dimension (@var{ndims}), the number of variables (@var{nvars}), the number of global attributes (@var{ngatts}) and the id of the unlimited dimension (@var{unlimdimid}). 
-## If no unlimited dimension is declared -1 is returned. For NetCDF4 files, one should use 
-## the function netcdf.inqUnlimDims as multiple unlimite dimension exists. 
+## Return informat about a netcdf file.
+##
+## Return the number of dimension (@var{ndims}), the number of variables (@var{nvars}), the number
+## of global attributes (@var{ngatts}) and the id of the unlimited dimension (@var{unlimdimid}). 
+##
+## If no unlimited dimension is declared -1 is returned.
+##
+## For NetCDF4 files, one should use the function netcdf.inqUnlimDims as multiple unlimited dimension exists. 
 ## @end deftypefn
 
 

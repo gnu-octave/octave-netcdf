@@ -15,7 +15,11 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.defVarFletcher32(@var{ncid},@var{varid},@var{checksum}) 
-## Defines the checksum settings of the variable with the id @var{varid} in the data set @var{ncid}. If @var{checksum} is the string "FLETCHER32", then fletcher32 checksums will be turned on for this variable. If @var{checksum} is "NOCHECKSUM", then checksums will be disabled. 
+## Defines the checksum settings of the variable with the id @var{varid} in the data set @var{ncid}.
+##
+## If @var{checksum} is the string "FLETCHER32", then fletcher32 checksums will be turned on for this variable.
+##
+## If @var{checksum} is "NOCHECKSUM", then checksums will be disabled. 
 ## @end deftypefn
 
 

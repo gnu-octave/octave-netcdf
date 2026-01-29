@@ -15,7 +15,9 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {} netcdf.setChunkCache(@var{size}, @var{nelems}, @var{preemption}) 
-## Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.
+## Sets the default chunk cache settings in the HDF5 library.
+##
+## The settings applies to all files which are subsequently opened or created.
 ## @end deftypefn
 
 

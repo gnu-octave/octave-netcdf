@@ -15,13 +15,16 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{ncid} =} netcdf.create(@var{filename},@var{mode}) 
-## Creates the file named @var{filename} in the mode @var{mode} which can have the 
-## following values: 
-## "clobber" (overwrite existing files), 
-## "noclobber" (prevent to overwrite existing files) 
-## "64bit_offset" (use the 64bit-offset format), 
-## "netcdf4" (use the NetCDF4, i.e. HDF5 format) or 
-## "share" (concurrent reading of the dataset). 
+## Creates the file named @var{filename} in the mode @var{mode}.
+##
+## @var{mode} can have the following values: 
+## @table @asis
+## @item "clobber" (overwrite existing files), 
+## @item "noclobber" (prevent to overwrite existing files) 
+## @item "64bit_offset" (use the 64bit-offset format), 
+## @item "netcdf4" (use the NetCDF4, i.e. HDF5 format) or 
+## @item "share" (concurrent reading of the dataset). 
+## @end table
 ## @var{mode} can also be the numeric value return by netcdf.getConstant. In the later-case it can be combined with a bitwise-or. 
 ## @end deftypefn
 ## @subsubheading Example
@@ -30,6 +33,7 @@
 ## netcdf.getConstant("netcdf4")); 
 ## ncid = netcdf.create("test.nc",mode); 
 ## @end example 
+## @seealso {netcdf.open, netcdf.close}
 
 
 function varargout = create(varargin)

@@ -16,6 +16,7 @@
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{varids} = } netcdf.inqVarID (@var{ncid}) 
 ## Return all variable ids.
+##
 ## This functions returns all variable ids in a NetCDF file or NetCDF group.
 ## @seealso{netcdf.inqVarID}
 ## @end deftypefn

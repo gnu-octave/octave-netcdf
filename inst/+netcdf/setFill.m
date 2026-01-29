@@ -15,7 +15,11 @@
 
 ## -*- texinfo -*-
 ## @deftypefn {} {@var{old_mode} =} netcdf.setFill(@var{ncid},@var{fillmode}) 
-## Change the fill mode (@var{fillmode}) of the data set @var{ncid}. The previous value of the fill mode is returned. @var{fillmode} can be either "fill" or "nofill".
+## Change the fill mode (@var{fillmode}) of the data set @var{ncid}.
+##
+## @var{fillmode} can be either "fill" or "nofill".
+##
+## The previous value of the fill mode is returned.
 ## @end deftypefn
 
 
