@@ -4,6 +4,7 @@ src/*.o
 
 # for testing
 src/PKG_ADD
+fntests.log
 
 # emacs backup files
 *~
@@ -13,3 +14,7 @@ src/configure
 src/config.log
 src/aclocal.m4
 src/autom4te.cache
+
+# release
+release/
+target/
