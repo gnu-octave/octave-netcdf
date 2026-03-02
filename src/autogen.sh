@@ -1,8 +1,26 @@
 #! /bin/sh
+## Octave netcdf package bootstrap script
+## Run this to generate the configure script
 
-## Generate ./configure and other build files
-aclocal
-autoconf
+set -e      # halt if unhandled error
+
+force=""
+if [ "x$1" == "x--force" ]; then
+  force="--force";
+  rm -f config.guess config.sub;
+fi
+
+# install these if we need to ?
+if ! [ -f config.guess ]; then
+wget -O config.guess https://git.savannah.gnu.org/cgit/config.git/plain/config.guess;
+chmod a+rx config.guess;
+fi
+if ! [ -f config.sub ]; then
+wget -O config.sub https://git.savannah.gnu.org/cgit/config.git/plain/config.sub;
+chmod a+rx config.sub;
+fi
+aclocal $force
+autoconf $force   # generate configure script
 autoheader -f
 
 #rm -f configure.ac
