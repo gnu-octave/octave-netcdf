@@ -43,9 +43,6 @@ dnl AC_CONFIG_AUX_DIR(admin)
 dnl if tools we need
 AC_PROG_AWK
 AC_PROG_SED
-AC_PROG_CXX
-AC_LANG(C++)
-
 
 dnl Check for mkoctfile and octave
 AC_CHECK_PROG([MKOCTFILE],mkoctfile,mkoctfile)
@@ -62,6 +59,18 @@ case $host_os in
 esac
 fi
 
+# The same value of CXX as Octave was compiled with is supposed to be used.
+CXX=`${MKOCTFILE} -p CXX`
+
+# The check for flags to enable C++11 is broken with a C++20 compiler (because
+# the type of u8"" literals changed) in autoconf before version 2.73.
+# Octave requires C++11 since version 4.2, so it is enabled by the CXX as
+# returned by mkoctfile. Skip broken check which would demote to C++11.
+ac_cv_prog_cxx_cxx11=""
+
+AC_PROG_CXX
+AC_LANG(C++)
+
 dnl **********************************************************
 dnl checking for nc-config
 
@@ -75,7 +84,6 @@ NETCDF_LIBS=`$NC_CONFIG --libs`
 NETCDF_CPPFLAGS=`$NC_CONFIG --cflags`
 AC_SUBST(NETCDF_LIBS)
 AC_SUBST(NETCDF_CPPFLAGS)
-
 
 dnl The following will be either "yes" or "no"
 AC_MSG_CHECKING(for netcdf4 support)
