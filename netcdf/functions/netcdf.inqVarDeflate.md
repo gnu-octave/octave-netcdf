@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/20_netcdfinqVarDeflate/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqVarDeflate"
 category: "Test function"
@@ -60,5 +60,8 @@ navigation:
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarDeflate"><span><code class="def-type">[<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>] =</code> <strong class="def-name">netcdf.inqVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></span></dt>
 <dd><p>Determines the compression settings NetCDF variable <var class="var">varid</var>.
- If <var class="var">deflate</var> is true, then the variable is compressed. The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
+</p>
+<p>If <var class="var">deflate</var> is true, then the variable is compressed.
+</p>
+<p>The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
  </p></dd></dl>

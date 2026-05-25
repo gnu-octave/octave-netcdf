@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/17_netcdfinqAttName/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqAttName"
 category: "Test function"
@@ -60,9 +60,11 @@ navigation:
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqAttName"><span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqAttName</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attnum</var>)</code></span></dt>
 <dd><p>Get the name of a NetCDF attribute.
- This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable 
- <var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be 
- netcdf.getConstant(&quot;global&quot;).
+</p>
+<p>This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable 
+ <var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>.
+</p>
+<p>For global attributes <var class="var">varid</var> can be netcdf.getConstant(&quot;global&quot;).
  </p>
 <p><strong class="strong">See also:</strong> netcdf.inqAttName.
  </p></dd></dl>

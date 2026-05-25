@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/13_netcdfputVar/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.putVar"
 category: "Test function"
@@ -63,8 +63,12 @@ navigation:
 <dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002eputVar-2"><span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">data</var>)</code></span></dt>
 <dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002eputVar-3"><span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>,<var class="var">data</var>)</code></span></dt>
 <dd><p>Put data in a NetCDF variable.
- The data <var class="var">data</var> is stored in the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>. 
- <var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros), 
- <var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
- and <var class="var">stride</var> is the sampling interval.
+</p>
+<p>The data <var class="var">data</var> is stored in the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>. 
+</p>
+<p><var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros), 
+</p>
+<p><var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
+</p>
+<p><var class="var">stride</var> is the sampling interval.
  </p></dd></dl>

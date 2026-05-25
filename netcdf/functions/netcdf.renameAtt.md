@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/16_netcdfrenameAtt/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.renameAtt"
 category: "Test function"
@@ -59,8 +59,11 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002erenameAtt_0028ncid_002cvarid_002cold_005fname_002cnew_005fname_0029"><span><strong class="def-name">netcdf.renameAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">old_name</var>,<var class="var">new_name</var>)</strong></span></dt>
-<dd><p>Renames the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>. <var class="var">new_name</var> is the new name of the attribute.
- To rename a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
+<dd><p>Renames the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>.
+</p>
+<p><var class="var">new_name</var> is the new name of the attribute.
+</p>
+<p>To rename a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.copyAtt,netcdf.getConstant.
  </p></dd></dl>

@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/16_netcdfinqVarIDs/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqVarIDs"
 category: "Test function"
@@ -60,7 +60,8 @@ navigation:
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarID"><span><code class="def-type"><var class="var">varids</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></span></dt>
 <dd><p>Return all variable ids.
- This functions returns all variable ids in a NetCDF file or NetCDF group.
+</p>
+<p>This functions returns all variable ids in a NetCDF file or NetCDF group.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.inqVarID.
  </p></dd></dl>

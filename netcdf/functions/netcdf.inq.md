@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/10_netcdfinq/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inq"
 category: "Test function"
@@ -59,7 +59,12 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einq_0028ncid_0029"><span><code class="def-type">[<var class="var">ndims</var>,<var class="var">nvars</var>,<var class="var">ngatts</var>,<var class="var">unlimdimid</var>] =</code> <strong class="def-name">netcdf.inq(<var class="var">ncid</var>)</strong></span></dt>
-<dd><p>Return the number of dimension (<var class="var">ndims</var>), the number of variables (<var class="var">nvars</var>), the number of global attributes (<var class="var">ngatts</var>) and the id of the unlimited dimension (<var class="var">unlimdimid</var>). 
- If no unlimited dimension is declared -1 is returned. For NetCDF4 files, one should use 
- the function netcdf.inqUnlimDims as multiple unlimite dimension exists. 
+<dd><p>Return informat about a netcdf file.
+</p>
+<p>Return the number of dimension (<var class="var">ndims</var>), the number of variables (<var class="var">nvars</var>), the number
+ of global attributes (<var class="var">ngatts</var>) and the id of the unlimited dimension (<var class="var">unlimdimid</var>). 
+</p>
+<p>If no unlimited dimension is declared -1 is returned.
+</p>
+<p>For NetCDF4 files, one should use the function netcdf.inqUnlimDims as multiple unlimited dimension exists. 
  </p></dd></dl>

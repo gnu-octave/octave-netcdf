@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/20_netcdfsetChunkCache/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.setChunkCache"
 category: "Test function"
@@ -59,5 +59,7 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002esetChunkCache_0028size_002c"><span><strong class="def-name">netcdf.setChunkCache(<var class="var">size</var>,</strong> <code class="def-code-arguments"><var class="var">nelems</var>, <var class="var">preemption</var>)</code></span></dt>
-<dd><p>Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.
+<dd><p>Sets the default chunk cache settings in the HDF5 library.
+</p>
+<p>The settings applies to all files which are subsequently opened or created.
  </p></dd></dl>

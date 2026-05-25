@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/13_netcdfinqVar/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqVar"
 category: "Test function"
@@ -60,9 +60,12 @@ navigation:
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVar"><span><code class="def-type">[<var class="var">name</var>,<var class="var">nctype</var>,<var class="var">dimids</var>,<var class="var">nattr</var>] =</code> <strong class="def-name">netcdf.inqVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></span></dt>
 <dd><p>Inquires information about a NetCDF variable.
- This functions returns the <var class="var">name</var>, the NetCDF type <var class="var">nctype</var>, an array of dimension ids 
- <var class="var">dimids</var> and the number of attributes <var class="var">nattr</var> of the NetCDF variable. <var class="var">nctype</var> in an 
- integer corresponding NetCDF constants.
+</p>
+<p>This functions returns the <var class="var">name</var>, the NetCDF type <var class="var">nctype</var>, an array of dimension ids 
+</p>
+<p><var class="var">dimids</var> and the number of attributes <var class="var">nattr</var> of the NetCDF variable.
+</p>
+<p><var class="var">nctype</var> in an integer corresponding NetCDF constants.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.inqVarID,netcdf.getConstant.
  </p></dd></dl>

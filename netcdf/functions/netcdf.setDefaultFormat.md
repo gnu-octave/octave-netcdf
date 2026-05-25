@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/23_netcdfsetDefaultFormat/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.setDefaultFormat"
 category: "Test function"
@@ -59,6 +59,7 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002esetDefaultFormat_0028format_0029"><span><code class="def-type"><var class="var">old_format</var> =</code> <strong class="def-name">netcdf.setDefaultFormat(<var class="var">format</var>)</strong></span></dt>
-<dd><p>Sets the default format of the NetCDF library and returns the previous default format (as a numeric value). <var class="var">format</var> can be 
- &quot;format_classic&quot;, &quot;format_64bit&quot;, &quot;format_netcdf4&quot; or &quot;format_netcdf4_classic&quot;. 
+<dd><p>Sets the default format of the NetCDF library and returns the previous default format (as a numeric value).
+</p>
+<p><var class="var">format</var> can be &quot;format_classic&quot;, &quot;format_64bit&quot;, &quot;format_netcdf4&quot; or &quot;format_netcdf4_classic&quot;. 
  </p></dd></dl>

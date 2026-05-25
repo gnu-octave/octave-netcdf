@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/23_netcdfinqVarFletcher32/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqVarFletcher32"
 category: "Test function"
@@ -59,5 +59,8 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarFletcher32_0028ncid_002cvarid_0029"><span><code class="def-type"><var class="var">checksum</var> =</code> <strong class="def-name">netcdf.inqVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></span></dt>
-<dd><p>Determines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If fletcher32 checksums is turned on for this variable, then <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;. Otherwise it is the string &quot;NOCHECKSUM&quot;. 
+<dd><p>Determines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>.
+</p>
+<p>If fletcher32 checksums is turned on for this variable, then <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;.
+ Otherwise it is the string &quot;NOCHECKSUM&quot;. 
  </p></dd></dl>

@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/15_netcdfinqVarID/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqVarID"
 category: "Test function"
@@ -61,5 +61,5 @@ navigation:
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarID"><span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">name</var>)</code></span></dt>
 <dd><p>Return the id of a variable based on its name.
  </p>
-<p><strong class="strong">See also:</strong> netcdf.defVar,netcdf.inqVarIDs.
+<p><strong class="strong">See also:</strong> netcdf.defVar, netcdf.inqVarIDs.
  </p></dd></dl>

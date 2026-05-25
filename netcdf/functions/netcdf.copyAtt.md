@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/14_netcdfcopyAtt/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.copyAtt"
 category: "Test function"
@@ -61,7 +61,8 @@ navigation:
 <dt class="deftypefn def-line" id="index-netcdf_002ecopyAtt"><span><strong class="def-name">netcdf.copyAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">ncid_out</var>,<var class="var">varid_out</var>)</code></span></dt>
 <dd><p>Copies the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var> 
  to the variable <var class="var">varid_out</var> in the data set <var class="var">ncid_out</var>. 
- To copy a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var> or <var class="var">varid_out</var>.
+</p>
+<p>To copy a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var> or <var class="var">varid_out</var>.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.getAtt,netcdf.getConstant.
  </p></dd></dl>

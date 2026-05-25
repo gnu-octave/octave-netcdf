@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/13_netcdfcreate/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.create"
 category: "Test function"
@@ -59,14 +59,17 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002ecreate_0028filename_002cmode_0029"><span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.create(<var class="var">filename</var>,<var class="var">mode</var>)</strong></span></dt>
-<dd><p>Creates the file named <var class="var">filename</var> in the mode <var class="var">mode</var> which can have the 
- following values: 
- &quot;clobber&quot; (overwrite existing files), 
- &quot;noclobber&quot; (prevent to overwrite existing files) 
- &quot;64bit_offset&quot; (use the 64bit-offset format), 
- &quot;netcdf4&quot; (use the NetCDF4, i.e. HDF5 format) or 
- &quot;share&quot; (concurrent reading of the dataset). 
- <var class="var">mode</var> can also be the numeric value return by netcdf.getConstant. In the later-case it can be combined with a bitwise-or. 
+<dd><p>Creates the file named <var class="var">filename</var> in the mode <var class="var">mode</var>.
+</p>
+<p><var class="var">mode</var> can have the following values: 
+ </p><dl class="table">
+<dt>&quot;clobber&quot; (overwrite existing files),</dt>
+<dt>&quot;noclobber&quot; (prevent to overwrite existing files)</dt>
+<dt>&quot;64bit_offset&quot; (use the 64bit-offset format),</dt>
+<dt>&quot;netcdf4&quot; (use the NetCDF4, i.e. HDF5 format) or</dt>
+<dt>&quot;share&quot; (concurrent reading of the dataset).</dt>
+</dl>
+<p><var class="var">mode</var> can also be the numeric value return by netcdf.getConstant. In the later-case it can be combined with a bitwise-or. 
  </p></dd></dl>
 <h4 class="subsubheading" id="Example"><span>Example</span></h4>
 <div class="example">

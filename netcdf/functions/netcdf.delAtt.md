@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/13_netcdfdelAtt/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.delAtt"
 category: "Test function"
@@ -60,7 +60,8 @@ navigation:
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edelAtt_0028ncid_002cvarid_002cname_0029"><span><strong class="def-name">netcdf.delAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></span></dt>
 <dd><p>Deletes the attribute named <var class="var">name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>. 
- To delete a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
+</p>
+<p>To delete a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
  </p>
 <p><strong class="strong">See also:</strong> netcdf.defAtt,netcdf.getConstant.
  </p></dd></dl>

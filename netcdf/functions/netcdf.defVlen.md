@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/14_netcdfdefVlen/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.defVlen"
 category: "Test function"
@@ -59,5 +59,11 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefVlen_0028ncid_002ctypename_002cbasetype_0029"><span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVlen(<var class="var">ncid</var>,<var class="var">typename</var>,<var class="var">basetype</var>)</strong></span></dt>
-<dd><p>Defines a NC_VLEN variable length array type with the type name <var class="var">typename</var> and a base datatype of <var class="var">basetype</var> in the dataset <var class="var">ncid</var>. <var class="var">basetype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The new data type id is returned. 
+<dd><p>Defines a NC_VLEN variable length array type with the type name <var class="var">typename</var> and a base
+ datatype of <var class="var">basetype</var> in the dataset <var class="var">ncid</var>.
+</p>
+<p><var class="var">basetype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;,
+ &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant.
+</p>
+<p>The new data type id is returned. 
  </p></dd></dl>

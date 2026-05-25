@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/14_netcdfsetFill/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.setFill"
 category: "Test function"
@@ -59,5 +59,9 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002esetFill_0028ncid_002cfillmode_0029"><span><code class="def-type"><var class="var">old_mode</var> =</code> <strong class="def-name">netcdf.setFill(<var class="var">ncid</var>,<var class="var">fillmode</var>)</strong></span></dt>
-<dd><p>Change the fill mode (<var class="var">fillmode</var>) of the data set <var class="var">ncid</var>. The previous value of the fill mode is returned. <var class="var">fillmode</var> can be either &quot;fill&quot; or &quot;nofill&quot;.
+<dd><p>Change the fill mode (<var class="var">fillmode</var>) of the data set <var class="var">ncid</var>.
+</p>
+<p><var class="var">fillmode</var> can be either &quot;fill&quot; or &quot;nofill&quot;.
+</p>
+<p>The previous value of the fill mode is returned.
  </p></dd></dl>

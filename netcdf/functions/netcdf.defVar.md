@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/13_netcdfdefVar/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.defVar"
 category: "Test function"
@@ -59,5 +59,12 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefVar_0028ncid_002cname_002cxtype_002cdimids_0029"><span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVar(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">xtype</var>,<var class="var">dimids</var>)</strong></span></dt>
-<dd><p>Defines a variable with the name <var class="var">name</var> in the dataset <var class="var">ncid</var>. <var class="var">xtype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The parameter <var class="var">dimids</var> define the ids of the dimension. For scalar this parameter is the empty array ([]). The variable id is returned. 
+<dd><p>Defines a variable with the name <var class="var">name</var> in the dataset <var class="var">ncid</var>.
+</p>
+<p><var class="var">xtype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;,
+ &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant.
+</p>
+<p>The parameter <var class="var">dimids</var> define the ids of the dimension. For scalar this parameter is the empty array ([]).
+</p>
+<p>The variable id is returned. 
  </p></dd></dl>

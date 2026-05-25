@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/17_netcdfinqLibVers/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqLibVers"
 category: "Test function"
@@ -59,5 +59,5 @@ navigation:
 ---
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqLibVers_0028_0029"><span><code class="def-type"><var class="var">vers</var> =</code> <strong class="def-name">netcdf.inqLibVers()</strong></span></dt>
-<dd><p>Returns the version of the NetCDF library.
+<dd><p>Returns the version of the NetCDF library as a string.
  </p></dd></dl>

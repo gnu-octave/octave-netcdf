@@ -3,7 +3,7 @@ layout: "default"
 permalink: "/manual/"
 title: "Netcdf Toolkit - Manual"
 pkg_name: "netcdf"
-version: "1.0.19"
+version: "1.0.20"
 description: "A NetCDF interface for Octave"
 navigation:
 - id: "overview"
@@ -184,7 +184,7 @@ octave-forge using the following command within <abbr class="acronym">GNU</abbr>
 <abbr class="acronym">GNU</abbr> Octave, the package can be installed using the following command within <abbr class="acronym">GNU</abbr> Octave:
 </p>
 <div class="example">
-<pre class="example-preformatted">pkg install netcdf-1.0.19.tar.gz
+<pre class="example-preformatted">pkg install netcdf-1.0.20.tar.gz
 </pre></div>
 </div>
 <div class="section-level-extent" id="Loading">
@@ -562,7 +562,7 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-inqLibVers"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqLibVers_0028_0029"><span class="category-def">: </span><code class="def-type"><var class="var">vers</var> =</code> <strong class="def-name">netcdf.inqLibVers()</strong></dt>
-<dd><p>Returns the version of the NetCDF library.
+<dd><p>Returns the version of the NetCDF library as a string.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002esetChunkCache">
@@ -570,7 +570,9 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-setChunkCache"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002esetChunkCache_0028size_002c"><span class="category-def">: </span><strong class="def-name">netcdf.setChunkCache(<var class="var">size</var>,</strong> <code class="def-code-arguments"><var class="var">nelems</var>, <var class="var">preemption</var>)</code></dt>
-<dd><p>Sets the default chunk cache settings in the HDF5 library. The settings applies to all files which are subsequently opened or created.
+<dd><p>Sets the default chunk cache settings in the HDF5 library.
+</p>
+<p>The settings applies to all files which are subsequently opened or created.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002esetDefaultFormat">
@@ -578,8 +580,9 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-setDefaultFormat"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002esetDefaultFormat_0028format_0029"><span class="category-def">: </span><code class="def-type"><var class="var">old_format</var> =</code> <strong class="def-name">netcdf.setDefaultFormat(<var class="var">format</var>)</strong></dt>
-<dd><p>Sets the default format of the NetCDF library and returns the previous default format (as a numeric value). <var class="var">format</var> can be
- &quot;format_classic&quot;, &quot;format_64bit&quot;, &quot;format_netcdf4&quot; or &quot;format_netcdf4_classic&quot;.
+<dd><p>Sets the default format of the NetCDF library and returns the previous default format (as a numeric value).
+</p>
+<p><var class="var">format</var> can be &quot;format_classic&quot;, &quot;format_64bit&quot;, &quot;format_netcdf4&quot; or &quot;format_netcdf4_classic&quot;.
 </p></dd></dl>
 <hr>
 </div>
@@ -608,14 +611,17 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-create"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002ecreate_0028filename_002cmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.create(<var class="var">filename</var>,<var class="var">mode</var>)</strong></dt>
-<dd><p>Creates the file named <var class="var">filename</var> in the mode <var class="var">mode</var> which can have the
- following values:
- &quot;clobber&quot; (overwrite existing files),
- &quot;noclobber&quot; (prevent to overwrite existing files)
- &quot;64bit_offset&quot; (use the 64bit-offset format),
- &quot;netcdf4&quot; (use the NetCDF4, i.e. HDF5 format) or
- &quot;share&quot; (concurrent reading of the dataset).
-<var class="var">mode</var> can also be the numeric value return by netcdf.getConstant. In the later-case it can be combined with a bitwise-or.
+<dd><p>Creates the file named <var class="var">filename</var> in the mode <var class="var">mode</var>.
+</p>
+<p><var class="var">mode</var> can have the following values:
+</p><dl class="table">
+<dt>&quot;clobber&quot; (overwrite existing files),</dt>
+<dt>&quot;noclobber&quot; (prevent to overwrite existing files)</dt>
+<dt>&quot;64bit_offset&quot; (use the 64bit-offset format),</dt>
+<dt>&quot;netcdf4&quot; (use the NetCDF4, i.e. HDF5 format) or</dt>
+<dt>&quot;share&quot; (concurrent reading of the dataset).</dt>
+</dl>
+<p><var class="var">mode</var> can also be the numeric value return by netcdf.getConstant. In the later-case it can be combined with a bitwise-or.
 </p></dd></dl>
 <h4 class="subsubheading" id="Example-7">Example</h4>
 <div class="example">
@@ -623,7 +629,8 @@ does not support the import function but the functions are available as netcdf.f
  netcdf.getConstant(&quot;netcdf4&quot;));
  ncid = netcdf.create(&quot;test.nc&quot;,mode);
 </pre></div>
-</div>
+<p><strong class="strong">See also:</strong> netcdf.open, netcdf.close.
+</p></div>
 <div class="subsubsection-level-extent" id="netcdf_002eendDef">
 <h4 class="subsubsection">3.2.2.4 netcdf.endDef</h4>
 <a class="index-entry-id" id="index-endDef"></a>
@@ -637,9 +644,14 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-inq"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einq_0028ncid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">ndims</var>,<var class="var">nvars</var>,<var class="var">ngatts</var>,<var class="var">unlimdimid</var>] =</code> <strong class="def-name">netcdf.inq(<var class="var">ncid</var>)</strong></dt>
-<dd><p>Return the number of dimension (<var class="var">ndims</var>), the number of variables (<var class="var">nvars</var>), the number of global attributes (<var class="var">ngatts</var>) and the id of the unlimited dimension (<var class="var">unlimdimid</var>).
- If no unlimited dimension is declared -1 is returned. For NetCDF4 files, one should use
- the function netcdf.inqUnlimDims as multiple unlimite dimension exists.
+<dd><p>Return informat about a netcdf file.
+</p>
+<p>Return the number of dimension (<var class="var">ndims</var>), the number of variables (<var class="var">nvars</var>), the number
+ of global attributes (<var class="var">ngatts</var>) and the id of the unlimited dimension (<var class="var">unlimdimid</var>).
+</p>
+<p>If no unlimited dimension is declared -1 is returned.
+</p>
+<p>For NetCDF4 files, one should use the function netcdf.inqUnlimDims as multiple unlimited dimension exists.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002einqFormat">
@@ -648,7 +660,8 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqFormat_0028ncid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">format</var> =</code> <strong class="def-name">netcdf.inqFormat(<var class="var">ncid</var>)</strong></dt>
 <dd><p>Return the NetCDF format of the dataset <var class="var">ncid</var>.
- Format might be one of the following
+</p>
+<p>Format might be one of the following
  &quot;FORMAT_CLASSIC&quot;, &quot;FORMAT_64BIT&quot;, &quot;FORMAT_NETCDF4&quot; or &quot;FORMAT_NETCDF4_CLASSIC&quot;
 </p></dd></dl>
 </div>
@@ -676,6 +689,8 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002eopen_0028filename_002cmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">ncid</var> =</code> <strong class="def-name">netcdf.open(<var class="var">filename</var>,<var class="var">mode</var>)</strong></dt>
 <dd><p>Opens the file named <var class="var">filename</var> in the mode <var class="var">mode</var>.
+</p>
+<p><strong class="strong">See also:</strong> netcdf.create, netcdf.close.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002ereDef">
@@ -691,7 +706,11 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-setFill"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002esetFill_0028ncid_002cfillmode_0029"><span class="category-def">: </span><code class="def-type"><var class="var">old_mode</var> =</code> <strong class="def-name">netcdf.setFill(<var class="var">ncid</var>,<var class="var">fillmode</var>)</strong></dt>
-<dd><p>Change the fill mode (<var class="var">fillmode</var>) of the data set <var class="var">ncid</var>. The previous value of the fill mode is returned. <var class="var">fillmode</var> can be either &quot;fill&quot; or &quot;nofill&quot;.
+<dd><p>Change the fill mode (<var class="var">fillmode</var>) of the data set <var class="var">ncid</var>.
+</p>
+<p><var class="var">fillmode</var> can be either &quot;fill&quot; or &quot;nofill&quot;.
+</p>
+<p>The previous value of the fill mode is returned.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002esync">
@@ -712,7 +731,9 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-defDim"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefDim_0028ncid_002cname_002clen_0029"><span class="category-def">: </span><code class="def-type"><var class="var">dimid</var> =</code> <strong class="def-name">netcdf.defDim(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">len</var>)</strong></dt>
-<dd><p>Define the dimension with the name <var class="var">name</var> and the length <var class="var">len</var> in the dataset <var class="var">ncid</var>. The id of the dimension is returned.
+<dd><p>Define the dimension with the name <var class="var">name</var> and the length <var class="var">len</var> in the dataset <var class="var">ncid</var>.
+</p>
+<p>The id of the dimension is returned.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002einqDim">
@@ -827,7 +848,8 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarID"><span class="category-def">: </span><code class="def-type"><var class="var">varids</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>)</code></dt>
 <dd><p>Return all variable ids.
- This functions returns all variable ids in a NetCDF file or NetCDF group.
+</p>
+<p>This functions returns all variable ids in a NetCDF file or NetCDF group.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqVarID.
 </p></dd></dl>
@@ -842,7 +864,14 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-defVar"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefVar_0028ncid_002cname_002cxtype_002cdimids_0029"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVar(<var class="var">ncid</var>,<var class="var">name</var>,<var class="var">xtype</var>,<var class="var">dimids</var>)</strong></dt>
-<dd><p>Defines a variable with the name <var class="var">name</var> in the dataset <var class="var">ncid</var>. <var class="var">xtype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The parameter <var class="var">dimids</var> define the ids of the dimension. For scalar this parameter is the empty array ([]). The variable id is returned.
+<dd><p>Defines a variable with the name <var class="var">name</var> in the dataset <var class="var">ncid</var>.
+</p>
+<p><var class="var">xtype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;,
+ &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant.
+</p>
+<p>The parameter <var class="var">dimids</var> define the ids of the dimension. For scalar this parameter is the empty array ([]).
+</p>
+<p>The variable id is returned.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002edefVarChunking">
@@ -851,7 +880,8 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefVarChunking"><span class="category-def">: </span><strong class="def-name">netcdf.defVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">storage</var>,<var class="var">chunkSizes</var>)</code></dt>
 <dd><p>Define the chunking settings of NetCDF variable <var class="var">varid</var>.
- If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.
+</p>
+<p>If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.<br>
  If <var class="var">storage</var> is the string &quot;contiguous&quot;, the variable is stored in a contiguous way.
 </p></dd></dl>
 </div>
@@ -861,7 +891,10 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefVarDeflate"><span class="category-def">: </span><strong class="def-name">netcdf.defVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>)</code></dt>
 <dd><p>Define the compression settings NetCDF variable <var class="var">varid</var>.
- If <var class="var">deflate</var> is true, then the variable is compressed. The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
+</p>
+<p>If <var class="var">deflate</var> is true, then the variable is compressed.
+</p>
+<p>The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002edefVarFill">
@@ -870,7 +903,11 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefVarFill_0028ncid_002cvarid_002cno_005ffill_002cfillvalue_0029"><span class="category-def">: </span><strong class="def-name">netcdf.defVarFill(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">no_fill</var>,<var class="var">fillvalue</var>)</strong></dt>
 <dd><p>Define the fill-value settings of the NetCDF variable <var class="var">varid</var>.
- If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
+</p>
+<p>If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the
+ value <var class="var">fill_value</var>.
+</p>
+<p>This is disabled by setting <var class="var">no_fill</var> to true.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002edefVarFletcher32">
@@ -878,7 +915,11 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-defVarFletcher32"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefVarFletcher32_0028ncid_002cvarid_002cchecksum_0029"><span class="category-def">: </span><strong class="def-name">netcdf.defVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">checksum</var>)</strong></dt>
-<dd><p>Defines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;, then fletcher32 checksums will be turned on for this variable. If <var class="var">checksum</var> is &quot;NOCHECKSUM&quot;, then checksums will be disabled.
+<dd><p>Defines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>.
+</p>
+<p>If <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;, then fletcher32 checksums will be turned on for this variable.
+</p>
+<p>If <var class="var">checksum</var> is &quot;NOCHECKSUM&quot;, then checksums will be disabled.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002egetVar">
@@ -890,10 +931,14 @@ does not support the import function but the functions are available as netcdf.f
 <dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002egetVar-2"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>)</code></dt>
 <dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002egetVar-3"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>)</code></dt>
 <dd><p>Get the data from a NetCDF variable.
+#
  The data <var class="var">data</var> is loaded from the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>.
-<var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros),
-<var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
- and <var class="var">stride</var> is the sampling interval.
+</p>
+<p><var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros),
+</p>
+<p><var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
+</p>
+<p><var class="var">stride</var> is the sampling interval.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002einqVar">
@@ -902,9 +947,12 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVar"><span class="category-def">: </span><code class="def-type">[<var class="var">name</var>,<var class="var">nctype</var>,<var class="var">dimids</var>,<var class="var">nattr</var>] =</code> <strong class="def-name">netcdf.inqVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
 <dd><p>Inquires information about a NetCDF variable.
- This functions returns the <var class="var">name</var>, the NetCDF type <var class="var">nctype</var>, an array of dimension ids
-<var class="var">dimids</var> and the number of attributes <var class="var">nattr</var> of the NetCDF variable. <var class="var">nctype</var> in an
- integer corresponding NetCDF constants.
+</p>
+<p>This functions returns the <var class="var">name</var>, the NetCDF type <var class="var">nctype</var>, an array of dimension ids
+</p>
+<p><var class="var">dimids</var> and the number of attributes <var class="var">nattr</var> of the NetCDF variable.
+</p>
+<p><var class="var">nctype</var> in an integer corresponding NetCDF constants.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqVarID,netcdf.getConstant.
 </p></dd></dl>
@@ -915,7 +963,8 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarChunking"><span class="category-def">: </span><code class="def-type">[<var class="var">storage</var>,<var class="var">chunkSizes</var>] =</code> <strong class="def-name">netcdf.inqVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
 <dd><p>Determines the chunking settings of NetCDF variable <var class="var">varid</var>.
- If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.
+</p>
+<p>If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.<br>
  If <var class="var">storage</var> is the string &quot;contiguous&quot;, the variable is stored in a contiguous way.
 </p></dd></dl>
 </div>
@@ -925,7 +974,10 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarDeflate"><span class="category-def">: </span><code class="def-type">[<var class="var">shuffle</var>,<var class="var">deflate</var>,<var class="var">deflate_level</var>] =</code> <strong class="def-name">netcdf.inqVarDeflate</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></dt>
 <dd><p>Determines the compression settings NetCDF variable <var class="var">varid</var>.
- If <var class="var">deflate</var> is true, then the variable is compressed. The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
+</p>
+<p>If <var class="var">deflate</var> is true, then the variable is compressed.
+</p>
+<p>The compression level <var class="var">deflate_level</var> is an integer between 0 (no compression) and 9 (maximum compression).
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002einqVarFill">
@@ -934,7 +986,10 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarFill_0028ncid_002cvarid_0029"><span class="category-def">: </span><code class="def-type">[<var class="var">no_fill</var>,<var class="var">fillvalue</var>] =</code> <strong class="def-name">netcdf.inqVarFill(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
 <dd><p>Determines the fill-value settings of the NetCDF variable <var class="var">varid</var>.
- If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
+</p>
+<p>If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>.
+</p>
+<p>This is disabled by setting <var class="var">no_fill</var> to true.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002einqVarFletcher32">
@@ -942,7 +997,10 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-inqVarFletcher32"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarFletcher32_0028ncid_002cvarid_0029"><span class="category-def">: </span><code class="def-type"><var class="var">checksum</var> =</code> <strong class="def-name">netcdf.inqVarFletcher32(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></dt>
-<dd><p>Determines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>. If fletcher32 checksums is turned on for this variable, then <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;. Otherwise it is the string &quot;NOCHECKSUM&quot;.
+<dd><p>Determines the checksum settings of the variable with the id <var class="var">varid</var> in the data set <var class="var">ncid</var>.
+</p>
+<p>If fletcher32 checksums is turned on for this variable, then <var class="var">checksum</var> is the string &quot;FLETCHER32&quot;.
+ Otherwise it is the string &quot;NOCHECKSUM&quot;.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002einqVarID">
@@ -952,7 +1010,7 @@ does not support the import function but the functions are available as netcdf.f
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarID-1"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.inqVarID</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">name</var>)</code></dt>
 <dd><p>Return the id of a variable based on its name.
 </p>
-<p><strong class="strong">See also:</strong> netcdf.defVar,netcdf.inqVarIDs.
+<p><strong class="strong">See also:</strong> netcdf.defVar, netcdf.inqVarIDs.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002eputVar">
@@ -964,10 +1022,14 @@ does not support the import function but the functions are available as netcdf.f
 <dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002eputVar-2"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">data</var>)</code></dt>
 <dt class="deftypefnx def-cmd-deftypefn def-line" id="index-netcdf_002eputVar-3"><span class="category-def">: </span><strong class="def-name">netcdf.putVar</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">start</var>,<var class="var">count</var>,<var class="var">stride</var>,<var class="var">data</var>)</code></dt>
 <dd><p>Put data in a NetCDF variable.
- The data <var class="var">data</var> is stored in the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>.
-<var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros),
-<var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
- and <var class="var">stride</var> is the sampling interval.
+</p>
+<p>The data <var class="var">data</var> is stored in the variable <var class="var">varid</var> of the NetCDF file <var class="var">ncid</var>.
+</p>
+<p><var class="var">start</var> is the start index of each dimension (0-based and defaults to a vector of zeros),
+</p>
+<p><var class="var">count</var> is the number of elements of to be written along each dimension (default all elements)
+</p>
+<p><var class="var">stride</var> is the sampling interval.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002erenameVar">
@@ -990,7 +1052,8 @@ does not support the import function but the functions are available as netcdf.f
 <dt class="deftypefn def-line" id="index-netcdf_002ecopyAtt"><span class="category-def">: </span><strong class="def-name">netcdf.copyAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">ncid_out</var>,<var class="var">varid_out</var>)</code></dt>
 <dd><p>Copies the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>
  to the variable <var class="var">varid_out</var> in the data set <var class="var">ncid_out</var>.
- To copy a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var> or <var class="var">varid_out</var>.
+</p>
+<p>To copy a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var> or <var class="var">varid_out</var>.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.getAtt,netcdf.getConstant.
 </p></dd></dl>
@@ -1001,7 +1064,8 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edelAtt_0028ncid_002cvarid_002cname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.delAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</strong></dt>
 <dd><p>Deletes the attribute named <var class="var">name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>.
- To delete a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
+</p>
+<p>To delete a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.defAtt,netcdf.getConstant.
 </p></dd></dl>
@@ -1012,9 +1076,11 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002egetAtt"><span class="category-def">: </span><code class="def-type"><var class="var">data</var> =</code> <strong class="def-name">netcdf.getAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>)</code></dt>
 <dd><p>Get the value of a NetCDF attribute.
- This function returns the value of the attribute called <var class="var">name</var> of the variable
-<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be
- netcdf.getConstant(&quot;global&quot;).
+</p>
+<p>This function returns the value of the attribute called <var class="var">name</var> of the variable
+<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>.
+</p>
+<p>For global attributes <var class="var">varid</var> can be netcdf.getConstant(&quot;global&quot;).
 </p>
 <p><strong class="strong">See also:</strong> netcdf.putAtt.
 </p></dd></dl>
@@ -1035,7 +1101,8 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqAttID_0028ncid_002cvarid_002cattname_0029"><span class="category-def">: </span><code class="def-type"><var class="var">attnum</var> =</code> <strong class="def-name">netcdf.inqAttID(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attname</var>)</strong></dt>
 <dd><p>Return the attribute id <var class="var">attnum</var> of the attribute named <var class="var">attname</var> of the variable <var class="var">varid</var> in the dataset <var class="var">ncid</var>.
- For global attributes <var class="var">varid</var> can be
+</p>
+<p>For global attributes <var class="var">varid</var> can be
  netcdf.getConstant(&quot;global&quot;).
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqAttName.
@@ -1047,9 +1114,11 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqAttName"><span class="category-def">: </span><code class="def-type"><var class="var">name</var> =</code> <strong class="def-name">netcdf.inqAttName</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">attnum</var>)</code></dt>
 <dd><p>Get the name of a NetCDF attribute.
- This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable
-<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. For global attributes <var class="var">varid</var> can be
- netcdf.getConstant(&quot;global&quot;).
+</p>
+<p>This function returns the name of the attribute with the id <var class="var">attnum</var> of the variable
+<var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>.
+</p>
+<p>For global attributes <var class="var">varid</var> can be netcdf.getConstant(&quot;global&quot;).
 </p>
 <p><strong class="strong">See also:</strong> netcdf.inqAttName.
 </p></dd></dl>
@@ -1060,9 +1129,11 @@ does not support the import function but the functions are available as netcdf.f
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002eputAtt"><span class="category-def">: </span><strong class="def-name">netcdf.putAtt</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">name</var>,<var class="var">data</var>)</code></dt>
 <dd><p>Defines a NetCDF attribute.
- This function defines the attribute called <var class="var">name</var> of the variable
+</p>
+<p>This function defines the attribute called <var class="var">name</var> of the variable
 <var class="var">varid</var> in the NetCDF file <var class="var">ncid</var>. The value of the attribute will be <var class="var">data</var>.
- For global attributes <var class="var">varid</var> can be
+</p>
+<p>For global attributes <var class="var">varid</var> can be
  netcdf.getConstant(&quot;global&quot;).
 </p>
 <p><strong class="strong">See also:</strong> netcdf.getAtt.
@@ -1073,8 +1144,11 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-renameAtt"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002erenameAtt_0028ncid_002cvarid_002cold_005fname_002cnew_005fname_0029"><span class="category-def">: </span><strong class="def-name">netcdf.renameAtt(<var class="var">ncid</var>,<var class="var">varid</var>,<var class="var">old_name</var>,<var class="var">new_name</var>)</strong></dt>
-<dd><p>Renames the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>. <var class="var">new_name</var> is the new name of the attribute.
- To rename a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
+<dd><p>Renames the attribute named <var class="var">old_name</var> of the variable <var class="var">varid</var> in the data set <var class="var">ncid</var>.
+</p>
+<p><var class="var">new_name</var> is the new name of the attribute.
+</p>
+<p>To rename a global attribute use netcdf.getConstant(&quot;global&quot;) for <var class="var">varid</var>.
 </p>
 <p><strong class="strong">See also:</strong> netcdf.copyAtt,netcdf.getConstant.
 </p></dd></dl>
@@ -1089,7 +1163,13 @@ does not support the import function but the functions are available as netcdf.f
 <a class="index-entry-id" id="index-defVlen"></a>
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002edefVlen_0028ncid_002ctypename_002cbasetype_0029"><span class="category-def">: </span><code class="def-type"><var class="var">varid</var> =</code> <strong class="def-name">netcdf.defVlen(<var class="var">ncid</var>,<var class="var">typename</var>,<var class="var">basetype</var>)</strong></dt>
-<dd><p>Defines a NC_VLEN variable length array type with the type name <var class="var">typename</var> and a base datatype of <var class="var">basetype</var> in the dataset <var class="var">ncid</var>. <var class="var">basetype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;, &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant. The new data type id is returned.
+<dd><p>Defines a NC_VLEN variable length array type with the type name <var class="var">typename</var> and a base
+ datatype of <var class="var">basetype</var> in the dataset <var class="var">ncid</var>.
+</p>
+<p><var class="var">basetype</var> can be &quot;byte&quot;, &quot;ubyte&quot;, &quot;short&quot;, &quot;ushort&quot;, &quot;int&quot;, &quot;uint&quot;, &quot;int64&quot;, &quot;uint64&quot;,
+ &quot;float&quot;, &quot;double&quot;, &quot;char&quot; or the corresponding number as returned by netcdf.getConstant.
+</p>
+<p>The new data type id is returned.
 </p></dd></dl>
 </div>
 <div class="subsubsection-level-extent" id="netcdf_002einqUserType">

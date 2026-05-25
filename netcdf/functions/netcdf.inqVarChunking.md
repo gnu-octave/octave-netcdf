@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/21_netcdfinqVarChunking/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqVarChunking"
 category: "Test function"
@@ -60,6 +60,7 @@ navigation:
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarChunking"><span><code class="def-type">[<var class="var">storage</var>,<var class="var">chunkSizes</var>] =</code> <strong class="def-name">netcdf.inqVarChunking</strong> <code class="def-code-arguments">(<var class="var">ncid</var>,<var class="var">varid</var>)</code></span></dt>
 <dd><p>Determines the chunking settings of NetCDF variable <var class="var">varid</var>.
- If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.
+</p>
+<p>If <var class="var">storage</var> is the string &quot;chunked&quot;, the variable is stored by chunk of the size <var class="var">chunkSizes</var>.<br>
  If <var class="var">storage</var> is the string &quot;contiguous&quot;, the variable is stored in a contiguous way.
  </p></dd></dl>

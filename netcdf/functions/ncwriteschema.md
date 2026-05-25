@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/13_ncwriteschema/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - ncwriteschema"
 category: "Test function"

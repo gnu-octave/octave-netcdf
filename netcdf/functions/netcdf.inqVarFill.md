@@ -2,7 +2,7 @@
 layout: "default"
 permalink: "/functions/17_netcdfinqVarFill/"
 pkg_name: "netcdf"
-pkg_version: "1.0.19"
+pkg_version: "1.0.20"
 pkg_description: "A NetCDF interface for Octave"
 title: "Netcdf Toolkit - netcdf.inqVarFill"
 category: "Test function"
@@ -60,5 +60,8 @@ navigation:
 <dl class="first-deftypefn def-block">
 <dt class="deftypefn def-line" id="index-netcdf_002einqVarFill_0028ncid_002cvarid_0029"><span><code class="def-type">[<var class="var">no_fill</var>,<var class="var">fillvalue</var>] =</code> <strong class="def-name">netcdf.inqVarFill(<var class="var">ncid</var>,<var class="var">varid</var>)</strong></span></dt>
 <dd><p>Determines the fill-value settings of the NetCDF variable <var class="var">varid</var>.
- If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>. This is disabled by setting <var class="var">no_fill</var> to true.
+</p>
+<p>If <var class="var">no_fill</var> is false, then the values between no-contiguous writes are filled with the value <var class="var">fill_value</var>.
+</p>
+<p>This is disabled by setting <var class="var">no_fill</var> to true.
  </p></dd></dl>
