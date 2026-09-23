@@ -1459,6 +1459,31 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
           OV_NETCDF_GET_VAR_CASE(NC_DOUBLE,double)
 
           OV_NETCDF_GET_VAR_CASE(NC_CHAR, char)
+	  case NC_STRING:
+          {
+	    int dim0 = sliced_dim_vector(0);
+            OCTAVE_LOCAL_BUFFER (char*, arr, dim0);
+            Cell c = Cell (dim_vector(1, dim0));
+
+            if (sz > 0) {
+              check_err(nc_get_vars(ncid, varid, start, count, stride, arr));
+            } else {
+              warning_with_id("netcdf:variable-size-zero", "variable size 0 or currently too large to process");
+            }
+
+            for (size_t i = 0; i < dim0; i++)
+	      {
+                if (arr[i])
+                  c(i) = arr[i];
+                else
+                  c(i) = "";
+              }
+	    data = octave_value(c);
+
+	    // free nc allocated string mem
+	    nc_free_string(dim0, arr);
+	    break;
+          }
 
           default:
             {
