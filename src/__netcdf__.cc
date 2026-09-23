@@ -1653,6 +1653,21 @@ netcdf_getConstant(\"global\").\n\
       OV_NETCDF_GET_ATT_CASE(NC_DOUBLE,double)
 
       OV_NETCDF_GET_ATT_CASE(NC_CHAR, char)
+
+      // special case NC_STRING
+      if (basetype == NC_STRING)
+        {
+          OCTAVE_LOCAL_BUFFER (char*, arr, len);
+          check_err(nc_get_att(ncid, varid, attname.c_str(), arr));
+          Cell c = Cell (dim_vector(1,len));
+          for (size_t i = 0; i < len; i++)
+	    {
+	      c(i) = arr[i];
+            }
+	  data = octave_value(c);
+	  // free nc allocated string mem
+	  nc_free_string(len, arr);
+        }
     }
 
   return data;
