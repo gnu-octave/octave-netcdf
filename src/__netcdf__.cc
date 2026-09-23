@@ -1281,6 +1281,17 @@ The data @var{data} is stored in the variable @var{varid} of the NetCDF file @va
           OV_NETCDF_PUT_VAR(NC_DOUBLE,double,array_value)
 
           OV_NETCDF_PUT_VAR(NC_CHAR, char, char_array_value)
+          case NC_STRING:
+	    {
+	      Array<std::string> ar = data.cellstr_value();
+              for(octave_idx_type i=0;i<ar.numel();i++) {
+                const char * v = ar(i).c_str();
+                count[0] = 1;
+                check_err(nc_put_vars (ncid, varid, start, count, stride, &v));
+                start[0] = start[0]+1;
+	      }
+              break;
+            }
           default:
             {
               error("unknown type %d" ,xtype);
