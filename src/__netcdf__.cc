@@ -862,6 +862,21 @@ If @var{no_fill} is false, then the values between no-contiguous writes are fill
           OV_NETCDF_INQ_VAR_FILL(NC_DOUBLE,double)
 
           OV_NETCDF_INQ_VAR_FILL(NC_CHAR,char)
+
+	  case NC_STRING:
+          {
+	    char * arr = NULL;
+            check_err(nc_inq_var_fill(ncid, varid, &no_fill,
+                         &arr)); 
+	    if (arr)
+	      {
+	        data = octave_value(arr);
+	        // free nc allocated string mem
+	        nc_free_string(1, &arr);
+	      }
+	    else
+	      data = octave_value("");
+          }
        }
     }
   //cout << "xtype3 " << xtype << " " << NC_DOUBLE << std::endl;
