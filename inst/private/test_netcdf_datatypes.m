@@ -28,4 +28,5 @@ function test_netcdf_datatypes()
   test_netcdf_type('float','single');
 
   test_netcdf_type('char','char');
+  test_netcdf_type('string','cellstr');
 endfunction

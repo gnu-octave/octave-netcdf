@@ -24,14 +24,27 @@ function test_netcdf_type(nctype,octtype)
 
   ncid = netcdf.create(fname,mode);
 
-  dimids = [netcdf.defDim(ncid,'lon',m) ...
+  if strcmp(octtype, "cellstr")
+    dimids = [netcdf.defDim(ncid,'lon',m)];
+  else
+    dimids = [netcdf.defDim(ncid,'lon',m) ...
             netcdf.defDim(ncid,'time',n)];
-
+  endif
 
   varid = netcdf.defVar(ncid,'variable',nctype,dimids);
   netcdf.endDef(ncid)
 
-  if strcmp(octtype,'char')
+  if strcmp(octtype,'cellstr')
+    z = {};
+    for idx=1:m
+      z{end+1} = char(floor(26*rand(1,n)) + 65);
+    endfor
+
+    testvals = {'a'};
+    testvalv = {'this is a name', 'This is a 2nd name'};
+
+    octtype = "cell";
+  elseif strcmp(octtype,'char')
     z = char(floor(26*rand(m,n)) + 65);
 
     testvals = 'a';
