@@ -1751,7 +1751,9 @@ netcdf_getConstant(\"global\").\n\
 
   // get matching netcdf type
 
-  if (data.is_string())
+  if (data.iscellstr())
+    xtype = NC_STRING;
+  else if (data.is_string())
     xtype = NC_CHAR;
   else if (data.is_int8_type())
     xtype = NC_BYTE;
@@ -1799,6 +1801,18 @@ netcdf_getConstant(\"global\").\n\
 	OV_NETCDF_PUT_ATT(NC_DOUBLE,double,array_value)
 
 	OV_NETCDF_PUT_ATT(NC_CHAR, char, char_array_value)
+        case NC_STRING:
+          {
+            Array<std::string> str_array = data.cellstr_value();
+            len = str_array.numel();
+            OCTAVE_LOCAL_BUFFER (const char*, arr, len);
+            for (int i=0;i<len;i++)
+              {
+                arr[i] = str_array(i).c_str();
+              }
+	    check_err(nc_put_att (ncid, varid, attname.c_str(), xtype, len, arr));
+            break;
+          }
    }
 
   /*  check_err(nc_put_att           (int ncid, int varid, const char *name, nc_type xtype,
