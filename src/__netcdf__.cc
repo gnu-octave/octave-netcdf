@@ -1482,7 +1482,7 @@ The data @var{data} is loaded from the variable @var{varid} of the NetCDF file @
               warning_with_id("netcdf:variable-size-zero", "variable size 0 or currently too large to process");
             }
 
-            for (size_t i = 0; i < dim0; i++)
+            for (int i = 0; i < dim0; i++)
 	      {
                 if (arr[i])
                   c(i) = arr[i];
@@ -1806,7 +1806,7 @@ netcdf_getConstant(\"global\").\n\
             Array<std::string> str_array = data.cellstr_value();
             len = str_array.numel();
             OCTAVE_LOCAL_BUFFER (const char*, arr, len);
-            for (int i=0;i<len;i++)
+            for (size_t i=0;i<len;i++)
               {
                 arr[i] = str_array(i).c_str();
               }
