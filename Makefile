@@ -163,6 +163,9 @@ ifneq (,$(wildcard doc))
 	$(MAKE) -C "$@" docs
 	#cd "$@" && $(RM) -f doc/mkfuncdocs.py doc/mkqhcp.py
 endif
+ifneq (,$(wildcard doc/mkdoccache.m))
+	$(MAKE) -C "$(release_dir)" doc-cache
+endif
 	cd "$@" && $(RM) -rf devel
 ## Uncomment this if your src/Makefile.in has these targets for
 ## pre-building something for the release (e.g. documentation).
@@ -304,13 +307,21 @@ else
 	cd doc && $(RM) octave-$(package).qhcp octave-$(package).qhp
 endif
 
+# Doc cache
+.PHONY: doc-cache clean-doc-cache
+doc-cache:
+	cd doc && ./mkdoccache.m ../inst
+
+clean-doc-cache:
+	$(RM) -f inst/doc-cache src/doc-cache
+
 ##
 ## CLEAN
 ##
 
 .PHONY: clean
 
-clean: clean-tarballs clean-unpacked-release clean-install clean-docs
+clean: clean-tarballs clean-unpacked-release clean-install clean-docs clean-doc-cache
 	@echo "## Removing target directory (if empty)..."
 	-test -e $(target_dir) && rmdir $(target_dir)
 	@echo
